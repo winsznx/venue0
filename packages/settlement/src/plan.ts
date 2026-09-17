@@ -1,6 +1,6 @@
 import { getAddress, hashStruct, keccak256, stringToHex, type TypedDataDomain } from "viem";
 import { canonicalJson, ROBINHOOD_CHAIN_ID, type Address, type AssetUid, type Hex } from "@venue0/shared";
-import type { AssetFill, MatchResult, ParticipantSummary } from "@venue0/matcher";
+import type { AssetFill, MatchResult, ParticipantSummary, ResidualClass } from "@venue0/matcher";
 
 export const PLAN_TYPES = {
   Leg: [
@@ -47,6 +47,7 @@ export type ResidualOrder = {
   side: "BUY" | "SELL";
   amountRaw: bigint;
   notionalUsdE18: bigint;
+  residualClass: ResidualClass;
 };
 
 /** Offchain plan shown to participants. `contractPlan` is the only part that moves tokens. */
@@ -135,6 +136,7 @@ function toResidual(fill: AssetFill): ResidualOrder {
     side: fill.side,
     amountRaw: fill.residualRaw,
     notionalUsdE18: fill.residualValueUsdE18,
+    residualClass: fill.residualClass,
   };
 }
 

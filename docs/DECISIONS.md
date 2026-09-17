@@ -68,3 +68,24 @@ Format per entry: PRD assumption, observed reality, source, impact, decision. Ne
   - Notional definitions: requested = sum over every intent asset of |requested value|; crossed = sum of crossed value on those same entries (so each transfer counts once on the sell side and once on the buy side); residual = sum of residual value; transfer notional = one-sided sum of leg values.
   - Secondary objectives from PRD 13.4 (fewer legs, lower allocation error among equal-value optima) are not optimized yet; decomposition keeps legs low. Tracked as open work.
   - Reference (`packages/reference-matcher`): PRD 13.3 direct `x[p,q,a]` LP solved by exact rational simplex with Bland's rule, plus an independent validator that recomputes caps, conservation, value balance and fills from raw input. Parity is required on eligibility, feasibility, and optimum crossed lots. Per-(participant, asset) deltas are not required to match when optima are degenerate.
+
+## D-008 Signature validation must accept EIP-7702 delegated EOAs (2026-09-17)
+
+- PRD 16.5: EOA / Dynamic MPC ECDSA primary, ERC-1271 optional.
+- Observed: on the mainnet-fork rehearsal, settlement reverted `InvalidSignature` for valid ECDSA approvals. The signer addresses (anvil's public dev keys) carry EIP-7702 delegation code `0xef0100...` on Robinhood Chain mainnet. OpenZeppelin v5.6.1 `SignatureChecker.isValidSignatureNow` routes any address with code to ERC-1271 only. Dynamic's EVM gas sponsorship also performs an EIP-7702 delegation on first use, so real Venue0 users can have delegated EOAs.
+- Decision: `_isValidApproval` accepts ECDSA when it recovers the participant address even if the address has code, otherwise falls back to ERC-1271 for contract accounts. Tests cover a 7702-delegated EOA, an ERC-1271 smart account, and a wrong key against a smart account. Fork rehearsal keys are now derived (`keccak256("venue0-fork-rehearsal-wallet-<label>")`) instead of public dev keys.
+
+## D-009 Residual dust classification (2026-09-17)
+
+- PRD 13.4: avoid unnecessary dust.
+- Observed: fork rehearsal of the hero cycle crossed $74.94 of $75.00; the $0.06 left over from cent-lot rounding was split across all 6 fills, which made the round `PARTIAL_CROSS` and counted 6 external orders, the same as market-only.
+- Decision: a residual on a fill that crossed is `DUST` when its value is below `DEFAULT_RESIDUAL_DUST_USD_E18` ($0.10), otherwise `EXTERNAL`. A fill that crossed nothing keeps a full `EXTERNAL` residual regardless of size. Residual notional still includes dust, and `dustResidualNotionalUsdE18` is reported separately. Round status is `CROSSED` when no `EXTERNAL` residual remains. Only `EXTERNAL` residuals count as external orders.
+
+## D-010 Live proof pipeline and rehearsal (2026-09-17)
+
+- `scripts/live/l0-transfer.ts` and `scripts/live/round.ts` run one code path in two modes. `--fork` starts anvil on a fork of Robinhood Chain mainnet, funds fresh wallets by impersonating current holders found in recent Transfer logs, and writes to `evidence/rehearsal/fork/`. `--live` reads keys from env, broadcasts, and writes to `evidence/live/`. Fork funding helpers refuse to run in live mode.
+- Round scenarios are portfolio shifts on current holdings (for example A moves 50% of NVDA value into AAPL). Intents come from `computeRebalance` + `deltaLimits`, are EIP-712 signed and signature-verified before matching. Each scenario declares a required match shape (L2: 3 legs, only 3-hop cycles, no bilateral pair). Shape or reference-parity failure stops the run before any approval or settlement transaction.
+- Valuation for live rounds: Chainlink Stock Token feeds, each cross-checked against normalized REST within 100 bps (D-003 point 5).
+- Approvals are exact per-leg allowances. Approval nonces are `keccak256(planHash, participant)`.
+- Public RPC serves historical state only for roughly the last 10,000 blocks. The verifier reads balances at the receipt block and block - 1, so it must run promptly, or use an archive provider. A failed historical read is reported `INCONCLUSIVE`, never `PASS`.
+- PRD 38.5 asks for a testnet rehearsal deploy. Robinhood docs list no Stock Tokens or faucet for testnet 46630, so a testnet run would exercise mock tokens only. The mainnet-fork rehearsal runs the same script against real Stock Token bytecode, registry, pause and blocklist logic, and live Chainlink feeds, so it replaces the testnet rehearsal for G0-G4.

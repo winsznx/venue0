@@ -1,0 +1,66 @@
+[
+  {
+    "address": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+    "rebalance": {
+      "account": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "allocationErrorBps": "4999",
+      "positions": [
+        {
+          "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+          "deltaValueUsdE18": "-12499999999999999995",
+          "rawBalance": "113805960910757600",
+          "targetValueUsdE18": "12499999999999999996",
+          "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+          "valueUsdE18": "24999999999999999991"
+        },
+        {
+          "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+          "deltaValueUsdE18": "12499999999999999995",
+          "rawBalance": "0",
+          "targetValueUsdE18": "12499999999999999995",
+          "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+          "valueUsdE18": "0"
+        }
+      ],
+      "totalValueUsdE18": "24999999999999999991"
+    },
+    "shift": {
+      "fractionBps": 5000,
+      "from": "NVDA",
+      "to": "AAPL"
+    },
+    "wallet": "A"
+  },
+  {
+    "address": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+    "rebalance": {
+      "account": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "allocationErrorBps": "5000",
+      "positions": [
+        {
+          "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+          "deltaValueUsdE18": "12499999999999999834",
+          "rawBalance": "0",
+          "targetValueUsdE18": "12499999999999999834",
+          "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+          "valueUsdE18": "0"
+        },
+        {
+          "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+          "deltaValueUsdE18": "-12499999999999999834",
+          "rawBalance": "74572401562337808",
+          "targetValueUsdE18": "12499999999999999834",
+          "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+          "valueUsdE18": "24999999999999999668"
+        }
+      ],
+      "totalValueUsdE18": "24999999999999999668"
+    },
+    "shift": {
+      "fractionBps": 5000,
+      "from": "AAPL",
+      "to": "NVDA"
+    },
+    "wallet": "B"
+  }
+]

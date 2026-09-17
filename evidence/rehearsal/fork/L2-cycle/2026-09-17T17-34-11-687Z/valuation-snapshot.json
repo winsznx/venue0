@@ -1,0 +1,44 @@
+{
+  "snapshot": {
+    "capturedAt": 1789666463,
+    "chainId": 4663,
+    "maxAgeSec": 900,
+    "prices": [
+      {
+        "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+        "chainId": 4663,
+        "multiplierE18": "1000000000000000000",
+        "priceUsdE18": "762858450000000000000",
+        "source": "CHAINLINK_STOCK_TOKEN_FEED",
+        "sourceBlock": "65549196",
+        "sourceTimestamp": 1789647703,
+        "stale": false,
+        "tokenAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+      },
+      {
+        "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+        "chainId": 4663,
+        "multiplierE18": "1000775159164630595",
+        "priceUsdE18": "219672148980000000000",
+        "source": "CHAINLINK_STOCK_TOKEN_FEED",
+        "sourceBlock": "65549196",
+        "sourceTimestamp": 1789654501,
+        "stale": false,
+        "tokenAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+      },
+      {
+        "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+        "chainId": 4663,
+        "multiplierE18": "1000566080061092436",
+        "priceUsdE18": "335244667950000000000",
+        "source": "CHAINLINK_STOCK_TOKEN_FEED",
+        "sourceBlock": "65549196",
+        "sourceTimestamp": 1789660846,
+        "stale": false,
+        "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+      }
+    ],
+    "source": "CHAINLINK_STOCK_TOKEN_FEED"
+  },
+  "snapshotHash": "0xa098a3bd47644080aee4c1278c615eed98c416783b6bfabc70f2747f9d58c004"
+}

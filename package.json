@@ -13,7 +13,11 @@
     "test:matcher": "vitest run packages/matcher packages/reference-matcher",
     "test:contracts": "forge test --root contracts",
     "research:assets": "tsx scripts/research-assets.ts",
-    "contracts:build": "forge build --root contracts && tsx scripts/export-abi.ts"
+    "contracts:build": "forge build --root contracts && tsx scripts/export-abi.ts",
+    "wallets:generate": "tsx --env-file-if-exists=.env scripts/generate-wallets.ts",
+    "proof:l0": "tsx --env-file-if-exists=.env scripts/live/l0-transfer.ts",
+    "proof:round": "tsx --env-file-if-exists=.env scripts/live/round.ts",
+    "rehearse": "tsx scripts/live/l0-transfer.ts --fork NVDA 0.01 && tsx scripts/live/round.ts --fork L1 25 && tsx scripts/live/round.ts --fork L2 25 && tsx scripts/live/round.ts --fork L3 25 && tsx scripts/live/round.ts --fork L4 25"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

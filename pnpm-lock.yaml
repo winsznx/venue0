@@ -137,9 +137,24 @@ importers:
       '@venue0/assets':
         specifier: workspace:*
         version: link:../packages/assets
+      '@venue0/matcher':
+        specifier: workspace:*
+        version: link:../packages/matcher
+      '@venue0/portfolio':
+        specifier: workspace:*
+        version: link:../packages/portfolio
+      '@venue0/reference-matcher':
+        specifier: workspace:*
+        version: link:../packages/reference-matcher
+      '@venue0/settlement':
+        specifier: workspace:*
+        version: link:../packages/settlement
       '@venue0/shared':
         specifier: workspace:*
         version: link:../packages/shared
+      '@venue0/verifier':
+        specifier: workspace:*
+        version: link:../packages/verifier
       viem:
         specifier: 2.56.7
         version: 2.56.7(typescript@6.0.3)(zod@4.6.5)

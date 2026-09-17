@@ -1,0 +1,39 @@
+{
+  "after": {
+    "0x5d86f722E2613aC004704CDDB8e774912c0C8509": "0",
+    "0xa44Cdd5C07b66c686612886060e652bEC00ED56A": "10000000000000000"
+  },
+  "amountRaw": "10000000000000000",
+  "asset": {
+    "chainId": 4663,
+    "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+    "explorer": "https://robinhoodchain.blockscout.com/address/0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+    "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+    "symbol": "NVDA",
+    "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+  },
+  "before": {
+    "0x5d86f722E2613aC004704CDDB8e774912c0C8509": "10000000000000000",
+    "0xa44Cdd5C07b66c686612886060e652bEC00ED56A": "0"
+  },
+  "blockNumber": "65550734",
+  "checks": {
+    "recipientDelta": true,
+    "senderDelta": true,
+    "singleTransferLog": true,
+    "txSuccess": true
+  },
+  "deltas": {
+    "0x5d86f722E2613aC004704CDDB8e774912c0C8509": "-10000000000000000",
+    "0xa44Cdd5C07b66c686612886060e652bEC00ED56A": "10000000000000000"
+  },
+  "environment": "MAINNET_FORK_REHEARSAL",
+  "explorer": null,
+  "gate": "G0",
+  "readback": "fork RPC at receipt block and block - 1",
+  "result": "PASS",
+  "timestamp": "2026-09-17T17:37:04.593Z",
+  "txHash": "0xba8493beed940b0c252fe3cfdc1b66b46479fa91c4357d8b32a585232e802cc1",
+  "walletA": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+  "walletB": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A"
+}

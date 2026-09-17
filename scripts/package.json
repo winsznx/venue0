@@ -5,7 +5,12 @@
   "type": "module",
   "dependencies": {
     "@venue0/assets": "workspace:*",
+    "@venue0/matcher": "workspace:*",
+    "@venue0/portfolio": "workspace:*",
+    "@venue0/reference-matcher": "workspace:*",
+    "@venue0/settlement": "workspace:*",
     "@venue0/shared": "workspace:*",
+    "@venue0/verifier": "workspace:*",
     "viem": "2.56.7"
   }
 }

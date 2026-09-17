@@ -1,0 +1,121 @@
+{
+  "balances": [
+    {
+      "after": "22341891508076407",
+      "before": "0",
+      "expectedDelta": "22341891508076407",
+      "observedDelta": "22341891508076407",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "after": "79709695021894624",
+      "before": "113805960910757600",
+      "expectedDelta": "-34096265888862976",
+      "observedDelta": "-34096265888862976",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "after": "52230510054261401",
+      "before": "74572401562337808",
+      "expectedDelta": "-22341891508076407",
+      "observedDelta": "-22341891508076407",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "after": "34096265888862976",
+      "before": "0",
+      "expectedDelta": "34096265888862976",
+      "observedDelta": "34096265888862976",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "after": "0",
+      "before": "0",
+      "expectedDelta": "0",
+      "observedDelta": "0",
+      "owner": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "after": "0",
+      "before": "0",
+      "expectedDelta": "0",
+      "observedDelta": "0",
+      "owner": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    }
+  ],
+  "blockNumber": "65549862",
+  "checks": [
+    {
+      "detail": "receipt status success",
+      "name": "tx.status",
+      "status": "PASS"
+    },
+    {
+      "detail": "tx to 0x75335df7d38a25c9ae0ac9d1293ec486aff3fbed",
+      "name": "tx.to",
+      "status": "PASS"
+    },
+    {
+      "detail": "executed plan hash 0x903b8f91b0b8d888170733b8e43decf5acd9a5a529f9ab56ea96030bc2ca77e5 vs approved 0x903b8f91b0b8d888170733b8e43decf5acd9a5a529f9ab56ea96030bc2ca77e5",
+      "name": "calldata.plan",
+      "status": "PASS"
+    },
+    {
+      "detail": "1 PlanSettled event(s)",
+      "name": "event.PlanSettled",
+      "status": "PASS"
+    },
+    {
+      "detail": "2 CrossingLeg event(s) for 2 plan legs",
+      "name": "event.CrossingLeg",
+      "status": "PASS"
+    },
+    {
+      "detail": "2 ERC-20 Transfer log(s); 0 not in plan",
+      "name": "event.Transfer",
+      "status": "PASS"
+    },
+    {
+      "detail": "expected nonce 60230669312919907875022976200090576100950285037207929354742076424989498936752, saw 60230669312919907875022976200090576100950285037207929354742076424989498936752",
+      "name": "event.NonceConsumed.0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "status": "PASS"
+    },
+    {
+      "detail": "expected nonce 20775989116888910239591801051046736323226756418624285997920037777969026915356, saw 20775989116888910239591801051046736323226756418624285997920037777969026915356",
+      "name": "event.NonceConsumed.0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "status": "PASS"
+    },
+    {
+      "detail": "planSettled(0x903b8f91b0b8d888170733b8e43decf5acd9a5a529f9ab56ea96030bc2ca77e5) = true",
+      "name": "state.planSettled",
+      "status": "PASS"
+    },
+    {
+      "detail": "nonceUsed flags true,true",
+      "name": "state.nonceUsed",
+      "status": "PASS"
+    },
+    {
+      "detail": "6 balance pairs match",
+      "name": "balances.netDelta",
+      "status": "PASS"
+    },
+    {
+      "detail": "settlement contract holds no watched tokens",
+      "name": "balances.noCustody",
+      "status": "PASS"
+    }
+  ],
+  "expectedPlanHash": "0x903b8f91b0b8d888170733b8e43decf5acd9a5a529f9ab56ea96030bc2ca77e5",
+  "settlementContract": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+  "status": "PASS",
+  "txHash": "0x751df9184905b33580445f3006c99d6485f3b6414b3d317e85673a7cc215d18f",
+  "verifiedAt": "2026-09-17T17:35:50.250Z",
+  "verifierVersion": "venue0-verifier-1"
+}

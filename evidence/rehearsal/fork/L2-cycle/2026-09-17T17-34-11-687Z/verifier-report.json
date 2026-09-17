@@ -1,0 +1,174 @@
+{
+  "balances": [
+    {
+      "after": "0",
+      "before": "0",
+      "expectedDelta": "0",
+      "observedDelta": "0",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    {
+      "after": "37256371820543969",
+      "before": "0",
+      "expectedDelta": "37256371820543969",
+      "observedDelta": "37256371820543969",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "after": "56948502839743104",
+      "before": "113805960910757600",
+      "expectedDelta": "-56857458071014496",
+      "observedDelta": "-56857458071014496",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "after": "16372631121802478",
+      "before": "0",
+      "expectedDelta": "16372631121802478",
+      "observedDelta": "16372631121802478",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    {
+      "after": "37316029741793839",
+      "before": "74572401562337808",
+      "expectedDelta": "-37256371820543969",
+      "observedDelta": "-37256371820543969",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "after": "0",
+      "before": "0",
+      "expectedDelta": "0",
+      "observedDelta": "0",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "after": "16398848305344196",
+      "before": "32771479427146674",
+      "expectedDelta": "-16372631121802478",
+      "observedDelta": "-16372631121802478",
+      "owner": "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    {
+      "after": "0",
+      "before": "0",
+      "expectedDelta": "0",
+      "observedDelta": "0",
+      "owner": "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "after": "56857458071014496",
+      "before": "0",
+      "expectedDelta": "56857458071014496",
+      "observedDelta": "56857458071014496",
+      "owner": "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "after": "0",
+      "before": "0",
+      "expectedDelta": "0",
+      "observedDelta": "0",
+      "owner": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    {
+      "after": "0",
+      "before": "0",
+      "expectedDelta": "0",
+      "observedDelta": "0",
+      "owner": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "after": "0",
+      "before": "0",
+      "expectedDelta": "0",
+      "observedDelta": "0",
+      "owner": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    }
+  ],
+  "blockNumber": "65549243",
+  "checks": [
+    {
+      "detail": "receipt status success",
+      "name": "tx.status",
+      "status": "PASS"
+    },
+    {
+      "detail": "tx to 0x75335df7d38a25c9ae0ac9d1293ec486aff3fbed",
+      "name": "tx.to",
+      "status": "PASS"
+    },
+    {
+      "detail": "executed plan hash 0x0ddc71f90c3d78436c5d4a4f66714bcb7f3605a586cabdab1d53d7c3d9970f0b vs approved 0x0ddc71f90c3d78436c5d4a4f66714bcb7f3605a586cabdab1d53d7c3d9970f0b",
+      "name": "calldata.plan",
+      "status": "PASS"
+    },
+    {
+      "detail": "1 PlanSettled event(s)",
+      "name": "event.PlanSettled",
+      "status": "PASS"
+    },
+    {
+      "detail": "3 CrossingLeg event(s) for 3 plan legs",
+      "name": "event.CrossingLeg",
+      "status": "PASS"
+    },
+    {
+      "detail": "3 ERC-20 Transfer log(s); 0 not in plan",
+      "name": "event.Transfer",
+      "status": "PASS"
+    },
+    {
+      "detail": "expected nonce 27471771497683418916724556880089377340915831202913047070638521574155874091967, saw 27471771497683418916724556880089377340915831202913047070638521574155874091967",
+      "name": "event.NonceConsumed.0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "status": "PASS"
+    },
+    {
+      "detail": "expected nonce 24477420044646959680812530686261028643193285512514851210522007077082589477818, saw 24477420044646959680812530686261028643193285512514851210522007077082589477818",
+      "name": "event.NonceConsumed.0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "status": "PASS"
+    },
+    {
+      "detail": "expected nonce 90420644357525198477118974510392210431170485703180981114733535804758659210102, saw 90420644357525198477118974510392210431170485703180981114733535804758659210102",
+      "name": "event.NonceConsumed.0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163",
+      "status": "PASS"
+    },
+    {
+      "detail": "planSettled(0x0ddc71f90c3d78436c5d4a4f66714bcb7f3605a586cabdab1d53d7c3d9970f0b) = true",
+      "name": "state.planSettled",
+      "status": "PASS"
+    },
+    {
+      "detail": "nonceUsed flags true,true,true",
+      "name": "state.nonceUsed",
+      "status": "PASS"
+    },
+    {
+      "detail": "12 balance pairs match",
+      "name": "balances.netDelta",
+      "status": "PASS"
+    },
+    {
+      "detail": "settlement contract holds no watched tokens",
+      "name": "balances.noCustody",
+      "status": "PASS"
+    }
+  ],
+  "expectedPlanHash": "0x0ddc71f90c3d78436c5d4a4f66714bcb7f3605a586cabdab1d53d7c3d9970f0b",
+  "settlementContract": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+  "status": "PASS",
+  "txHash": "0xaa0fe71527de198e9eb4218f247457553e02a21c2abf0b154c33b9899a81050b",
+  "verifiedAt": "2026-09-17T17:35:08.340Z",
+  "verifierVersion": "venue0-verifier-1"
+}

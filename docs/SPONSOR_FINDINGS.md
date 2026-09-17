@@ -14,6 +14,9 @@ Live observations:
 - Chainlink covers 35 of 194 Stock Tokens. Feed `description()` naming is inconsistent (`RHNVDA / USD` vs `Robinhood AAPL / USD`) and feeds carry no token address, so feed-to-token binding relies on the directory name plus a price cross-check (D-003).
 - Robinhood's contracts page renders its table client-side, so the canonical list is only machine-readable through `/rhj/assets`. USDG `0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168` appears statically on the contracts page but not in `/rhj/assets`.
 - Testnet (46630) Stock Tokens and a testnet faucet are not documented.
+- The public RPC serves historical state only for recent blocks: `eth_call` 100 blocks back worked, 10,000 blocks back returned `historical state ... is not available`. Independent before/after verification needs prompt execution or an archive provider.
+- Anvil's well-known dev addresses (`0xf39F...2266`, `0x7099...79C8`, `0x3C44...93BC`) carry EIP-7702 delegation code `0xef01008a5b10eb2faf57665f63709ec4b3943a3b005df6` on mainnet. Any integration test that reuses those keys against forked state hits smart-account signature paths.
+- Live execution gas price observed 0.054 gwei (base fee 53,988,000 wei). `arbOSVersion()` = 116.
 
 Docs facts (https://docs.robinhood.com/chain/):
 
