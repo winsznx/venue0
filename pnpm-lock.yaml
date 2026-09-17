@@ -87,8 +87,47 @@ importers:
         specifier: 2.56.7
         version: 2.56.7(typescript@6.0.3)(zod@4.6.5)
 
+  packages/settlement:
+    dependencies:
+      '@venue0/assets':
+        specifier: workspace:*
+        version: link:../assets
+      '@venue0/matcher':
+        specifier: workspace:*
+        version: link:../matcher
+      '@venue0/portfolio':
+        specifier: workspace:*
+        version: link:../portfolio
+      '@venue0/shared':
+        specifier: workspace:*
+        version: link:../shared
+      viem:
+        specifier: 2.56.7
+        version: 2.56.7(typescript@6.0.3)(zod@4.6.5)
+
   packages/shared:
     dependencies:
+      viem:
+        specifier: 2.56.7
+        version: 2.56.7(typescript@6.0.3)(zod@4.6.5)
+
+  packages/verifier:
+    dependencies:
+      '@venue0/assets':
+        specifier: workspace:*
+        version: link:../assets
+      '@venue0/matcher':
+        specifier: workspace:*
+        version: link:../matcher
+      '@venue0/portfolio':
+        specifier: workspace:*
+        version: link:../portfolio
+      '@venue0/settlement':
+        specifier: workspace:*
+        version: link:../settlement
+      '@venue0/shared':
+        specifier: workspace:*
+        version: link:../shared
       viem:
         specifier: 2.56.7
         version: 2.56.7(typescript@6.0.3)(zod@4.6.5)

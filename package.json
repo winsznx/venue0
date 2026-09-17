@@ -12,7 +12,8 @@
     "test": "vitest run",
     "test:matcher": "vitest run packages/matcher packages/reference-matcher",
     "test:contracts": "forge test --root contracts",
-    "research:assets": "tsx scripts/research-assets.ts"
+    "research:assets": "tsx scripts/research-assets.ts",
+    "contracts:build": "forge build --root contracts && tsx scripts/export-abi.ts"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
