@@ -44,3 +44,14 @@ Format per entry: PRD assumption, observed reality, source, impact, decision. Ne
 - Mainnet-fork test (anvil fork at block ~65521309): fresh EOA received 1 NVDA, approved a second fresh EOA for 0.4 NVDA, which called `transferFrom` to a third fresh EOA. All succeeded with exact balance deltas. This is fork evidence, not a live transaction.
 - Impact: any leg can revert for issuer reasons; logic can change under us via beacon upgrade.
 - Decision: settlement stays all-or-nothing. Settlement preflight checks `paused`, `tokenPaused`, registry `paused`, and `isBlocked` for every leg party and for the settlement contract. Spike path still uses plain `approve`; permit is a later optimization and must be tested live before use. Implementation address is recorded in each evidence bundle so an upgrade is visible.
+
+## D-006 Settlement contract shape (2026-09-17)
+
+- PRD: EIP-712 plan signatures, nonce, expiry, transferFrom legs, events; optional token allowlist.
+- Decision:
+  - Every participant (sender and receiver) signs `PlanApproval(address participant,uint256 nonce,SettlementPlan plan)` with the full plan nested, so wallets display the exact legs being approved. Domain `VENUE0` / `1` / chainId / contract.
+  - Nonces are unordered per owner (`nonceUsed[owner][nonce]`) so one wallet can sit in concurrent rounds; `cancelNonce` withdraws a signed approval. Plan struct hash is also marked settled.
+  - Canonical plan form enforced onchain: participants strictly ascending, legs strictly ascending by (token, from, to). This rejects duplicate legs and makes one plan hash per economic plan. Every leg party must be a participant; every participant must appear in a leg.
+  - No onchain token allowlist and no owner/admin. The Stock Token universe changes at runtime and an admin key would add trust. Participants sign exact token addresses, and the offchain registry rejects non-canonical tokens before a plan is proposed.
+  - `SignatureChecker` accepts EOA and ERC-1271 signatures. Submission is permissionless; the outcome is fixed by the signatures.
+- Toolchain: solc 0.8.33, `evm_version = cancun`. Robinhood Chain reports `arbOSVersion()` 116 (ArbOS 61), which includes Cancun opcodes. OpenZeppelin v5.6.1 and forge-std v1.9.7 as pinned git submodules.

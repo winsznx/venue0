@@ -11,7 +11,7 @@
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run",
     "test:matcher": "vitest run packages/matcher packages/reference-matcher",
-    "test:contracts": "cd contracts && forge test",
+    "test:contracts": "forge test --root contracts",
     "research:assets": "tsx scripts/research-assets.ts"
   },
   "devDependencies": {

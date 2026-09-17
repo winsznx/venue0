@@ -1,0 +1,23 @@
+[profile.default]
+src = "src"
+test = "test"
+script = "script"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.33"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 10000
+via_ir = false
+remappings = [
+  "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+  "forge-std/=lib/forge-std/src/",
+]
+fs_permissions = [{ access = "read-write", path = "../evidence" }]
+
+[fuzz]
+runs = 512
+seed = "0x5645"
+
+[rpc_endpoints]
+robinhood = "${ROBINHOOD_RPC_URL}"
