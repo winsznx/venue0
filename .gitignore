@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+dist/
+contracts/out/
+contracts/cache/
+contracts/broadcast/*/*/run-latest.json
+.DS_Store
+keys/
+*.key

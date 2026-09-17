@@ -1,0 +1,9 @@
+packages:
+  - "packages/*"
+  - "campaign"
+  - "scripts"
+allowBuilds:
+  esbuild: true
+minimumReleaseAgeExclude:
+  - ox@0.14.45
+  - viem@2.56.7
