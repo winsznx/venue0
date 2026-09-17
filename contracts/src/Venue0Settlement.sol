@@ -3,6 +3,7 @@ pragma solidity 0.8.33;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import {EIP712} from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 import {SignatureChecker} from "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
@@ -110,9 +111,7 @@ contract Venue0Settlement is EIP712, ReentrancyGuard {
             uint256 nonce = approvals[i].nonce;
             if (nonceUsed[participant][nonce]) revert NonceAlreadyUsed(participant, nonce);
             bytes32 digest = _hashTypedDataV4(keccak256(abi.encode(PLAN_APPROVAL_TYPEHASH, participant, nonce, planHash)));
-            if (!SignatureChecker.isValidSignatureNow(participant, digest, approvals[i].signature)) {
-                revert InvalidSignature(participant);
-            }
+            if (!_isValidApproval(participant, digest, approvals[i].signature)) revert InvalidSignature(participant);
             nonceUsed[participant][nonce] = true;
             emit NonceConsumed(participant, nonce, planHash);
         }
@@ -163,6 +162,15 @@ contract Venue0Settlement is EIP712, ReentrancyGuard {
 
     function domainSeparator() external view returns (bytes32) {
         return _domainSeparatorV4();
+    }
+
+    /// @dev ECDSA from the participant's own key is accepted even when the address has code. EIP-7702 delegated EOAs
+    /// carry delegation code, and OpenZeppelin's SignatureChecker would otherwise route them to ERC-1271 only.
+    /// Contract accounts without a key fall back to ERC-1271.
+    function _isValidApproval(address participant, bytes32 digest, bytes calldata signature) private view returns (bool) {
+        (address recovered, ECDSA.RecoverError err,) = ECDSA.tryRecoverCalldata(digest, signature);
+        if (err == ECDSA.RecoverError.NoError && recovered == participant) return true;
+        return participant.code.length > 0 && SignatureChecker.isValidERC1271SignatureNowCalldata(participant, digest, signature);
     }
 
     /// @dev Legs must be strictly ascending by (token, from, to), which rejects duplicates and makes plan hashes canonical.

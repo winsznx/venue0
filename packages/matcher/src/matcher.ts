@@ -10,6 +10,7 @@ import {
 import { minCostCirculation, type CirculationEdge } from "./circulation.ts";
 import {
   DEFAULT_LOT_USD_E18,
+  DEFAULT_RESIDUAL_DUST_USD_E18,
   SOLVER_VERSION,
   type AssetFill,
   type CycleHop,
@@ -34,11 +35,13 @@ const byAddress = (a: string, b: string) => (a.toLowerCase() < b.toLowerCase() ?
 export function matchRound(input: MatchInput): MatchResult {
   const started = performance.now();
   const lot = input.lotUsdE18 ?? DEFAULT_LOT_USD_E18;
+  const dust = input.residualDustUsdE18 ?? DEFAULT_RESIDUAL_DUST_USD_E18;
   if (lot <= 0n) throw new Error("lot size must be positive");
+  if (dust < 0n) throw new Error("dust threshold must be non-negative");
   const snapshotHash = hashValuationSnapshot(input.snapshot);
   const prices = priceMap(input.snapshot);
   const intents = [...input.intents].sort((a, b) => byAddress(a.owner, b.owner));
-  const inputHash = hashCanonical({ solverVersion: SOLVER_VERSION, roundId: input.roundId, snapshotHash, intents, nowSec: input.nowSec, lot, universe: [...input.universe].sort() });
+  const inputHash = hashCanonical({ solverVersion: SOLVER_VERSION, roundId: input.roundId, snapshotHash, intents, nowSec: input.nowSec, lot, dust, universe: [...input.universe].sort() });
 
   const rejected = new Map<Address, string[]>();
   const owners = new Set<string>();
@@ -78,10 +81,10 @@ export function matchRound(input: MatchInput): MatchResult {
   }
 
   const legs = forcedStatus ? [] : buildLegs(solved, prices, lot);
-  const fills = buildFills(accepted, legs, prices);
+  const fills = buildFills(accepted, legs, prices, dust);
   const participants = summarize(intents, fills, legs, rejected, excluded);
   const totals = computeTotals(fills, legs, participants);
-  const status = forcedStatus ?? (totals.crossedNotionalUsdE18 === 0n ? "NO_CROSS" : fills.every((f) => f.residualRaw === 0n) ? "CROSSED" : "PARTIAL_CROSS");
+  const status = forcedStatus ?? (totals.crossedNotionalUsdE18 === 0n ? "NO_CROSS" : totals.externalResidualCount === 0 ? "CROSSED" : "PARTIAL_CROSS");
   const cycles = forcedStatus ? [] : explainCycles(legs);
 
   const body = {
@@ -90,6 +93,7 @@ export function matchRound(input: MatchInput): MatchResult {
     valuationSnapshotHash: snapshotHash,
     nowSec: input.nowSec,
     lotUsdE18: lot,
+    residualDustUsdE18: dust,
     inputHash,
     status,
     statusReasons,
@@ -200,7 +204,7 @@ function buildLegs(solved: SolvedFlow, prices: ReadonlyMap<AssetUid, bigint>, lo
   return legs;
 }
 
-function buildFills(intents: readonly PortfolioIntent[], legs: readonly MatchLeg[], prices: ReadonlyMap<AssetUid, bigint>): AssetFill[] {
+function buildFills(intents: readonly PortfolioIntent[], legs: readonly MatchLeg[], prices: ReadonlyMap<AssetUid, bigint>, dust: bigint): AssetFill[] {
   const fills: AssetFill[] = [];
   for (const intent of intents) {
     for (const limit of [...intent.assets].sort((a, b) => (a.assetUid < b.assetUid ? -1 : 1))) {
@@ -212,6 +216,7 @@ function buildFills(intents: readonly PortfolioIntent[], legs: readonly MatchLeg
       if (crossedRaw > requestedRaw) throw new Error(`crossed ${crossedRaw} exceeds requested ${requestedRaw} for ${intent.owner}/${limit.assetUid}`);
       const price = prices.get(limit.assetUid) as bigint;
       const residualRaw = requestedRaw - crossedRaw;
+      const residualValue = valueUsdE18(residualRaw, price);
       fills.push({
         owner: intent.owner,
         assetUid: limit.assetUid,
@@ -222,7 +227,8 @@ function buildFills(intents: readonly PortfolioIntent[], legs: readonly MatchLeg
         residualRaw,
         requestedValueUsdE18: valueUsdE18(requestedRaw, price),
         crossedValueUsdE18: valueUsdE18(crossedRaw, price),
-        residualValueUsdE18: valueUsdE18(residualRaw, price),
+        residualValueUsdE18: residualValue,
+        residualClass: residualRaw === 0n ? "NONE" : residualValue < dust && crossedRaw > 0n ? "DUST" : "EXTERNAL",
       });
     }
   }
@@ -250,7 +256,7 @@ function summarize(
         ? "EXCLUDED_MIN_CROSS"
         : crossed === 0n
           ? "NOT_CROSSED"
-          : own.every((f) => f.residualRaw === 0n)
+          : own.every((f) => f.residualClass !== "EXTERNAL")
             ? "CROSSED"
             : "PARTIAL";
     return {
@@ -274,6 +280,8 @@ function computeTotals(fills: readonly AssetFill[], legs: readonly MatchLeg[], p
     requestedNotionalUsdE18: requested,
     crossedNotionalUsdE18: crossed,
     residualNotionalUsdE18: fills.reduce((sum, f) => sum + f.residualValueUsdE18, 0n),
+    dustResidualNotionalUsdE18: fills.filter((f) => f.residualClass === "DUST").reduce((sum, f) => sum + f.residualValueUsdE18, 0n),
+    externalResidualCount: fills.filter((f) => f.residualClass === "EXTERNAL").length,
     crossRateBps: requested === 0n ? 0n : mulDivDown(crossed, BPS, requested),
     transferNotionalUsdE18: legs.reduce((sum, l) => sum + l.valueUsdE18, 0n),
     legCount: legs.length,

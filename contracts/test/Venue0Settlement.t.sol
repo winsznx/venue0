@@ -5,6 +5,7 @@ import {Test} from "forge-std/Test.sol";
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {IERC20Errors} from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import {Venue0Settlement} from "../src/Venue0Settlement.sol";
 
 contract MockStockToken is ERC20 {
@@ -30,6 +31,25 @@ contract FalseReturningToken is MockStockToken {
 
     function transferFrom(address, address, uint256) public pure override returns (bool) {
         return false;
+    }
+}
+
+/// @dev Minimal ERC-1271 smart account controlled by an owner key.
+contract SmartAccount {
+    address public immutable owner;
+
+    constructor(address owner_) {
+        owner = owner_;
+    }
+
+    function approveToken(address token, address spender, uint256 amount) external {
+        require(msg.sender == owner, "not owner");
+        ERC20(token).approve(spender, amount);
+    }
+
+    function isValidSignature(bytes32 hash, bytes calldata signature) external view returns (bytes4) {
+        (address recovered,,) = ECDSA.tryRecover(hash, signature);
+        return recovered == owner ? bytes4(0x1626ba7e) : bytes4(0xffffffff);
     }
 }
 
@@ -232,6 +252,64 @@ contract Venue0SettlementTest is Test {
     }
 
     // ---------------------------------------------------------------- signatures and replay
+
+    function test_acceptsEcdsaFromEip7702DelegatedEoa() public {
+        Venue0Settlement.SettlementPlan memory plan = _bilateral();
+        Venue0Settlement.Approval[] memory approvals = _approvals(plan, 0);
+        address delegate = makeAddr("delegate");
+        for (uint256 i = 0; i < plan.participants.length; ++i) {
+            vm.etch(plan.participants[i], abi.encodePacked(hex"ef0100", delegate));
+        }
+        settlement.settle(plan, approvals);
+        assertEq(nvda.balanceOf(wallets[1].addr), 3 * UNIT);
+    }
+
+    function test_acceptsErc1271SmartAccount() public {
+        (address ownerAddr, uint256 ownerKey) = makeAddrAndKey("smart-owner");
+        SmartAccount account = new SmartAccount(ownerAddr);
+        address a = wallets[0].addr;
+        address smart = address(account);
+        _fund(nvda, a, 4 * UNIT);
+        aapl.mint(smart, 4 * UNIT);
+        vm.prank(ownerAddr);
+        account.approveToken(address(aapl), address(settlement), 4 * UNIT);
+
+        address[] memory participants = new address[](2);
+        (participants[0], participants[1]) = a < smart ? (a, smart) : (smart, a);
+        Venue0Settlement.Leg[] memory legs = new Venue0Settlement.Leg[](2);
+        legs[0] = Venue0Settlement.Leg(address(nvda), a, smart, 1 * UNIT);
+        legs[1] = Venue0Settlement.Leg(address(aapl), smart, a, 2 * UNIT);
+        Venue0Settlement.SettlementPlan memory plan = _basePlan(participants, legs);
+
+        Venue0Settlement.Approval[] memory approvals = new Venue0Settlement.Approval[](2);
+        for (uint256 i = 0; i < 2; ++i) {
+            uint256 key = participants[i] == smart ? ownerKey : wallets[0].key;
+            (uint8 v, bytes32 r, bytes32 s) = vm.sign(key, settlement.approvalDigest(plan, participants[i], i));
+            approvals[i] = Venue0Settlement.Approval(i, abi.encodePacked(r, s, v));
+        }
+        settlement.settle(plan, approvals);
+        assertEq(aapl.balanceOf(a), 2 * UNIT);
+        assertEq(nvda.balanceOf(smart), 1 * UNIT);
+    }
+
+    function test_rejectsWrongKeyForSmartAccount() public {
+        SmartAccount account = new SmartAccount(makeAddr("smart-owner"));
+        address smart = address(account);
+        Venue0Settlement.SettlementPlan memory plan = _bilateral();
+        plan.legs[0].to = smart;
+        plan.legs[1].from = smart;
+        address[] memory participants = new address[](2);
+        (participants[0], participants[1]) = wallets[0].addr < smart ? (wallets[0].addr, smart) : (smart, wallets[0].addr);
+        plan.participants = participants;
+        plan.legs = _sortLegs(plan.legs);
+        Venue0Settlement.Approval[] memory approvals = new Venue0Settlement.Approval[](2);
+        for (uint256 i = 0; i < 2; ++i) {
+            (uint8 v, bytes32 r, bytes32 s) = vm.sign(wallets[3].key, settlement.approvalDigest(plan, participants[i], i));
+            approvals[i] = Venue0Settlement.Approval(i, abi.encodePacked(r, s, v));
+        }
+        vm.expectRevert(abi.encodeWithSelector(Venue0Settlement.InvalidSignature.selector, participants[0]));
+        settlement.settle(plan, approvals);
+    }
 
     function test_rejectsInvalidSignature() public {
         Venue0Settlement.SettlementPlan memory plan = _bilateral();

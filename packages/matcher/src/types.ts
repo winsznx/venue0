@@ -6,6 +6,12 @@ export const SOLVER_VERSION = "venue0-mmcc-1";
 /** Smallest crossing increment: $0.01 in USD E18. Capacities are floored to whole lots so no leg is sub-cent dust. */
 export const DEFAULT_LOT_USD_E18 = 10n ** 16n;
 
+/**
+ * A residual below this value ($0.10) is classified DUST: still reported in residual notional, but not counted as an
+ * external order, because no venue would execute it. Callers can override per round.
+ */
+export const DEFAULT_RESIDUAL_DUST_USD_E18 = 10n ** 17n;
+
 export type MatchInput = {
   roundId: Hex;
   snapshot: ValuationSnapshot;
@@ -13,6 +19,7 @@ export type MatchInput = {
   universe: ReadonlyMap<AssetUid, Address>;
   nowSec: number;
   lotUsdE18?: bigint;
+  residualDustUsdE18?: bigint;
 };
 
 export type MatchLeg = {
@@ -27,6 +34,8 @@ export type MatchLeg = {
 
 export type FillSide = "SELL" | "BUY";
 
+export type ResidualClass = "NONE" | "DUST" | "EXTERNAL";
+
 export type AssetFill = {
   owner: Address;
   assetUid: AssetUid;
@@ -38,6 +47,7 @@ export type AssetFill = {
   requestedValueUsdE18: bigint;
   crossedValueUsdE18: bigint;
   residualValueUsdE18: bigint;
+  residualClass: ResidualClass;
 };
 
 export type ParticipantStatus = "CROSSED" | "PARTIAL" | "NOT_CROSSED" | "EXCLUDED_MIN_CROSS" | "REJECTED";
@@ -62,6 +72,8 @@ export type MatchTotals = {
   requestedNotionalUsdE18: bigint;
   crossedNotionalUsdE18: bigint;
   residualNotionalUsdE18: bigint;
+  dustResidualNotionalUsdE18: bigint;
+  externalResidualCount: number;
   crossRateBps: bigint;
   transferNotionalUsdE18: bigint;
   legCount: number;
@@ -75,6 +87,7 @@ export type MatchResult = {
   valuationSnapshotHash: Hex;
   nowSec: number;
   lotUsdE18: bigint;
+  residualDustUsdE18: bigint;
   inputHash: Hex;
   status: RoundMatchStatus;
   statusReasons: string[];

@@ -271,6 +271,23 @@ describe("matchRound", () => {
     expect(run(partial, snap).status).toBe("NO_CROSS");
   });
 
+  it("classifies sub-threshold leftovers of crossed fills as dust, not external orders", () => {
+    const snap = snapshot();
+    // A's AAPL demand exceeds B's offer by $0.03; A's NVDA sell exceeds B's demand by $0.02.
+    const intents = [
+      intent(A, [sell("NVDA", t(6) + 10n ** 14n), buy("AAPL", t(4) + 10n ** 14n)], snap),
+      intent(B, [sell("AAPL", t(4)), buy("NVDA", t(6))], snap),
+    ];
+    const result = run(intents, snap);
+    expect(result.status).toBe("CROSSED");
+    expect(result.totals.externalResidualCount).toBe(0);
+    expect(result.totals.residualNotionalUsdE18).toBe(result.totals.dustResidualNotionalUsdE18);
+    expect(result.totals.residualNotionalUsdE18).toBeGreaterThan(0n);
+
+    const uncrossedSmall = run([intent(A, [sell("NVDA", 10n ** 14n), buy("AAPL", 10n ** 14n)], snap), intent(B, [sell("SPY", t(1)), buy("QQQ", t(1))], snap)], snap);
+    expect(uncrossedSmall.fills.every((f) => f.residualClass === "EXTERNAL")).toBe(true);
+  });
+
   it("is deterministic regardless of intent order", () => {
     const snap = snapshot();
     const intents = [
