@@ -45,6 +45,48 @@ importers:
         specifier: 4.6.5
         version: 4.6.5
 
+  packages/matcher:
+    dependencies:
+      '@venue0/assets':
+        specifier: workspace:*
+        version: link:../assets
+      '@venue0/portfolio':
+        specifier: workspace:*
+        version: link:../portfolio
+      '@venue0/shared':
+        specifier: workspace:*
+        version: link:../shared
+      viem:
+        specifier: 2.56.7
+        version: 2.56.7(typescript@6.0.3)(zod@4.6.5)
+
+  packages/portfolio:
+    dependencies:
+      '@venue0/assets':
+        specifier: workspace:*
+        version: link:../assets
+      '@venue0/shared':
+        specifier: workspace:*
+        version: link:../shared
+      viem:
+        specifier: 2.56.7
+        version: 2.56.7(typescript@6.0.3)(zod@4.6.5)
+
+  packages/reference-matcher:
+    dependencies:
+      '@venue0/matcher':
+        specifier: workspace:*
+        version: link:../matcher
+      '@venue0/portfolio':
+        specifier: workspace:*
+        version: link:../portfolio
+      '@venue0/shared':
+        specifier: workspace:*
+        version: link:../shared
+      viem:
+        specifier: 2.56.7
+        version: 2.56.7(typescript@6.0.3)(zod@4.6.5)
+
   packages/shared:
     dependencies:
       viem:

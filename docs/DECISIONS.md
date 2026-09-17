@@ -55,3 +55,16 @@ Format per entry: PRD assumption, observed reality, source, impact, decision. Ne
   - No onchain token allowlist and no owner/admin. The Stock Token universe changes at runtime and an admin key would add trust. Participants sign exact token addresses, and the offchain registry rejects non-canonical tokens before a plan is proposed.
   - `SignatureChecker` accepts EOA and ERC-1271 signatures. Submission is permissionless; the outcome is fixed by the signatures.
 - Toolchain: solc 0.8.33, `evm_version = cancun`. Robinhood Chain reports `arbOSVersion()` 116 (ArbOS 61), which includes Cancun opcodes. OpenZeppelin v5.6.1 and forge-std v1.9.7 as pinned git submodules.
+
+## D-007 Matcher formulation and reference oracle (2026-09-17)
+
+- PRD 13.5: deterministic solver, integer math, LP/min-cost-flow library only if maintained and reproducible, otherwise a bounded deterministic solver; separate reference solver.
+- Decision:
+  - Production (`packages/matcher`): participant -> asset (sell cap) and asset -> participant (buy cap) edges; flow conservation at asset nodes is per-asset transfer conservation and at participant nodes is exact value balance. Max crossed value = min-cost circulation with cost -1 on sell edges, solved by minimum-mean cycle canceling (Karp). No external solver dependency. Cancellation count is bounded independently of capacity size.
+  - Values are quantized to lots of $0.01 (`DEFAULT_LOT_USD_E18 = 1e16`). Capacities floor to whole lots, so no sub-cent dust legs and raw amounts derived by flooring never exceed `maxOutRaw` / `maxInRaw`. Per-participant value imbalance after raw conversion is bounded by `legs x (price / 1e18 + 1)` wei-USD.
+  - Pure asset-for-asset rounds with exact value balance (tolerance only for raw-unit rounding). An explicit USDG balancing leg is future work per PRD 13.3.
+  - Legs are decomposed per asset by pairing sellers and buyers in address order (at most sellers + buyers - 1 legs per asset).
+  - Policy: `allowPartialCross = false` requires crossing all attainable value (min of sell and buy capacity, within one lot per asset); `minCrossPercentBps` compares against the same attainable value. Violators are excluded one at a time (worst ratio first, address tie-break) and the round is re-solved.
+  - Notional definitions: requested = sum over every intent asset of |requested value|; crossed = sum of crossed value on those same entries (so each transfer counts once on the sell side and once on the buy side); residual = sum of residual value; transfer notional = one-sided sum of leg values.
+  - Secondary objectives from PRD 13.4 (fewer legs, lower allocation error among equal-value optima) are not optimized yet; decomposition keeps legs low. Tracked as open work.
+  - Reference (`packages/reference-matcher`): PRD 13.3 direct `x[p,q,a]` LP solved by exact rational simplex with Bland's rule, plus an independent validator that recomputes caps, conservation, value balance and fills from raw input. Parity is required on eligibility, feasibility, and optimum crossed lots. Per-(participant, asset) deltas are not required to match when optima are degenerate.
