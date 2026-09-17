@@ -1,0 +1,1081 @@
+{
+  "assetCount": 194,
+  "candidates": [
+    {
+      "chainlink": {
+        "ageSec": 9692,
+        "description": "RHNVDA / USD",
+        "feed": {
+          "assetName": "Nvidia (Robinhood Tokenized Equity)",
+          "decimals": 8,
+          "heartbeatSec": 86400,
+          "name": "Robinhood NVDA / USD",
+          "proxyAddress": "0x379EC4f7C378F34a1B47E4F3cbeBCbAC3E8E9F15"
+        },
+        "roundId": "18446744073709552670",
+        "snapshot": {
+          "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+          "chainId": 4663,
+          "multiplierE18": "1000775159164630595",
+          "priceUsdE18": "219672148980000000000",
+          "source": "CHAINLINK_STOCK_TOKEN_FEED",
+          "sourceBlock": "65526738",
+          "sourceTimestamp": 1789654501,
+          "stale": false,
+          "tokenAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+        }
+      },
+      "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "currentMultiplier": "1.000775159164630595",
+      "eligibleForDemo": true,
+      "explorer": "https://robinhoodchain.blockscout.com/address/0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "feedVsRestDivergenceBps": "41",
+      "onchain": {
+        "blockNumber": "65526694",
+        "checkedAt": "2026-09-17T16:56:30.452Z",
+        "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "NVDA",
+          "tokenPaused": false,
+          "uiMultiplier": "1000775159164630595",
+          "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+        },
+        "ok": true,
+        "symbol": "NVDA",
+        "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+      },
+      "reasons": [],
+      "rest": {
+        "quote": {
+          "ask": "218.63",
+          "bid": "218.62",
+          "currency": "USD",
+          "dailyHigh": "219.87",
+          "dailyLow": "215.1",
+          "dailyTradingVolume": "47629085",
+          "deployments": [
+            {
+              "chainId": 4663,
+              "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+              "networkName": "Robinhood Chain"
+            }
+          ],
+          "generatedAt": "2026-09-17T16:56:32.919545931Z",
+          "isTradingHalt": false,
+          "mintBurnTokenVolume": "17915.22784688",
+          "mintBurnUsdVolume": "3916716.68802414",
+          "tokenSymbol": "NVDA"
+        },
+        "snapshot": {
+          "ask": "218.63",
+          "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+          "bid": "218.62",
+          "chainId": 4663,
+          "multiplierE18": "1000775159164630595",
+          "priceUsdE18": "218794469172367363831",
+          "rawUnderlyingPrice": "218625000000000000000",
+          "source": "ROBINHOOD_REST_NORMALIZED",
+          "sourceTimestamp": 1789664192,
+          "stale": false,
+          "tokenAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+        }
+      },
+      "symbol": "NVDA",
+      "tradingCapabilities": {
+        "extended": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "market": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "overnight": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        }
+      },
+      "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+    },
+    {
+      "chainlink": {
+        "ageSec": 3351,
+        "description": "Robinhood AAPL / USD",
+        "feed": {
+          "assetName": "Apple (Robinhood Tokenized Equity)",
+          "decimals": 8,
+          "heartbeatSec": 86400,
+          "name": "Robinhood AAPL / USD",
+          "proxyAddress": "0x6B22A786bAa607d76728168703a39Ea9C99f2cD0"
+        },
+        "roundId": "18446744073709552255",
+        "snapshot": {
+          "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+          "chainId": 4663,
+          "multiplierE18": "1000566080061092436",
+          "priceUsdE18": "335244667950000000000",
+          "source": "CHAINLINK_STOCK_TOKEN_FEED",
+          "sourceBlock": "65526773",
+          "sourceTimestamp": 1789660846,
+          "stale": false,
+          "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+        }
+      },
+      "contractAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "currentMultiplier": "1.000566080061092436",
+      "eligibleForDemo": true,
+      "explorer": "https://robinhoodchain.blockscout.com/address/0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "feedVsRestDivergenceBps": "19",
+      "onchain": {
+        "blockNumber": "65526748",
+        "checkedAt": "2026-09-17T16:56:36.427Z",
+        "contractAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "AAPL",
+          "tokenPaused": false,
+          "uiMultiplier": "1000566080061092436",
+          "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649"
+        },
+        "ok": true,
+        "symbol": "AAPL",
+        "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649"
+      },
+      "reasons": [],
+      "rest": {
+        "quote": {
+          "ask": "335.68",
+          "bid": "335.64",
+          "currency": "USD",
+          "dailyHigh": "336.4",
+          "dailyLow": "330.1937",
+          "dailyTradingVolume": "15071514",
+          "deployments": [
+            {
+              "chainId": 4663,
+              "contractAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+              "networkName": "Robinhood Chain"
+            }
+          ],
+          "generatedAt": "2026-09-17T16:56:31.569756834Z",
+          "isTradingHalt": false,
+          "mintBurnTokenVolume": "735.7734933",
+          "mintBurnUsdVolume": "246969.730761078",
+          "tokenSymbol": "AAPL"
+        },
+        "snapshot": {
+          "ask": "335.68",
+          "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+          "bid": "335.64",
+          "chainId": 4663,
+          "multiplierE18": "1000566080061092436",
+          "priceUsdE18": "335850010433306287067",
+          "rawUnderlyingPrice": "335660000000000000000",
+          "source": "ROBINHOOD_REST_NORMALIZED",
+          "sourceTimestamp": 1789664191,
+          "stale": false,
+          "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+        }
+      },
+      "symbol": "AAPL",
+      "tradingCapabilities": {
+        "extended": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "market": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "overnight": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        }
+      },
+      "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649"
+    },
+    {
+      "chainlink": {
+        "ageSec": 16497,
+        "description": "RHSPY / USD",
+        "feed": {
+          "assetName": "State Street SPDR S&P 500 ETF Trust (Robinhood Tokenized ETF)",
+          "decimals": 8,
+          "heartbeatSec": 86400,
+          "name": "Robinhood SPY / USD",
+          "proxyAddress": "0x319724394D3A0e3669269846abE664Cd621f9f6A"
+        },
+        "roundId": "18446744073709551753",
+        "snapshot": {
+          "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "762858450000000000000",
+          "source": "CHAINLINK_STOCK_TOKEN_FEED",
+          "sourceBlock": "65526808",
+          "sourceTimestamp": 1789647703,
+          "stale": false,
+          "tokenAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+        }
+      },
+      "contractAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "currentMultiplier": "1.000000000000000000",
+      "eligibleForDemo": true,
+      "explorer": "https://robinhoodchain.blockscout.com/address/0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "feedVsRestDivergenceBps": "12",
+      "onchain": {
+        "blockNumber": "65526788",
+        "checkedAt": "2026-09-17T16:56:39.829Z",
+        "contractAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "SPY",
+          "tokenPaused": false,
+          "uiMultiplier": "1000000000000000000",
+          "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1"
+        },
+        "ok": true,
+        "symbol": "SPY",
+        "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1"
+      },
+      "reasons": [],
+      "rest": {
+        "quote": {
+          "ask": "762.01",
+          "bid": "761.97",
+          "currency": "USD",
+          "dailyHigh": "763.99",
+          "dailyLow": "757.2",
+          "dailyTradingVolume": "19246253",
+          "deployments": [
+            {
+              "chainId": 4663,
+              "contractAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+              "networkName": "Robinhood Chain"
+            }
+          ],
+          "generatedAt": "2026-09-17T16:56:34.057738247Z",
+          "isTradingHalt": false,
+          "mintBurnTokenVolume": "4339.865",
+          "mintBurnUsdVolume": "3306933.73135",
+          "tokenSymbol": "SPY"
+        },
+        "snapshot": {
+          "ask": "762.01",
+          "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+          "bid": "761.97",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "761990000000000000000",
+          "rawUnderlyingPrice": "761990000000000000000",
+          "source": "ROBINHOOD_REST_NORMALIZED",
+          "sourceTimestamp": 1789664194,
+          "stale": false,
+          "tokenAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+        }
+      },
+      "symbol": "SPY",
+      "tradingCapabilities": {
+        "extended": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "market": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "overnight": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        }
+      },
+      "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1"
+    },
+    {
+      "chainlink": {
+        "ageSec": 15832,
+        "description": "Robinhood QQQ / USD",
+        "feed": {
+          "assetName": "Invesco QQQ (Robinhood Tokenized ETF)",
+          "decimals": 8,
+          "heartbeatSec": 86400,
+          "name": "Robinhood QQQ / USD",
+          "proxyAddress": "0x80901d846d5D7B030F26B480776EE3b29374C2ae"
+        },
+        "roundId": "18446744073709551972",
+        "snapshot": {
+          "assetUid": "0x000000000000000000000000000000002470b933c52d47ccad017ed9ee80c9ed",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "716619650000000000000",
+          "source": "CHAINLINK_STOCK_TOKEN_FEED",
+          "sourceBlock": "65526838",
+          "sourceTimestamp": 1789648371,
+          "stale": false,
+          "tokenAddress": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68"
+        }
+      },
+      "contractAddress": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+      "currentMultiplier": "1.000000000000000000",
+      "eligibleForDemo": true,
+      "explorer": "https://robinhoodchain.blockscout.com/address/0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+      "feedVsRestDivergenceBps": "6",
+      "onchain": {
+        "blockNumber": "65526818",
+        "checkedAt": "2026-09-17T16:56:43.007Z",
+        "contractAddress": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "QQQ",
+          "tokenPaused": false,
+          "uiMultiplier": "1000000000000000000",
+          "uid": "0x000000000000000000000000000000002470b933c52d47ccad017ed9ee80c9ed"
+        },
+        "ok": true,
+        "symbol": "QQQ",
+        "uid": "0x000000000000000000000000000000002470b933c52d47ccad017ed9ee80c9ed"
+      },
+      "reasons": [],
+      "rest": {
+        "quote": {
+          "ask": "716.27",
+          "bid": "716.23",
+          "currency": "USD",
+          "dailyHigh": "716.9386",
+          "dailyLow": "704.192",
+          "dailyTradingVolume": "16420558",
+          "deployments": [
+            {
+              "chainId": 4663,
+              "contractAddress": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+              "networkName": "Robinhood Chain"
+            }
+          ],
+          "generatedAt": "2026-09-17T16:56:40.058028453Z",
+          "isTradingHalt": false,
+          "mintBurnTokenVolume": "1073.284",
+          "mintBurnUsdVolume": "768739.665",
+          "tokenSymbol": "QQQ"
+        },
+        "snapshot": {
+          "ask": "716.27",
+          "assetUid": "0x000000000000000000000000000000002470b933c52d47ccad017ed9ee80c9ed",
+          "bid": "716.23",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "716250000000000000000",
+          "rawUnderlyingPrice": "716250000000000000000",
+          "source": "ROBINHOOD_REST_NORMALIZED",
+          "sourceTimestamp": 1789664200,
+          "stale": false,
+          "tokenAddress": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68"
+        }
+      },
+      "symbol": "QQQ",
+      "tradingCapabilities": {
+        "extended": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "market": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "overnight": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        }
+      },
+      "uid": "0x000000000000000000000000000000002470b933c52d47ccad017ed9ee80c9ed"
+    },
+    {
+      "chainlink": {
+        "ageSec": 447,
+        "description": "RHTSLA / USD",
+        "feed": {
+          "assetName": "Tesla (Robinhood Tokenized Equity)",
+          "decimals": 8,
+          "heartbeatSec": 86400,
+          "name": "Robinhood TSLA / USD",
+          "proxyAddress": "0x4A1166a659A55625345e9515b32adECea5547C38"
+        },
+        "roundId": "18446744073709552876",
+        "snapshot": {
+          "assetUid": "0x00000000000000000000000000000000cfece3244ea34bb29414dd9488b32d9f",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "366784999990000000000",
+          "source": "CHAINLINK_STOCK_TOKEN_FEED",
+          "sourceBlock": "65526869",
+          "sourceTimestamp": 1789663759,
+          "stale": false,
+          "tokenAddress": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d"
+        }
+      },
+      "contractAddress": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "currentMultiplier": "1.000000000000000000",
+      "eligibleForDemo": true,
+      "explorer": "https://robinhoodchain.blockscout.com/address/0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "feedVsRestDivergenceBps": "7",
+      "onchain": {
+        "blockNumber": "65526848",
+        "checkedAt": "2026-09-17T16:56:46.078Z",
+        "contractAddress": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "TSLA",
+          "tokenPaused": false,
+          "uiMultiplier": "1000000000000000000",
+          "uid": "0x00000000000000000000000000000000cfece3244ea34bb29414dd9488b32d9f"
+        },
+        "ok": true,
+        "symbol": "TSLA",
+        "uid": "0x00000000000000000000000000000000cfece3244ea34bb29414dd9488b32d9f"
+      },
+      "reasons": [],
+      "rest": {
+        "quote": {
+          "ask": "366.6",
+          "bid": "366.5",
+          "currency": "USD",
+          "dailyHigh": "374.12",
+          "dailyLow": "359.58",
+          "dailyTradingVolume": "24890532",
+          "deployments": [
+            {
+              "chainId": 4663,
+              "contractAddress": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+              "networkName": "Robinhood Chain"
+            }
+          ],
+          "generatedAt": "2026-09-17T16:56:32.984251453Z",
+          "isTradingHalt": false,
+          "mintBurnTokenVolume": "910.673",
+          "mintBurnUsdVolume": "333807.18815",
+          "tokenSymbol": "TSLA"
+        },
+        "snapshot": {
+          "ask": "366.6",
+          "assetUid": "0x00000000000000000000000000000000cfece3244ea34bb29414dd9488b32d9f",
+          "bid": "366.5",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "366550000000000000000",
+          "rawUnderlyingPrice": "366550000000000000000",
+          "source": "ROBINHOOD_REST_NORMALIZED",
+          "sourceTimestamp": 1789664192,
+          "stale": false,
+          "tokenAddress": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d"
+        }
+      },
+      "symbol": "TSLA",
+      "tradingCapabilities": {
+        "extended": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "market": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "overnight": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        }
+      },
+      "uid": "0x00000000000000000000000000000000cfece3244ea34bb29414dd9488b32d9f"
+    },
+    {
+      "chainlink": {
+        "ageSec": 6856,
+        "description": "RHMSFT / USD",
+        "feed": {
+          "assetName": "Microsoft (Robinhood Tokenized Equity)",
+          "decimals": 8,
+          "heartbeatSec": 86400,
+          "name": "Robinhood MSFT / USD",
+          "proxyAddress": "0x45C3C877C15E6BA2EBB19eA114Ea508d14C1Af2E"
+        },
+        "roundId": "18446744073709552370",
+        "snapshot": {
+          "assetUid": "0x00000000000000000000000000000000307bb0113ca54f93adf80f4ff2bf681a",
+          "chainId": 4663,
+          "multiplierE18": "1000412952576205964",
+          "priceUsdE18": "496039756340000000000",
+          "source": "CHAINLINK_STOCK_TOKEN_FEED",
+          "sourceBlock": "65526904",
+          "sourceTimestamp": 1789657353,
+          "stale": false,
+          "tokenAddress": "0xe93237C50D904957Cf27E7B1133b510C669c2e74"
+        }
+      },
+      "contractAddress": "0xe93237C50D904957Cf27E7B1133b510C669c2e74",
+      "currentMultiplier": "1.000412952576205964",
+      "eligibleForDemo": true,
+      "explorer": "https://robinhoodchain.blockscout.com/address/0xe93237C50D904957Cf27E7B1133b510C669c2e74",
+      "feedVsRestDivergenceBps": "4",
+      "onchain": {
+        "blockNumber": "65526878",
+        "checkedAt": "2026-09-17T16:56:49.221Z",
+        "contractAddress": "0xe93237C50D904957Cf27E7B1133b510C669c2e74",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "MSFT",
+          "tokenPaused": false,
+          "uiMultiplier": "1000412952576205964",
+          "uid": "0x00000000000000000000000000000000307bb0113ca54f93adf80f4ff2bf681a"
+        },
+        "ok": true,
+        "symbol": "MSFT",
+        "uid": "0x00000000000000000000000000000000307bb0113ca54f93adf80f4ff2bf681a"
+      },
+      "reasons": [],
+      "rest": {
+        "quote": {
+          "ask": "495.75",
+          "bid": "495.57",
+          "currency": "USD",
+          "dailyHigh": "501.47",
+          "dailyLow": "492.25",
+          "dailyTradingVolume": "7133637",
+          "deployments": [
+            {
+              "chainId": 4663,
+              "contractAddress": "0xe93237C50D904957Cf27E7B1133b510C669c2e74",
+              "networkName": "Robinhood Chain"
+            }
+          ],
+          "generatedAt": "2026-09-17T16:56:46.581032960Z",
+          "isTradingHalt": false,
+          "mintBurnTokenVolume": "121.39387009",
+          "mintBurnUsdVolume": "60170.0856488094",
+          "tokenSymbol": "MSFT"
+        },
+        "snapshot": {
+          "ask": "495.75",
+          "assetUid": "0x00000000000000000000000000000000307bb0113ca54f93adf80f4ff2bf681a",
+          "bid": "495.57",
+          "chainId": 4663,
+          "multiplierE18": "1000412952576205964",
+          "priceUsdE18": "495864684073922248116",
+          "rawUnderlyingPrice": "495660000000000000000",
+          "source": "ROBINHOOD_REST_NORMALIZED",
+          "sourceTimestamp": 1789664206,
+          "stale": false,
+          "tokenAddress": "0xe93237C50D904957Cf27E7B1133b510C669c2e74"
+        }
+      },
+      "symbol": "MSFT",
+      "tradingCapabilities": {
+        "extended": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "market": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "overnight": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        }
+      },
+      "uid": "0x00000000000000000000000000000000307bb0113ca54f93adf80f4ff2bf681a"
+    },
+    {
+      "chainlink": {
+        "ageSec": 7285,
+        "description": "Robinhood AMZN / USD",
+        "feed": {
+          "assetName": "Amazon (Robinhood Tokenized Equity)",
+          "decimals": 8,
+          "heartbeatSec": 86400,
+          "name": "Robinhood AMZN / USD",
+          "proxyAddress": "0xD5a1508ceD74c084eBf3cBe853e2C968fB2a651C"
+        },
+        "roundId": "18446744073709552396",
+        "snapshot": {
+          "assetUid": "0x000000000000000000000000000000004f508d5e2a7042299694d85c2f362ad2",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "251370000000000000000",
+          "source": "CHAINLINK_STOCK_TOKEN_FEED",
+          "sourceBlock": "65526934",
+          "sourceTimestamp": 1789656928,
+          "stale": false,
+          "tokenAddress": "0x12f190a9F9d7D37a250758b26824B97CE941bF54"
+        }
+      },
+      "contractAddress": "0x12f190a9F9d7D37a250758b26824B97CE941bF54",
+      "currentMultiplier": "1.000000000000000000",
+      "eligibleForDemo": true,
+      "explorer": "https://robinhoodchain.blockscout.com/address/0x12f190a9F9d7D37a250758b26824B97CE941bF54",
+      "feedVsRestDivergenceBps": "5",
+      "onchain": {
+        "blockNumber": "65526913",
+        "checkedAt": "2026-09-17T16:56:52.369Z",
+        "contractAddress": "0x12f190a9F9d7D37a250758b26824B97CE941bF54",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "AMZN",
+          "tokenPaused": false,
+          "uiMultiplier": "1000000000000000000",
+          "uid": "0x000000000000000000000000000000004f508d5e2a7042299694d85c2f362ad2"
+        },
+        "ok": true,
+        "symbol": "AMZN",
+        "uid": "0x000000000000000000000000000000004f508d5e2a7042299694d85c2f362ad2"
+      },
+      "reasons": [],
+      "rest": {
+        "quote": {
+          "ask": "251.29",
+          "bid": "251.24",
+          "currency": "USD",
+          "dailyHigh": "252.73",
+          "dailyLow": "245.96",
+          "dailyTradingVolume": "15106503",
+          "deployments": [
+            {
+              "chainId": 4663,
+              "contractAddress": "0x12f190a9F9d7D37a250758b26824B97CE941bF54",
+              "networkName": "Robinhood Chain"
+            }
+          ],
+          "generatedAt": "2026-09-17T16:56:46.375111379Z",
+          "isTradingHalt": false,
+          "mintBurnTokenVolume": "835.62",
+          "mintBurnUsdVolume": "209962.0593",
+          "tokenSymbol": "AMZN"
+        },
+        "snapshot": {
+          "ask": "251.29",
+          "assetUid": "0x000000000000000000000000000000004f508d5e2a7042299694d85c2f362ad2",
+          "bid": "251.24",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "251265000000000000000",
+          "rawUnderlyingPrice": "251265000000000000000",
+          "source": "ROBINHOOD_REST_NORMALIZED",
+          "sourceTimestamp": 1789664206,
+          "stale": false,
+          "tokenAddress": "0x12f190a9F9d7D37a250758b26824B97CE941bF54"
+        }
+      },
+      "symbol": "AMZN",
+      "tradingCapabilities": {
+        "extended": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "market": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "overnight": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        }
+      },
+      "uid": "0x000000000000000000000000000000004f508d5e2a7042299694d85c2f362ad2"
+    },
+    {
+      "chainlink": {
+        "ageSec": 3535,
+        "description": "Robinhood GOOGL / USD",
+        "feed": {
+          "assetName": "Alphabet (Robinhood Tokenized Equity)",
+          "decimals": 8,
+          "heartbeatSec": 86400,
+          "name": "Robinhood GOOGL / USD",
+          "proxyAddress": "0xF6f373a037c30F0e5010d854385cA89185AE638b"
+        },
+        "roundId": "18446744073709552397",
+        "snapshot": {
+          "assetUid": "0x0000000000000000000000000000000053b69e2076884cc9ae2ada9bc7095df3",
+          "chainId": 4663,
+          "multiplierE18": "1000193924414112587",
+          "priceUsdE18": "345662019300000000000",
+          "source": "CHAINLINK_STOCK_TOKEN_FEED",
+          "sourceBlock": "65526968",
+          "sourceTimestamp": 1789660681,
+          "stale": false,
+          "tokenAddress": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3"
+        }
+      },
+      "contractAddress": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+      "currentMultiplier": "1.000193924414112587",
+      "eligibleForDemo": true,
+      "explorer": "https://robinhoodchain.blockscout.com/address/0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+      "feedVsRestDivergenceBps": "8",
+      "onchain": {
+        "blockNumber": "65526943",
+        "checkedAt": "2026-09-17T16:56:56.036Z",
+        "contractAddress": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "GOOGL",
+          "tokenPaused": false,
+          "uiMultiplier": "1000193924414112587",
+          "uid": "0x0000000000000000000000000000000053b69e2076884cc9ae2ada9bc7095df3"
+        },
+        "ok": true,
+        "symbol": "GOOGL",
+        "uid": "0x0000000000000000000000000000000053b69e2076884cc9ae2ada9bc7095df3"
+      },
+      "reasons": [],
+      "rest": {
+        "quote": {
+          "ask": "345.38",
+          "bid": "345.31",
+          "currency": "USD",
+          "dailyHigh": "349.5",
+          "dailyLow": "343.8857",
+          "dailyTradingVolume": "8709031",
+          "deployments": [
+            {
+              "chainId": 4663,
+              "contractAddress": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+              "networkName": "Robinhood Chain"
+            }
+          ],
+          "generatedAt": "2026-09-17T16:56:48.359091025Z",
+          "isTradingHalt": false,
+          "mintBurnTokenVolume": "4038.63980914",
+          "mintBurnUsdVolume": "1394724.0648874533",
+          "tokenSymbol": "GOOGL"
+        },
+        "snapshot": {
+          "ask": "345.38",
+          "assetUid": "0x0000000000000000000000000000000053b69e2076884cc9ae2ada9bc7095df3",
+          "bid": "345.31",
+          "chainId": 4663,
+          "multiplierE18": "1000193924414112587",
+          "priceUsdE18": "345411970826791711357",
+          "rawUnderlyingPrice": "345345000000000000000",
+          "source": "ROBINHOOD_REST_NORMALIZED",
+          "sourceTimestamp": 1789664208,
+          "stale": false,
+          "tokenAddress": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3"
+        }
+      },
+      "symbol": "GOOGL",
+      "tradingCapabilities": {
+        "extended": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "market": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "overnight": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        }
+      },
+      "uid": "0x0000000000000000000000000000000053b69e2076884cc9ae2ada9bc7095df3"
+    },
+    {
+      "chainlink": {
+        "ageSec": 3828,
+        "description": "Robinhood META / USD",
+        "feed": {
+          "assetName": "Meta (Robinhood Tokenized Equity)",
+          "decimals": 8,
+          "heartbeatSec": 86400,
+          "name": "Robinhood META / USD",
+          "proxyAddress": "0x7C38C00C30BEe9378381E7B6135d7283356D71b1"
+        },
+        "roundId": "18446744073709552819",
+        "snapshot": {
+          "assetUid": "0x00000000000000000000000000000000343e7beca03644bcba2e50b8236784f5",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "678670200000000000000",
+          "source": "CHAINLINK_STOCK_TOKEN_FEED",
+          "sourceBlock": "65527004",
+          "sourceTimestamp": 1789660392,
+          "stale": false,
+          "tokenAddress": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35"
+        }
+      },
+      "contractAddress": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+      "currentMultiplier": "1.000000000000000000",
+      "eligibleForDemo": true,
+      "explorer": "https://robinhoodchain.blockscout.com/address/0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+      "feedVsRestDivergenceBps": "18",
+      "onchain": {
+        "blockNumber": "65526978",
+        "checkedAt": "2026-09-17T16:56:59.459Z",
+        "contractAddress": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "META",
+          "tokenPaused": false,
+          "uiMultiplier": "1000000000000000000",
+          "uid": "0x00000000000000000000000000000000343e7beca03644bcba2e50b8236784f5"
+        },
+        "ok": true,
+        "symbol": "META",
+        "uid": "0x00000000000000000000000000000000343e7beca03644bcba2e50b8236784f5"
+      },
+      "reasons": [],
+      "rest": {
+        "quote": {
+          "ask": "677.57",
+          "bid": "677.44",
+          "currency": "USD",
+          "dailyHigh": "683.17",
+          "dailyLow": "667.05",
+          "dailyTradingVolume": "7372884",
+          "deployments": [
+            {
+              "chainId": 4663,
+              "contractAddress": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+              "networkName": "Robinhood Chain"
+            }
+          ],
+          "generatedAt": "2026-09-17T16:56:49.061435824Z",
+          "isTradingHalt": false,
+          "mintBurnTokenVolume": "2269.467",
+          "mintBurnUsdVolume": "1537575.239835",
+          "tokenSymbol": "META"
+        },
+        "snapshot": {
+          "ask": "677.57",
+          "assetUid": "0x00000000000000000000000000000000343e7beca03644bcba2e50b8236784f5",
+          "bid": "677.44",
+          "chainId": 4663,
+          "multiplierE18": "1000000000000000000",
+          "priceUsdE18": "677505000000000000000",
+          "rawUnderlyingPrice": "677505000000000000000",
+          "source": "ROBINHOOD_REST_NORMALIZED",
+          "sourceTimestamp": 1789664209,
+          "stale": false,
+          "tokenAddress": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35"
+        }
+      },
+      "symbol": "META",
+      "tradingCapabilities": {
+        "extended": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "market": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        },
+        "overnight": {
+          "fractional": "TRADABLE",
+          "whole": "TRADABLE"
+        }
+      },
+      "uid": "0x00000000000000000000000000000000343e7beca03644bcba2e50b8236784f5"
+    }
+  ],
+  "canonicalCount": 194,
+  "canonicalRejected": [],
+  "capabilityShapeCounts": {
+    "SESSION_MAP": 194
+  },
+  "capturedAt": "2026-09-17T16:56:22.161Z",
+  "chain": {
+    "blockNumber": "65526682",
+    "chainId": 4663
+  },
+  "chainlinkStockTokenFeeds": 35,
+  "fractionalUntradableMarket": [
+    "WYFI",
+    "SLS",
+    "XNDU"
+  ],
+  "nonUnitMultipliers": [
+    {
+      "multiplier": "1.001148322800714293",
+      "symbol": "CRM"
+    },
+    {
+      "multiplier": "1.000063708620124549",
+      "symbol": "DELL"
+    },
+    {
+      "multiplier": "4.000000000000000000",
+      "symbol": "CRWD"
+    },
+    {
+      "multiplier": "1.021486444855206408",
+      "symbol": "CCL"
+    },
+    {
+      "multiplier": "1.004477942292229526",
+      "symbol": "PR"
+    },
+    {
+      "multiplier": "1.001463024159690554",
+      "symbol": "TSM"
+    },
+    {
+      "multiplier": "1.000412952576205964",
+      "symbol": "MSFT"
+    },
+    {
+      "multiplier": "1.002208724969205741",
+      "symbol": "UPS"
+    },
+    {
+      "multiplier": "1.000193924414112587",
+      "symbol": "GOOGL"
+    },
+    {
+      "multiplier": "1.005101770003214918",
+      "symbol": "SGOV"
+    },
+    {
+      "multiplier": "1.004241501039702113",
+      "symbol": "UNH"
+    },
+    {
+      "multiplier": "1.000217565250523909",
+      "symbol": "WDC"
+    },
+    {
+      "multiplier": "1.000074823219171086",
+      "symbol": "MU"
+    },
+    {
+      "multiplier": "1.000162788892052072",
+      "symbol": "VRT"
+    },
+    {
+      "multiplier": "1.000775159164630595",
+      "symbol": "NVDA"
+    },
+    {
+      "multiplier": "1.000145502866134027",
+      "symbol": "F"
+    },
+    {
+      "multiplier": "1.001039563764661900",
+      "symbol": "XOM"
+    },
+    {
+      "multiplier": "1.000044656302636618",
+      "symbol": "AMAT"
+    },
+    {
+      "multiplier": "1.000002288774375687",
+      "symbol": "LLY"
+    },
+    {
+      "multiplier": "1.000021490286701962",
+      "symbol": "JNJ"
+    },
+    {
+      "multiplier": "1.004610068732316661",
+      "symbol": "KSS"
+    },
+    {
+      "multiplier": "1.002210914971013375",
+      "symbol": "ORCL"
+    },
+    {
+      "multiplier": "1.000566080061092436",
+      "symbol": "AAPL"
+    },
+    {
+      "multiplier": "1.001716957939304938",
+      "symbol": "HPE"
+    },
+    {
+      "multiplier": "1.000612040296259656",
+      "symbol": "COST"
+    },
+    {
+      "multiplier": "1.000450838210425960",
+      "symbol": "SOXX"
+    },
+    {
+      "multiplier": "1.000101323251417769",
+      "symbol": "ASML"
+    }
+  ],
+  "pendingMultipliers": [],
+  "rawResponseHash": "0x3d4258379e3e1da523bac4165bafc4c806da984363e1c30a5bfab59a67700307",
+  "schemaRejected": [],
+  "selectedDemoAssets": [
+    "NVDA",
+    "AAPL",
+    "SPY",
+    "QQQ",
+    "TSLA",
+    "MSFT",
+    "AMZN",
+    "GOOGL",
+    "META"
+  ],
+  "sources": {
+    "assets": "https://api.robinhood.com/rhj/assets",
+    "chainlinkDirectory": "https://reference-data-directory.vercel.app/feeds-robinhood-mainnet.json",
+    "prices": "https://api.robinhood.com/rhj/prices/{symbol}",
+    "rpc": "public Robinhood Chain RPC"
+  },
+  "statusCounts": {
+    "ASSET_STATUS_ACTIVE": 194
+  }
+}

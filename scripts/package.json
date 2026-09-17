@@ -1,0 +1,11 @@
+{
+  "name": "@venue0/scripts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@venue0/assets": "workspace:*",
+    "@venue0/shared": "workspace:*",
+    "viem": "2.56.7"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "capturedAt": "2026-09-17T16:41:54Z",
+  "source": "https://api.robinhood.com/rhj/assets",
+  "response": {
+    "assets": [
+      {
+        "id": "0x000000000000000000000000000000001adecf2c6a3749f9873b8926b5977c0a",
+        "tokenSymbol": "CRWD",
+        "tokenName": "CrowdStrike Holdings • Robinhood Token",
+        "deployments": [
+          {
+            "contractAddress": "0xea72Ecca2d0f6bFA1394DBBCff85b52CD4233931",
+            "chainId": 4663,
+            "networkName": "Robinhood Chain"
+          }
+        ],
+        "currentMultiplier": "4.000000000000000000",
+        "pendingMultiplier": "",
+        "status": "ASSET_STATUS_ACTIVE",
+        "logoUrl": "https://cdn.robinhood.com/ncw_assets/logos/0xea72ecca2d0f6bfa1394dbbcff85b52cd4233931.png",
+        "tradingCapabilities": {
+          "market": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          },
+          "extended": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          },
+          "overnight": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          }
+        },
+        "tokenDecimals": 18,
+        "isin": "US22788C1053"
+      },
+      {
+        "id": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+        "tokenSymbol": "SPY",
+        "tokenName": "SPDR S&P 500 ETF Trust • Robinhood Token",
+        "deployments": [
+          {
+            "contractAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+            "chainId": 4663,
+            "networkName": "Robinhood Chain"
+          }
+        ],
+        "currentMultiplier": "1.000000000000000000",
+        "pendingMultiplier": "",
+        "status": "ASSET_STATUS_ACTIVE",
+        "logoUrl": "https://cdn.robinhood.com/ncw_assets/logos/0x117cc2133c37b721f49de2a7a74833232b3b4c0c.png",
+        "tradingCapabilities": {
+          "market": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          },
+          "extended": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          },
+          "overnight": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          }
+        },
+        "tokenDecimals": 18,
+        "isin": "US78462F1030"
+      },
+      {
+        "id": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+        "tokenSymbol": "NVDA",
+        "tokenName": "NVIDIA • Robinhood Token",
+        "deployments": [
+          {
+            "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+            "chainId": 4663,
+            "networkName": "Robinhood Chain"
+          }
+        ],
+        "currentMultiplier": "1.000775159164630595",
+        "pendingMultiplier": "",
+        "status": "ASSET_STATUS_ACTIVE",
+        "logoUrl": "https://cdn.robinhood.com/ncw_assets/logos/0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec.png",
+        "tradingCapabilities": {
+          "market": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          },
+          "extended": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          },
+          "overnight": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          }
+        },
+        "tokenDecimals": 18,
+        "isin": "US67066G1040"
+      },
+      {
+        "id": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+        "tokenSymbol": "AAPL",
+        "tokenName": "Apple • Robinhood Token",
+        "deployments": [
+          {
+            "contractAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+            "chainId": 4663,
+            "networkName": "Robinhood Chain"
+          }
+        ],
+        "currentMultiplier": "1.000566080061092436",
+        "pendingMultiplier": "",
+        "status": "ASSET_STATUS_ACTIVE",
+        "logoUrl": "https://cdn.robinhood.com/ncw_assets/logos/0xaf3d76f1834a1d425780943c99ea8a608f8a93f9.png",
+        "tradingCapabilities": {
+          "market": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          },
+          "extended": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          },
+          "overnight": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_TRADABLE"
+          }
+        },
+        "tokenDecimals": 18,
+        "isin": "US0378331005"
+      },
+      {
+        "id": "0x0000000000000000000000000000000025191a136aab4e5fa41b67ec3218a093",
+        "tokenSymbol": "WYFI",
+        "tokenName": "WhiteFiber, Inc. • Robinhood Token",
+        "deployments": [
+          {
+            "contractAddress": "0x9e7ABD3C9139D14E4c86DcE0e455AAB7A0C2FB3E",
+            "chainId": 4663,
+            "networkName": "Robinhood Chain"
+          }
+        ],
+        "currentMultiplier": "1.000000000000000000",
+        "pendingMultiplier": "",
+        "status": "ASSET_STATUS_ACTIVE",
+        "logoUrl": "https://cdn.robinhood.com/ncw_assets/logos/0x9e7abd3c9139d14e4c86dce0e455aab7a0c2fb3e.png",
+        "tradingCapabilities": {
+          "market": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_UNTRADABLE"
+          },
+          "extended": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_UNTRADABLE"
+          },
+          "overnight": {
+            "whole": "TRADING_STATUS_TRADABLE",
+            "fractional": "TRADING_STATUS_UNTRADABLE"
+          }
+        },
+        "tokenDecimals": 18,
+        "isin": "KYG961151035"
+      }
+    ]
+  }
+}

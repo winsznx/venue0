@@ -1,0 +1,14 @@
+{
+  "name": "@venue0/assets",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@venue0/shared": "workspace:*",
+    "viem": "2.56.7",
+    "zod": "4.6.5"
+  }
+}
