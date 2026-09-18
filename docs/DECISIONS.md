@@ -113,3 +113,12 @@ Format per entry: PRD assumption, observed reality, source, impact, decision. Ne
 - AGGREGATE lands here: residuals carry forward into a later round of the same circle, as pre-filled limits the owner re-signs in the next intent.
 - Privacy defaults (PRD 11.3): aggregate stats expose counts and notional totals only; per-asset figures are suppressed when fewer than 3 participants touched the asset; members see only their own fills; AGGREGATE_ONLY circles show members a count instead of the member list.
 - State is in memory behind one service class. Persistence (Postgres) and the HTTP API are added with the web app; the PRD makes the database conditional on needing persistence.
+
+## D-014 Natural-language portfolio agent (2026-09-18)
+
+- `packages/agent`: the model emits only `GoalSpec` (operations SET_WEIGHT / MOVE_POSITION_FRACTION / MOVE_OVERWEIGHT_FRACTION / USE_SAVED_TARGET, remainder ticker, cash weight, residual constraints, circle name, clarifications). It never emits addresses, prices or amounts.
+- `resolveGoal` is deterministic: tickers resolve only through the live canonical registry; cash words (USDG/USD/CASH) are never tokens; every target value is computed from the snapshot with bigint math; limits come from the same `computeRebalance` / `deltaLimits` used everywhere else. It refuses with typed problems: CLARIFICATION_NEEDED, AMBIGUOUS_TICKER, UNSUPPORTED_TOKEN, WEIGHTS_EXCEED_100, IMPOSSIBLE_ALLOCATION, CONFLICTING_CONSTRAINTS, NOT_HELD, NO_SAVED_TARGET, INVALID_OPERATION, STALE_METADATA, PENDING_CORPORATE_ACTION, NO_CHANGE.
+- "Overweight" is defined against the user's saved target weights; without one the agent asks.
+- The cash (USDG) share scales Stock Token targets down and is flagged as an external residual, because V1 crossing is asset-for-asset.
+- Interpreter: official `@anthropic-ai/sdk` 0.126.0, `messages.parse` with `zodOutputFormat(GoalSpecSchema)`, model `claude-opus-5`. A `refusal` stop reason or unparsed output throws. Server-side refusal fallbacks are not wired yet (documented examples do not show them combined with `messages.parse`).
+- Live model run pending an Anthropic credential (`pnpm agent:examples`).

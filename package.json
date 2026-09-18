@@ -24,7 +24,8 @@
     "proof:flash": "tsx --env-file-if-exists=.env scripts/live/l6-flash.ts",
     "campaign": "tsx campaign/runner/run.ts --frozen",
     "campaign:smoke": "tsx campaign/runner/run.ts --smoke",
-    "campaign:analyze": "tsx campaign/runner/analyze.ts"
+    "campaign:analyze": "tsx campaign/runner/analyze.ts",
+    "agent:examples": "tsx --env-file-if-exists=.env scripts/agent/interpret-examples.ts"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

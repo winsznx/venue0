@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@venue0/agent": "workspace:*",
     "@venue0/assets": "workspace:*",
     "@venue0/dynamic": "workspace:*",
     "@venue0/flash": "workspace:*",
