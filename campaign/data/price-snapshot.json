@@ -1,0 +1,78 @@
+{
+  "assets": [
+    {
+      "feedAgeSec": 4252,
+      "priceUsdE18": "219485004030000000000",
+      "sourceBlock": "66255284",
+      "symbol": "NVDA",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+    },
+    {
+      "feedAgeSec": 8334,
+      "priceUsdE18": "337025275350000000000",
+      "sourceBlock": "66255308",
+      "symbol": "AAPL",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649"
+    },
+    {
+      "feedAgeSec": 3436,
+      "priceUsdE18": "761550793690000000000",
+      "sourceBlock": "66255316",
+      "symbol": "SPY",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1"
+    },
+    {
+      "feedAgeSec": 25656,
+      "priceUsdE18": "720230000000000000000",
+      "sourceBlock": "66255323",
+      "symbol": "QQQ",
+      "token": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+      "uid": "0x000000000000000000000000000000002470b933c52d47ccad017ed9ee80c9ed"
+    },
+    {
+      "feedAgeSec": 22543,
+      "priceUsdE18": "368680000000000000000",
+      "sourceBlock": "66255331",
+      "symbol": "TSLA",
+      "token": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "uid": "0x00000000000000000000000000000000cfece3244ea34bb29414dd9488b32d9f"
+    },
+    {
+      "feedAgeSec": 26680,
+      "priceUsdE18": "498525782520000000000",
+      "sourceBlock": "66255340",
+      "symbol": "MSFT",
+      "token": "0xe93237C50D904957Cf27E7B1133b510C669c2e74",
+      "uid": "0x00000000000000000000000000000000307bb0113ca54f93adf80f4ff2bf681a"
+    },
+    {
+      "feedAgeSec": 22262,
+      "priceUsdE18": "252635000000000000000",
+      "sourceBlock": "66255348",
+      "symbol": "AMZN",
+      "token": "0x12f190a9F9d7D37a250758b26824B97CE941bF54",
+      "uid": "0x000000000000000000000000000000004f508d5e2a7042299694d85c2f362ad2"
+    },
+    {
+      "feedAgeSec": 3788,
+      "priceUsdE18": "354658763650000000000",
+      "sourceBlock": "66255355",
+      "symbol": "GOOGL",
+      "token": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+      "uid": "0x0000000000000000000000000000000053b69e2076884cc9ae2ada9bc7095df3"
+    },
+    {
+      "feedAgeSec": 2749,
+      "priceUsdE18": "689831650000000000000",
+      "sourceBlock": "66255363",
+      "symbol": "META",
+      "token": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+      "uid": "0x00000000000000000000000000000000343e7beca03644bcba2e50b8236784f5"
+    }
+  ],
+  "capturedAt": "2026-09-18T13:19:17.065Z",
+  "source": "CHAINLINK_STOCK_TOKEN_FEED"
+}

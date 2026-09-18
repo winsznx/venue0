@@ -21,7 +21,9 @@
     "wallets:status": "tsx --env-file-if-exists=.env scripts/wallet-status.ts",
     "verify": "tsx --env-file-if-exists=.env scripts/live/reverify.ts",
     "proof:residual": "tsx --env-file-if-exists=.env scripts/live/l5-residual.ts",
-    "proof:flash": "tsx --env-file-if-exists=.env scripts/live/l6-flash.ts"
+    "proof:flash": "tsx --env-file-if-exists=.env scripts/live/l6-flash.ts",
+    "campaign": "tsx campaign/runner/run.ts --frozen",
+    "campaign:smoke": "tsx campaign/runner/run.ts --smoke"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

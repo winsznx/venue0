@@ -1,0 +1,18 @@
+{
+  "name": "@venue0/campaign",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@venue0/assets": "workspace:*",
+    "@venue0/flash": "workspace:*",
+    "@venue0/matcher": "workspace:*",
+    "@venue0/portfolio": "workspace:*",
+    "@venue0/reference-matcher": "workspace:*",
+    "@venue0/residual": "workspace:*",
+    "@venue0/shared": "workspace:*",
+    "@venue0/uniswap": "workspace:*",
+    "highs": "1.15.3",
+    "viem": "2.56.7"
+  }
+}

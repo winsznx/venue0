@@ -33,6 +33,39 @@ importers:
         specifier: 5.0.1
         version: 5.0.1(@types/node@24.13.5)(vite@8.3.0(@types/node@24.13.5)(esbuild@0.28.2)(tsx@4.23.13))
 
+  campaign:
+    dependencies:
+      '@venue0/assets':
+        specifier: workspace:*
+        version: link:../packages/assets
+      '@venue0/flash':
+        specifier: workspace:*
+        version: link:../packages/flash
+      '@venue0/matcher':
+        specifier: workspace:*
+        version: link:../packages/matcher
+      '@venue0/portfolio':
+        specifier: workspace:*
+        version: link:../packages/portfolio
+      '@venue0/reference-matcher':
+        specifier: workspace:*
+        version: link:../packages/reference-matcher
+      '@venue0/residual':
+        specifier: workspace:*
+        version: link:../packages/residual
+      '@venue0/shared':
+        specifier: workspace:*
+        version: link:../packages/shared
+      '@venue0/uniswap':
+        specifier: workspace:*
+        version: link:../packages/uniswap
+      highs:
+        specifier: 1.15.3
+        version: 1.15.3
+      viem:
+        specifier: 2.56.7
+        version: 2.56.7(typescript@6.0.3)(zod@4.6.5)
+
   packages/assets:
     dependencies:
       '@venue0/shared':
@@ -1983,6 +2016,10 @@ packages:
   hasown@2.0.4:
     resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
     engines: {node: '>= 0.4'}
+
+  highs@1.15.3:
+    resolution: {integrity: sha512-5rzjBlAkqRxr7FOv+iZjxF8nNfKsEt8uOaP3S6gls6yRf4+Jv4BqBIE3iPFsgfOHutQBMNxRE9jWhxRAM7Oycw==}
+    engines: {node: '>=18'}
 
   hookified@1.15.1:
     resolution: {integrity: sha512-MvG/clsADq1GPM2KGo2nyfaWVyn9naPiXrqIe4jYjXNZQt238kWyOGrsyc/DmRAQ+Re6yeo6yX/yoNCG5KAEVg==}
@@ -5208,6 +5245,8 @@ snapshots:
   hasown@2.0.4:
     dependencies:
       function-bind: 1.1.2
+
+  highs@1.15.3: {}
 
   hookified@1.15.1: {}
 

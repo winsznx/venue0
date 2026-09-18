@@ -17,5 +17,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["packages/*/src", "packages/*/test", "scripts", "campaign/runner", "campaign/scenarios", "vitest.config.ts", "eslint.config.js"]
+  "include": ["packages/*/src", "packages/*/test", "scripts", "campaign/runner", "campaign/scenarios", "campaign/test", "vitest.config.ts", "eslint.config.js"]
 }

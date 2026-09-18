@@ -1,0 +1,1982 @@
+{
+  "capturedAt": "2026-09-18T13:19:17.065Z",
+  "note": "Quotes only. No orders placed. Cost reference = Robinhood REST mid x currentMultiplier fetched per asset before its quotes. Flash LIMIT at that reference; Uniswap EXACT_INPUT with router 2.1.1. Negative cost means the quote beat the reference mid.",
+  "points": [
+    {
+      "flash": {
+        "allInCostUsd": 0.16413476194020205,
+        "feeUsd": 0.16442276194020208,
+        "outUsd": 0.835865238059798,
+        "quoteId": "546ccd8e-485e-493f-9d05-b67fe6b224ae"
+      },
+      "observedAt": "2026-09-18T13:19:38.131Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": 0.013188931187637327,
+        "gasFeeUsd": 0.013094931187637288,
+        "outUsd": 0.999906,
+        "requestId": "f5d16e9f4ebefc5f7de0fad3abfb1b74",
+        "route": "[v4] 100.00% = [0.01%] [1] [0x0000000000000000000000000000000000000000] 0x6444a8e0b267406a15db74ca00c4a24bdfa81ed3180f5b6d0851f8ed6f4f29c5",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.15986604569474772,
+        "feeUsd": 0.16443,
+        "outUsd": 0.8401339543052523,
+        "quoteId": "217b4a26-8651-4c7c-93cd-0db27dd34b03"
+      },
+      "observedAt": "2026-09-18T13:19:43.453Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": 0.01345746363387448,
+        "gasFeeUsd": 0.013153126571035425,
+        "outUsd": 0.999695662937161,
+        "requestId": "7bdbdb8aace5659c3f5728049b4f98b4",
+        "route": "[v3] 100.00% = [0.05%] 0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.17232991589689384,
+        "feeUsd": 0.173430915896893,
+        "outUsd": 9.827670084103106,
+        "quoteId": "25a05198-aa3a-4d88-a125-87c9a760d785"
+      },
+      "observedAt": "2026-09-18T13:19:47.613Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": 0.01352673930120555,
+        "gasFeeUsd": 0.013181739301206176,
+        "outUsd": 9.999655,
+        "requestId": "899220420b2a5a89352296eb1fbd437f",
+        "route": "[v4] 100.00% = [0.01%] [1] [0x0000000000000000000000000000000000000000] 0x6444a8e0b267406a15db74ca00c4a24bdfa81ed3180f5b6d0851f8ed6f4f29c5",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16855509200201801,
+        "feeUsd": 0.171369,
+        "outUsd": 9.831444907997982,
+        "quoteId": "f5be8ca9-c2c7-4c79-ad54-a3de4d339d8a"
+      },
+      "observedAt": "2026-09-18T13:19:50.444Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": 0.016216458798655187,
+        "gasFeeUsd": 0.0131715551091115,
+        "outUsd": 9.996955096310456,
+        "requestId": "7657c8fb5b7277da18a2a7cbeb9f6780",
+        "route": "[v3] 100.00% = [0.05%] 0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.22735245938109472,
+        "feeUsd": 0.261344459381095,
+        "outUsd": 99.7726475406189,
+        "quoteId": "887b8f91-6adc-4943-b443-11168cec979b"
+      },
+      "observedAt": "2026-09-18T13:19:53.525Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 100,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": 0.0013914164665295783,
+        "gasFeeUsd": 0.021978416466535707,
+        "outUsd": 100.020587,
+        "requestId": "7b027296789c0762701f1998daf4aba5",
+        "route": "[v3] 100.00% = [0.05%] 0x62AB521f71431f78ac374CdbadC6cda3c8916b6C -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.2341114212229769,
+        "feeUsd": 0.26139,
+        "outUsd": 99.76588857877702,
+        "quoteId": "3127207a-e13b-4853-9793-b4a9bdacc8ec"
+      },
+      "observedAt": "2026-09-18T13:19:56.279Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 100,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": 0.044419250326183844,
+        "gasFeeUsd": 0.013149246878808883,
+        "outUsd": 99.96872999655263,
+        "requestId": "217bd23d8908df5d36b2f70118a5f6c9",
+        "route": "[v3] 100.00% = [0.05%] 0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.8258101783447955,
+        "feeUsd": 1.1612341783448108,
+        "outUsd": 999.1741898216552,
+        "quoteId": "5b3ed1f6-9edf-4f45-95b4-ce1a4379713f"
+      },
+      "observedAt": "2026-09-18T13:20:00.864Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1000,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": -0.04641143004609663,
+        "gasFeeUsd": 0.022186569953855123,
+        "outUsd": 1000.068598,
+        "requestId": "e9e54d77d88c36e0e4dce76cb18f5f1b",
+        "route": "[v3] 100.00% = [0.05%] 0x62AB521f71431f78ac374CdbadC6cda3c8916b6C -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1011697437443217,
+        "feeUsd": 1.161398,
+        "outUsd": 998.8988302562557,
+        "quoteId": "5f6055b3-c84e-42c6-be0c-ed1c47d2f122"
+      },
+      "observedAt": "2026-09-18T13:20:03.520Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1000,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": 0.3306197031393033,
+        "gasFeeUsd": 0.01314051757129916,
+        "outUsd": 999.682520814432,
+        "requestId": "c3a5894440d705a3b6cfb4f4d77a1fde",
+        "route": "[v3] 100.00% = [0.05%] 0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 8.390451882625712,
+        "feeUsd": 10.160326882625537,
+        "outUsd": 9991.609548117374,
+        "quoteId": "2a5d41fa-8564-42fe-b825-c62dfc789f64"
+      },
+      "observedAt": "2026-09-18T13:20:07.018Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10000,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": 5.348410954969593,
+        "gasFeeUsd": 0.039014954969031776,
+        "outUsd": 9994.690604,
+        "requestId": "df162d22bbf11def796bea2616a2e0f9",
+        "route": "[v4] 20.00% = [0.0375%] [4] [0x0000000000000000000000000000000000000000] 0xdf5c0bcd967d54774c139a4ef803ec994779736346fb4c21b50ed241b1fd2682, [v3] 80.00% = [0.05%] 0x62AB521f71431f78ac374CdbadC6cda3c8916b6C -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.162797665458129,
+        "feeUsd": 10.161694882625534,
+        "outUsd": 9989.837202334542,
+        "quoteId": "65cbc14d-2be5-4c0c-ac8e-8880ca237fb6"
+      },
+      "observedAt": "2026-09-18T13:20:09.776Z",
+      "referencePriceUsd": 219.490007,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10000,
+      "symbol": "NVDA",
+      "uniswap": {
+        "allInCostUsd": 3.785901758973111,
+        "gasFeeUsd": 0.017428377418170087,
+        "outUsd": 9996.231526618445,
+        "requestId": "3e0be3f9bdc534f75681c5dde6bf6abb",
+        "route": "[v3] 100.00% = [0.05%] 0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16374100000000003,
+        "feeUsd": 0.163741,
+        "outUsd": 0.836259,
+        "quoteId": "3fd1d89d-b1d5-4e58-b02b-84d3a3987584"
+      },
+      "observedAt": "2026-09-18T13:20:15.690Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": 0.02919113897006616,
+        "gasFeeUsd": 0.027378138970066208,
+        "outUsd": 0.998187,
+        "requestId": "58fb46ad3f8283998db4878ce48d365d",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0x70a9a88402989226847ec122043ce5e7ff462080] 0xa2347ba69167e5602f74640ffbf737ee7cdd825e4726d3462564fc6533070147",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1627233049661655,
+        "feeUsd": 0.164586,
+        "outUsd": 0.8372766950338345,
+        "quoteId": "1857ea2b-fb49-4d89-9d80-d4af9e617525"
+      },
+      "observedAt": "2026-09-18T13:20:21.184Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": 0.011976403300767144,
+        "gasFeeUsd": 0.01318949868565926,
+        "outUsd": 1.0012130953848921,
+        "requestId": "03ef3eb4b241a2db3ae33eb7a7db29cd",
+        "route": "[v4] 100.00% = [838.8608%] [60] [0x64e9ae1066c47ac4a3cc0a5bd7b135908590e088] 0x845b21902932be7f77f8ccbf793c17494f0ce7c6ffdcdb675d4dec701bc7601a",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1735869999999995,
+        "feeUsd": 0.173587,
+        "outUsd": 9.826413,
+        "quoteId": "89e9cbc2-8c2a-4964-93c0-ac7328279d79"
+      },
+      "observedAt": "2026-09-18T13:20:24.457Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": 0.03136168287775416,
+        "gasFeeUsd": 0.013199682877753933,
+        "outUsd": 9.981838,
+        "requestId": "7b840b9edfd11a6fc8de344bc8656984",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0x70a9a88402989226847ec122043ce5e7ff462080] 0xa2347ba69167e5602f74640ffbf737ee7cdd825e4726d3462564fc6533070147",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.15189082136369692,
+        "feeUsd": 0.173585,
+        "outUsd": 9.848109178636303,
+        "quoteId": "0949fe88-bb3e-4b16-9c5a-7c3f9b1c6013"
+      },
+      "observedAt": "2026-09-18T13:20:27.079Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": 0.001560038086546445,
+        "gasFeeUsd": 0.01314051757129916,
+        "outUsd": 10.011580479484753,
+        "requestId": "7b4f86f9587330236dbe03848067a735",
+        "route": "[v4] 100.00% = [838.8608%] [60] [0x64e9ae1066c47ac4a3cc0a5bd7b135908590e088] 0x845b21902932be7f77f8ccbf793c17494f0ce7c6ffdcdb675d4dec701bc7601a",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.2617780000000067,
+        "feeUsd": 0.261778,
+        "outUsd": 99.738222,
+        "quoteId": "bf0dbcd7-bed6-46cd-ae8d-99ea64316b51"
+      },
+      "observedAt": "2026-09-18T13:20:29.582Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 100,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": 0.1328568180960869,
+        "gasFeeUsd": 0.02183181809608896,
+        "outUsd": 99.888975,
+        "requestId": "7289ad9dec42998689b15a2c5f8bf0b3",
+        "route": "[v3] 100.00% = [0.05%] 0x8bb3514e2204E1cDF3Ac149EFEe7Ff04D91B719f -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.048720318411113794,
+        "feeUsd": 0.261779,
+        "outUsd": 99.95127968158889,
+        "quoteId": "b2029b80-e50e-49e8-a197-8b427643f62f"
+      },
+      "observedAt": "2026-09-18T13:20:34.734Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 100,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": -0.09455863311065968,
+        "gasFeeUsd": 0.013253028645868891,
+        "outUsd": 100.10781166175653,
+        "requestId": "6ec5372fd12722758e313f12b2960594",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0x70a9a88402989226847ec122043ce5e7ff462080] 0xa2347ba69167e5602f74640ffbf737ee7cdd825e4726d3462564fc6533070147",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1617729999999256,
+        "feeUsd": 1.1617730000000002,
+        "outUsd": 998.8382270000001,
+        "quoteId": "5fd78a43-784b-4835-b666-d69be01d84df"
+      },
+      "observedAt": "2026-09-18T13:20:37.447Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1000,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": 1.3780915314496003,
+        "gasFeeUsd": 0.02620153144957451,
+        "outUsd": 998.64811,
+        "requestId": "7bf922af5a8e17ae6257115d59331b6a",
+        "route": "[v3] 100.00% = [0.05%] 0x8bb3514e2204E1cDF3Ac149EFEe7Ff04D91B719f -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": -0.9199789927839674,
+        "feeUsd": 1.164129,
+        "outUsd": 1000.919978992784,
+        "quoteId": "b9c421f3-d689-4344-8ef6-5d276f663d0c"
+      },
+      "observedAt": "2026-09-18T13:20:40.554Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1000,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": -0.8095105764471696,
+        "gasFeeUsd": 0.026410034909130856,
+        "outUsd": 1000.8359206113563,
+        "requestId": "b95b29e53824e3bb2af6480609606aba",
+        "route": "[v3] 45.00% = [0.05%] 0xAae0d815EE56e4092a5E5C2911E676Fea50B2d6D, [v4] 55.00% = [838.8608%] [10] [0x70a9a88402989226847ec122043ce5e7ff462080] 0xa2347ba69167e5602f74640ffbf737ee7cdd825e4726d3462564fc6533070147",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.164128999998866,
+        "feeUsd": 10.164129,
+        "outUsd": 9989.835871000001,
+        "quoteId": "c3976d35-45b7-4361-acad-18216cb61500"
+      },
+      "observedAt": "2026-09-18T13:20:43.222Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10000,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": 20.480017814509637,
+        "gasFeeUsd": 0.056920814508856124,
+        "outUsd": 9979.576903,
+        "requestId": "9ae70e754e19ea1422ee76b6207c8da8",
+        "route": "[v3] 20.00% = [0.05%] 0x8bb3514e2204E1cDF3Ac149EFEe7Ff04D91B719f -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca, [v4] 10.00% = [838.8608%] [10] [0x70a9a88402989226847ec122043ce5e7ff462080] 0xa2347ba69167e5602f74640ffbf737ee7cdd825e4726d3462564fc6533070147, [v3] 70.00% = [0.05%] 0xAae0d815EE56e4092a5E5C2911E676Fea50B2d6D",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": -6.828626676022395,
+        "feeUsd": 10.164154,
+        "outUsd": 10006.828626676022,
+        "quoteId": "cfcfcd44-b746-4b94-a60f-f979c46d5bcd"
+      },
+      "observedAt": "2026-09-18T13:20:46.999Z",
+      "referencePriceUsd": 337.926185,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10000,
+      "symbol": "AAPL",
+      "uniswap": {
+        "allInCostUsd": -4.805699875690006,
+        "gasFeeUsd": 0.0520802635066146,
+        "outUsd": 10004.857780139197,
+        "requestId": "d21bb2ce7494e59c96f7e04b7297d000",
+        "route": "[v4] 10.00% = [838.8608%] [10] [0x70a9a88402989226847ec122043ce5e7ff462080] 0xa2347ba69167e5602f74640ffbf737ee7cdd825e4726d3462564fc6533070147, [v4] 20.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.035%] [4] [0x0000000000000000000000000000000000000000] 0xeab0adac76db99a233ed077ca6be7a3f708baee6f98b17df69f7e1a07d1dc2e4, [v3] 70.00% = [0.05%] 0xAae0d815EE56e4092a5E5C2911E676Fea50B2d6D",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1589964424127457,
+        "feeUsd": 0.16516144241274572,
+        "outUsd": 0.8410035575872543,
+        "quoteId": "b7ca12e7-614f-4ef2-80ba-3b50a2588b91"
+      },
+      "observedAt": "2026-09-18T13:20:52.902Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": 0.021542653983981804,
+        "gasFeeUsd": 0.02188365398398173,
+        "outUsd": 1.000341,
+        "requestId": "f2e34bf10897ae2f34e8f2c939da8f92",
+        "route": "[v3] 100.00% = [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16500624684437493,
+        "feeUsd": 0.16515,
+        "outUsd": 0.8349937531556251,
+        "quoteId": "245ecd76-6f22-4e46-aece-97265922d65f"
+      },
+      "observedAt": "2026-09-18T13:20:56.513Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": 0.013959700758803425,
+        "gasFeeUsd": 0.013146822071167293,
+        "outUsd": 0.9991871213123639,
+        "requestId": "59673d0ab4cf24de2e89e888d8a28f11",
+        "route": "[v3] 100.00% = [0.05%] 0xa7Bb1AC63BBaB0C44316E6c8C455213441689167",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": -0.2610727242051798,
+        "feeUsd": 0.17206327579482086,
+        "outUsd": 10.26107272420518,
+        "quoteId": "dc672579-7ab2-4c05-8c6c-1cc4aa1e1913"
+      },
+      "observedAt": "2026-09-18T13:20:59.100Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": 0.018862084042701052,
+        "gasFeeUsd": 0.022261084042700982,
+        "outUsd": 10.003399,
+        "requestId": "e9bceb44216d5df9cebdd4c8897ff4a4",
+        "route": "[v3] 100.00% = [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.17160046713019916,
+        "feeUsd": 0.172064,
+        "outUsd": 9.8283995328698,
+        "quoteId": "51641a98-fac0-4ee5-8c03-e927c5b9fd29"
+      },
+      "observedAt": "2026-09-18T13:21:01.857Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": 0.02116441456087622,
+        "gasFeeUsd": 0.013031886188955975,
+        "outUsd": 9.99186747162808,
+        "requestId": "0eb1e7c95453d072c27f73e198f3c278",
+        "route": "[v3] 100.00% = [0.05%] 0xa7Bb1AC63BBaB0C44316E6c8C455213441689167",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": -0.0981203876073522,
+        "feeUsd": 0.2621496123926506,
+        "outUsd": 100.09812038760735,
+        "quoteId": "edc77a11-1887-417d-8463-1e3777e43d19"
+      },
+      "observedAt": "2026-09-18T13:21:04.432Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 100,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": -0.01803349282669454,
+        "gasFeeUsd": 0.021969507173304138,
+        "outUsd": 100.040003,
+        "requestId": "f1f5ab9f6cdc07784280766ddbdfcd4f",
+        "route": "[v3] 100.00% = [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.2641592567996014,
+        "feeUsd": 0.265498,
+        "outUsd": 99.7358407432004,
+        "quoteId": "f87bc986-fa6a-4346-8c68-9720cd663b4a"
+      },
+      "observedAt": "2026-09-18T13:21:06.943Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 100,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": 0.09477350957632648,
+        "gasFeeUsd": 0.013074077841919622,
+        "outUsd": 99.9183005682656,
+        "requestId": "bec5cfda0aa29abb643b303090fb3a6d",
+        "route": "[v3] 100.00% = [0.05%] 0xa7Bb1AC63BBaB0C44316E6c8C455213441689167",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.01663295116293284,
+        "feeUsd": 1.1664189511629157,
+        "outUsd": 999.9833670488371,
+        "quoteId": "3cbf51d5-5d4b-4959-9fc9-fb0f4437f761"
+      },
+      "observedAt": "2026-09-18T13:21:10.070Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1000,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": -0.3691626460625446,
+        "gasFeeUsd": 0.022136353937458997,
+        "outUsd": 1000.391299,
+        "requestId": "10e0fa5be38155304bd7a1099486a7c1",
+        "route": "[v3] 100.00% = [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1654264452523648,
+        "feeUsd": 1.1660784918489742,
+        "outUsd": 998.8345735547476,
+        "quoteId": "f1c9bd79-f425-4e76-8a28-cbe181d8a1d9"
+      },
+      "observedAt": "2026-09-18T13:21:16.651Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1000,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": 0.8679927975130286,
+        "gasFeeUsd": 0.013583287446653314,
+        "outUsd": 999.1455904899336,
+        "requestId": "b6776eb37b92b5829400dbfda8625eea",
+        "route": "[v3] 100.00% = [0.05%] 0xa7Bb1AC63BBaB0C44316E6c8C455213441689167",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 6.299420438454035,
+        "feeUsd": 10.167541438454794,
+        "outUsd": 9993.700579561546,
+        "quoteId": "7946ba8b-4ba3-4741-8be4-3ac2c92e3824"
+      },
+      "observedAt": "2026-09-18T13:21:20.967Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10000,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": -0.48061034824142795,
+        "gasFeeUsd": 0.02178565175843446,
+        "outUsd": 10000.502396,
+        "requestId": "1618f581f3637616324eb90119dfc0c9",
+        "route": "[v3] 100.00% = [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.16410954352068,
+        "feeUsd": 10.167606170380553,
+        "outUsd": 9989.83589045648,
+        "quoteId": "ffff83be-9dce-4303-a819-139da85860e7"
+      },
+      "observedAt": "2026-09-18T13:21:23.730Z",
+      "referencePriceUsd": 761.821558,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10000,
+      "symbol": "SPY",
+      "uniswap": {
+        "allInCostUsd": 9.479394438424578,
+        "gasFeeUsd": 0.030231976716976378,
+        "outUsd": 9990.550837538292,
+        "requestId": "71c66697f2309a3927d60003e0d8b34f",
+        "route": "[v3] 30.00% = [0.05%] 0xa7Bb1AC63BBaB0C44316E6c8C455213441689167, [v4] 70.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.164032502390401,
+        "feeUsd": 0.16595350239040105,
+        "outUsd": 0.835967497609599,
+        "quoteId": "9f7d55fe-0f39-43ca-9968-c965714c9da5"
+      },
+      "observedAt": "2026-09-18T13:21:31.196Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": 0.035139276168343496,
+        "gasFeeUsd": 0.0355332761683435,
+        "outUsd": 1.000394,
+        "requestId": "f99f1e55a9f47111dbbed24d29b12bf7",
+        "route": "[mixed] 100.00% = [0.02%] [2] [0x0000000000000000000000000000000000000000] 0x8493982435e4273028008cd181c84c0d6a548f96792fdb5acddcbb6a8c82d305 -> [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1649806489844743,
+        "feeUsd": 0.165959,
+        "outUsd": 0.8350193510155257,
+        "quoteId": "5bb56c36-1ece-4a08-a975-4be6bca1f9e0"
+      },
+      "observedAt": "2026-09-18T13:21:34.713Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": 0.014266852529851584,
+        "gasFeeUsd": 0.013236054992377769,
+        "outUsd": 0.9989692024625262,
+        "requestId": "0e76afa3be383f57f93558bdafdeeda2",
+        "route": "[v3] 100.00% = [0.05%] 0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.17113398725382467,
+        "feeUsd": 0.17499998725382485,
+        "outUsd": 9.828866012746175,
+        "quoteId": "fc5ce1d5-de9e-4919-86f5-dc80778e1b40"
+      },
+      "observedAt": "2026-09-18T13:21:40.376Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": 0.029042364309763764,
+        "gasFeeUsd": 0.034800364309763916,
+        "outUsd": 10.005758,
+        "requestId": "87082992af883b3e24a8dc90a8fef16b",
+        "route": "[mixed] 100.00% = [0.02%] [2] [0x0000000000000000000000000000000000000000] 0x8493982435e4273028008cd181c84c0d6a548f96792fdb5acddcbb6a8c82d305 -> [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1748713017683805,
+        "feeUsd": 0.17497810768705888,
+        "outUsd": 9.82512869823162,
+        "quoteId": "070b235f-4c41-4a9b-8792-898078f5f378"
+      },
+      "observedAt": "2026-09-18T13:21:43.627Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": 0.02364999344230287,
+        "gasFeeUsd": 0.013341291644022731,
+        "outUsd": 9.98969129820172,
+        "requestId": "1ac93a6c9ec1f31150942c1ddc5ede30",
+        "route": "[v3] 100.00% = [0.05%] 0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.20199603089368168,
+        "feeUsd": 0.2631600308936789,
+        "outUsd": 99.79800396910632,
+        "quoteId": "e147b284-7545-47ed-86d2-60ecb63a9b03"
+      },
+      "observedAt": "2026-09-18T13:21:48.594Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 100,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": 0.011368020372833208,
+        "gasFeeUsd": 0.0349130203728318,
+        "outUsd": 100.023545,
+        "requestId": "c674dc18227b389dbbd2c4f7daa6e9a1",
+        "route": "[mixed] 100.00% = [0.02%] [2] [0x0000000000000000000000000000000000000000] 0x8493982435e4273028008cd181c84c0d6a548f96792fdb5acddcbb6a8c82d305 -> [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.26303912028070897,
+        "feeUsd": 0.26315992745542544,
+        "outUsd": 99.73696087971929,
+        "quoteId": "ad6251c9-3336-4da3-9b8c-befaaa915742"
+      },
+      "observedAt": "2026-09-18T13:21:51.773Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 100,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": 0.11639038069498298,
+        "gasFeeUsd": 0.013230720415566274,
+        "outUsd": 99.89684033972058,
+        "requestId": "22e6f1444de9d673e6835705e48a1011",
+        "route": "[v3] 100.00% = [0.05%] 0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.6652664868530564,
+        "feeUsd": 1.163711486853021,
+        "outUsd": 999.334733513147,
+        "quoteId": "1eea6a98-7af8-4759-8915-9ace2ca767de"
+      },
+      "observedAt": "2026-09-18T13:21:54.491Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1000,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": -0.27667679010015783,
+        "gasFeeUsd": 0.0354232098998289,
+        "outUsd": 1000.3121,
+        "requestId": "2fd601ed5a1757aaeeed16e313d5c37d",
+        "route": "[mixed] 100.00% = [0.02%] [2] [0x0000000000000000000000000000000000000000] 0x8493982435e4273028008cd181c84c0d6a548f96792fdb5acddcbb6a8c82d305 -> [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1630601818369541,
+        "feeUsd": 1.1636508993667574,
+        "outUsd": 998.836939818163,
+        "quoteId": "f48ca6c1-1735-45d4-a832-250a1dc7d29b"
+      },
+      "observedAt": "2026-09-18T13:21:57.064Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1000,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": 1.052048818151798,
+        "gasFeeUsd": 0.013188043801074306,
+        "outUsd": 998.9611392256493,
+        "requestId": "48600c7358324afe21fc2e4deaf99d59",
+        "route": "[v3] 100.00% = [0.05%] 0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 7.974910468063172,
+        "feeUsd": 10.16757446806282,
+        "outUsd": 9992.025089531937,
+        "quoteId": "ef8f5150-28a1-4d97-a079-80fa26d1baf3"
+      },
+      "observedAt": "2026-09-18T13:21:59.613Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10000,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": -0.6152848782547014,
+        "gasFeeUsd": 0.04914012174614562,
+        "outUsd": 10000.664425,
+        "requestId": "8b404d0e7ab4ee767eceac812e21f678",
+        "route": "[mixed] 40.00% = [0.02%] [2] [0x0000000000000000000000000000000000000000] 0x8493982435e4273028008cd181c84c0d6a548f96792fdb5acddcbb6a8c82d305 -> [0.05%] 0xDDCBBa3666f578E3F09516f21Ff85BFee859AB5e -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca, [v3] 60.00% = [0.05%] 0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.161635387958086,
+        "feeUsd": 10.16613746806282,
+        "outUsd": 9989.838364612042,
+        "quoteId": "8f8ea6e9-b38b-4ce0-82c9-31adb51c9d1c"
+      },
+      "observedAt": "2026-09-18T13:22:02.498Z",
+      "referencePriceUsd": 718.16,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10000,
+      "symbol": "QQQ",
+      "uniswap": {
+        "allInCostUsd": 11.128221235152294,
+        "gasFeeUsd": 0.013149246878808883,
+        "outUsd": 9988.884928011727,
+        "requestId": "3441555d5314cbcc6440aef9f382dc03",
+        "route": "[v3] 100.00% = [0.05%] 0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1646439999999999,
+        "feeUsd": 0.164644,
+        "outUsd": 0.8353560000000001,
+        "quoteId": "164cb937-1d2e-4c13-93cd-c53a58bde774"
+      },
+      "observedAt": "2026-09-18T13:22:07.881Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 0.013342449956543467,
+        "gasFeeUsd": 0.013110449956543457,
+        "outUsd": 0.999768,
+        "requestId": "d38db9dc0aac6f13f97475014691ff76",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0xa4e6f5500e88691fdcb289aa0e99067481434880] 0x92186dd5cb043661fc7ea0a5d4a5d8b91395624929f278bfc2488e82861232ed",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1632535522653522,
+        "feeUsd": 0.164682,
+        "outUsd": 0.8367464477346478,
+        "quoteId": "eaece3a7-8e06-4777-a3ee-406f88f364bd"
+      },
+      "observedAt": "2026-09-18T13:22:12.080Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 0.011958869910347744,
+        "gasFeeUsd": 0.01310317553361869,
+        "outUsd": 1.001144305623271,
+        "requestId": "e384570987dbcdb10ee97b399be16121",
+        "route": "[v4] 100.00% = [838.8608%] [60] [0x64e9ae1066c47ac4a3cc0a5bd7b135908590e088] 0xff5e30e68690402ce94cd9466deab56ecc2014f8e2827c1a88fa6d77e9e90392",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.173686,
+        "feeUsd": 0.173686,
+        "outUsd": 9.826314,
+        "quoteId": "444334ed-5fc1-4535-8a79-b3646f9a7795"
+      },
+      "observedAt": "2026-09-18T13:22:14.681Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 0.015556686608187903,
+        "gasFeeUsd": 0.01321568660818842,
+        "outUsd": 9.997659,
+        "requestId": "28b6ae48869dcf4ce7c9bf855c4577c8",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0xa4e6f5500e88691fdcb289aa0e99067481434880] 0x92186dd5cb043661fc7ea0a5d4a5d8b91395624929f278bfc2488e82861232ed",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16331462932663143,
+        "feeUsd": 0.173682,
+        "outUsd": 9.836685370673369,
+        "quoteId": "4e5be2e1-952c-490d-8fde-189fca9a9a86"
+      },
+      "observedAt": "2026-09-18T13:22:16.995Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 0.003662243704853796,
+        "gasFeeUsd": 0.013033341073540927,
+        "outUsd": 10.009371097368687,
+        "requestId": "024c97f587f8ed0acfd7b99108818769",
+        "route": "[v4] 100.00% = [838.8608%] [60] [0x64e9ae1066c47ac4a3cc0a5bd7b135908590e088] 0xff5e30e68690402ce94cd9466deab56ecc2014f8e2827c1a88fa6d77e9e90392",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.26368300000000033,
+        "feeUsd": 0.263683,
+        "outUsd": 99.736317,
+        "quoteId": "20070156-5dd5-4d82-acf3-bd6af7ff34d3"
+      },
+      "observedAt": "2026-09-18T13:22:19.382Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 100,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 0.12007575352254046,
+        "gasFeeUsd": 0.013632753522541731,
+        "outUsd": 99.893557,
+        "requestId": "125c5b6928d26976719828cf0dce949b",
+        "route": "[v3] 100.00% = [0.05%] 0xc4f0172D6ac8DD294Dd1137D047d5E1893760236",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.24958162388939797,
+        "feeUsd": 0.263668,
+        "outUsd": 99.7504183761106,
+        "quoteId": "105a1836-a44e-407f-9558-c327d4c7838c"
+      },
+      "observedAt": "2026-09-18T13:22:24.515Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 100,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 0.022674562277441863,
+        "gasFeeUsd": 0.0260870505312712,
+        "outUsd": 100.00341248825383,
+        "requestId": "3cfcb1e06a24ec157288cadff186d781",
+        "route": "[v4] 30.00% = [838.8608%] [60] [0x64e9ae1066c47ac4a3cc0a5bd7b135908590e088] 0xff5e30e68690402ce94cd9466deab56ecc2014f8e2827c1a88fa6d77e9e90392, [v3] 70.00% = [0.05%] 0xc4f0172D6ac8DD294Dd1137D047d5E1893760236",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1636159999999336,
+        "feeUsd": 1.163616,
+        "outUsd": 998.8363840000001,
+        "quoteId": "f220a6c9-2f41-4113-a395-cd4302d716fc"
+      },
+      "observedAt": "2026-09-18T13:22:27.684Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1000,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 1.3365439822161471,
+        "gasFeeUsd": 0.026443982216113104,
+        "outUsd": 998.6899,
+        "requestId": "91fcf4631c1b1485e67e4be0dd2c089c",
+        "route": "[v3] 25.00% = [0.05%] 0xc4f0172D6ac8DD294Dd1137D047d5E1893760236, [v4] 75.00% = [838.8608%] [10] [0xa4e6f5500e88691fdcb289aa0e99067481434880] 0x92186dd5cb043661fc7ea0a5d4a5d8b91395624929f278bfc2488e82861232ed",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1628911453246928,
+        "feeUsd": 1.163711100790107,
+        "outUsd": 998.8371088546753,
+        "quoteId": "8ef62031-0b93-48f7-b923-64a83d6084f4"
+      },
+      "observedAt": "2026-09-18T13:22:31.535Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1000,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 1.3053013108602494,
+        "gasFeeUsd": 0.026496358061171427,
+        "outUsd": 998.7211950472009,
+        "requestId": "9ebc4e2b9e26c4324f607151e8447f8d",
+        "route": "[v4] 10.00% = [838.8608%] [60] [0x64e9ae1066c47ac4a3cc0a5bd7b135908590e088] 0xff5e30e68690402ce94cd9466deab56ecc2014f8e2827c1a88fa6d77e9e90392, [v3] 90.00% = [0.05%] 0xc4f0172D6ac8DD294Dd1137D047d5E1893760236",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.163006999999197,
+        "feeUsd": 10.163007000000002,
+        "outUsd": 9989.836993,
+        "quoteId": "6c9b2f73-f911-488c-90f7-d45874fa999c"
+      },
+      "observedAt": "2026-09-18T13:22:34.615Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10000,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 18.17937324147177,
+        "gasFeeUsd": 0.048387241471647455,
+        "outUsd": 9981.869014,
+        "requestId": "ba4f6517e84adf56c1b839bccfa84a21",
+        "route": "[v4] 20.00% = [838.8608%] [10] [0xa4e6f5500e88691fdcb289aa0e99067481434880] 0x92186dd5cb043661fc7ea0a5d4a5d8b91395624929f278bfc2488e82861232ed, [v4] 25.00% = [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xa821b3724b451b22476c5347471b2a96d185b86af8760f226273e34ab4b2b8a0 -> [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd, [v4] 55.00% = [0.3%] [60] [0x0000000000000000000000000000000000000000] 0x8517f8071ae5b831b738052f12125e8e3d6c158b78728aa44ce3b25e5104d32e",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.164075492295524,
+        "feeUsd": 10.17141675475152,
+        "outUsd": 9989.835924507704,
+        "quoteId": "d94675b1-005b-4c12-847d-c59354a3a9d9"
+      },
+      "observedAt": "2026-09-18T13:22:37.463Z",
+      "referencePriceUsd": 367.95,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10000,
+      "symbol": "TSLA",
+      "uniswap": {
+        "allInCostUsd": 18.236403812464165,
+        "gasFeeUsd": 0.048670239021636134,
+        "outUsd": 9981.812266426557,
+        "requestId": "986b4720506bf760d047a3ed0b4f9e38",
+        "route": "[v4] 50.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xa821b3724b451b22476c5347471b2a96d185b86af8760f226273e34ab4b2b8a0, [v3] 10.00% = [0.05%] 0xc4f0172D6ac8DD294Dd1137D047d5E1893760236, [v4] 40.00% = [838.8608%] [10] [0x67d86050d22d574df046f3d90f722045f714e080] 0xd5effce87036cd858146c0c15fa825c231a9de1843200ca108e431e431331e8e",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16486870850634516,
+        "feeUsd": 0.1651917085063452,
+        "outUsd": 0.8351312914936548,
+        "quoteId": "05bd81ee-426c-463a-af22-f94ffde48d4f"
+      },
+      "observedAt": "2026-09-18T13:22:43.664Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 0.02222842931687076,
+        "gasFeeUsd": 0.021816429316870792,
+        "outUsd": 0.999588,
+        "requestId": "b98802af9d2d6ab2e24d9d0777ef4441",
+        "route": "[v4] 100.00% = [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741 -> [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1638124315228523,
+        "feeUsd": 0.165193,
+        "outUsd": 0.8361875684771477,
+        "quoteId": "0756dda1-7257-404f-932a-5ef3631cf044"
+      },
+      "observedAt": "2026-09-18T13:22:47.065Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 0.02366633522097745,
+        "gasFeeUsd": 0.021828578353095658,
+        "outUsd": 0.9981622431321182,
+        "requestId": "b024c31a1b82e72ddf9414a0bdd0e7e5",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.17043334354842798,
+        "feeUsd": 0.17418134354842868,
+        "outUsd": 9.829566656451572,
+        "quoteId": "cdc8bd52-ca60-4268-9c8d-0294cfc8515c"
+      },
+      "observedAt": "2026-09-18T13:22:49.873Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 0.03242333861010224,
+        "gasFeeUsd": 0.02182533861010236,
+        "outUsd": 9.989402,
+        "requestId": "0f0d140569f142b9136119c7ffc2575f",
+        "route": "[v4] 100.00% = [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741 -> [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1719594224518204,
+        "feeUsd": 0.17198127053726592,
+        "outUsd": 9.82804057754818,
+        "quoteId": "5b4f610d-41dc-410e-b790-3304b24875b8"
+      },
+      "observedAt": "2026-09-18T13:22:52.507Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 0.02857274523860928,
+        "gasFeeUsd": 0.013207442262207018,
+        "outUsd": 9.984634697023598,
+        "requestId": "5a9f681fa942757baac24f537f9e2185",
+        "route": "[v4] 100.00% = [0.09%] [9] [0x0000000000000000000000000000000000000000] 0xdd04fe28b7f5fcb07b492cfd434286ff1a54b12eaa69ff00a2807fa1f2adc6a8",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.2619799999999941,
+        "feeUsd": 0.26198,
+        "outUsd": 99.73802,
+        "quoteId": "df8ad628-15a1-44c0-bdfe-430cd08fd052"
+      },
+      "observedAt": "2026-09-18T13:22:55.185Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 100,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 0.09703955706602665,
+        "gasFeeUsd": 0.04573255706603244,
+        "outUsd": 99.948693,
+        "requestId": "08e5b307700edd42584460c90f5cb526",
+        "route": "[mixed] 100.00% = [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741 -> [0.1%] [10] [0x0000000000000000000000000000000000000000] 0x509c6c6826ef06e0e29f24f18d9389533c52358a3b385d99a67a2afbb07f23c6 -> [0%] [0] [0x0000000000000000000000000000000000000000] 0x22e7539f728d64d01deb95ec358f3dc3b8a495d0b75ceefe29c1b1e6bbb43d72 -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.26355918401134204,
+        "feeUsd": 0.26358950408566845,
+        "outUsd": 99.73644081598866,
+        "quoteId": "8ce4ee56-5290-4090-89d8-d0e614a6bb13"
+      },
+      "observedAt": "2026-09-18T13:22:58.977Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 100,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 0.14226125241153667,
+        "gasFeeUsd": 0.02200352447473377,
+        "outUsd": 99.8797422720632,
+        "requestId": "78cf47739c578e194ade16cf1c80978a",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1635830000001306,
+        "feeUsd": 1.1635829999999998,
+        "outUsd": 998.8364169999999,
+        "quoteId": "7969ccec-31d7-4f5c-b4b7-6bc8263b7d3c"
+      },
+      "observedAt": "2026-09-18T13:23:01.595Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1000,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 1.1589035394698217,
+        "gasFeeUsd": 0.046332539469819085,
+        "outUsd": 998.887429,
+        "requestId": "48c3eef3a0622f18305f27e118cebc19",
+        "route": "[mixed] 100.00% = [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741 -> [0.1%] [10] [0x0000000000000000000000000000000000000000] 0x509c6c6826ef06e0e29f24f18d9389533c52358a3b385d99a67a2afbb07f23c6 -> [0%] [0] [0x0000000000000000000000000000000000000000] 0x22e7539f728d64d01deb95ec358f3dc3b8a495d0b75ceefe29c1b1e6bbb43d72 -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1635579944619394,
+        "feeUsd": 1.1637145427230224,
+        "outUsd": 998.8364420055381,
+        "quoteId": "15ea04b9-4b60-4242-856a-0eea02b4f69d"
+      },
+      "observedAt": "2026-09-18T13:23:04.215Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1000,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 1.319484460207401,
+        "gasFeeUsd": 0.021920101092656335,
+        "outUsd": 998.7024356408853,
+        "requestId": "b40c18e109c1f200e03ce86fee400166",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.163575000000492,
+        "feeUsd": 10.163575,
+        "outUsd": 9989.836425,
+        "quoteId": "d479f3c4-59ae-495f-959f-3b2b0a04b2ce"
+      },
+      "observedAt": "2026-09-18T13:23:09.983Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10000,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 23.94637833249842,
+        "gasFeeUsd": 0.035138332498967584,
+        "outUsd": 9976.08876,
+        "requestId": "5d28fd7b2c2f8a8a416d811854c0ddaf",
+        "route": "[v4] 5.00% = [0.09%] [9] [0x0000000000000000000000000000000000000000] 0xdd04fe28b7f5fcb07b492cfd434286ff1a54b12eaa69ff00a2807fa1f2adc6a8, [v4] 95.00% = [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741 -> [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.162701362176449,
+        "feeUsd": 10.164240297319376,
+        "outUsd": 9989.837298637824,
+        "quoteId": "492fc100-4774-498a-ad46-cc4fc22e0242"
+      },
+      "observedAt": "2026-09-18T13:23:14.853Z",
+      "referencePriceUsd": 497.345295,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10000,
+      "symbol": "MSFT",
+      "uniswap": {
+        "allInCostUsd": 26.490489813888445,
+        "gasFeeUsd": 0.03500884277130334,
+        "outUsd": 9973.544519028883,
+        "requestId": "8c85b151d4a0fccd17496d3c53b5ad9d",
+        "route": "[v4] 5.00% = [0.09%] [9] [0x0000000000000000000000000000000000000000] 0xdd04fe28b7f5fcb07b492cfd434286ff1a54b12eaa69ff00a2807fa1f2adc6a8, [v4] 95.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16360599999999992,
+        "feeUsd": 0.163606,
+        "outUsd": 0.8363940000000001,
+        "quoteId": "3134f75f-d419-4fe2-9302-b98d32abf86d"
+      },
+      "observedAt": "2026-09-18T13:23:23.109Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1,
+      "symbol": "AMZN",
+      "uniswap": {
+        "allInCostUsd": 0.022318576379022684,
+        "gasFeeUsd": 0.022105576379022666,
+        "outUsd": 0.999787,
+        "requestId": "1ed482f9d16408e0955e4bc663a40ffa",
+        "route": "[v3] 100.00% = [0.3%] 0xB42fA18F04c59c4A2172F026464BB3e300e1Bd30 -> [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16361761257088148,
+        "feeUsd": 0.16361095933668698,
+        "outUsd": 0.8363823874291185,
+        "quoteId": "66be7732-bf8d-4b5a-adf2-ad11ed4326ce"
+      },
+      "observedAt": "2026-09-18T13:23:27.028Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1,
+      "symbol": "AMZN",
+      "uniswap": {
+        "allInCostUsd": 0.024242885229631025,
+        "gasFeeUsd": 0.022060219977116487,
+        "outUsd": 0.9978173347474855,
+        "requestId": "dff9790d7399038ed4e614cdfbe789ae",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0x68beff3b4270ffbbb78a48d7670648909b9de6736456b0f450fee242e1d10a8b",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16763962383841502,
+        "feeUsd": 0.17261862383841511,
+        "outUsd": 9.832360376161585,
+        "quoteId": "23579a8b-79ff-43b0-ba48-3ea60309dc19"
+      },
+      "observedAt": "2026-09-18T13:23:29.349Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10,
+      "symbol": "AMZN",
+      "uniswap": {
+        "allInCostUsd": 0.024316690812388065,
+        "gasFeeUsd": 0.022049690812388268,
+        "outUsd": 9.997733,
+        "requestId": "82ba20d4688e1e538ec78c9d99ba94e3",
+        "route": "[v3] 100.00% = [0.3%] 0xB42fA18F04c59c4A2172F026464BB3e300e1Bd30 -> [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.17950391774748553,
+        "feeUsd": 0.1795273027576476,
+        "outUsd": 9.820496082252514,
+        "quoteId": "e6f736a2-9949-405f-aeca-69fa074a6955"
+      },
+      "observedAt": "2026-09-18T13:23:32.915Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10,
+      "symbol": "AMZN",
+      "uniswap": {
+        "allInCostUsd": 0.041501810891231415,
+        "gasFeeUsd": 0.013035765881182515,
+        "outUsd": 9.971533954989951,
+        "requestId": "23f8b130fd85c290ff989132b3deb0ed",
+        "route": "[v4] 100.00% = [0.24%] [24] [0x0000000000000000000000000000000000000000] 0xefc94885c96b02696b9b45de43eeeb8ac53c0199cab42b4daae4911b96fb8825",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.22285252484853402,
+        "feeUsd": 0.2636395248485403,
+        "outUsd": 99.77714747515147,
+        "quoteId": "f9373097-a2ad-4d2c-8adc-a397582e35d0"
+      },
+      "observedAt": "2026-09-18T13:23:40.337Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 100,
+      "symbol": "AMZN",
+      "uniswap": {
+        "allInCostUsd": 0.059086943405711106,
+        "gasFeeUsd": 0.02189094340571665,
+        "outUsd": 99.962804,
+        "requestId": "6e1577fd6083392fa4161e56915db129",
+        "route": "[v3] 100.00% = [0.3%] 0xB42fA18F04c59c4A2172F026464BB3e300e1Bd30 -> [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.26360852368446785,
+        "feeUsd": 0.2636221808520405,
+        "outUsd": 99.73639147631553,
+        "quoteId": "266ddf18-1912-4376-8ba8-047f5da84b31"
+      },
+      "observedAt": "2026-09-18T13:23:43.070Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 100,
+      "symbol": "AMZN",
+      "uniswap": {
+        "allInCostUsd": 0.2410666778840939,
+        "gasFeeUsd": 0.02207803856357963,
+        "outUsd": 99.78101136067949,
+        "requestId": "c9dfb696f6ef96eb3426f152b8cb1a99",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0x68beff3b4270ffbbb78a48d7670648909b9de6736456b0f450fee242e1d10a8b",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.9855334532898041,
+        "feeUsd": 1.1625614532898336,
+        "outUsd": 999.0144665467102,
+        "quoteId": "87d9d483-bbb4-4c2e-bfd6-39c9a48d5b20"
+      },
+      "observedAt": "2026-09-18T13:23:48.942Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1000,
+      "symbol": "AMZN",
+      "uniswap": {
+        "allInCostUsd": 0.2781291326008832,
+        "gasFeeUsd": 0.026439132600829925,
+        "outUsd": 999.74831,
+        "requestId": "2c8351ee58ad27dd2fa599f2c479fc61",
+        "route": "[mixed] 100.00% = [0.05%] [5] [0x0000000000000000000000000000000000000000] 0x68beff3b4270ffbbb78a48d7670648909b9de6736456b0f450fee242e1d10a8b -> [0.05%] 0xa7Bb1AC63BBaB0C44316E6c8C455213441689167",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.161866726426524,
+        "feeUsd": 1.1625649485441207,
+        "outUsd": 998.8381332735735,
+        "quoteId": "0e4829f2-c449-464c-9e84-db71db280e3f"
+      },
+      "observedAt": "2026-09-18T13:23:52.237Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1000,
+      "symbol": "AMZN",
+      "uniswap": {
+        "allInCostUsd": 2.277500270418159,
+        "gasFeeUsd": 0.021971936980549108,
+        "outUsd": 997.7444716665624,
+        "requestId": "2c09abe8156431abf4668b012414738f",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0x68beff3b4270ffbbb78a48d7670648909b9de6736456b0f450fee242e1d10a8b",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.162000000000262,
+        "feeUsd": 10.162,
+        "outUsd": 9989.838,
+        "quoteId": "4fc0ffe1-51f6-46ba-8bb8-c3ba1647f53c"
+      },
+      "observedAt": "2026-09-18T13:23:55.404Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10000,
+      "symbol": "AMZN",
+      "uniswap": {
+        "error": "Uniswap 404 UpstreamTimeoutError: A routing dependency timed out or failed; the request may succeed on retry."
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.1635401132462,
+        "feeUsd": 10.173041578277942,
+        "outUsd": 9989.836459886754,
+        "quoteId": "d47d421b-cd85-4ec1-8a95-56678e13e736"
+      },
+      "observedAt": "2026-09-18T13:24:11.063Z",
+      "referencePriceUsd": 251.79,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10000,
+      "symbol": "AMZN",
+      "uniswap": {
+        "allInCostUsd": 30.323307174942386,
+        "gasFeeUsd": 0.021987325759767275,
+        "outUsd": 9969.698680150817,
+        "requestId": "a2a9fbbfb0f3ffaebba0992b034185bd",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0xa0e8fbff13e24af2b5e61a72800e08a161bde080] 0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0x68beff3b4270ffbbb78a48d7670648909b9de6736456b0f450fee242e1d10a8b",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16468600000000022,
+        "feeUsd": 0.164686,
+        "outUsd": 0.8353139999999998,
+        "quoteId": "32f7298e-7b90-4e00-93d9-aafcff9652a5"
+      },
+      "observedAt": "2026-09-18T13:24:16.874Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": 0.013466164342315278,
+        "gasFeeUsd": 0.013055164342315228,
+        "outUsd": 0.999589,
+        "requestId": "0488cf0aeb81704606c0fd86b1437fb0",
+        "route": "[v3] 100.00% = [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1617903379065463,
+        "feeUsd": 0.162934,
+        "outUsd": 0.8382096620934537,
+        "quoteId": "e77d4dcc-3fdd-4823-b171-4ed312316618"
+      },
+      "observedAt": "2026-09-18T13:24:22.500Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": 0.013689984736714903,
+        "gasFeeUsd": 0.013100265764448785,
+        "outUsd": 0.9994102810277339,
+        "requestId": "c42ef9d44fdaf5fb2042ccf856aaa93c",
+        "route": "[v3] 100.00% = [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1719400000000011,
+        "feeUsd": 0.17194,
+        "outUsd": 9.828059999999999,
+        "quoteId": "2db1b9e8-1ebc-4e72-8bcb-69d2d0cfa1f9"
+      },
+      "observedAt": "2026-09-18T13:24:25.744Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": 0.017141795958125296,
+        "gasFeeUsd": 0.01303479595812588,
+        "outUsd": 9.995893,
+        "requestId": "43528c49565f039ac4d864c4ae5acacc",
+        "route": "[v3] 100.00% = [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1640336236525286,
+        "feeUsd": 0.17335,
+        "outUsd": 9.835966376347471,
+        "quoteId": "359ef436-c44d-4c02-80b8-19dd1a7ef500"
+      },
+      "observedAt": "2026-09-18T13:24:30.025Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": 0.01896155631173542,
+        "gasFeeUsd": 0.01306146884218336,
+        "outUsd": 9.994099912530448,
+        "requestId": "9974f2230b25a05f0b4684a729dd5c9d",
+        "route": "[v3] 100.00% = [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1272955938005822,
+        "feeUsd": 0.263368593800588,
+        "outUsd": 99.87270440619942,
+        "quoteId": "af697dfd-221c-4d8a-b871-fcb6f932aa11"
+      },
+      "observedAt": "2026-09-18T13:24:32.671Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 100,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": -0.103296700122519,
+        "gasFeeUsd": 0.032776299877477114,
+        "outUsd": 100.136073,
+        "requestId": "a0e43bcb1a65810d20484d3b518ab7bd",
+        "route": "[v4] 100.00% = [0.05%] [5] [0x0000000000000000000000000000000000000000] 0x2bca43d9d8c75399e3c6ba14e9dc88f44ca8968bb4694a8be4f80bd5a550df2e -> [0%] [1] [0x713ba5362ebab99c08297ac02358786d975b28c0] 0xd5a1269597ebc9b9d149e9d5954e456ec58dba822bb540858b8e4698c83511e1 -> [0%] [1] [0x3997fd6f9200baab88c9abb78af833bd476a68c0] 0x38c102765f425cbf0ba580f8b23309cc2461c83d296d19c9dc53961c5bb98b91",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.1798875928231496,
+        "feeUsd": 0.263356,
+        "outUsd": 99.82011240717685,
+        "quoteId": "6ae93a8d-e41e-49c3-8b24-337dc8a8fbab"
+      },
+      "observedAt": "2026-09-18T13:24:35.367Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 100,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": 0.07238848941709783,
+        "gasFeeUsd": 0.013097840956807195,
+        "outUsd": 99.94070935153971,
+        "requestId": "d6070eadb33d13e8f041b46fcb612537",
+        "route": "[v3] 100.00% = [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1633540000000266,
+        "feeUsd": 1.163354,
+        "outUsd": 998.836646,
+        "quoteId": "c7f24a8e-5c9f-47df-a3d9-13ed8b1217bb"
+      },
+      "observedAt": "2026-09-18T13:24:38.045Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1000,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": 0.14459259618350379,
+        "gasFeeUsd": 0.045554596183553335,
+        "outUsd": 999.900962,
+        "requestId": "e038cb65dd794fed04c3c0d15aba2105",
+        "route": "[v4] 20.00% = [0.05%] [5] [0x0000000000000000000000000000000000000000] 0x2bca43d9d8c75399e3c6ba14e9dc88f44ca8968bb4694a8be4f80bd5a550df2e -> [0%] [1] [0x713ba5362ebab99c08297ac02358786d975b28c0] 0xd5a1269597ebc9b9d149e9d5954e456ec58dba822bb540858b8e4698c83511e1 -> [0%] [1] [0x3997fd6f9200baab88c9abb78af833bd476a68c0] 0x38c102765f425cbf0ba580f8b23309cc2461c83d296d19c9dc53961c5bb98b91, [v3] 80.00% = [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.163287838416636,
+        "feeUsd": 1.1635240866696388,
+        "outUsd": 998.8367121615834,
+        "quoteId": "670b91e8-5dab-40e8-a8cb-5fa6d6172d5f"
+      },
+      "observedAt": "2026-09-18T13:24:41.731Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1000,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": 0.6352091947417258,
+        "gasFeeUsd": 0.013326257836644881,
+        "outUsd": 999.3781170630949,
+        "requestId": "9b1a44fc0b5347ea71073c43409eab17",
+        "route": "[v3] 100.00% = [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.162405000000945,
+        "feeUsd": 10.162405,
+        "outUsd": 9989.837594999999,
+        "quoteId": "45a73a6d-7fac-4a6c-8327-6f82c228cbd7"
+      },
+      "observedAt": "2026-09-18T13:24:44.668Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10000,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": 7.33575900626345,
+        "gasFeeUsd": 0.013157006263261968,
+        "outUsd": 9992.677398,
+        "requestId": "68d46704504f42ae64cd9f9792c6462d",
+        "route": "[v3] 100.00% = [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.162376476348072,
+        "feeUsd": 10.163911295800649,
+        "outUsd": 9989.837623523652,
+        "quoteId": "40bd3398-8d0b-407b-bef3-69c5428c1a62"
+      },
+      "observedAt": "2026-09-18T13:24:48.390Z",
+      "referencePriceUsd": 355.999023,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10000,
+      "symbol": "GOOGL",
+      "uniswap": {
+        "allInCostUsd": 9.856270522500246,
+        "gasFeeUsd": 0.017237672546663342,
+        "outUsd": 9990.160967150046,
+        "requestId": "3dfa30827fe271659c8ba9c1425fb287",
+        "route": "[v3] 100.00% = [0.05%] 0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.15971281806741666,
+        "feeUsd": 0.16340281806741666,
+        "outUsd": 0.8402871819325833,
+        "quoteId": "00a1d95e-81a9-477b-8869-99e7928a2813"
+      },
+      "observedAt": "2026-09-18T13:24:55.454Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": 0.012378626687769166,
+        "gasFeeUsd": 0.013088626687769155,
+        "outUsd": 1.00071,
+        "requestId": "5c1d0b9fae49ddef37f2b47ae21df719",
+        "route": "[v4] 100.00% = [838.8608%] [10] [0x8af95932ec4484fb10c641a4cbcf19a798cb2080] 0x4ac4259eb99dce57268a856719d087fa1a53569b2fed6f330aabe32d9a4aa4f5",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16397674448360455,
+        "feeUsd": 0.16438750499246188,
+        "outUsd": 0.8360232555163954,
+        "quoteId": "2e535ed3-a120-416f-8bc8-b3b795a3f838"
+      },
+      "observedAt": "2026-09-18T13:24:59.190Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": 0.01391099390303682,
+        "gasFeeUsd": 0.013609960330710795,
+        "outUsd": 0.999698966427674,
+        "requestId": "9c44e8fc3440eb2a146d6e4caff196e2",
+        "route": "[v4] 100.00% = [0.06%] [6] [0x0000000000000000000000000000000000000000] 0xb85fa44cbde163fbaa51b861b0fb997d8b2783bd914aba9e0038ffa8df735e09",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.15415099453080394,
+        "feeUsd": 0.17341999453080464,
+        "outUsd": 9.845849005469196,
+        "quoteId": "b372860e-711f-4fc8-8da6-3cf4c4a2e4b7"
+      },
+      "observedAt": "2026-09-18T13:25:05.284Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": 0.010815272991849458,
+        "gasFeeUsd": 0.013261272991850294,
+        "outUsd": 10.002446,
+        "requestId": "4cf4839d0e2c75de46e9a65b84b5803b",
+        "route": "[v4] 100.00% = [0.052%] [5] [0x0000000000000000000000000000000000000000] 0xa0d0bf9947aed50801f5202e714ad04463ba8b5ab409712372af3e6bd66d1fa0",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.16773567412626988,
+        "feeUsd": 0.173393,
+        "outUsd": 9.83226432587373,
+        "quoteId": "3ffb8839-3228-4c7e-9927-f52ec10d1a3f"
+      },
+      "observedAt": "2026-09-18T13:25:08.098Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": 0.016619248358418534,
+        "gasFeeUsd": 0.013055164342315228,
+        "outUsd": 9.996435915983897,
+        "requestId": "415ad33e0bdd172822fbfef48dc21546",
+        "route": "[v4] 100.00% = [0.06%] [6] [0x0000000000000000000000000000000000000000] 0xb85fa44cbde163fbaa51b861b0fb997d8b2783bd914aba9e0038ffa8df735e09",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.18694251144934526,
+        "feeUsd": 0.2618265114493421,
+        "outUsd": 99.81305748855065,
+        "quoteId": "fe2f2f26-bbb6-4a28-80d0-19ba268fc5c8"
+      },
+      "observedAt": "2026-09-18T13:25:11.238Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 100,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": -0.010253475201301095,
+        "gasFeeUsd": 0.013301524798700674,
+        "outUsd": 100.023555,
+        "requestId": "2a6f809912d009a8c1d9c5b4f08538f7",
+        "route": "[v4] 100.00% = [0.052%] [5] [0x0000000000000000000000000000000000000000] 0xa0d0bf9947aed50801f5202e714ad04463ba8b5ab409712372af3e6bd66d1fa0",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 0.2611462581038353,
+        "feeUsd": 0.2618686070409577,
+        "outUsd": 99.73885374189616,
+        "quoteId": "02e6ac49-7e27-4289-a719-79870a98c541"
+      },
+      "observedAt": "2026-09-18T13:25:14.073Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 100,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": 0.10430339056863401,
+        "gasFeeUsd": 0.013239449723075994,
+        "outUsd": 99.90893605915444,
+        "requestId": "aaf54ef27574a4a9142423e2201bab3c",
+        "route": "[v4] 100.00% = [0.06%] [6] [0x0000000000000000000000000000000000000000] 0xb85fa44cbde163fbaa51b861b0fb997d8b2783bd914aba9e0038ffa8df735e09",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1615790000000743,
+        "feeUsd": 1.161579,
+        "outUsd": 998.8384209999999,
+        "quoteId": "55dae336-7781-4f43-80b7-70d7efc0c151"
+      },
+      "observedAt": "2026-09-18T13:25:17.329Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 1000,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": 0.4398169671322747,
+        "gasFeeUsd": 0.021843967132313825,
+        "outUsd": 999.582027,
+        "requestId": "c9f344ef8af52d3627179c4111eebf6b",
+        "route": "[v3] 100.00% = [0.3%] 0xa4BdB396a69617eb7F70E2cc1EF526f7340b1B0d -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 1.1612970219199497,
+        "feeUsd": 1.1644719505388894,
+        "outUsd": 998.83870297808,
+        "quoteId": "1930e464-78f8-4ce7-8627-3f7cdd6dcf41"
+      },
+      "observedAt": "2026-09-18T13:25:20.545Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 1000,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": 6.509616339635576,
+        "gasFeeUsd": 0.013205987377622064,
+        "outUsd": 993.503589647742,
+        "requestId": "a0960bba4720e6e096a9ac43d7bef6de",
+        "route": "[v4] 100.00% = [0.06%] [6] [0x0000000000000000000000000000000000000000] 0xb85fa44cbde163fbaa51b861b0fb997d8b2783bd914aba9e0038ffa8df735e09",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.161724999999933,
+        "feeUsd": 10.161724999999999,
+        "outUsd": 9989.838275,
+        "quoteId": "93b42190-a2fa-4a87-8ee6-75d1e9325ac8"
+      },
+      "observedAt": "2026-09-18T13:25:23.302Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "SELL",
+      "sizeUsd": 10000,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": 9.292142987831209,
+        "gasFeeUsd": 0.039230987831285515,
+        "outUsd": 9990.747088,
+        "requestId": "da07c12dbf5077b5861ad2c4e2178211",
+        "route": "[v4] 10.00% = [0.031%] [3] [0x0000000000000000000000000000000000000000] 0xc58bb68060bcb7b3ea0f6d4a4afef1e57f628722e808db12afb6d1733552872f, [v3] 90.00% = [0.3%] 0xa4BdB396a69617eb7F70E2cc1EF526f7340b1B0d -> [0.01%] 0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+        "routing": "CLASSIC"
+      }
+    },
+    {
+      "flash": {
+        "allInCostUsd": 10.16128951328028,
+        "feeUsd": 10.188347310197887,
+        "outUsd": 9989.83871048672,
+        "quoteId": "0c1436da-ca11-4336-9300-94e721ba410a"
+      },
+      "observedAt": "2026-09-18T13:25:26.061Z",
+      "referencePriceUsd": 686.7,
+      "referenceSource": "ROBINHOOD_REST_NORMALIZED",
+      "side": "BUY",
+      "sizeUsd": 10000,
+      "symbol": "META",
+      "uniswap": {
+        "allInCostUsd": 15.335335368972647,
+        "gasFeeUsd": 0.052835588587167893,
+        "outUsd": 9984.717500219615,
+        "requestId": "bd35c1a91196fb81b3b835c7a3d9a560",
+        "route": "[v4] 10.00% = [0.031%] [3] [0x0000000000000000000000000000000000000000] 0xc58bb68060bcb7b3ea0f6d4a4afef1e57f628722e808db12afb6d1733552872f, [mixed] 5.00% = [0.05%] 0xa7Bb1AC63BBaB0C44316E6c8C455213441689167 -> [0.05%] [5] [0x0000000000000000000000000000000000000000] 0xe6b713cf680868a40aafca45810b0c894eb5c696f5a2230d4816e6695e90e681, [v4] 85.00% = [0.052%] [5] [0x0000000000000000000000000000000000000000] 0xa0d0bf9947aed50801f5202e714ad04463ba8b5ab409712372af3e6bd66d1fa0",
+        "routing": "CLASSIC"
+      }
+    }
+  ],
+  "quoter": "0x71509D21A26F47F83B36A835bB4619Df8F512718"
+}
