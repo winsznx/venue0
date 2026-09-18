@@ -1,0 +1,89 @@
+[
+  {
+    "chainlink": {
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "chainId": 4663,
+      "multiplierE18": "1000775159164630595",
+      "priceUsdE18": "220590860580000000000",
+      "source": "CHAINLINK_STOCK_TOKEN_FEED",
+      "sourceBlock": "66209124",
+      "sourceTimestamp": 1789729253,
+      "stale": false,
+      "tokenAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    "divergenceBps": "31",
+    "feedAgeSec": 3688,
+    "feedDescription": "RHNVDA / USD",
+    "rest": {
+      "ask": "219.84",
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "bid": "219.65",
+      "chainId": 4663,
+      "multiplierE18": "1000775159164630595",
+      "priceUsdE18": "219915337350631750098",
+      "rawUnderlyingPrice": "219745000000000000000",
+      "source": "ROBINHOOD_REST_NORMALIZED",
+      "sourceTimestamp": 1789732940,
+      "stale": false,
+      "tokenAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    }
+  },
+  {
+    "chainlink": {
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "chainId": 4663,
+      "multiplierE18": "1000566080061092436",
+      "priceUsdE18": "337025275350000000000",
+      "source": "CHAINLINK_STOCK_TOKEN_FEED",
+      "sourceBlock": "66209124",
+      "sourceTimestamp": 1789729223,
+      "stale": false,
+      "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    "divergenceBps": "15",
+    "feedAgeSec": 3718,
+    "feedDescription": "Robinhood AAPL / USD",
+    "rest": {
+      "ask": "337.35",
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "bid": "337.28",
+      "chainId": 4663,
+      "multiplierE18": "1000566080061092436",
+      "priceUsdE18": "337505947295807395049",
+      "rawUnderlyingPrice": "337315000000000000000",
+      "source": "ROBINHOOD_REST_NORMALIZED",
+      "sourceTimestamp": 1789732941,
+      "stale": false,
+      "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    }
+  },
+  {
+    "chainlink": {
+      "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+      "chainId": 4663,
+      "multiplierE18": "1001717991187472003",
+      "priceUsdE18": "762858450000000000000",
+      "source": "CHAINLINK_STOCK_TOKEN_FEED",
+      "sourceBlock": "66209124",
+      "sourceTimestamp": 1789647703,
+      "stale": false,
+      "tokenAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    "divergenceBps": "4",
+    "feedAgeSec": 85238,
+    "feedDescription": "RHSPY / USD",
+    "rest": {
+      "ask": "761.32",
+      "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+      "bid": "761.24",
+      "chainId": 4663,
+      "multiplierE18": "1001717991187472003",
+      "priceUsdE18": "762587872331198686443",
+      "rawUnderlyingPrice": "761280000000000000000",
+      "source": "ROBINHOOD_REST_NORMALIZED",
+      "sourceTimestamp": 1789732940,
+      "stale": false,
+      "tokenAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    }
+  }
+]

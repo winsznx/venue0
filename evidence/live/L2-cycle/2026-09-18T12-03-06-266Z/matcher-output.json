@@ -1,0 +1,191 @@
+{
+  "cycles": [
+    [
+      {
+        "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+        "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+        "lots": "198",
+        "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D"
+      },
+      {
+        "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+        "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+        "lots": "198",
+        "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718"
+      },
+      {
+        "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+        "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+        "lots": "198",
+        "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae"
+      }
+    ]
+  ],
+  "fills": [
+    {
+      "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+      "crossedRaw": "2595501170630016",
+      "crossedValueUsdE18": "1979999999999999529",
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "requestedRaw": "2604279462121095",
+      "requestedValueUsdE18": "1986696593840532244",
+      "residualClass": "DUST",
+      "residualRaw": "8778291491079",
+      "residualValueUsdE18": "6696593840532714",
+      "side": "BUY",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    {
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "crossedRaw": "5874930294007695",
+      "crossedValueUsdE18": "1979999999999999862",
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "requestedRaw": "5894800002098812",
+      "requestedValueUsdE18": "1986696593840532692",
+      "residualClass": "DUST",
+      "residualRaw": "19869708091117",
+      "residualValueUsdE18": "6696593840532829",
+      "side": "SELL",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+      "crossedRaw": "2595501170630016",
+      "crossedValueUsdE18": "1979999999999999529",
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "requestedRaw": "2603765194897950",
+      "requestedValueUsdE18": "1986304280743798045",
+      "residualClass": "DUST",
+      "residualRaw": "8264024267934",
+      "residualValueUsdE18": "6304280743798515",
+      "side": "SELL",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    {
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "crossedRaw": "8975893175238457",
+      "crossedValueUsdE18": "1979999999999999976",
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "requestedRaw": "9004472241149088",
+      "requestedValueUsdE18": "1986304280743798610",
+      "residualClass": "DUST",
+      "residualRaw": "28579065910631",
+      "residualValueUsdE18": "6304280743798633",
+      "side": "BUY",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "crossedRaw": "8975893175238457",
+      "crossedValueUsdE18": "1979999999999999976",
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "requestedRaw": "9026755092028482",
+      "requestedValueUsdE18": "1991219673995459942",
+      "residualClass": "DUST",
+      "residualRaw": "50861916790025",
+      "residualValueUsdE18": "11219673995459965",
+      "side": "SELL",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "crossedRaw": "5874930294007695",
+      "crossedValueUsdE18": "1979999999999999862",
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "requestedRaw": "5908220598373765",
+      "requestedValueUsdE18": "1991219673995459911",
+      "residualClass": "DUST",
+      "residualRaw": "33290304366070",
+      "residualValueUsdE18": "11219673995460048",
+      "side": "BUY",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    }
+  ],
+  "inputHash": "0x6bfd756a0e5a7432175e7c5ac588d1dad037edcb4b21a13603556f8ebb7625cd",
+  "legs": [
+    {
+      "amountRaw": "2595501170630016",
+      "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+      "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "lots": "198",
+      "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "valueUsdE18": "1979999999999999529"
+    },
+    {
+      "amountRaw": "8975893175238457",
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "lots": "198",
+      "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "valueUsdE18": "1979999999999999976"
+    },
+    {
+      "amountRaw": "5874930294007695",
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "lots": "198",
+      "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "valueUsdE18": "1979999999999999862"
+    }
+  ],
+  "lotUsdE18": "10000000000000000",
+  "nowSec": 1789733001,
+  "outputHash": "0xf296be895f874447c1f76fe48aefda1194911bad07c2707a38e5e6cb901d7d35",
+  "participants": [
+    {
+      "crossRateBps": "9966",
+      "crossedNotionalUsdE18": "3959999999999999391",
+      "imbalanceUsdE18": "-333",
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "reasons": [],
+      "requestedNotionalUsdE18": "3973393187681064936",
+      "status": "CROSSED",
+      "valueInUsdE18": "1979999999999999529",
+      "valueOutUsdE18": "1979999999999999862"
+    },
+    {
+      "crossRateBps": "9968",
+      "crossedNotionalUsdE18": "3959999999999999505",
+      "imbalanceUsdE18": "447",
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "reasons": [],
+      "requestedNotionalUsdE18": "3972608561487596655",
+      "status": "CROSSED",
+      "valueInUsdE18": "1979999999999999976",
+      "valueOutUsdE18": "1979999999999999529"
+    },
+    {
+      "crossRateBps": "9943",
+      "crossedNotionalUsdE18": "3959999999999999838",
+      "imbalanceUsdE18": "-114",
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "reasons": [],
+      "requestedNotionalUsdE18": "3982439347990919853",
+      "status": "CROSSED",
+      "valueInUsdE18": "1979999999999999862",
+      "valueOutUsdE18": "1979999999999999976"
+    }
+  ],
+  "residualDustUsdE18": "100000000000000000",
+  "roundId": "0xd75c972ff371556a2a63cfcd6dc89737864e7a23230a9130f923c7f12764980f",
+  "solveMs": 2,
+  "solverVersion": "venue0-mmcc-1",
+  "status": "CROSSED",
+  "statusReasons": [],
+  "totals": {
+    "crossRateBps": "9959",
+    "crossedNotionalUsdE18": "11879999999999998734",
+    "crossingParticipantCount": 3,
+    "dustResidualNotionalUsdE18": "48441097159582704",
+    "externalResidualCount": 0,
+    "legCount": 3,
+    "participantCount": 3,
+    "requestedNotionalUsdE18": "11928441097159581444",
+    "residualNotionalUsdE18": "48441097159582704",
+    "transferNotionalUsdE18": "5939999999999999367"
+  },
+  "valuationSnapshotHash": "0x275b1d98ad471bd3fd8515b579389d6bd1d356b54e0fe53dfff9d3a130c8118a"
+}

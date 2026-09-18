@@ -1,0 +1,210 @@
+{
+  "assets": [
+    {
+      "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+      "onchain": {
+        "blockNumber": "66209123",
+        "checkedAt": "2026-09-18T12:02:18.128Z",
+        "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "NVDA",
+          "tokenPaused": false,
+          "uiMultiplier": "1000775159164630595",
+          "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+        },
+        "ok": true,
+        "symbol": "NVDA",
+        "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+      },
+      "token": {
+        "chainId": 4663,
+        "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "currentMultiplier": "1.000775159164630595",
+        "currentMultiplierE18": "1000775159164630595",
+        "decimals": 18,
+        "isin": "US67066G1040",
+        "name": "NVIDIA • Robinhood Token",
+        "resolvedAt": "2026-09-18T12:02:14.282Z",
+        "status": "ASSET_STATUS_ACTIVE",
+        "symbol": "NVDA",
+        "tradingCapabilities": {
+          "raw": {
+            "extended": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            },
+            "market": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            },
+            "overnight": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            }
+          },
+          "sessions": {
+            "extended": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            },
+            "market": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            },
+            "overnight": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            }
+          },
+          "shape": "SESSION_MAP"
+        },
+        "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+      }
+    },
+    {
+      "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+      "onchain": {
+        "blockNumber": "66209123",
+        "checkedAt": "2026-09-18T12:02:20.728Z",
+        "contractAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "AAPL",
+          "tokenPaused": false,
+          "uiMultiplier": "1000566080061092436",
+          "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649"
+        },
+        "ok": true,
+        "symbol": "AAPL",
+        "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649"
+      },
+      "token": {
+        "chainId": 4663,
+        "contractAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+        "currentMultiplier": "1.000566080061092436",
+        "currentMultiplierE18": "1000566080061092436",
+        "decimals": 18,
+        "isin": "US0378331005",
+        "name": "Apple • Robinhood Token",
+        "resolvedAt": "2026-09-18T12:02:14.282Z",
+        "status": "ASSET_STATUS_ACTIVE",
+        "symbol": "AAPL",
+        "tradingCapabilities": {
+          "raw": {
+            "extended": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            },
+            "market": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            },
+            "overnight": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            }
+          },
+          "sessions": {
+            "extended": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            },
+            "market": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            },
+            "overnight": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            }
+          },
+          "shape": "SESSION_MAP"
+        },
+        "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649"
+      }
+    },
+    {
+      "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+      "onchain": {
+        "blockNumber": "66209123",
+        "checkedAt": "2026-09-18T12:02:21.696Z",
+        "contractAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "SPY",
+          "tokenPaused": false,
+          "uiMultiplier": "1001717991187472003",
+          "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1"
+        },
+        "ok": true,
+        "symbol": "SPY",
+        "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1"
+      },
+      "token": {
+        "chainId": 4663,
+        "contractAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+        "currentMultiplier": "1.001717991187472003",
+        "currentMultiplierE18": "1001717991187472003",
+        "decimals": 18,
+        "isin": "US78462F1030",
+        "name": "SPDR S&P 500 ETF Trust • Robinhood Token",
+        "resolvedAt": "2026-09-18T12:02:14.282Z",
+        "status": "ASSET_STATUS_ACTIVE",
+        "symbol": "SPY",
+        "tradingCapabilities": {
+          "raw": {
+            "extended": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            },
+            "market": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            },
+            "overnight": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            }
+          },
+          "sessions": {
+            "extended": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            },
+            "market": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            },
+            "overnight": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            }
+          },
+          "shape": "SESSION_MAP"
+        },
+        "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1"
+      }
+    }
+  ],
+  "registrySize": 194,
+  "resolvedAt": "2026-09-18T12:02:14.282Z"
+}

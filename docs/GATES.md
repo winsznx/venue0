@@ -2,16 +2,16 @@
 
 Status values: NOT_STARTED, IN_PROGRESS, REHEARSED_ON_FORK, PASS, FAIL, BLOCKED_ON_CREDENTIAL_OR_FUNDS. REHEARSED_ON_FORK means the exact live script passed against an anvil fork of Robinhood Chain mainnet; it is not a live proof. PASS requires an independently verified postcondition, never a broadcast or HTTP 200.
 
-Current product state: THESIS LOCKED. Moves to MECHANISM LOCKED only after G2, G3 and G4 pass.
+Current product state: **MECHANISM LOCKED** (G2, G3, G4 passed live on Robinhood Chain mainnet, 2026-09-18).
 
 | Gate | Description | Status | Evidence | Updated |
 |---|---|---|---|---|
 | P0 | Reality verification: RPC, live assets API, canonical resolver, onchain metadata, demo assets | PASS | `evidence/research/robinhood-assets-current.json` | 2026-09-17 |
-| G0 | Live Stock Token transfer A -> B | BLOCKED_ON_CREDENTIAL_OR_FUNDS (REHEARSED_ON_FORK) | rehearsal: `evidence/rehearsal/fork/L0-transfer/` | 2026-09-17 |
-| G1 | Two-wallet atomic exchange | BLOCKED_ON_CREDENTIAL_OR_FUNDS (REHEARSED_ON_FORK) | rehearsal: `evidence/rehearsal/fork/L1-bilateral/` | 2026-09-17 |
-| G2 | 3 wallets / 3 assets / non-trivial cycle (hero) | BLOCKED_ON_CREDENTIAL_OR_FUNDS (REHEARSED_ON_FORK) | rehearsal: `evidence/rehearsal/fork/L2-cycle/` | 2026-09-17 |
-| G3 | Partial overlap with exact residual | BLOCKED_ON_CREDENTIAL_OR_FUNDS (REHEARSED_ON_FORK) | rehearsal: `evidence/rehearsal/fork/L3-partial/` | 2026-09-17 |
-| G4 | Zero overlap, NO_CROSS | BLOCKED_ON_CREDENTIAL_OR_FUNDS (REHEARSED_ON_FORK) | rehearsal: `evidence/rehearsal/fork/L4-no-cross/` | 2026-09-17 |
+| G0 | Live Stock Token transfer A -> B | PASS | `evidence/live/L0-transfer/` | 2026-09-18 |
+| G1 | Two-wallet atomic exchange | PASS | `evidence/live/L1-bilateral/` | 2026-09-18 |
+| G2 | 3 wallets / 3 assets / non-trivial cycle (hero) | PASS | `evidence/live/L2-cycle/` | 2026-09-18 |
+| G3 | Partial overlap with exact residual | PASS | `evidence/live/L3-partial/` | 2026-09-18 |
+| G4 | Zero overlap, NO_CROSS | PASS | `evidence/live/L4-no-cross/` | 2026-09-18 |
 
 ## Log
 
@@ -40,3 +40,19 @@ The verifier passed every check on L1-L3 (12 checks for 2 participants, 13 for 3
 Blocked on: funded live wallets and gas (see `KEYS_NEEDED.md`). No live gate is marked PASS.
 
 Two defects found and fixed during rehearsal: EIP-7702 delegated signers were rejected (D-008), and cent-lot rounding dust inflated external order counts (D-009).
+
+### 2026-09-18 G0-G4 PASS live on Robinhood Chain mainnet
+
+`Venue0Settlement` deployed at `0x9cf871315674830046ab0541ee018f6978e86a3d` (deploy tx `0x071ee0c035695bcfdfad52ce9e7f11fec5b19a97e6ca80d06e74323ce8d71947`). Wallets A `0x71509D21A26F47F83B36A835bB4619Df8F512718`, B `0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D`, C `0x69a0ba2cB75cE834fFbaa258eA2342f862903cae`, each funded with about $4 of one Stock Token. Verifier read through the same public RPC as the executor (no `VERIFIER_RPC_URL` set), at the receipt block and block - 1.
+
+| Gate | Status | Requested | Crossed | Residual | Legs | Market-only orders | Venue0 orders | Tx |
+|---|---|---|---|---|---|---|---|---|
+| G0 transfer 0.001 NVDA A->B | PASS | | | | | | | [0xb3ea...74f8](https://robinhoodchain.blockscout.com/tx/0xb3eaab11773e0341ceea4a10854740d9a1cfc5e575f3e72140968232fa2074f8) |
+| G2 3-wallet cycle | PASS, CROSSED | $11.93 | $11.88 | $0.05 (all dust) | 3 | 6 | 0 | [0xfdd1...3035](https://robinhoodchain.blockscout.com/tx/0xfdd14b8e7c4c4a2aedd567a51a15492159c0d0e67ae7ef94028f7c7aff863035) |
+| G1 bilateral | PASS, PARTIAL_CROSS | $3.78 | $3.56 | $0.22 | 2 | 4 | 2 | [0xd125...4a94](https://robinhoodchain.blockscout.com/tx/0xd125f8668883ae888a6f0507a09d665e49f77a202b1dc2dbf7e9936fc2764a94) |
+| G3 partial | PASS, PARTIAL_CROSS | $2.45 | $1.32 | $1.13 | 2 | 4 | 2 | [0x9d4d...aced](https://robinhoodchain.blockscout.com/tx/0x9d4d14d2eee13e542cbbf58e8feab98755035f9280585878f2213984e23faced) |
+| G4 zero overlap | PASS, NO_CROSS | $2.54 | $0.00 | $2.54 | 0 | 4 | 4 | no tx |
+
+G2 settled in one tx (343,258 gas, block 66210265): A.NVDA -> C, C.SPY -> B, B.AAPL -> A, discovered by the matcher from portfolio targets. All 13 verifier checks PASS. G1 ran after G2 on unequal leftover balances, so it crossed partially; the gate (atomic bilateral exchange) is met.
+
+Limitation: verifier and executor shared the public RPC endpoint. Rerun verification through an independent provider when `VERIFIER_RPC_URL` is available.

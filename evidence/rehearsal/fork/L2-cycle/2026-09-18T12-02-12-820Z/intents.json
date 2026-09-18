@@ -1,0 +1,126 @@
+{
+  "intents": [
+    {
+      "agent": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "assets": [
+        {
+          "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+          "maxInRaw": "0",
+          "maxOutRaw": "9066558762867127",
+          "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+        },
+        {
+          "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+          "maxInRaw": "5934273024250197",
+          "maxOutRaw": "0",
+          "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+        }
+      ],
+      "circleId": "0x2818fc3783486ef94c3237bbdec55f0d09a00bc5aefbf7aca7c4d63db0ed5898",
+      "nonce": "1789732941",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "policy": {
+        "allowLimitResidual": true,
+        "allowMarketResidual": true,
+        "allowPartialCross": true,
+        "allowTwapResidual": true,
+        "allowWaitResidual": true,
+        "maxExternalSlippageBps": 50,
+        "maxReferencePriceDriftBps": 100,
+        "maxRoundDurationSec": 900,
+        "urgency": "NORMAL",
+        "validUntil": 1789733841
+      },
+      "policyHash": "0x2ff73c5e1704f762623c822fcbddb4e55449dfc54f5b98c95b25b34ec6677031",
+      "roundId": "0xff5f0e96a90fb142bad0890ac639fb4a9f5114948b287ae9ac0daf90541d6ad0",
+      "validAfter": 1789732881,
+      "validUntil": 1789733841,
+      "valuationSnapshotHash": "0x84035dd0d185a19ccda851d1277d8abd8bf1d15c8a3d27d842b9ac780a3d01ee"
+    },
+    {
+      "agent": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "assets": [
+        {
+          "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+          "maxInRaw": "2621718354171733",
+          "maxOutRaw": "0",
+          "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+        },
+        {
+          "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+          "maxInRaw": "0",
+          "maxOutRaw": "5934273024250196",
+          "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+        }
+      ],
+      "circleId": "0x2818fc3783486ef94c3237bbdec55f0d09a00bc5aefbf7aca7c4d63db0ed5898",
+      "nonce": "1789732941",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "policy": {
+        "allowLimitResidual": true,
+        "allowMarketResidual": true,
+        "allowPartialCross": true,
+        "allowTwapResidual": true,
+        "allowWaitResidual": true,
+        "maxExternalSlippageBps": 50,
+        "maxReferencePriceDriftBps": 100,
+        "maxRoundDurationSec": 900,
+        "urgency": "NORMAL",
+        "validUntil": 1789733841
+      },
+      "policyHash": "0x2ff73c5e1704f762623c822fcbddb4e55449dfc54f5b98c95b25b34ec6677031",
+      "roundId": "0xff5f0e96a90fb142bad0890ac639fb4a9f5114948b287ae9ac0daf90541d6ad0",
+      "validAfter": 1789732881,
+      "validUntil": 1789733841,
+      "valuationSnapshotHash": "0x84035dd0d185a19ccda851d1277d8abd8bf1d15c8a3d27d842b9ac780a3d01ee"
+    },
+    {
+      "agent": "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163",
+      "assets": [
+        {
+          "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+          "maxInRaw": "0",
+          "maxOutRaw": "2621718354171733",
+          "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+        },
+        {
+          "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+          "maxInRaw": "9066558762867126",
+          "maxOutRaw": "0",
+          "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+        }
+      ],
+      "circleId": "0x2818fc3783486ef94c3237bbdec55f0d09a00bc5aefbf7aca7c4d63db0ed5898",
+      "nonce": "1789732941",
+      "owner": "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163",
+      "policy": {
+        "allowLimitResidual": true,
+        "allowMarketResidual": true,
+        "allowPartialCross": true,
+        "allowTwapResidual": true,
+        "allowWaitResidual": true,
+        "maxExternalSlippageBps": 50,
+        "maxReferencePriceDriftBps": 100,
+        "maxRoundDurationSec": 900,
+        "urgency": "NORMAL",
+        "validUntil": 1789733841
+      },
+      "policyHash": "0x2ff73c5e1704f762623c822fcbddb4e55449dfc54f5b98c95b25b34ec6677031",
+      "roundId": "0xff5f0e96a90fb142bad0890ac639fb4a9f5114948b287ae9ac0daf90541d6ad0",
+      "validAfter": 1789732881,
+      "validUntil": 1789733841,
+      "valuationSnapshotHash": "0x84035dd0d185a19ccda851d1277d8abd8bf1d15c8a3d27d842b9ac780a3d01ee"
+    }
+  ],
+  "signatures": {
+    "0x5d86f722E2613aC004704CDDB8e774912c0C8509": "0x8a2836dee2ee0beac43a2a87cb5511efa930eb138ad9b95ae3366aa27aa0046f1afb70434d80ade99b6a3aa06164e8df2b68a281bd3f61248805e661ec9f75551b",
+    "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163": "0x5e04dca6e0a1d58c852169e784bfca6476e102b4ed96f2d0be0431a51d4c83324c5bddc49e76a6a5ddfbfac8a75f35f6f8d7ab65d82b01a2098c15beb8eacaea1c",
+    "0xa44Cdd5C07b66c686612886060e652bEC00ED56A": "0xc4c613326640c65db460d59e7b62dde75b374cb1f6f40b84da13058d2c28e92d6fd9d0e36b55be85bb0627a9e7a2a54a93f22ac26321ce77f1b19917fef8f5671b"
+  },
+  "typedDataDomain": {
+    "chainId": 4663,
+    "name": "VENUE0",
+    "verifyingContract": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+    "version": "1"
+  }
+}

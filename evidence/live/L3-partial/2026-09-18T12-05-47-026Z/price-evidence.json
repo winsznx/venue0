@@ -1,0 +1,60 @@
+[
+  {
+    "chainlink": {
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "chainId": 4663,
+      "multiplierE18": "1000775159164630595",
+      "priceUsdE18": "220590860580000000000",
+      "source": "CHAINLINK_STOCK_TOKEN_FEED",
+      "sourceBlock": "66211351",
+      "sourceTimestamp": 1789729253,
+      "stale": false,
+      "tokenAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    "divergenceBps": "34",
+    "feedAgeSec": 3900,
+    "feedDescription": "RHNVDA / USD",
+    "rest": {
+      "ask": "219.77",
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "bid": "219.61",
+      "chainId": 4663,
+      "multiplierE18": "1000775159164630595",
+      "priceUsdE18": "219860294716877695415",
+      "rawUnderlyingPrice": "219690000000000000000",
+      "source": "ROBINHOOD_REST_NORMALIZED",
+      "sourceTimestamp": 1789733150,
+      "stale": false,
+      "tokenAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    }
+  },
+  {
+    "chainlink": {
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "chainId": 4663,
+      "multiplierE18": "1000566080061092436",
+      "priceUsdE18": "337025275350000000000",
+      "source": "CHAINLINK_STOCK_TOKEN_FEED",
+      "sourceBlock": "66211366",
+      "sourceTimestamp": 1789729223,
+      "stale": false,
+      "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    "divergenceBps": "22",
+    "feedAgeSec": 3930,
+    "feedDescription": "Robinhood AAPL / USD",
+    "rest": {
+      "ask": "337.62",
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "bid": "337.5",
+      "chainId": 4663,
+      "multiplierE18": "1000566080061092436",
+      "priceUsdE18": "337751085985422362696",
+      "rawUnderlyingPrice": "337560000000000000000",
+      "source": "ROBINHOOD_REST_NORMALIZED",
+      "sourceTimestamp": 1789733151,
+      "stale": false,
+      "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    }
+  }
+]

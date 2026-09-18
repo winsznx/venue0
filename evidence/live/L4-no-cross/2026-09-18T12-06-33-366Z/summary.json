@@ -1,0 +1,38 @@
+{
+  "cycles": [],
+  "description": "A moves half its NVDA into AAPL; B moves half its SPY into AAPL. Both want AAPL, nobody offers it.",
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "gate": "G4",
+  "marketOnly": {
+    "externalNotionalUsdE18": "2541848487410918931",
+    "externalOrders": 4
+  },
+  "note": "No transaction: nothing crossed. Full request is residual.",
+  "referenceOk": true,
+  "result": "PASS",
+  "roundId": "0x5fc888eb2edd18ec6f616d3dd3ddb1b3a6120399f931892e22bd695e1c944452",
+  "scenario": "L4-no-cross",
+  "settlementContract": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+  "settlementDeployTx": null,
+  "settlementTx": null,
+  "shapeProblems": [],
+  "status": "NO_CROSS",
+  "timestamp": "2026-09-18T12:06:47.885Z",
+  "totals": {
+    "crossRateBps": "0",
+    "crossedNotionalUsdE18": "0",
+    "crossingParticipantCount": 0,
+    "dustResidualNotionalUsdE18": "0",
+    "externalResidualCount": 4,
+    "legCount": 0,
+    "participantCount": 2,
+    "requestedNotionalUsdE18": "2541848487410918931",
+    "residualNotionalUsdE18": "2541848487410918931",
+    "transferNotionalUsdE18": "0"
+  },
+  "venue0": {
+    "dustResidualNotionalUsdE18": "0",
+    "externalNotionalUsdE18": "2541848487410918931",
+    "externalOrders": 4
+  }
+}

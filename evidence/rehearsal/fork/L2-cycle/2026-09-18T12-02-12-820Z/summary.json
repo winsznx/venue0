@@ -1,0 +1,119 @@
+{
+  "cycles": [
+    [
+      {
+        "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+        "from": "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163",
+        "lots": "199",
+        "to": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A"
+      },
+      {
+        "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+        "from": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+        "lots": "199",
+        "to": "0x5d86f722E2613aC004704CDDB8e774912c0C8509"
+      },
+      {
+        "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+        "from": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+        "lots": "199",
+        "to": "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163"
+      }
+    ]
+  ],
+  "description": "A: NVDA->AAPL, B: AAPL->SPY, C: SPY->NVDA. No bilateral pair exists; only a 3-wallet cycle crosses.",
+  "environment": "MAINNET_FORK_REHEARSAL",
+  "explorer": null,
+  "gasUsed": "343246",
+  "gate": "G2",
+  "marketOnly": {
+    "externalNotionalUsdE18": "11999999999999997110",
+    "externalOrders": 6
+  },
+  "planHash": "0x73a3f8dfd517e023e262e424fd3b76ce36d3d8f051bd2d4bc650926398998e89",
+  "referenceOk": true,
+  "residuals": [
+    {
+      "amountRaw": "45332793814335",
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "notionalUsdE18": "9999999999999858",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "residualClass": "DUST",
+      "side": "SELL",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "amountRaw": "29671365121251",
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "notionalUsdE18": "10000000000000004",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "residualClass": "DUST",
+      "side": "BUY",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "amountRaw": "13108591770858",
+      "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+      "notionalUsdE18": "9999999999999489",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "residualClass": "DUST",
+      "side": "BUY",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    {
+      "amountRaw": "29671365121250",
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "notionalUsdE18": "9999999999999667",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "residualClass": "DUST",
+      "side": "SELL",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "amountRaw": "13108591770858",
+      "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+      "notionalUsdE18": "9999999999999489",
+      "owner": "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163",
+      "residualClass": "DUST",
+      "side": "SELL",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    {
+      "amountRaw": "45332793814334",
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "notionalUsdE18": "9999999999999637",
+      "owner": "0xF5AE2426Ee490e56552a2a6AFeE5A5f530A15163",
+      "residualClass": "DUST",
+      "side": "BUY",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    }
+  ],
+  "result": "PASS",
+  "roundId": "0xff5f0e96a90fb142bad0890ac639fb4a9f5114948b287ae9ac0daf90541d6ad0",
+  "scenario": "L2-cycle",
+  "settlementBlock": "66209171",
+  "settlementContract": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+  "settlementDeployTx": "0xfbca4f7d8b0bf0ce7c6cb3be0e7bc4d42c03c80d9d160d8fee9bf4a734f76b27",
+  "settlementTx": "0x2c0b70349a5003239bcb0497ca504e3d58f9b4c4b5a8c816a83edc2965d1256c",
+  "shapeProblems": [],
+  "status": "CROSSED",
+  "timestamp": "2026-09-18T12:02:46.263Z",
+  "totals": {
+    "crossRateBps": "9950",
+    "crossedNotionalUsdE18": "11939999999999998962",
+    "crossingParticipantCount": 3,
+    "dustResidualNotionalUsdE18": "59999999999998144",
+    "externalResidualCount": 0,
+    "legCount": 3,
+    "participantCount": 3,
+    "requestedNotionalUsdE18": "11999999999999997110",
+    "residualNotionalUsdE18": "59999999999998144",
+    "transferNotionalUsdE18": "5969999999999999481"
+  },
+  "venue0": {
+    "dustResidualNotionalUsdE18": "59999999999998144",
+    "externalNotionalUsdE18": "0",
+    "externalOrders": 0
+  },
+  "verifierStatus": "PASS"
+}

@@ -1,0 +1,39 @@
+{
+  "after": {
+    "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D": "1000000000000000",
+    "0x71509D21A26F47F83B36A835bB4619Df8F512718": "8077617008818509"
+  },
+  "amountRaw": "1000000000000000",
+  "asset": {
+    "chainId": 4663,
+    "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+    "explorer": "https://robinhoodchain.blockscout.com/address/0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+    "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+    "symbol": "NVDA",
+    "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+  },
+  "before": {
+    "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D": "0",
+    "0x71509D21A26F47F83B36A835bB4619Df8F512718": "9077617008818509"
+  },
+  "blockNumber": "66210821",
+  "checks": {
+    "recipientDelta": true,
+    "senderDelta": true,
+    "singleTransferLog": true,
+    "txSuccess": true
+  },
+  "deltas": {
+    "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D": "1000000000000000",
+    "0x71509D21A26F47F83B36A835bB4619Df8F512718": "-1000000000000000"
+  },
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "explorer": "https://robinhoodchain.blockscout.com/tx/0xb3eaab11773e0341ceea4a10854740d9a1cfc5e575f3e72140968232fa2074f8",
+  "gate": "G0",
+  "readback": "VERIFIER_RPC_URL client at receipt block and block - 1",
+  "result": "PASS",
+  "timestamp": "2026-09-18T12:04:59.845Z",
+  "txHash": "0xb3eaab11773e0341ceea4a10854740d9a1cfc5e575f3e72140968232fa2074f8",
+  "walletA": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+  "walletB": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D"
+}
