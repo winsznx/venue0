@@ -18,6 +18,7 @@ import {
 import { privateKeyToAccount } from "viem/accounts";
 import { stockTokenAbi } from "@venue0/assets";
 import { canonicalJson, log, robinhoodChain, ROBINHOOD_CHAIN_ID, ROBINHOOD_PUBLIC_RPC } from "@venue0/shared";
+import { dynamicConfigFromEnv, loadAgentWallet } from "@venue0/dynamic";
 import { startAnvil, type Anvil } from "../lib/anvil.ts";
 
 export type Mode = "fork" | "live";
@@ -54,7 +55,7 @@ export function parseMode(argv: readonly string[]): Mode {
   return flag === "--live" ? "live" : "fork";
 }
 
-export async function createContext(mode: Mode, walletCount: number): Promise<LiveContext> {
+export async function createContext(mode: Mode, walletCount: number, options: { dynamicAgent?: boolean } = {}): Promise<LiveContext> {
   let anvil: Anvil | undefined;
   let rpcUrl: string;
   let verifierRpcUrl: string;
@@ -84,10 +85,15 @@ export async function createContext(mode: Mode, walletCount: number): Promise<Li
   if (chainId !== ROBINHOOD_CHAIN_ID) throw new Error(`connected chain ${chainId} is not Robinhood Chain ${ROBINHOOD_CHAIN_ID}`);
 
   const labels = ["A", "B", "C"];
-  const wallets = keys.map((key, i) => {
+  const wallets: Wallet[] = keys.map((key, i) => {
     const account = privateKeyToAccount(key);
     return { label: labels[i] as string, address: account.address, client: createWalletClient({ account, chain, transport: http(rpcUrl) }) };
   });
+  if (options.dynamicAgent) {
+    if (mode !== "live") throw new Error("the Dynamic agent wallet signs through Dynamic's MPC service and only runs in --live mode");
+    const agent = await loadAgentWallet(dynamicConfigFromEnv(), chain, rpcUrl);
+    wallets.push({ label: "D", address: agent.address, client: agent.client });
+  }
   let deployer = wallets[0] as Wallet;
   if (mode === "live" && process.env.VENUE0_DEPLOYER_PRIVATE_KEY) {
     const account = privateKeyToAccount(process.env.VENUE0_DEPLOYER_PRIVATE_KEY as Hex);

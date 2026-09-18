@@ -4,6 +4,11 @@ packages:
   - "scripts"
 allowBuilds:
   esbuild: true
+  protobufjs: true
 minimumReleaseAgeExclude:
   - ox@0.14.45
   - viem@2.56.7
+  - '@dynamic-labs-wallet/core@1.1.12'
+  - '@dynamic-labs-wallet/node-evm@1.1.12'
+  - '@dynamic-labs-wallet/node@1.1.12'
+  - '@dynamic-labs-wallet/primitives@1.1.12'

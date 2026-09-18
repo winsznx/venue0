@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
     "@venue0/assets": "workspace:*",
+    "@venue0/dynamic": "workspace:*",
     "@venue0/matcher": "workspace:*",
     "@venue0/portfolio": "workspace:*",
     "@venue0/reference-matcher": "workspace:*",

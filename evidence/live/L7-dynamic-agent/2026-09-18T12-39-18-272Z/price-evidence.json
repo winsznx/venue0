@@ -1,0 +1,60 @@
+[
+  {
+    "chainlink": {
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "chainId": 4663,
+      "multiplierE18": "1000566080061092436",
+      "priceUsdE18": "337025275350000000000",
+      "source": "CHAINLINK_STOCK_TOKEN_FEED",
+      "sourceBlock": "66231362",
+      "sourceTimestamp": 1789729223,
+      "stale": false,
+      "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    "divergenceBps": "9",
+    "feedAgeSec": 5938,
+    "feedDescription": "Robinhood AAPL / USD",
+    "rest": {
+      "ask": "337.17",
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "bid": "337.07",
+      "chainId": 4663,
+      "multiplierE18": "1000566080061092436",
+      "priceUsdE18": "337310836910195482024",
+      "rawUnderlyingPrice": "337120000000000000000",
+      "source": "ROBINHOOD_REST_NORMALIZED",
+      "sourceTimestamp": 1789735148,
+      "stale": false,
+      "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    }
+  },
+  {
+    "chainlink": {
+      "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+      "chainId": 4663,
+      "multiplierE18": "1001717991187472003",
+      "priceUsdE18": "761550793690000000000",
+      "source": "CHAINLINK_STOCK_TOKEN_FEED",
+      "sourceBlock": "66231370",
+      "sourceTimestamp": 1789734121,
+      "stale": false,
+      "tokenAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    },
+    "divergenceBps": "4",
+    "feedAgeSec": 1040,
+    "feedDescription": "RHSPY / USD",
+    "rest": {
+      "ask": "760.54",
+      "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+      "bid": "760.45",
+      "chainId": 4663,
+      "multiplierE18": "1001717991187472003",
+      "priceUsdE18": "761801523708116520921",
+      "rawUnderlyingPrice": "760495000000000000000",
+      "source": "ROBINHOOD_REST_NORMALIZED",
+      "sourceTimestamp": 1789735161,
+      "stale": false,
+      "tokenAddress": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+    }
+  }
+]

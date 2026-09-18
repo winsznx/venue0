@@ -18,7 +18,7 @@ const provider = new URL(rpcUrl).host;
 type Json = Record<string, unknown>;
 const revive = (_k: string, v: unknown) => (typeof v === "string" && /^-?\d{16,}$/.test(v) ? BigInt(v) : v);
 
-for (const gate of ["L1-bilateral", "L2-cycle", "L3-partial"]) {
+for (const gate of ["L1-bilateral", "L2-cycle", "L3-partial", "L7-dynamic-agent"]) {
   const base = join("evidence", "live", gate);
   for (const run of await readdir(base).catch(() => [])) {
     const dir = join(base, run);
@@ -38,8 +38,12 @@ for (const gate of ["L1-bilateral", "L2-cycle", "L3-partial"]) {
       plan,
       nonces,
       watchTokens: [...new Set(plan.legs.map((l) => l.token))],
+    }).catch((error: unknown) => {
+      console.log(gate, run, "INCONCLUSIVE via", provider, "-", (error as Error).message.split("\n")[0]);
+      return undefined;
     });
-    await writeArtifact(dir, "verifier-report-independent.json", { provider, ...report });
+    if (!report) continue;
+    await writeArtifact(dir, `verifier-report-independent-${provider}.json`, { provider, ...report });
     console.log(gate, run, report.status, `${report.checks.filter((c) => c.status === "PASS").length}/${report.checks.length}`, "via", provider);
   }
 }

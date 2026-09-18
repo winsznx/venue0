@@ -45,7 +45,13 @@ Docs:
 
 ## Dynamic
 
-Docs and npm types only; no dashboard access yet.
+Live (2026-09-18, Sandbox):
+
+- `DynamicEvmWalletClient.authenticateApiToken` + `createWalletAccount({ TWO_OF_TWO, password, backUpToDynamic: true })` created a server wallet in about 3s.
+- `getWalletClient({ walletMetadata, password, externalServerKeyShares, chain, rpcUrl })` with a viem `defineChain` for 4663 signed EIP-712 typed data and sent transactions on Robinhood Chain. Robinhood Chain did not need to be enabled in the dashboard.
+- Installing `@dynamic-labs-wallet/node-evm@1.1.12` under pnpm 11 needs `protobufjs` allowed to run its build script.
+
+Docs:
 
 - Packages: `@dynamic-labs-wallet/node-evm` 1.1.12 and `@dynamic-labs-wallet/node` 1.1.12 (native addons; Node 18+ on Linux x64/arm64 or macOS arm64; not edge runtimes).
 - Server wallets and agent wallets are fully backend. Delegated access requires the end user to approve in a client SDK, so it cannot be exercised before a frontend exists.

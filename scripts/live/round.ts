@@ -23,6 +23,8 @@ type Shift = { from: string; to: string; fractionBps: number };
 
 type Scenario = {
   gate: string;
+  /** Adds the Dynamic MPC agent wallet as participant "D". */
+  dynamicAgent?: boolean;
   dir: string;
   description: string;
   symbols: string[];
@@ -74,6 +76,16 @@ const SCENARIOS: Record<string, Scenario> = {
       ...shape(m.totals.residualNotionalUsdE18 > 0n, "no residual"),
       ...shape(m.fills.every((f) => f.crossedRaw + f.residualRaw === f.requestedRaw), "crossed + residual != requested"),
     ],
+  },
+  L7: {
+    gate: "DYNAMIC",
+    dir: "L7-dynamic-agent",
+    dynamicAgent: true,
+    description: "Wallet A (EOA) moves half its AAPL into SPY; portfolio agent D (Dynamic MPC server wallet) moves half its SPY into AAPL. D signs its intent, plan approval and allowance tx through Dynamic.",
+    symbols: ["AAPL", "SPY"],
+    holdings: { A: "AAPL", D: "SPY" },
+    shifts: { A: { from: "AAPL", to: "SPY", fractionBps: 5_000 }, D: { from: "SPY", to: "AAPL", fractionBps: 5_000 } },
+    expect: (m) => [...shape(m.legs.length === 2, `expected 2 legs, got ${m.legs.length}`), ...shape(m.totals.crossedNotionalUsdE18 > 0n, "nothing crossed")],
   },
   L4: {
     gate: "G4",
@@ -312,7 +324,7 @@ const mode = parseMode(process.argv);
 const [scenarioKey = "L2", fundUsd = "25"] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 const scenario = SCENARIOS[scenarioKey];
 if (!scenario) throw new Error(`unknown scenario ${scenarioKey}; use one of ${Object.keys(SCENARIOS).join(", ")}`);
-const ctx = await createContext(mode, Object.keys(scenario.shifts).length);
+const ctx = await createContext(mode, Object.keys(scenario.shifts).filter((l) => l !== "D").length, { dynamicAgent: scenario.dynamicAgent ?? false });
 try {
   await run(ctx, scenario, parseDecimal(fundUsd, 0));
 } finally {

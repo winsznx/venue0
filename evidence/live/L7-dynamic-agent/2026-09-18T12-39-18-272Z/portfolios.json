@@ -1,0 +1,66 @@
+[
+  {
+    "address": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "rebalance": {
+      "account": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "allocationErrorBps": "5000",
+      "positions": [
+        {
+          "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+          "deltaValueUsdE18": "1879458572007049668",
+          "rawBalance": "0",
+          "targetValueUsdE18": "1879458572007049668",
+          "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+          "valueUsdE18": "0"
+        },
+        {
+          "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+          "deltaValueUsdE18": "-1879458572007049668",
+          "rawBalance": "11153220304057232",
+          "targetValueUsdE18": "1879458572007049668",
+          "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+          "valueUsdE18": "3758917144014099336"
+        }
+      ],
+      "totalValueUsdE18": "3758917144014099336"
+    },
+    "shift": {
+      "fractionBps": 5000,
+      "from": "AAPL",
+      "to": "SPY"
+    },
+    "wallet": "A"
+  },
+  {
+    "address": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+    "rebalance": {
+      "account": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+      "allocationErrorBps": "4999",
+      "positions": [
+        {
+          "assetUid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+          "deltaValueUsdE18": "-994596462498625721",
+          "rawBalance": "2612029219165886",
+          "targetValueUsdE18": "994596462498625722",
+          "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+          "valueUsdE18": "1989192924997251443"
+        },
+        {
+          "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+          "deltaValueUsdE18": "994596462498625721",
+          "rawBalance": "0",
+          "targetValueUsdE18": "994596462498625721",
+          "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+          "valueUsdE18": "0"
+        }
+      ],
+      "totalValueUsdE18": "1989192924997251443"
+    },
+    "shift": {
+      "fractionBps": 5000,
+      "from": "SPY",
+      "to": "AAPL"
+    },
+    "wallet": "D"
+  }
+]

@@ -89,3 +89,9 @@ Format per entry: PRD assumption, observed reality, source, impact, decision. Ne
 - Approvals are exact per-leg allowances. Approval nonces are `keccak256(planHash, participant)`.
 - Public RPC serves historical state only for roughly the last 10,000 blocks. The verifier reads balances at the receipt block and block - 1, so it must run promptly, or use an archive provider. A failed historical read is reported `INCONCLUSIVE`, never `PASS`.
 - PRD 38.5 asks for a testnet rehearsal deploy. Robinhood docs list no Stock Tokens or faucet for testnet 46630, so a testnet run would exercise mock tokens only. The mainnet-fork rehearsal runs the same script against real Stock Token bytecode, registry, pause and blocklist logic, and live Chainlink feeds, so it replaces the testnet rehearsal for G0-G4.
+
+## D-011 Dynamic pattern for the sponsor proof (2026-09-18)
+
+- PRD 20: target delegated access; documented fallback to agent or server wallets; never block G0-G4.
+- Observed: delegated access needs the end user to approve in a Dynamic client SDK, and the frontend is deliberately not built yet.
+- Decision: the portfolio agent runs on a Dynamic server wallet (Sandbox, 2-of-2 MPC). The backend share lives only in gitignored `keys/dynamic-agent-wallet.json` (0600). The agent joins live rounds as participant "D" and signs intents, plan approvals and allowance transactions through Dynamic. Delegated access (user-owned embedded wallet -> agent) is added with the frontend and does not replace this proof. Claim wording states "server wallet", not "delegated access".

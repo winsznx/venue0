@@ -12,6 +12,7 @@ Current product state: **MECHANISM LOCKED** (G2, G3, G4 passed live on Robinhood
 | G2 | 3 wallets / 3 assets / non-trivial cycle (hero) | PASS | `evidence/live/L2-cycle/` | 2026-09-18 |
 | G3 | Partial overlap with exact residual | PASS | `evidence/live/L3-partial/` | 2026-09-18 |
 | L5 | Residual executed through Uniswap | PASS | `evidence/live/L5-residual/` | 2026-09-18 |
+| L7 | Portfolio agent on a Dynamic wallet crosses live | PASS | `evidence/live/L7-dynamic-agent/` | 2026-09-18 |
 | G4 | Zero overlap, NO_CROSS | PASS | `evidence/live/L4-no-cross/` | 2026-09-18 |
 
 ## Log
@@ -61,3 +62,9 @@ Independent re-verification (2026-09-18, `pnpm verify`): L1 12/12, L2 13/13, L3 
 ### 2026-09-18 L5 PASS: live residual through Uniswap
 
 Residual source: the EXTERNAL residual of live round L3 (wallet A: SELL 0.002547016163469560 NVDA, BUY AAPL). Executed as one NVDA -> AAPL swap via the Uniswap Trading API with `x-universal-router-version: 2.1.1`. `/check_approval` returned a Permit2 approval (tx `0x69fbb5cf0a29354d028663355c4b091afe5579d0f4ebea68542e0b06e0208ba4`); `/quote` routing CLASSIC, route `[v4] 0.3% fee`; `/swap` with Permit2 signature; swap tx [0xaec4...84db](https://robinhoodchain.blockscout.com/tx/0xaec4488e2ba8d2dcd14fdbaec15d6fde31398a980175fd1fe5bcf8f56d8a84db). Readback through the public RPC (executor used Alchemy): NVDA spent exactly the residual amount (1 wei of dust remained from the wallet's prior balance), AAPL received 1,658,383,465,256,918 raw, equal to the quoted output and above the 2.5% minimum.
+
+### 2026-09-18 L7 PASS: Dynamic agent wallet takes part in a live round
+
+Agent wallet `0x00dB4B5f745da1351eaf687c39107c54E344E87C` is a Dynamic Sandbox server wallet (2-of-2 MPC, walletId `4b9a76e9-5b57-48b3-a4ea-97c6ac27fc33`). Funded by wallet C (SPY tx `0x8ea2931e...bf76`, ETH tx `0xeba024e6...60dc`). In round L7 the agent signed its EIP-712 intent, its EIP-712 plan approval, and sent its SPY allowance tx (`0x2c75c06d...4cf6` or `0x7f7ae39d...a2fb`, see `settlement-plan.json`), all through Dynamic MPC. Settlement [0x0f85...1873](https://robinhoodchain.blockscout.com/tx/0x0f851b81082f93f863ddceeae3f4aff47ad6eac52f04482985eb75e187a91873): agent SPY -> A, A AAPL -> agent. Requested $5.75, crossed $3.96. Verifier PASS; independent re-verification through the public RPC 12/12 (executor used Alchemy).
+
+The public RPC can no longer re-verify L1-L3 (state pruned); those remain PASS via Alchemy.
