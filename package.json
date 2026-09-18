@@ -20,7 +20,8 @@
     "rehearse": "tsx scripts/live/l0-transfer.ts --fork NVDA 0.01 && tsx scripts/live/round.ts --fork L1 25 && tsx scripts/live/round.ts --fork L2 25 && tsx scripts/live/round.ts --fork L3 25 && tsx scripts/live/round.ts --fork L4 25",
     "wallets:status": "tsx --env-file-if-exists=.env scripts/wallet-status.ts",
     "verify": "tsx --env-file-if-exists=.env scripts/live/reverify.ts",
-    "proof:residual": "tsx --env-file-if-exists=.env scripts/live/l5-residual.ts"
+    "proof:residual": "tsx --env-file-if-exists=.env scripts/live/l5-residual.ts",
+    "proof:flash": "tsx --env-file-if-exists=.env scripts/live/l6-flash.ts"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

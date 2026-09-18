@@ -13,6 +13,7 @@ Current product state: **MECHANISM LOCKED** (G2, G3, G4 passed live on Robinhood
 | G3 | Partial overlap with exact residual | PASS | `evidence/live/L3-partial/` | 2026-09-18 |
 | L5 | Residual executed through Uniswap | PASS | `evidence/live/L5-residual/` | 2026-09-18 |
 | L7 | Portfolio agent on a Dynamic wallet crosses live | PASS | `evidence/live/L7-dynamic-agent/` | 2026-09-18 |
+| L6 | Session-aware residual engine -> Flash LIMIT, filled | PASS | `evidence/live/L6-flash-round/`, `evidence/live/L6-flash-residual/` | 2026-09-18 |
 | G4 | Zero overlap, NO_CROSS | PASS | `evidence/live/L4-no-cross/` | 2026-09-18 |
 
 ## Log
@@ -68,3 +69,13 @@ Residual source: the EXTERNAL residual of live round L3 (wallet A: SELL 0.002547
 Agent wallet `0x00dB4B5f745da1351eaf687c39107c54E344E87C` is a Dynamic Sandbox server wallet (2-of-2 MPC, walletId `4b9a76e9-5b57-48b3-a4ea-97c6ac27fc33`). Funded by wallet C (SPY tx `0x8ea2931e...bf76`, ETH tx `0xeba024e6...60dc`). In round L7 the agent signed its EIP-712 intent, its EIP-712 plan approval, and sent its SPY allowance tx (`0x2c75c06d...4cf6` or `0x7f7ae39d...a2fb`, see `settlement-plan.json`), all through Dynamic MPC. Settlement [0x0f85...1873](https://robinhoodchain.blockscout.com/tx/0x0f851b81082f93f863ddceeae3f4aff47ad6eac52f04482985eb75e187a91873): agent SPY -> A, A AAPL -> agent. Requested $5.75, crossed $3.96. Verifier PASS; independent re-verification through the public RPC 12/12 (executor used Alchemy).
 
 The public RPC can no longer re-verify L1-L3 (state pruned); those remain PASS via Alchemy.
+
+### 2026-09-18 L6 PASS: residual engine chose a Flash LIMIT order, filled and verified
+
+Round L6 (settlement [0xeea6...6b87](https://robinhoodchain.blockscout.com/tx/0xeea682902f0fe4c6d217b10cc2f625985c5d6e9ea147d4a6df982cd71e656b87)): B moved its AAPL into NVDA, C moved all NVDA into AAPL under a price-protection policy (`allowMarketResidual: false`, urgency LOW). Partial cross left C an EXTERNAL residual of 0.005467680833338535 NVDA (~$1.20).
+
+Residual engine inputs (live): session `extended` (08:57 ET), Robinhood NVDA capabilities tradable, no halt, Uniswap immediate route available, Flash quote available. Decision: LIMIT on FLASH, reasons "user does not allow market residuals; price protection preferred". Limit cross price 0.647986 AAPL per NVDA (snapshot reference less 50 bps).
+
+Flash: exact-allowance approval `0xa37dae46...4687`, EIP-712 FlashOrder signed by C, order `1ae2aa7a-91b9-46d3-bf18-5f5095a062fc`, status `ORDER_STATUS_FILLED` (`REASON_FULLY_FILLED`), routed to Uniswap V4. Fill tx [0xa30e...5fc6](https://robinhoodchain.blockscout.com/tx/0xa30e95a18cc90b99f141f611118dce5bcd7251111038d5bab9d79947f9e55fc6) read back through the public RPC: C sent exactly 5,467,680,833,338,535 raw NVDA and received 3,074,802,608,113,408 raw AAPL.
+
+Honest cost note: Flash charged a $0.162 network fee plus $0.0012 trade fee on a $1.20 order (13.6%), taken from the input. The limit applied to the traded amount after fees (0.6506 AAPL/NVDA, above the 0.6480 limit), but the effective all-in rate was 0.5624 AAPL/NVDA, 13% below reference. At this size Flash is price-protected but expensive; the flat fee becomes about 1.6% at $10 and 0.16% at $100.

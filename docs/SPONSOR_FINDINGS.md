@@ -61,7 +61,15 @@ Docs:
 
 ## Definitive Flash
 
-Docs only so far; no live call made.
+Live (2026-09-18):
+
+- `GET /search?query=NVDA&chain=robinhood` returns the canonical NVDA Stock Token (`0xd0601C...9EEC`) with liquidity and holder counts, plus lookalikes such as `NVDAx3L` (NVDA 3x Long) at other addresses. Integrators must filter by canonical address.
+- Quotes for market, limit and TWAP worked for NVDA -> USDG and NVDA -> AAPL. Fees are close to flat per order: about $0.16 for market/limit and $0.33 for a 2-bucket TWAP regardless of $0.44 or $11 size.
+- Default quotes return an unlimited `approveTx` (`0xff...ff`). `forceMinimalAllowance: true` gives an exact approval; Venue0 always sets it.
+- The signed `FlashOrder` (domain `DefinitiveFlashAllowance` v1, verifyingContract `0x5d00000873b6BF41539e6f5365B0Ff7d3c368f78`) binds swapper, vault `0x8Ed0652B815643d096BC18032567F8FfcC72Ea67`, recipient, tokens, amount, salt and deadline. `chainId` arrives as a string and uint fields as strings; viem signing needs them converted.
+- A limit sell of 0.00547 NVDA for AAPL filled in about 1 second via Uniswap V4. The limit was enforced on the post-fee traded amount; the fee ($0.162 network + $0.0012 trade) came out of the input, so the all-in rate was 13% under the limit on a $1.20 order.
+
+Docs:
 
 - Docs live at `https://flash.definitive.fi/docs` (the PRD's `ddp.definitive.fi` redirects to marketing). OpenAPI at `https://flash.definitive.fi/v1/openapi.json`.
 - Base `https://flash.definitive.fi/v1`, single header `x-definitive-api-key`, no secret. Self-serve key at app.definitive.fi -> More -> Flash. No sandbox; test on production with small size.

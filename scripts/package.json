@@ -6,9 +6,11 @@
   "dependencies": {
     "@venue0/assets": "workspace:*",
     "@venue0/dynamic": "workspace:*",
+    "@venue0/flash": "workspace:*",
     "@venue0/matcher": "workspace:*",
     "@venue0/portfolio": "workspace:*",
     "@venue0/reference-matcher": "workspace:*",
+    "@venue0/residual": "workspace:*",
     "@venue0/settlement": "workspace:*",
     "@venue0/shared": "workspace:*",
     "@venue0/uniswap": "workspace:*",

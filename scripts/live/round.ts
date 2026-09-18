@@ -25,6 +25,8 @@ type Scenario = {
   gate: string;
   /** Adds the Dynamic MPC agent wallet as participant "D". */
   dynamicAgent?: boolean;
+  /** Per-wallet execution policy overrides (for example, price protection that forbids market residuals). */
+  policies?: Record<string, Partial<ExecutionPolicy>>;
   dir: string;
   description: string;
   symbols: string[];
@@ -86,6 +88,16 @@ const SCENARIOS: Record<string, Scenario> = {
     holdings: { A: "AAPL", D: "SPY" },
     shifts: { A: { from: "AAPL", to: "SPY", fractionBps: 5_000 }, D: { from: "SPY", to: "AAPL", fractionBps: 5_000 } },
     expect: (m) => [...shape(m.legs.length === 2, `expected 2 legs, got ${m.legs.length}`), ...shape(m.totals.crossedNotionalUsdE18 > 0n, "nothing crossed")],
+  },
+  L6: {
+    gate: "L6",
+    dir: "L6-flash-round",
+    description: "C moves all NVDA into AAPL under a price-protection policy (no market residuals, LOW urgency); B moves all its AAPL into NVDA. The partial cross leaves C an NVDA residual for the residual engine.",
+    symbols: ["NVDA", "AAPL"],
+    holdings: { B: "AAPL", C: "NVDA" },
+    shifts: { B: { from: "AAPL", to: "NVDA", fractionBps: 10_000 }, C: { from: "NVDA", to: "AAPL", fractionBps: 10_000 } },
+    policies: { C: { allowMarketResidual: false, urgency: "LOW" } },
+    expect: (m) => [...shape(m.status === "PARTIAL_CROSS", `expected PARTIAL_CROSS, got ${m.status}`), ...shape(m.totals.externalResidualCount > 0, "no external residual")],
   },
   L4: {
     gate: "G4",
@@ -187,7 +199,7 @@ async function run(ctx: LiveContext, scenario: Scenario, fundUsd: bigint) {
     const shift = scenario.shifts[wallet.label] as Shift;
     const rebalance = computeRebalance(holdings, { account: wallet.address, targets: shiftTargets(holdings, shift, priceByUid, assets) }, priceByUid, tokens);
     rebalances.push({ wallet: wallet.label, address: wallet.address, shift, rebalance });
-    const policy = PROOF_POLICY(nowSec + 900);
+    const policy = { ...PROOF_POLICY(nowSec + 900), ...(scenario.policies?.[wallet.label] ?? {}) };
     const intent: PortfolioIntent = {
       owner: wallet.address,
       agent: wallet.address,
@@ -324,7 +336,7 @@ const mode = parseMode(process.argv);
 const [scenarioKey = "L2", fundUsd = "25"] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 const scenario = SCENARIOS[scenarioKey];
 if (!scenario) throw new Error(`unknown scenario ${scenarioKey}; use one of ${Object.keys(SCENARIOS).join(", ")}`);
-const ctx = await createContext(mode, Object.keys(scenario.shifts).filter((l) => l !== "D").length, { dynamicAgent: scenario.dynamicAgent ?? false });
+const ctx = await createContext(mode, 3, { dynamicAgent: scenario.dynamicAgent ?? false });
 try {
   await run(ctx, scenario, parseDecimal(fundUsd, 0));
 } finally {

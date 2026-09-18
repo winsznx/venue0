@@ -1,0 +1,13 @@
+{
+  "name": "@venue0/residual",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@venue0/assets": "workspace:*",
+    "@venue0/shared": "workspace:*"
+  }
+}

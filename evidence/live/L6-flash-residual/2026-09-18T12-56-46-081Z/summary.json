@@ -1,0 +1,227 @@
+{
+  "decision": {
+    "decision": "LIMIT",
+    "reasons": [
+      "user does not allow market residuals",
+      "price protection preferred; limit at snapshot reference less max slippage"
+    ],
+    "venue": "FLASH"
+  },
+  "decisionContext": {
+    "advancedCostBps": 1364,
+    "advancedVenueAvailable": true,
+    "capabilities": {
+      "extended": {
+        "fractional": "TRADABLE",
+        "whole": "TRADABLE"
+      },
+      "market": {
+        "fractional": "TRADABLE",
+        "whole": "TRADABLE"
+      },
+      "overnight": {
+        "fractional": "TRADABLE",
+        "whole": "TRADABLE"
+      }
+    },
+    "flashFeeNotional": "0.162932",
+    "flashMarketOut": "0.003074931210239097",
+    "immediateCostBps": 7,
+    "notionalUsd": 1.200073,
+    "referenceDriftBps": 7,
+    "referenceOutRaw": "3560783233523918",
+    "session": "extended",
+    "tradingHalt": false,
+    "twapThresholdUsd": 1000,
+    "uniswapOut": "3558036237178999"
+  },
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "execution": {
+    "approvalTx": "0xa37dae46b9c41ef0f429ebc21a514ccc5cd3e153d20b2e815afc29e4690b4687",
+    "orderId": "1ae2aa7a-91b9-46d3-bf18-5f5095a062fc",
+    "quoteId": "3f919786-43a0-4390-a78b-67711944ed06",
+    "quotedFeeNotional": "0.162920471908628840495489021795811641003",
+    "quotedOut": "0.0030781696325746454320346192052513703",
+    "signedOrder": {
+      "deadline": "281474976710655",
+      "fromAmount": "5467680833338535",
+      "fromToken": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "recipient": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "salt": "63321067394908514301207479725274065791997696742392983527473204191535445265886",
+      "swapper": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "toToken": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "vault": "0x8Ed0652B815643d096BC18032567F8FfcC72Ea67"
+    },
+    "statusHistory": [
+      {
+        "at": "2026-09-18T12:57:06.168Z",
+        "raw": {
+          "fills": [],
+          "order": {
+            "acceptedAt": "2026-09-18T12:57:04.910Z",
+            "brackets": null,
+            "closeReason": null,
+            "closedAt": null,
+            "contraAsset": {
+              "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+              "chain": {
+                "id": "4663",
+                "name": "robinhood",
+                "namespace": "eip155"
+              },
+              "id": "adb4d401-c0b0-4ecd-aee8-66970351e9fb",
+              "name": "Apple • Robinhood Token",
+              "ticker": "AAPL"
+            },
+            "expiresAt": null,
+            "filled": {
+              "averageNotionalPrice": "0",
+              "averagePrice": "0",
+              "contraAmount": "0",
+              "targetAmount": "0"
+            },
+            "funderAddress": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+            "limitCrossPrice": "0.647985759474730742",
+            "limitNotionalPrice": null,
+            "maxPriceImpact": "0.05",
+            "orderId": "1ae2aa7a-91b9-46d3-bf18-5f5095a062fc",
+            "orderType": "limit",
+            "placedAt": "2026-09-18T12:57:04.900Z",
+            "qty": "0.005467680833338535",
+            "side": "sell",
+            "status": "ORDER_STATUS_ACCEPTED",
+            "targetAsset": {
+              "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+              "chain": {
+                "id": "4663",
+                "name": "robinhood",
+                "namespace": "eip155"
+              },
+              "id": "e5393a5b-ad09-4481-830e-7a8c9a52499e",
+              "name": "NVIDIA • Robinhood Token",
+              "ticker": "NVDA"
+            },
+            "trigger": null,
+            "twapBucketCount": null
+          }
+        },
+        "status": "ORDER_STATUS_ACCEPTED"
+      },
+      {
+        "at": "2026-09-18T12:57:11.965Z",
+        "raw": {
+          "fills": [
+            {
+              "contraAmount": "0.003074802608113408",
+              "feeAmount": "0.000742603426451189",
+              "feeNotional": "0.1629026735183651781888867833966708921",
+              "feeTicker": "NVDA_0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+              "fillPrice": "1.7782217365469564",
+              "filledAt": "2026-09-18T12:57:06.066Z",
+              "integratorFeeAmount": "0",
+              "integratorFeeNotional": "0",
+              "networkFeeAmount": "0.000737133426451189",
+              "networkFeeNotional": "0.1617027361192020628688368003966708921",
+              "notional": "1.199429",
+              "orderId": "31eea9b9-91af-466e-801c-72ccf93dcc65",
+              "parentOrderId": "740fa3c9-9509-42e7-91e9-b7ee4aa17435",
+              "rootOrderId": "1ae2aa7a-91b9-46d3-bf18-5f5095a062fc",
+              "status": "CHAIN_STATUS_PROCESSED",
+              "targetAmount": "0.005467680833338535",
+              "tradeFeeAmount": "0.00000547",
+              "tradeFeeNotional": "0.001199937399163115320049983",
+              "transactionId": "0xa30e95a18cc90b99f141f611118dce5bcd7251111038d5bab9d79947f9e55fc6",
+              "venues": [
+                "Uniswap_V4"
+              ]
+            }
+          ],
+          "order": {
+            "acceptedAt": "2026-09-18T12:57:04.910Z",
+            "brackets": null,
+            "closeReason": "REASON_FULLY_FILLED",
+            "closedAt": "2026-09-18T12:57:06.219Z",
+            "contraAsset": {
+              "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+              "chain": {
+                "id": "4663",
+                "name": "robinhood",
+                "namespace": "eip155"
+              },
+              "id": "adb4d401-c0b0-4ecd-aee8-66970351e9fb",
+              "name": "Apple • Robinhood Token",
+              "ticker": "AAPL"
+            },
+            "expiresAt": null,
+            "filled": {
+              "averageNotionalPrice": "189.6426828967482751",
+              "averagePrice": "0.5623595637413881",
+              "contraAmount": "0.003074802608113408",
+              "targetAmount": "0.005467680833338535"
+            },
+            "funderAddress": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+            "limitCrossPrice": "0.647985759474730742",
+            "limitNotionalPrice": null,
+            "maxPriceImpact": "0.05",
+            "orderId": "1ae2aa7a-91b9-46d3-bf18-5f5095a062fc",
+            "orderType": "limit",
+            "placedAt": "2026-09-18T12:57:04.900Z",
+            "qty": "0.005467680833338535",
+            "side": "sell",
+            "status": "ORDER_STATUS_FILLED",
+            "targetAsset": {
+              "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+              "chain": {
+                "id": "4663",
+                "name": "robinhood",
+                "namespace": "eip155"
+              },
+              "id": "e5393a5b-ad09-4481-830e-7a8c9a52499e",
+              "name": "NVIDIA • Robinhood Token",
+              "ticker": "NVDA"
+            },
+            "trigger": null,
+            "twapBucketCount": null
+          }
+        },
+        "status": "ORDER_STATUS_FILLED"
+      }
+    ]
+  },
+  "finalStatus": "ORDER_STATUS_FILLED",
+  "gate": "L6",
+  "limitCrossPrice": "0.647985759474730742",
+  "note": "A Flash order id and status are evidence of submission. A fill is claimed only if status is ORDER_STATUS_FILLED and wallet balances confirm it.",
+  "policy": {
+    "allowLimitResidual": true,
+    "allowMarketResidual": false,
+    "allowPartialCross": true,
+    "allowTwapResidual": true,
+    "allowWaitResidual": true,
+    "maxExternalSlippageBps": 50,
+    "maxReferencePriceDriftBps": 100,
+    "maxRoundDurationSec": 900,
+    "urgency": "LOW",
+    "validUntil": 1789737071
+  },
+  "residualBuy": {
+    "amountRaw": "3560783233523920",
+    "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+    "notionalUsdE18": "1200073949740062488",
+    "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "residualClass": "EXTERNAL",
+    "side": "BUY",
+    "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+  },
+  "residualSell": {
+    "amountRaw": "5467680833338535",
+    "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+    "notionalUsdE18": "1200073949740062112",
+    "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "residualClass": "EXTERNAL",
+    "side": "SELL",
+    "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+  },
+  "sourceRound": "evidence/live/L6-flash-round/2026-09-18T12-56-00-989Z",
+  "timestamp": "2026-09-18T12:57:11.965Z"
+}
