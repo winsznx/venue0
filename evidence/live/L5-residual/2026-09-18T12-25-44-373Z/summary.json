@@ -1,0 +1,51 @@
+{
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "explorer": "https://robinhoodchain.blockscout.com/tx/0xaec4488e2ba8d2dcd14fdbaec15d6fde31398a980175fd1fe5bcf8f56d8a84db",
+  "gate": "L5",
+  "outcome": {
+    "approvalTx": "0x69fbb5cf0a29354d028663355c4b091afe5579d0f4ebea68542e0b06e0208ba4",
+    "balances": {
+      "tokenInAfter": "1",
+      "tokenInBefore": "2547016163469561",
+      "tokenOutAfter": "11153220304057232",
+      "tokenOutBefore": "9494836838800314"
+    },
+    "minimumOut": "1616923878625495",
+    "postcondition": {
+      "receivedAtLeastMinimum": true,
+      "spentExact": true
+    },
+    "quoteRequestId": "cab319c0072f12d58f775bebf8e35f2b",
+    "quotedAmountOut": "1658383465256918",
+    "receiptStatus": "success",
+    "routeString": "[v4] 100.00% = [0.3%] [60] [0x0000000000000000000000000000000000000000] 0xfcb1ad7c577599cd1831ae239da38cced8a833ad488f924e080a8066ab3f469f",
+    "routerVersion": "2.1.1",
+    "routing": "CLASSIC",
+    "status": "SUBMITTED",
+    "swapRequestId": "de3260a73cbbfb2aadb034ca73f4a9e7",
+    "swapTx": "0xaec4488e2ba8d2dcd14fdbaec15d6fde31398a980175fd1fe5bcf8f56d8a84db"
+  },
+  "readbackProvider": "rpc.mainnet.chain.robinhood.com",
+  "residualBuy": {
+    "amountRaw": "1667081161279201",
+    "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+    "notionalUsdE18": "561848487410920475",
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "residualClass": "EXTERNAL",
+    "side": "BUY",
+    "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+  },
+  "residualSell": {
+    "amountRaw": "2547016163469560",
+    "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+    "notionalUsdE18": "561848487410920199",
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "residualClass": "EXTERNAL",
+    "side": "SELL",
+    "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+  },
+  "result": "PASS",
+  "sourceRound": "evidence/live/L3-partial/2026-09-18T12-05-47-026Z",
+  "timestamp": "2026-09-18T12:25:59.846Z",
+  "venue": "UNISWAP_TRADING_API"
+}

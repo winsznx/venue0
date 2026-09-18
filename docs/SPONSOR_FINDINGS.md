@@ -29,7 +29,13 @@ Docs facts (https://docs.robinhood.com/chain/):
 
 ## Uniswap Trading API
 
-Docs only so far; no live call made (no API key yet).
+Live (2026-09-18):
+
+- `POST /permissions` for NVDA and AAPL on 4663: `isPermissioned: false`. So the router 2.2.0 / permissioned-pool conflict does not apply to these Stock Tokens.
+- `/quote` returned CLASSIC routes for NVDA, AAPL, SPY into both ETH and USDG (v3 and v4 pools), and for NVDA -> AAPL directly (v4, 0.3% fee). Some Stock Token / USDG v4 routes list a fee string of `838.8608%` in `routeString`, which looks like a dynamic-fee hook sentinel rendered as a percentage; quoted outputs were still sane.
+- Full residual swap succeeded: `/check_approval` -> Permit2 approve -> requote -> sign `permitData` -> `/swap` (with `simulateTransaction: true`) -> send. Received exactly the quoted amount.
+
+Docs:
 
 - Base `https://trade-api.gateway.uniswap.org/v1`, header `x-api-key`, free, 6 rps default. Keys via https://developers.uniswap.org/dashboard/welcome (error docs say self-serve; FAQ still says request access).
 - Chain 4663 supported. Universal Router 2.1.1 at `0x8876789976decbfcbbbe364623c63652db8c0904`; header `x-universal-router-version: 2.1.1`; `2.0` errors on this chain. UniswapX V3 live (DutchV3OrderReactor `0x000000007A1C8e570011EeDF86A2A35593013cBA`).

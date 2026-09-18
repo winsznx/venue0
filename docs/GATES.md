@@ -11,6 +11,7 @@ Current product state: **MECHANISM LOCKED** (G2, G3, G4 passed live on Robinhood
 | G1 | Two-wallet atomic exchange | PASS | `evidence/live/L1-bilateral/` | 2026-09-18 |
 | G2 | 3 wallets / 3 assets / non-trivial cycle (hero) | PASS | `evidence/live/L2-cycle/` | 2026-09-18 |
 | G3 | Partial overlap with exact residual | PASS | `evidence/live/L3-partial/` | 2026-09-18 |
+| L5 | Residual executed through Uniswap | PASS | `evidence/live/L5-residual/` | 2026-09-18 |
 | G4 | Zero overlap, NO_CROSS | PASS | `evidence/live/L4-no-cross/` | 2026-09-18 |
 
 ## Log
@@ -56,3 +57,7 @@ Two defects found and fixed during rehearsal: EIP-7702 delegated signers were re
 G2 settled in one tx (343,258 gas, block 66210265): A.NVDA -> C, C.SPY -> B, B.AAPL -> A, discovered by the matcher from portfolio targets. All 13 verifier checks PASS. G1 ran after G2 on unequal leftover balances, so it crossed partially; the gate (atomic bilateral exchange) is met.
 
 Independent re-verification (2026-09-18, `pnpm verify`): L1 12/12, L2 13/13, L3 12/12 PASS through Alchemy (`robinhood-mainnet.g.alchemy.com`), a different provider from the public RPC that executed the rounds. Reports: `verifier-report-independent.json` in each run directory.
+
+### 2026-09-18 L5 PASS: live residual through Uniswap
+
+Residual source: the EXTERNAL residual of live round L3 (wallet A: SELL 0.002547016163469560 NVDA, BUY AAPL). Executed as one NVDA -> AAPL swap via the Uniswap Trading API with `x-universal-router-version: 2.1.1`. `/check_approval` returned a Permit2 approval (tx `0x69fbb5cf0a29354d028663355c4b091afe5579d0f4ebea68542e0b06e0208ba4`); `/quote` routing CLASSIC, route `[v4] 0.3% fee`; `/swap` with Permit2 signature; swap tx [0xaec4...84db](https://robinhoodchain.blockscout.com/tx/0xaec4488e2ba8d2dcd14fdbaec15d6fde31398a980175fd1fe5bcf8f56d8a84db). Readback through the public RPC (executor used Alchemy): NVDA spent exactly the residual amount (1 wei of dust remained from the wallet's prior balance), AAPL received 1,658,383,465,256,918 raw, equal to the quoted output and above the 2.5% minimum.

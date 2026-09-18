@@ -10,6 +10,7 @@
     "@venue0/reference-matcher": "workspace:*",
     "@venue0/settlement": "workspace:*",
     "@venue0/shared": "workspace:*",
+    "@venue0/uniswap": "workspace:*",
     "@venue0/verifier": "workspace:*",
     "viem": "2.56.7"
   }

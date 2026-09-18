@@ -111,6 +111,15 @@ importers:
         specifier: 2.56.7
         version: 2.56.7(typescript@6.0.3)(zod@4.6.5)
 
+  packages/uniswap:
+    dependencies:
+      '@venue0/shared':
+        specifier: workspace:*
+        version: link:../shared
+      viem:
+        specifier: 2.56.7
+        version: 2.56.7(typescript@6.0.3)(zod@4.6.5)
+
   packages/verifier:
     dependencies:
       '@venue0/assets':
@@ -152,6 +161,9 @@ importers:
       '@venue0/shared':
         specifier: workspace:*
         version: link:../packages/shared
+      '@venue0/uniswap':
+        specifier: workspace:*
+        version: link:../packages/uniswap
       '@venue0/verifier':
         specifier: workspace:*
         version: link:../packages/verifier

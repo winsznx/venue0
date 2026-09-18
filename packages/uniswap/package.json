@@ -1,0 +1,13 @@
+{
+  "name": "@venue0/uniswap",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@venue0/shared": "workspace:*",
+    "viem": "2.56.7"
+  }
+}
