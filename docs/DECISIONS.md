@@ -95,3 +95,13 @@ Format per entry: PRD assumption, observed reality, source, impact, decision. Ne
 - PRD 20: target delegated access; documented fallback to agent or server wallets; never block G0-G4.
 - Observed: delegated access needs the end user to approve in a Dynamic client SDK, and the frontend is deliberately not built yet.
 - Decision: the portfolio agent runs on a Dynamic server wallet (Sandbox, 2-of-2 MPC). The backend share lives only in gitignored `keys/dynamic-agent-wallet.json` (0600). The agent joins live rounds as participant "D" and signs intents, plan approvals and allowance transactions through Dynamic. Delegated access (user-owned embedded wallet -> agent) is added with the frontend and does not replace this proof. Claim wording states "server wallet", not "delegated access".
+
+## D-012 Economic residual engine (2026-09-18)
+
+- Observed: residual engine v1 sent a ~$1.20 residual to a Flash LIMIT order whose flat fee was 13.6% of notional. Integration passed; the decision was economically poor.
+- Decision (`venue0-residual-2-economic`):
+  - Every candidate route carries `providerFeeUsd`, `networkCostUsd`, `priceImpactUsd` (null when the provider data cannot separate it), `allInCostUsd`, `allInCostBps` and `fixedCostUsd`. All-in = reference value given up - reference value received + gas, using the round snapshot as reference. Costs come from live quotes (Uniswap `/quote` output and `gasFeeUSD`; Flash `/quote` `to.amount` and `fees.estimatedFeeNotional`).
+  - `maxExternalSlippageBps` is the user's all-in cost cap. A route is viable only if its style is allowed and its all-in cost is within the cap. The engine picks the cheapest viable route (HIGH urgency prefers a viable market route).
+  - AGGREGATE: when no route is viable, but removing the fixed cost would make one viable, a later Venue0 round exists, and the user allows waiting, the residual is carried into the next round as an intent instead of paying a fee that dominates it. Otherwise WAIT (or CANCEL if the user forbids waiting).
+  - Flash's fixed component is estimated as quoted fee minus the documented 10 bps trade fee. This split is an estimate and labelled as such.
+- Live check (`evidence/live/L6-residual-decision/`): the same L6 residual, re-quoted live, costs 1356 bps on Flash LIMIT (observed fill: 1358 bps) and 121 bps on Uniswap. Engine decision: AGGREGATE.

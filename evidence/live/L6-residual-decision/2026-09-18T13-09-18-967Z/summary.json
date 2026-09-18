@@ -1,0 +1,192 @@
+{
+  "decideOnly": true,
+  "decision": {
+    "decision": "AGGREGATE",
+    "engineVersion": "venue0-residual-2-economic",
+    "evaluated": [
+      {
+        "allInCostBps": 121,
+        "allInCostUsd": 0.014548154810857073,
+        "allowed": false,
+        "fixedCostUsd": 0.013252058722812255,
+        "networkCostUsd": 0.013252058722812255,
+        "note": "market residuals not allowed by user",
+        "observedAt": "2026-09-18T13:09:27.473Z",
+        "priceImpactUsd": null,
+        "providerFeeUsd": null,
+        "source": "uniswap quote 8fd719610a885943a7bdc802fe080d5e",
+        "style": "MARKET",
+        "venue": "UNISWAP",
+        "viable": false
+      },
+      {
+        "allInCostBps": 1367,
+        "allInCostUsd": 0.16410328121004736,
+        "allowed": false,
+        "fixedCostUsd": 0.16165992623332928,
+        "networkCostUsd": null,
+        "note": "market residuals not allowed by user",
+        "observedAt": "2026-09-18T13:09:27.473Z",
+        "priceImpactUsd": 0.0012432812100473534,
+        "providerFeeUsd": 0.16286,
+        "source": "flash quote 19277652-2193-4fbb-8a48-4a5d6d361b65",
+        "style": "MARKET",
+        "venue": "FLASH",
+        "viable": false
+      },
+      {
+        "allInCostBps": 1356,
+        "allInCostUsd": 0.1627635122176927,
+        "allowed": true,
+        "fixedCostUsd": 0.16165528506525867,
+        "networkCostUsd": null,
+        "note": "all-in 1356 bps exceeds cap 50",
+        "observedAt": "2026-09-18T13:09:27.473Z",
+        "priceImpactUsd": -0.00009184661423669582,
+        "providerFeeUsd": 0.1628553588319294,
+        "source": "flash quote f087a5cb-8336-4263-96c7-34364a35871b",
+        "style": "LIMIT",
+        "venue": "FLASH",
+        "viable": false
+      }
+    ],
+    "reasons": [
+      "cheapest allowed route FLASH LIMIT costs 1356 bps, above cap 50",
+      "fixed cost $0.1617 dominates a $1.20 residual; carry it into the next Venue0 round"
+    ],
+    "route": null
+  },
+  "decisionContext": {
+    "capabilities": {
+      "extended": {
+        "fractional": "TRADABLE",
+        "whole": "TRADABLE"
+      },
+      "market": {
+        "fractional": "TRADABLE",
+        "whole": "TRADABLE"
+      },
+      "overnight": {
+        "fractional": "TRADABLE",
+        "whole": "TRADABLE"
+      }
+    },
+    "flashQuotes": {
+      "LIMIT": {
+        "fees": {
+          "estimatedFeeNotional": "0.162855358831929382416267383750778714124"
+        },
+        "from": {
+          "amount": "0.005467680833338535",
+          "asset": "target",
+          "notional": "1.1994"
+        },
+        "quoteId": "f087a5cb-8336-4263-96c7-34364a35871b",
+        "to": {
+          "amount": "0.0030778411335856849969607385304575408",
+          "asset": "contra",
+          "notional": "1.0376"
+        }
+      },
+      "MARKET": {
+        "fees": {
+          "estimatedFeeNotional": "0.16286"
+        },
+        "from": {
+          "amount": "0.005467680833338535",
+          "asset": "target",
+          "notional": "1.199147"
+        },
+        "quoteId": "19277652-2193-4fbb-8a48-4a5d6d361b65",
+        "to": {
+          "amount": "0.003073865856086528",
+          "asset": "contra",
+          "notional": "1.036286"
+        }
+      }
+    },
+    "nextRoundAvailable": true,
+    "notionalUsd": 1.200073,
+    "referenceDriftBps": 0,
+    "referenceInUsd": 1.20007376667072,
+    "routes": [
+      {
+        "allInCostBps": 121,
+        "allInCostUsd": 0.014548154810857073,
+        "fixedCostUsd": 0.013252058722812255,
+        "networkCostUsd": 0.013252058722812255,
+        "observedAt": "2026-09-18T13:09:27.473Z",
+        "priceImpactUsd": null,
+        "providerFeeUsd": null,
+        "source": "uniswap quote 8fd719610a885943a7bdc802fe080d5e",
+        "style": "MARKET",
+        "venue": "UNISWAP"
+      },
+      {
+        "allInCostBps": 1367,
+        "allInCostUsd": 0.16410328121004736,
+        "fixedCostUsd": 0.16165992623332928,
+        "networkCostUsd": null,
+        "observedAt": "2026-09-18T13:09:27.473Z",
+        "priceImpactUsd": 0.0012432812100473534,
+        "providerFeeUsd": 0.16286,
+        "source": "flash quote 19277652-2193-4fbb-8a48-4a5d6d361b65",
+        "style": "MARKET",
+        "venue": "FLASH"
+      },
+      {
+        "allInCostBps": 1356,
+        "allInCostUsd": 0.1627635122176927,
+        "fixedCostUsd": 0.16165528506525867,
+        "networkCostUsd": null,
+        "observedAt": "2026-09-18T13:09:27.473Z",
+        "priceImpactUsd": -0.00009184661423669582,
+        "providerFeeUsd": 0.1628553588319294,
+        "source": "flash quote f087a5cb-8336-4263-96c7-34364a35871b",
+        "style": "LIMIT",
+        "venue": "FLASH"
+      }
+    ],
+    "session": "extended",
+    "tradingHalt": false,
+    "twapThresholdUsd": 1000,
+    "uniswapQuoteRequestId": "8fd719610a885943a7bdc802fe080d5e"
+  },
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "finalStatus": "NOT_EXECUTED",
+  "gate": "L6",
+  "limitCrossPrice": null,
+  "note": "A Flash order id and status are evidence of submission. A fill is claimed only if status is ORDER_STATUS_FILLED and wallet balances confirm it.",
+  "policy": {
+    "allowLimitResidual": true,
+    "allowMarketResidual": false,
+    "allowPartialCross": true,
+    "allowTwapResidual": true,
+    "allowWaitResidual": true,
+    "maxExternalSlippageBps": 50,
+    "maxReferencePriceDriftBps": 100,
+    "maxRoundDurationSec": 900,
+    "urgency": "LOW",
+    "validUntil": 1789737071
+  },
+  "residualBuy": {
+    "amountRaw": "3560783233523920",
+    "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+    "notionalUsdE18": "1200073949740062488",
+    "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "residualClass": "EXTERNAL",
+    "side": "BUY",
+    "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+  },
+  "residualSell": {
+    "amountRaw": "5467680833338535",
+    "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+    "notionalUsdE18": "1200073949740062112",
+    "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "residualClass": "EXTERNAL",
+    "side": "SELL",
+    "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+  },
+  "sourceRound": "evidence/live/L6-flash-round/2026-09-18T12-56-00-989Z",
+  "timestamp": "2026-09-18T13:09:38.481Z"
+}
