@@ -1,0 +1,38 @@
+{
+  "cycles": [],
+  "description": "A moves half its NVDA into AAPL; B moves half its SPY into AAPL. Both want AAPL, nobody offers it.",
+  "environment": "MAINNET_FORK_REHEARSAL",
+  "gate": "G4",
+  "marketOnly": {
+    "externalNotionalUsdE18": "49999999999999998251",
+    "externalOrders": 4
+  },
+  "note": "No transaction: nothing crossed. Full request is residual.",
+  "referenceOk": true,
+  "result": "PASS",
+  "roundId": "0xe60457ef7a2c46daf1d1f92ab879bea1cc7d3155e6ad38d93b0b979721761e86",
+  "scenario": "L4-no-cross",
+  "settlementContract": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+  "settlementDeployTx": "0xd14d9d60e311775016cd0220faae1fd1ba02067ff061f48fa6d0fad66ce2e6e9",
+  "settlementTx": null,
+  "shapeProblems": [],
+  "status": "NO_CROSS",
+  "timestamp": "2026-09-18T13:56:23.344Z",
+  "totals": {
+    "crossRateBps": "0",
+    "crossedNotionalUsdE18": "0",
+    "crossingParticipantCount": 0,
+    "dustResidualNotionalUsdE18": "0",
+    "externalResidualCount": 4,
+    "legCount": 0,
+    "participantCount": 2,
+    "requestedNotionalUsdE18": "49999999999999998251",
+    "residualNotionalUsdE18": "49999999999999998251",
+    "transferNotionalUsdE18": "0"
+  },
+  "venue0": {
+    "dustResidualNotionalUsdE18": "0",
+    "externalNotionalUsdE18": "49999999999999998251",
+    "externalOrders": 4
+  }
+}

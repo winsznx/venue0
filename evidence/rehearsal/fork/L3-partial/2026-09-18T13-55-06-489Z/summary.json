@@ -1,0 +1,95 @@
+{
+  "cycles": [
+    [
+      {
+        "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+        "from": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+        "lots": "749",
+        "to": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A"
+      },
+      {
+        "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+        "from": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+        "lots": "749",
+        "to": "0x5d86f722E2613aC004704CDDB8e774912c0C8509"
+      }
+    ]
+  ],
+  "description": "A moves all NVDA into AAPL; B moves only 30% of its AAPL into NVDA. Partial cross with exact residual.",
+  "environment": "MAINNET_FORK_REHEARSAL",
+  "explorer": null,
+  "gasUsed": "249167",
+  "gate": "G3",
+  "marketOnly": {
+    "externalNotionalUsdE18": "64999999999999998706",
+    "externalOrders": 4
+  },
+  "planHash": "0x4171bb3214e285da594b171237db1823e9dc27d96ae9c032ee460869b652cfd8",
+  "referenceOk": true,
+  "residuals": [
+    {
+      "amountRaw": "79777659878789122",
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "notionalUsdE18": "17509999999999999753",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "residualClass": "EXTERNAL",
+      "side": "SELL",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "amountRaw": "52216063383403774",
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "notionalUsdE18": "17509999999999999646",
+      "owner": "0x5d86f722E2613aC004704CDDB8e774912c0C8509",
+      "residualClass": "EXTERNAL",
+      "side": "BUY",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    },
+    {
+      "amountRaw": "45561199245453",
+      "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+      "notionalUsdE18": "9999999999999884",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "residualClass": "DUST",
+      "side": "BUY",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+    },
+    {
+      "amountRaw": "29820710099031",
+      "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+      "notionalUsdE18": "9999999999999905",
+      "owner": "0xa44Cdd5C07b66c686612886060e652bEC00ED56A",
+      "residualClass": "DUST",
+      "side": "SELL",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+    }
+  ],
+  "result": "PASS",
+  "roundId": "0xa65bc2add6effdb9bc64acc3d778cdaed3ed2fe5bcea2aec3651cd320c943c18",
+  "scenario": "L3-partial",
+  "settlementBlock": "66276574",
+  "settlementContract": "0x75335df7d38A25C9aE0AC9D1293EC486aFF3Fbed",
+  "settlementDeployTx": "0x2eb8dc46fc44179ced6352643749e2431f00cd9d374b06ddeb5253a5a281ef14",
+  "settlementTx": "0x06727640cb732e5572188c6fa238e94d42e2ef7ac106971a77b29231463b3d70",
+  "shapeProblems": [],
+  "status": "PARTIAL_CROSS",
+  "timestamp": "2026-09-18T13:55:38.437Z",
+  "totals": {
+    "crossRateBps": "4609",
+    "crossedNotionalUsdE18": "29959999999999999516",
+    "crossingParticipantCount": 2,
+    "dustResidualNotionalUsdE18": "19999999999999789",
+    "externalResidualCount": 2,
+    "legCount": 2,
+    "participantCount": 2,
+    "requestedNotionalUsdE18": "64999999999999998706",
+    "residualNotionalUsdE18": "35039999999999999188",
+    "transferNotionalUsdE18": "14979999999999999758"
+  },
+  "venue0": {
+    "dustResidualNotionalUsdE18": "19999999999999789",
+    "externalNotionalUsdE18": "35019999999999999399",
+    "externalOrders": 2
+  },
+  "verifierStatus": "PASS"
+}

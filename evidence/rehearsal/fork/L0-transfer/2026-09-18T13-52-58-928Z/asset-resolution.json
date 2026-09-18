@@ -1,0 +1,74 @@
+{
+  "assets": [
+    {
+      "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+      "onchain": {
+        "blockNumber": "66275245",
+        "checkedAt": "2026-09-18T13:53:05.140Z",
+        "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "failures": [],
+        "observed": {
+          "bytecodeSize": 283,
+          "decimals": 18,
+          "oraclePaused": false,
+          "paused": false,
+          "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "registryPaused": false,
+          "symbol": "NVDA",
+          "tokenPaused": false,
+          "uiMultiplier": "1000775159164630595",
+          "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+        },
+        "ok": true,
+        "symbol": "NVDA",
+        "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+      },
+      "token": {
+        "chainId": 4663,
+        "contractAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "currentMultiplier": "1.000775159164630595",
+        "currentMultiplierE18": "1000775159164630595",
+        "decimals": 18,
+        "isin": "US67066G1040",
+        "name": "NVIDIA • Robinhood Token",
+        "resolvedAt": "2026-09-18T13:53:00.173Z",
+        "status": "ASSET_STATUS_ACTIVE",
+        "symbol": "NVDA",
+        "tradingCapabilities": {
+          "raw": {
+            "extended": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            },
+            "market": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            },
+            "overnight": {
+              "fractional": "TRADING_STATUS_TRADABLE",
+              "whole": "TRADING_STATUS_TRADABLE"
+            }
+          },
+          "sessions": {
+            "extended": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            },
+            "market": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            },
+            "overnight": {
+              "fractional": "TRADABLE",
+              "whole": "TRADABLE"
+            }
+          },
+          "shape": "SESSION_MAP"
+        },
+        "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5"
+      }
+    }
+  ],
+  "registrySize": 194,
+  "resolvedAt": "2026-09-18T13:53:00.173Z"
+}

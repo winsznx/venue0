@@ -1,0 +1,33 @@
+{
+  "snapshot": {
+    "capturedAt": 1789739714,
+    "chainId": 4663,
+    "maxAgeSec": 900,
+    "prices": [
+      {
+        "assetUid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+        "chainId": 4663,
+        "multiplierE18": "1000775159164630595",
+        "priceUsdE18": "219485004030000000000",
+        "source": "CHAINLINK_STOCK_TOKEN_FEED",
+        "sourceBlock": "66276529",
+        "sourceTimestamp": 1789733305,
+        "stale": false,
+        "tokenAddress": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+      },
+      {
+        "assetUid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+        "chainId": 4663,
+        "multiplierE18": "1000566080061092436",
+        "priceUsdE18": "335337420430000000000",
+        "source": "CHAINLINK_STOCK_TOKEN_FEED",
+        "sourceBlock": "66276529",
+        "sourceTimestamp": 1789739427,
+        "stale": false,
+        "tokenAddress": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+      }
+    ],
+    "source": "CHAINLINK_STOCK_TOKEN_FEED"
+  },
+  "snapshotHash": "0x2ba4aaa88a8c1ca66777a209debebf3c69939af3570b024f29ec4d400edb4b52"
+}

@@ -1,0 +1,12 @@
+{
+  "eligibilityDisagreements": [],
+  "feasibilityAgrees": true,
+  "objectiveAgrees": true,
+  "ok": true,
+  "productionCrossedLots": "2498",
+  "referenceOptimumLots": {
+    "d": "1",
+    "n": "2498"
+  },
+  "validationIssues": []
+}

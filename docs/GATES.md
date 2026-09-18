@@ -89,4 +89,4 @@ Honest cost note: Flash charged a $0.162 network fee plus $0.0012 trade fee on a
 
 The residual engine that chose LIMIT (version 1) checked session, halt, drift, route availability and policy, but not execution economics. It is superseded by the economic engine (D-012). This run stays in evidence unchanged as a real boundary case. The Flash demo order must use a residual large enough that the fee is economically legible, after re-querying current fees.
 
-Current live status: G0-G4 PASS LIVE, L5 Uniswap residual PASS LIVE, L6 Flash LIMIT integration PASS LIVE (economics caveat above), L7 Dynamic agent wallet PASS LIVE, 54 tests passing.
+Current live status: G0-G4 PASS LIVE, L5 Uniswap residual PASS LIVE, L6 Flash LIMIT integration PASS LIVE (economics caveat above), L7 Dynamic agent wallet PASS LIVE. At the Phase 14 stop: 87 TypeScript tests and 32 Foundry tests passing; full G0-G4 fork rehearsal re-run PASS on the final backend code.
