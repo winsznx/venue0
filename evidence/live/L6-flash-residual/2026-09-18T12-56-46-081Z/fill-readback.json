@@ -1,0 +1,39 @@
+{
+  "txHash": "0xa30e95a18cc90b99f141f611118dce5bcd7251111038d5bab9d79947f9e55fc6",
+  "provider": "rpc.mainnet.chain.robinhood.com (public; executor used Alchemy)",
+  "status": "success",
+  "blockNumber": "66241987",
+  "transfersInvolvingC": [
+    {
+      "token": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec",
+      "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "to": "0x8Ed0652B815643d096BC18032567F8FfcC72Ea67",
+      "value": "5467680833338535"
+    },
+    {
+      "token": "0xaf3d76f1834a1d425780943c99ea8a608f8a93f9",
+      "from": "0x8Ed0652B815643d096BC18032567F8FfcC72Ea67",
+      "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "value": "3074802608113408"
+    }
+  ],
+  "balances": {
+    "nvdaBefore": "5467680833338536",
+    "nvdaAfter": "1",
+    "aaplBefore": "2284695114336325",
+    "aaplAfter": "5359497722449733"
+  },
+  "economics": {
+    "residualNotionalUsd": 1.199429,
+    "providerNetworkFeeUsd": 0.1617027361192021,
+    "providerTradeFeeUsd": 0.0011999373991631,
+    "totalFeeUsd": 0.1629026735183652,
+    "feeBpsOfNotional": 1358,
+    "limitCrossPrice": "0.647985759474730742",
+    "postFeeTradedRate": "0.6506",
+    "allInRate": "0.5623595637413881",
+    "allInShortfallVsReferenceBps": 1322
+  },
+  "interpretation": "FLASH_INTEGRATION = PASS. FLASH_WAS_THE_BEST_EXECUTION_DECISION = NOT SHOWN: the fixed fee consumed ~13.6% of a ~$1.20 residual. Kept as a boundary case.",
+  "capturedAt": "2026-09-18T13:04:12.531Z"
+}

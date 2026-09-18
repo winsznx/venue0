@@ -67,7 +67,7 @@ Live (2026-09-18):
 - Quotes for market, limit and TWAP worked for NVDA -> USDG and NVDA -> AAPL. Fees are close to flat per order: about $0.16 for market/limit and $0.33 for a 2-bucket TWAP regardless of $0.44 or $11 size.
 - Default quotes return an unlimited `approveTx` (`0xff...ff`). `forceMinimalAllowance: true` gives an exact approval; Venue0 always sets it.
 - The signed `FlashOrder` (domain `DefinitiveFlashAllowance` v1, verifyingContract `0x5d00000873b6BF41539e6f5365B0Ff7d3c368f78`) binds swapper, vault `0x8Ed0652B815643d096BC18032567F8FfcC72Ea67`, recipient, tokens, amount, salt and deadline. `chainId` arrives as a string and uint fields as strings; viem signing needs them converted.
-- A limit sell of 0.00547 NVDA for AAPL filled in about 1 second via Uniswap V4. The limit was enforced on the post-fee traded amount; the fee ($0.162 network + $0.0012 trade) came out of the input, so the all-in rate was 13% under the limit on a $1.20 order.
+- A limit sell of 0.00547 NVDA for AAPL filled in about 1 second via Uniswap V4. The limit was enforced on the post-fee traded amount; the fee ($0.162 network + $0.0012 trade) came out of the input, so the all-in rate was 13% under the limit on a $1.20 order. Integration: PASS. Economic suitability at that size: NO. The run is kept as a boundary case; the fee must be re-queried before the demo order, and observed fee levels are not treated as universal provider facts.
 
 Docs:
 

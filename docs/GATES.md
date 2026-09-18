@@ -13,7 +13,7 @@ Current product state: **MECHANISM LOCKED** (G2, G3, G4 passed live on Robinhood
 | G3 | Partial overlap with exact residual | PASS | `evidence/live/L3-partial/` | 2026-09-18 |
 | L5 | Residual executed through Uniswap | PASS | `evidence/live/L5-residual/` | 2026-09-18 |
 | L7 | Portfolio agent on a Dynamic wallet crosses live | PASS | `evidence/live/L7-dynamic-agent/` | 2026-09-18 |
-| L6 | Session-aware residual engine -> Flash LIMIT, filled | PASS | `evidence/live/L6-flash-round/`, `evidence/live/L6-flash-residual/` | 2026-09-18 |
+| L6 | Flash LIMIT integration (quote, sign, submit, fill, readback) | PASS (integration only; see boundary finding) | `evidence/live/L6-flash-round/`, `evidence/live/L6-flash-residual/` | 2026-09-18 |
 | G4 | Zero overlap, NO_CROSS | PASS | `evidence/live/L4-no-cross/` | 2026-09-18 |
 
 ## Log
@@ -79,3 +79,14 @@ Residual engine inputs (live): session `extended` (08:57 ET), Robinhood NVDA cap
 Flash: exact-allowance approval `0xa37dae46...4687`, EIP-712 FlashOrder signed by C, order `1ae2aa7a-91b9-46d3-bf18-5f5095a062fc`, status `ORDER_STATUS_FILLED` (`REASON_FULLY_FILLED`), routed to Uniswap V4. Fill tx [0xa30e...5fc6](https://robinhoodchain.blockscout.com/tx/0xa30e95a18cc90b99f141f611118dce5bcd7251111038d5bab9d79947f9e55fc6) read back through the public RPC: C sent exactly 5,467,680,833,338,535 raw NVDA and received 3,074,802,608,113,408 raw AAPL.
 
 Honest cost note: Flash charged a $0.162 network fee plus $0.0012 trade fee on a $1.20 order (13.6%), taken from the input. The limit applied to the traded amount after fees (0.6506 AAPL/NVDA, above the 0.6480 limit), but the effective all-in rate was 0.5624 AAPL/NVDA, 13% below reference. At this size Flash is price-protected but expensive; the flat fee becomes about 1.6% at $10 and 0.16% at $100.
+
+### 2026-09-18 L6 boundary finding: integration PASS, economics NOT shown
+
+| Question | Answer |
+|---|---|
+| FLASH_INTEGRATION | PASS: quote, exact approval, EIP-712 order, submit, `ORDER_STATUS_FILLED`, onchain readback (`fill-readback.json`) |
+| FLASH_WAS_THE_BEST_EXECUTION_DECISION | NOT SHOWN. The ~$0.163 fee was 13.6% of the ~$1.20 residual; all-in rate 13.2% below reference |
+
+The residual engine that chose LIMIT (version 1) checked session, halt, drift, route availability and policy, but not execution economics. It is superseded by the economic engine (D-012). This run stays in evidence unchanged as a real boundary case. The Flash demo order must use a residual large enough that the fee is economically legible, after re-querying current fees.
+
+Current live status: G0-G4 PASS LIVE, L5 Uniswap residual PASS LIVE, L6 Flash LIMIT integration PASS LIVE (economics caveat above), L7 Dynamic agent wallet PASS LIVE, 54 tests passing.
