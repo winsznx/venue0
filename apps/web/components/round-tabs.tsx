@@ -7,10 +7,10 @@ export function RoundTabs({ id, settled }: { id: string; settled: boolean }) {
   const pathname = usePathname();
   const demo = useSearchParams().get("demo") === "1" ? "?demo=1" : "";
   const tabs = [
-    { href: `/round/${id}`, label: "Round" },
-    { href: `/round/${id}/proposal`, label: "Proposal", disabled: !settled },
-    { href: `/round/${id}/execute`, label: "Execution", disabled: !settled },
-    { href: `/round/${id}/receipt`, label: "Receipt", disabled: !settled },
+    { href: `/demo/round/${id}`, label: "Round" },
+    { href: `/demo/round/${id}/proposal`, label: "Proposal", disabled: !settled },
+    { href: `/demo/round/${id}/execute`, label: "Execution", disabled: !settled },
+    { href: `/demo/round/${id}/receipt`, label: "Receipt", disabled: !settled },
   ];
   return (
     <nav aria-label="Round steps" className="tabs">

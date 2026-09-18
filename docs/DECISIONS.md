@@ -131,3 +131,30 @@ Format per entry: PRD assumption, observed reality, source, impact, decision. Ne
 - Agent: without `ANTHROPIC_API_KEY` the UI shows "Live agent unavailable" and a real structured-target mode; no model output is simulated.
 - Circles: the web server holds one in-memory `CircleService`; nothing is seeded, circles reset on restart; membership is address-based until wallet sign-in exists.
 - Dynamic: the frontend does not implement user-owned delegated access (needs Dynamic's React SDK sign-in, delegation approval UI and a public HTTPS webhook). The UI and claims describe the proven server-wallet agent pattern only.
+
+## D-016 Product information architecture (2026-09-18)
+
+- Owner correction: the D-015 frontend was a proof portal. It is split into three surfaces with the D-015 visual system kept: public site `/` (10 sections), the product (`/onboarding`, `/app`, `/portfolio`, `/circles`, `/round/[id]/{lobby,,proposal,execute,receipt}`, `/activity`, `/settings`), and evidence (`/proof`, plus `/demo` for the G2 replay, bannered on every page as a replay with test wallets).
+- Product pages read the signed-in user's own state only. Round views show the viewer's intent, fills, legs and residual; other members appear as "Member 2", "Member 3" and only in `DELTAS_ONLY` circles. Aggregates follow PRD 11.3.
+
+## D-017 Persistence (2026-09-18)
+
+- Postgres schema (`apps/web/lib/server/db/schema.ts`), one SQL dialect with two drivers: `DATABASE_URL` selects a Postgres server (`postgres` 3.4.9); without it the server runs embedded Postgres (PGlite 0.5.8) persisted to `apps/web/.venue0-db/` (gitignored). The local path survives restarts on one host and is single-process; production must set `DATABASE_URL`.
+- Stored offchain: users, onboarding, targets, circles, memberships, hashed single-use invites, rounds (snapshot, match, plan, settlement tx, verifier report), round history, signed intents, plan approvals, residual decisions (with carry-forward consumption), activity. Balances, prices and settlement outcomes are always re-read from Robinhood Chain; the verifier report is derived from chain data only.
+- Round state changes are compare-and-set on the stored state using the PRD 12 transition table exported from `@venue0/circles`, so concurrent requests cannot double-advance a round.
+- JSON columns carry bigints as `{"$bigint": "<decimal>"}`; the same codec serves API responses.
+
+## D-018 Wallet authentication (2026-09-18)
+
+- Dynamic React SDK `@dynamic-labs/sdk-react-core` / `@dynamic-labs/ethereum` 5.9.0, Robinhood Chain 4663 as the only network (`overrides.evmNetworks` array form). Email sign-in with embedded wallet, or an external wallet.
+- The server exchanges the Dynamic JWT (RS256, environment JWKS, issuer `app.dynamicauth.com/<env>`, scope must include `user:basic`) for its own HS256 httpOnly session cookie, bound to one EVM address that must appear in the token's `verified_credentials`. A client cannot claim a wallet Dynamic did not verify.
+- Every signature and transaction is made in the user's wallet; before each, the client checks the wallet's chain and requests a switch to 4663.
+- User-owned delegated access is not implemented: it needs the delegated-access feature enabled for the environment, a public HTTPS webhook for the encrypted share, and a Venue0 agent that signs for users. Settings shows the SDK's delegation status and states this.
+
+## D-019 Live rounds in the product (2026-09-18)
+
+- Entering a circle's lobby returns its live round or opens one with a Chainlink snapshot of the circle's assets, each cross-checked against normalized Robinhood REST (D-003). Snapshot max age = collection window + 30 min approval window.
+- A member's intent is built server-side from their saved target, live balances and the round snapshot, restricted to the circle's assets, then signed in their wallet (EIP-712, settlement domain) and verified before storage.
+- Rounds advance on read (no worker): solve when the window closes or every member has signed; a proposed plan not settled within 30 minutes becomes `PLAN_STALE`.
+- Each participant approves the exact plan (EIP-712 `PlanApproval`, verified with `verifyTypedData`), grants an exact allowance for their own outflows, and any participant sends `settle()` from their wallet. The server then waits for the receipt and runs `verifySettlement` on the verifier RPC; its result sets `COMPLETE` or `VERIFICATION_FAILED`.
+- Residuals: the user chooses carry forward, drop, or trade now on Uniswap from their own wallet (approval, Permit2 signature, swap, balance readback). The economic engine's recommendation is shown with its reasons.

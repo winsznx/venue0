@@ -43,7 +43,7 @@ export function RoundView({ round }: { round: Round }) {
           {step < 2 ? (
             <button type="button" className="btn btn-sm" onClick={() => setMode(MODES[step + 1]?.id ?? "VENUE0")}>Next: {MODES[step + 1]?.label.toLowerCase()}</button>
           ) : (
-            <Link href={`/round/${round.key}/execute?demo=1`} className="btn btn-sm">See the execution proof</Link>
+            <Link href={`/demo/round/${round.key}/execute?demo=1`} className="btn btn-sm">See the execution proof</Link>
           )}
         </div>
       )}

@@ -1,0 +1,40 @@
+{
+  "scope": "Venue0 product end-to-end through the real application (not /demo). Operator-controlled Dynamic Sandbox test accounts, not independent users.",
+  "environment": { "chain": "Robinhood Chain 4663 mainnet", "auth": "Dynamic Sandbox, test accounts (+dynamic_test emails, static OTP)", "executorRpc": "alchemy", "verifierRpc": "rpc.mainnet.chain.robinhood.com (public)", "database": "embedded Postgres (PGlite) at apps/web/.venue0-db; DATABASE_URL not set", "settlementContract": "0x9cf871315674830046ab0541ee018f6978e86a3d" },
+  "users": [
+    { "label": "A", "dynamicUserId": "66d1c09b-…", "wallet": "0x71509D21A26F47F83B36A835bB4619Df8F512718", "email": "venue0+a+dynamic_test@example.com" },
+    { "label": "B", "dynamicUserId": "ef76a190-…", "wallet": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D", "email": "venue0+b+dynamic_test@example.com" },
+    { "label": "C", "dynamicUserId": "8537edd7-…", "wallet": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae", "email": "venue0+c+dynamic_test@example.com" }
+  ],
+  "test1_pair": {
+    "result": "PASS",
+    "circleId": "0x4d4e0c857bfb2b0037db67fcb09faa4abf178a2cf30799a41d5b811f8cca9aee",
+    "roundId": "0x224110ccf5a913989779819d424048aa6812063b8a51b6f8a83120b29d05c0cc",
+    "intentHashes": { "A": "0x4efe21f82d4f3aaa3fe5d8aaabb5c8235ec8036a726db4bb077b6bc47f890c3b", "B": "0x9a23945ec5ceea3727303f2d1995845481a731f85b1e26b0e121417d06a493c5" },
+    "planHash": "0xb7da5ed5337aa1ec289efff3bb54efb73b9d414edf0ec13629b1b3cdbf1e7959",
+    "allowanceExactRaw": { "A_AAPL": "3279815224703814", "B_NVDA": "5015604851891405" },
+    "settlementTx": "0x19ee8cec913d58f498937f41cff8242dcf1a5e3eb58aa317cdab0fb61176b85c",
+    "block": 66484508,
+    "sentBy": "B",
+    "verifier": "PASS 12/12",
+    "crossed": "A sent 0.003280 AAPL, received 0.005016 NVDA ($1.10 each way)",
+    "residual": "A: sell 0.0008263 AAPL / buy 0.001269 NVDA ($0.28). Engine WAIT (Uniswap all-in 1066 bps > 50 bps cap). User chose carry forward in the UI. B: dust only."
+  },
+  "test2_ring": {
+    "result": "PASS",
+    "circleId": "0x9bf0aca9f898c34d9b97eafe274a112e833d1cfdc6950ee603b0e4f9f2c3a4bb",
+    "roundId": "0x2bb81d5de63ae27982eb0bdc82985cd71f086f28be1a7fc531a54f9e453e5197",
+    "targets": { "A": "sell SPY, want NVDA", "B": "sell NVDA, want AAPL", "C": "sell AAPL, want SPY" },
+    "intentHashes": { "A": "0xe88214a7dadaea1ae53ea1a3f59a1a5708669a8f0f20e538b06e154911ad8fd4", "B": "0x108d1915fad0ee8d781b230b338ac49a46669ae7ebf900c11fc509af0c07a553", "C": "0x021b34edbb732bb0df82f9afe8d8c17602dabaaca0e7f41a9c4448237c0ee89d" },
+    "match": { "status": "PARTIAL_CROSS", "cycles": 1, "legs": 3, "requestedUsd": 5.19, "crossedUsd": 4.74, "crossRateBps": 9141 },
+    "legs": ["A -> C SPY", "C -> B AAPL", "B -> A NVDA"],
+    "planHash": "0x8685009a1a61d60b575d059d2c04e8656d75eba794f083b82d6e2c68804568fc",
+    "settlementTx": "0x4929221f2363cce65e9ffe1387e8287c1ed7603075878498b13cb8729cbe0f4d",
+    "sentBy": "C",
+    "verifier": "PASS",
+    "residual": "B: engine AGGREGATE, user chose carry forward in the UI. A, C: dust only.",
+    "receipts": "Each user reached /round/<roundId>/receipt showing 'Verified onchain'; receipts are per-user views of the round, not separate records."
+  },
+  "persistence": "Server stopped and restarted after both rounds; DB read back users, circles, rounds (COMPLETE, verifier PASS), 5 intents, approvals 2 and 3, 4 residual decisions (carried, unconsumed), activity per user. Sessions resumed after restart.",
+  "edges": "22/22 edge checks PASS (edges.log) plus wrong OTP (Dynamic 422, no session) and unsigned-round expiry (EXPIRED)."
+}

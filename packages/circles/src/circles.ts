@@ -51,7 +51,7 @@ export type RoundState =
   | "CANCELLED";
 
 /** PRD 12. Every transition not listed here is rejected. */
-const TRANSITIONS: Record<RoundState, RoundState[]> = {
+export const TRANSITIONS: Record<RoundState, RoundState[]> = {
   DRAFT: ["OPEN", "CANCELLED"],
   OPEN: ["COLLECTING", "EXPIRED", "CANCELLED", "FROZEN"],
   COLLECTING: ["FROZEN", "EXPIRED", "CANCELLED"],

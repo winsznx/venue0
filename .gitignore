@@ -12,3 +12,4 @@ keys/
 *.key
 campaign/smoke/
 apps/web/.next/
+apps/web/.venue0-db/

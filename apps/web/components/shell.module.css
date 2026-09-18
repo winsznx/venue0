@@ -30,3 +30,7 @@
   .main { margin: 0 8px 8px; border-radius: 22px; }
   .content { padding: 20px 16px 32px; }
 }
+.railCta { background: #fff; color: #000; margin-top: 8px; }
+.walletAddr { font-size: 0.8125rem; color: #c9ccd2; overflow: hidden; text-overflow: ellipsis; }
+.railQuiet { background: transparent; color: #c9ccd2; border: 1px solid #55575c; }
+.railQuiet:hover { color: #fff; border-color: #8a8c91; }

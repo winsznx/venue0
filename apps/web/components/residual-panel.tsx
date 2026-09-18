@@ -2,7 +2,7 @@ import type { Round } from "@/lib/data";
 import { proof } from "@/lib/data";
 import { residualOutcome } from "@/lib/residual-outcome";
 import { short, txUrl, usd } from "@/lib/format";
-import styles from "@/app/(product)/round/[id]/round-pages.module.css";
+import styles from "@/app/(public)/demo/round/[id]/round-pages.module.css";
 
 const DECISION_WORDS: Record<string, string> = { EXECUTE_NOW: "Execute now", LIMIT: "Limit order", TWAP: "TWAP", WAIT: "Wait", CANCEL: "Cancel", AGGREGATE: "Aggregate into next round" };
 

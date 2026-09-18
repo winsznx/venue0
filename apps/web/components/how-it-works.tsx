@@ -7,9 +7,10 @@ import { CrossingGraph } from "./crossing-graph";
 import styles from "./how-it-works.module.css";
 
 const STEPS = [
-  { n: "01", title: "Express target", body: "Each portfolio states where it wants to be. An agent turns that into a signed intent with hard limits." },
-  { n: "02", title: "Cross complementary changes", body: "Venue0 looks across every intent in the round and settles the changes that cancel out, wallet to wallet, in one transaction." },
-  { n: "03", title: "Route only the residual", body: "Whatever could not cross goes to public liquidity, and only when the route is economically sensible." },
+  { n: "01", title: "Target", body: "You say where your portfolio should be, in words or weights. Venue0 turns it into a signed intent with hard limits." },
+  { n: "02", title: "Circle", body: "You join a Circle: people rebalancing the same Stock Tokens, crossing in scheduled rounds." },
+  { n: "03", title: "Cross", body: "Each round, Venue0 finds the trades that cancel out, including cycles no two wallets could see, and settles them wallet to wallet in one transaction." },
+  { n: "04", title: "Residual", body: "Whatever didn't cross is yours to decide: carry it into the next round, or trade it on public liquidity when the cost is worth it." },
 ];
 
 export function HowItWorks({ round }: { round: Round }) {
@@ -45,8 +46,17 @@ export function HowItWorks({ round }: { round: Round }) {
             ))}
           </div>
         )}
-        {active === 1 && <CrossingGraph round={round} mode="VENUE0" caption="The three-way cycle Venue0 settled" />}
-        {active === 2 && (
+        {active === 1 && (
+          <div className={styles.intents}>
+            <p className={styles.visualCaption}>A Circle, as its members see it</p>
+            <div className={styles.intentRow}><span className={styles.who}>Stock Tokens</span>{[...new Set(round.participants.flatMap((p) => p.intent.map((l) => l.symbol)))].map((s) => <span key={s} className="badge badge-neutral">{s}</span>)}</div>
+            <div className={styles.intentRow}><span className={styles.who}>Members</span><span className="muted">{round.participants.length} wallets, each signing its own rebalance</span></div>
+            <div className={styles.intentRow}><span className={styles.who}>Rounds</span><span className="muted">Collect signed intents, freeze, solve, settle</span></div>
+            <div className={styles.intentRow}><span className={styles.who}>Privacy</span><span className="muted">Members see their own legs; others appear as &quot;Member 2&quot;</span></div>
+          </div>
+        )}
+        {active === 2 && <CrossingGraph round={round} mode="VENUE0" caption="The three-way cycle Venue0 settled" />}
+        {active === 3 && (
           <div className={styles.compare}>
             <p className={styles.visualCaption}>Same round, external orders needed</p>
             <div className={styles.compareRow}>

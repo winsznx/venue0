@@ -1,0 +1,11 @@
+.frame { min-height: 100vh; padding: 16px; display: grid; }
+.page { background: var(--paper); border-radius: var(--r-xl); display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 32px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.body { display: grid; justify-items: center; padding: 56px 24px 64px; }
+.card { width: min(760px, 100%); display: grid; gap: 22px; align-content: start; }
+.card h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; }
+.points { display: grid; gap: 12px; }
+.point { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 14px; align-items: start; }
+.pointNum { width: 36px; height: 36px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; font-family: var(--mono); font-size: 0.875rem; }
+.pointNumOn { background: var(--cross-soft); color: var(--cross-ink); }
+@media (max-width: 640px) { .frame { padding: 0; } .page { border-radius: 0; } .top { padding: 14px 16px; } .body { padding: 32px 16px 48px; } }

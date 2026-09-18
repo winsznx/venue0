@@ -15,4 +15,8 @@ if (existsSync(root)) {
 export const env = {
   rpcUrl: process.env.ROBINHOOD_RPC_URL || "https://rpc.mainnet.chain.robinhood.com",
   anthropicAvailable: Boolean(process.env.ANTHROPIC_API_KEY),
+  databaseUrl: process.env.DATABASE_URL || undefined,
+  settlementContract: process.env.CROSSING_SETTLEMENT_ADDRESS || undefined,
+  dynamicEnvironmentId: process.env.DYNAMIC_ENVIRONMENT_ID || process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID || undefined,
+  sessionSecret: process.env.SESSION_SECRET || undefined,
 };

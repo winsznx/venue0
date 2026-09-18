@@ -1,0 +1,27 @@
+PASS dynamic token present in A's browser 
+PASS forged wallet/user association rejected 401 That wallet is not verified on this Dynamic session.
+PASS invalid token rejected 401
+PASS C's session unchanged after forged attempts 
+PASS non-member cannot read another circle's round 409
+PASS non-member cannot build an intent there 409
+PASS anonymous request rejected 401
+PASS B's round view hides A's address 
+PASS B's receipt page hides A's address 
+PASS duplicate join is a no-op 200
+PASS repeated settlement report is a no-op {"state":"COMPLETE"}
+PASS approval after settlement refused 409 Round is COMPLETE, approvals are closed.
+[A] created circle 0xa2bd0f925a8bdbb804f2c9ee9281b1aa583e50da0f0b5c18fa1b38e99fc6c2a8
+PASS wrong chain detected and switched before signing wallet_switchEthereumChain
+PASS duplicate signed intent is UNCHANGED 200
+PASS non-member B cannot open A's edge round 409
+PASS round with one signer ends INSUFFICIENT_PARTICIPANTS, nothing moves INSUFFICIENT_PARTICIPANTS
+[B] joined circle via Discover
+PASS second edge round outcome recorded NO_CROSS
+[A dynamic 401] /sdk/f157cd2e-83b1-41d7-bc6b-92334b807baa/users Unauthorized
+PASS sign out clears server session 
+PASS signed-out API call rejected 401
+PASS sign back in lands on home (onboarding remembered) http://localhost:3100/app
+PASS refresh keeps the session 
+PASS fresh second profile is not signed in 
+{"edgeCircle":"0xa2bd0f925a8bdbb804f2c9ee9281b1aa583e50da0f0b5c18fa1b38e99fc6c2a8","edgeRound":"0xa497d1b097e7ecfef885a8265c831184a2635cc442cf5644cec5d71f91236563","round2":"0xe8df02b3a87f92cc789213cf24f02f2254fd80cdc2f89a01a440ebe9b84fb3c4","round2State":"NO_CROSS"}
+EDGES 22/22 passed

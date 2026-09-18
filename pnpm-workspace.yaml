@@ -4,8 +4,12 @@ packages:
   - "campaign"
   - "scripts"
 allowBuilds:
+  '@reown/appkit': false
+  bigint-buffer: false
+  bufferutil: false
   esbuild: true
   protobufjs: true
+  utf-8-validate: false
 minimumReleaseAgeExclude:
   - ox@0.14.45
   - viem@2.56.7

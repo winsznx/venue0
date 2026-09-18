@@ -48,7 +48,7 @@ export function HeroCycle({ round }: { round: Round }) {
         <button type="button" className="btn btn-quiet btn-sm" onClick={() => { setFound(false); setRun((n) => n + 1); }}>
           Replay
         </button>
-        <Link href={`/round/${round.key}`} className="btn btn-secondary btn-sm">Open this round</Link>
+        <Link href={`/demo/round/${round.key}`} className="btn btn-secondary btn-sm">Open this round</Link>
       </div>
     </div>
   );

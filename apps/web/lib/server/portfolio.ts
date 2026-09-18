@@ -77,3 +77,13 @@ export async function loadPortfolio(input: string): Promise<PortfolioResult> {
   positions.sort((a, b) => b.valueUsd - a.valueUsd);
   return { ok: true, address, positions, totalUsd: positions.reduce((s, p) => s + p.valueUsd, 0), registryResolvedAt: u.registry.resolvedAt, priceableCount: list.length, readAt: new Date().toISOString(), chainId };
 }
+
+/** Live Chainlink prices (USD E18) for canonical Stock Tokens by symbol, for targets that add an asset the wallet doesn't hold. */
+export async function livePricesBySymbol(symbols: readonly string[]): Promise<Map<string, bigint>> {
+  const u = await universe();
+  const wanted = new Set(symbols.map((s) => s.trim().toUpperCase()));
+  const list = priceable(u.registry, u.feeds).filter(({ token }) => wanted.has(token.symbol));
+  const rpc = client();
+  const readings = await Promise.all(list.map(async ({ token, feed }) => [token.uid, (await readChainlinkSnapshot(rpc, token as CanonicalStockToken, feed)).snapshot.priceUsdE18] as const));
+  return new Map(readings);
+}
