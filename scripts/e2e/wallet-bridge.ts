@@ -8,7 +8,7 @@ import { robinhoodChain } from "@venue0/shared";
  * A controlled test wallet exposed to the page as an EIP-6963 / EIP-1193 provider. The page talks to it exactly as it
  * would to a browser extension; signing happens here in Node with the test key, which never enters the page.
  */
-export async function installWallet(context: BrowserContext, key: Hex, options: { name: string; rpcUrl: string; chainId?: number }) {
+export async function installWallet(context: BrowserContext, key: Hex, options: { name: string; rpcUrl: string; chainId?: number; declineTransactions?: boolean }) {
   const account = privateKeyToAccount(key);
   const chain = robinhoodChain(options.rpcUrl);
   const publicClient = createPublicClient({ chain, transport: http(options.rpcUrl) });
@@ -49,6 +49,10 @@ export async function installWallet(context: BrowserContext, key: Hex, options: 
       }
       case "eth_sendTransaction": {
         const [tx] = params as [{ to: Hex; data?: Hex; value?: Hex; gas?: Hex }];
+        if (options.declineTransactions) {
+          console.log(`[tx:${options.name}] DECLINED by test wallet (no transaction sent) to=${tx.to}`);
+          throw Object.assign(new Error("User rejected the request."), { code: 4001 });
+        }
         const gas = await publicClient.estimateGas({ account: account.address, to: tx.to, data: tx.data ?? "0x", value: tx.value ? BigInt(tx.value) : 0n });
         const price = await publicClient.getGasPrice();
         let what = `call ${tx.data?.slice(0, 10)}`;

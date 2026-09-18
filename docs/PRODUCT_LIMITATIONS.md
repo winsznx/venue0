@@ -11,4 +11,4 @@ What the Venue0 app does not do yet, or has only shown in a weaker setting than 
 - **Residual execution.** Leftovers can carry forward, be dropped, or trade on Uniswap from the user's wallet. The Uniswap path in the app was not exercised in the e2e runs (the engine judged the leftovers too small; carrying forward spent nothing). Flash limit/TWAP routes are evaluated in the engine but not offered as in-app actions. Cash (USDG) legs are not crossable.
 - **Sizes.** Test rounds moved $1-5. No claim about cost savings for real users follows from them.
 - **Privacy.** Members see their own legs and anonymized counterparties; the settlement transaction itself is public onchain and reveals every participant's address and transfer.
-- **Concurrency.** State changes are compare-and-set, and duplicate requests are no-ops, but concurrency was tested only at the scale of three users.
+- **Concurrency.** State changes are compare-and-set and duplicate requests are no-ops, shown with bursts of 10-20 concurrent requests from two users on the embedded database. Not load-tested, and not yet run against a networked Postgres server.

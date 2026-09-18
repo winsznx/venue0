@@ -1,0 +1,22 @@
+[A] portfolio $3.77 NVDA $1.92, AAPL $1.66, SPY $0.20; target NVDA 25.4%, AAPL 43.9%, SPY 30.7%
+[A] target saved
+[C] portfolio $1.80 AAPL $1.01, SPY $0.79; target AAPL 56.0%, SPY 4.4%, NVDA 39.6%
+[C] target saved
+[A] created circle 0xb2fea8c666a4ea86c06ed8905c9735737ac4387745b7310eaf98d0230341f033
+PASS 10 concurrent joins: all 200, one membership statuses=200 members=2
+PASS 10 concurrent joins: one CIRCLE_JOINED activity 
+PASS 10 concurrent lobby entries open exactly one round 0x8cf0c0c9c8ff22188741aab2a39ebf054a7cc83f0f1bab08278970e59b0a6c57
+PASS 10 concurrent duplicate intents: all UNCHANGED UNCHANGED
+PASS duplicate intents logged once 
+PASS solve raced by 20 reads transitions once PROPOSED: COLLECTING>FROZEN>SOLVING>PROPOSED
+[tx:Venue0 Test Wallet A] DECLINED by test wallet (no transaction sent) to=0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC
+PASS declined wallet transaction shows a plain error, nothing sent 
+PASS 10 concurrent duplicate approvals: one approval stored statuses=200 approvals=1 state=APPROVING
+PASS duplicate approvals logged once before=3
+[tx:Venue0 Test Wallet C] DECLINED by test wallet (no transaction sent) to=0x117cc2133c37B721F49dE2A7a74833232B3B4C0C
+PASS both approvals → READY_TO_SETTLE READY_TO_SETTLE
+PASS 10 concurrent reports of another plan's settle() tx refused 409 That transaction settles a different plan.
+PASS report of a nonexistent tx refused 409 That transaction was not found on Robinhood Chain.
+PASS round still READY_TO_SETTLE after bogus reports READY_TO_SETTLE
+{"circleId":"0xb2fea8c666a4ea86c06ed8905c9735737ac4387745b7310eaf98d0230341f033","roundId":"0x8cf0c0c9c8ff22188741aab2a39ebf054a7cc83f0f1bab08278970e59b0a6c57"}
+CONCURRENCY 13/13 passed

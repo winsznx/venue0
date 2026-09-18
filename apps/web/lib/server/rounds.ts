@@ -366,6 +366,12 @@ export async function recordSettlement(roundId: string, reporter: Address, txHas
     nonces: new Map([...approvals].map(([a, v]) => [a, v.nonce])),
     watchTokens: [...new Set(plan.contractPlan.legs.map((l) => l.token))],
   });
+  // The set of wallets whose approval nonce the contract consumed must be exactly the plan's participants.
+  const consumed = new Set(verification.checks.filter((c) => c.name.startsWith("event.NonceConsumed.") && c.status === "PASS").map((c) => c.name.slice("event.NonceConsumed.".length).toLowerCase()));
+  const expected = plan.contractPlan.participants.map((p) => p.toLowerCase());
+  const participantsMatch = consumed.size === expected.length && expected.every((p) => consumed.has(p));
+  verification.checks.push({ name: "participants.set", status: participantsMatch ? "PASS" : "FAIL", detail: `${consumed.size} approvals consumed onchain for ${expected.length} plan participants` });
+  if (!participantsMatch) verification.status = "FAIL";
   const final = verification.status === "PASS" ? "COMPLETE" : "VERIFICATION_FAILED";
   const done = await transition(round, final, `verifier ${verification.status}`, { verification: toJson(verification) });
   if (done.state === final && done.verification) {
@@ -382,6 +388,7 @@ async function assertSettlesPlan(round: RoundRecord, txHash: Hex) {
   const plan = round.plan as SettlementPlan;
   const tx = await client().getTransaction({ hash: txHash }).catch(() => undefined);
   if (!tx) throw new RoundError("That transaction was not found on Robinhood Chain.");
+  if (tx.chainId !== undefined && tx.chainId !== 4663) throw new RoundError(`That transaction is on chain ${tx.chainId}, not Robinhood Chain 4663.`);
   if (!tx.to || getAddress(tx.to) !== getAddress(round.settlementContract)) throw new RoundError("That transaction is not a call to this round's settlement contract.");
   const call = decodeFunctionData({ abi: venue0SettlementAbi, data: tx.input });
   if (call.functionName !== "settle" || hashContractPlan((call.args as readonly [ContractPlan, unknown])[0]) !== plan.planHash) throw new RoundError("That transaction settles a different plan.");

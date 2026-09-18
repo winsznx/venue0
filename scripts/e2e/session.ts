@@ -7,9 +7,9 @@ export const OTP = process.env.DYNAMIC_TEST_OTP ?? "";
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 /** One operator-controlled test user: its own persistent browser profile, its own injected funded wallet. */
-export async function openUser(label: "A" | "B" | "C", profileRoot: string, opts: { profile?: string; chainId?: number } = {}) {
+export async function openUser(label: "A" | "B" | "C", profileRoot: string, opts: { profile?: string; chainId?: number; declineTransactions?: boolean } = {}) {
   const context = await chromium.launchPersistentContext(`${profileRoot}/profile-${opts.profile ?? label}`, { executablePath: CHROME, headless: true, viewport: { width: 1360, height: 900 } });
-  const wallet = await installWallet(context, process.env[`VENUE0_WALLET_${label}_PRIVATE_KEY`] as Hex, { name: `Venue0 Test Wallet ${label}`, rpcUrl: process.env.ROBINHOOD_RPC_URL || "https://rpc.mainnet.chain.robinhood.com", ...(opts.chainId ? { chainId: opts.chainId } : {}) });
+  const wallet = await installWallet(context, process.env[`VENUE0_WALLET_${label}_PRIVATE_KEY`] as Hex, { name: `Venue0 Test Wallet ${label}`, rpcUrl: process.env.ROBINHOOD_RPC_URL || "https://rpc.mainnet.chain.robinhood.com", ...(opts.chainId ? { chainId: opts.chainId } : {}), ...(opts.declineTransactions ? { declineTransactions: true } : {}) });
   const page = context.pages()[0] ?? (await context.newPage());
   page.on("response", async (r) => {
     if (r.url().includes("dynamicauth") && r.status() >= 400) console.log(`[${label} dynamic ${r.status()}] ${r.url().split("/api/v0")[1] ?? r.url()} ${(await r.text().catch(() => "")).slice(0, 300)}`);

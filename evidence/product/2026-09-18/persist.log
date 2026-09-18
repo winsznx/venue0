@@ -1,0 +1,4 @@
+PASS A: session=true target=true circles=7 settledRows=2
+PASS B: session=true target=true circles=4 settledRows=2
+PASS C: session=true target=true circles=3 settledRows=1
+PERSIST PASS
