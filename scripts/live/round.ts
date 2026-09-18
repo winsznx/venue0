@@ -104,7 +104,7 @@ const PROOF_POLICY = (validUntil: number): ExecutionPolicy => ({
 });
 
 async function deploySettlement(ctx: LiveContext): Promise<{ address: Address; deployTx?: Hex }> {
-  const existing = ctx.mode === "live" ? process.env.CROSSING_SETTLEMENT_ADDRESS : undefined;
+  const existing = ctx.mode === "live" ? process.env.CROSSING_SETTLEMENT_ADDRESS || undefined : undefined;
   if (existing) return { address: getAddress(existing) };
   const hash = await ctx.deployer.client.deployContract({ abi: venue0SettlementAbi, bytecode: venue0SettlementBytecode, account: ctx.deployer.client.account ?? ctx.deployer.address, chain: ctx.chain });
   const receipt = await ctx.publicClient.waitForTransactionReceipt({ hash });

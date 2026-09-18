@@ -8,7 +8,7 @@ export const ROBINHOOD_TESTNET_PUBLIC_RPC = "https://rpc.testnet.chain.robinhood
 export const ROBINHOOD_EXPLORER = "https://robinhoodchain.blockscout.com";
 export const ROBINHOOD_TESTNET_EXPLORER = "https://explorer.testnet.chain.robinhood.com";
 
-export function robinhoodChain(rpcUrl = process.env.ROBINHOOD_RPC_URL ?? ROBINHOOD_PUBLIC_RPC) {
+export function robinhoodChain(rpcUrl = process.env.ROBINHOOD_RPC_URL || ROBINHOOD_PUBLIC_RPC) {
   return defineChain({
     id: ROBINHOOD_CHAIN_ID,
     name: "Robinhood Chain",
@@ -18,7 +18,7 @@ export function robinhoodChain(rpcUrl = process.env.ROBINHOOD_RPC_URL ?? ROBINHO
   });
 }
 
-export function robinhoodTestnet(rpcUrl = process.env.ROBINHOOD_TESTNET_RPC_URL ?? ROBINHOOD_TESTNET_PUBLIC_RPC) {
+export function robinhoodTestnet(rpcUrl = process.env.ROBINHOOD_TESTNET_RPC_URL || ROBINHOOD_TESTNET_PUBLIC_RPC) {
   return defineChain({
     id: ROBINHOOD_TESTNET_CHAIN_ID,
     name: "Robinhood Chain Testnet",

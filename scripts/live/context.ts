@@ -59,7 +59,7 @@ export async function createContext(mode: Mode, walletCount: number): Promise<Li
   let rpcUrl: string;
   let verifierRpcUrl: string;
   let keys: Hex[];
-  const upstream = process.env.ROBINHOOD_RPC_URL ?? ROBINHOOD_PUBLIC_RPC;
+  const upstream = process.env.ROBINHOOD_RPC_URL || ROBINHOOD_PUBLIC_RPC;
 
   if (mode === "fork") {
     anvil = await startAnvil({ forkUrl: upstream });
@@ -68,7 +68,7 @@ export async function createContext(mode: Mode, walletCount: number): Promise<Li
     keys = FORK_KEYS.slice(0, walletCount);
   } else {
     rpcUrl = upstream;
-    verifierRpcUrl = process.env.VERIFIER_RPC_URL ?? upstream;
+    verifierRpcUrl = process.env.VERIFIER_RPC_URL || upstream;
     keys = LIVE_KEY_ENV.slice(0, walletCount).map((name) => {
       const value = process.env[name];
       if (!value) throw new Error(`live mode requires ${name}`);
