@@ -105,3 +105,11 @@ Format per entry: PRD assumption, observed reality, source, impact, decision. Ne
   - AGGREGATE: when no route is viable, but removing the fixed cost would make one viable, a later Venue0 round exists, and the user allows waiting, the residual is carried into the next round as an intent instead of paying a fee that dominates it. Otherwise WAIT (or CANCEL if the user forbids waiting).
   - Flash's fixed component is estimated as quoted fee minus the documented 10 bps trade fee. This split is an estimate and labelled as such.
 - Live check (`evidence/live/L6-residual-decision/`): the same L6 residual, re-quoted live, costs 1356 bps on Flash LIMIT (observed fill: 1358 bps) and 121 bps on Uniswap. Engine decision: AGGREGATE.
+
+## D-013 Venue0 Circles backend (2026-09-18)
+
+- `packages/circles`: circles (PUBLIC / INVITE_ONLY / PRIVATE, DELTAS_ONLY / AGGREGATE_ONLY), membership, single-use invites (only SHA-256 hashes stored), recurring cadence, and circle rounds on the PRD 12 state machine with an explicit transition table.
+- Intents enter a circle round only if the owner is a member, every asset is inside the circle universe, the intent is bound to that round and circle, and the EIP-712 signature recovers to the owner or its agent. Freeze runs the production matcher with the circle's universe.
+- AGGREGATE lands here: residuals carry forward into a later round of the same circle, as pre-filled limits the owner re-signs in the next intent.
+- Privacy defaults (PRD 11.3): aggregate stats expose counts and notional totals only; per-asset figures are suppressed when fewer than 3 participants touched the asset; members see only their own fills; AGGREGATE_ONLY circles show members a count instead of the member list.
+- State is in memory behind one service class. Persistence (Postgres) and the HTTP API are added with the web app; the PRD makes the database conditional on needing persistence.
