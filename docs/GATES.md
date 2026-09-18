@@ -55,4 +55,4 @@ Two defects found and fixed during rehearsal: EIP-7702 delegated signers were re
 
 G2 settled in one tx (343,258 gas, block 66210265): A.NVDA -> C, C.SPY -> B, B.AAPL -> A, discovered by the matcher from portfolio targets. All 13 verifier checks PASS. G1 ran after G2 on unequal leftover balances, so it crossed partially; the gate (atomic bilateral exchange) is met.
 
-Limitation: verifier and executor shared the public RPC endpoint. Rerun verification through an independent provider when `VERIFIER_RPC_URL` is available.
+Independent re-verification (2026-09-18, `pnpm verify`): L1 12/12, L2 13/13, L3 12/12 PASS through Alchemy (`robinhood-mainnet.g.alchemy.com`), a different provider from the public RPC that executed the rounds. Reports: `verifier-report-independent.json` in each run directory.
