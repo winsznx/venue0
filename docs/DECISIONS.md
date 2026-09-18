@@ -122,3 +122,12 @@ Format per entry: PRD assumption, observed reality, source, impact, decision. Ne
 - The cash (USDG) share scales Stock Token targets down and is flagged as an external residual, because V1 crossing is asset-for-asset.
 - Interpreter: official `@anthropic-ai/sdk` 0.126.0, `messages.parse` with `zodOutputFormat(GoalSpecSchema)`, model `claude-opus-5`. A `refusal` stop reason or unparsed output throws. Server-side refusal fallbacks are not wired yet (documented examples do not show them combined with `messages.parse`).
 - Live model run pending an Anthropic credential (`pnpm agent:examples`).
+
+## D-015 Frontend (2026-09-18)
+
+- Visual direction follows the owner's inspiration set in `~/closeout/internal/source/` (owner instruction: follow it 100%): light cool-grey frame, white panels, 24-32px radii, pill chips, black pill primary buttons, numbered step list with an inverted active step, sidebar dashboard with stat tiles. This overrides the written brief's "near-black base" line; the brief's other rules (one signal accent for internal crossing, neutral residual, mono only for numbers/hashes, few decorative elements) are kept. Type: Instrument Sans + IBM Plex Mono. The inspiration's stock photography is not used: Venue0 has no users to show, and the crossing graph takes that slot.
+- Next.js 16.3.5 App Router, React 19.3, plain CSS with tokens and CSS modules, no UI kit.
+- Honesty pipeline: `pnpm web:data` derives `apps/web/data/*.json` from committed evidence and campaign results only (including a pairwise-only LP optimum on each live round's own intents). Live rounds are labelled "Replay of verified mainnet round"; wallets are labelled operator proof wallets or the Dynamic agent wallet. Campaign numbers are labelled campaign data. Portfolio reads balances and Chainlink prices live, server-side.
+- Agent: without `ANTHROPIC_API_KEY` the UI shows "Live agent unavailable" and a real structured-target mode; no model output is simulated.
+- Circles: the web server holds one in-memory `CircleService`; nothing is seeded, circles reset on restart; membership is address-based until wallet sign-in exists.
+- Dynamic: the frontend does not implement user-owned delegated access (needs Dynamic's React SDK sign-in, delegation approval UI and a public HTTPS webhook). The UI and claims describe the proven server-wallet agent pattern only.

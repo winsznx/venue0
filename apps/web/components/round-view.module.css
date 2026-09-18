@@ -1,0 +1,17 @@
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; }
+.stage { background: var(--surface); border-radius: var(--r-lg); padding: 20px; }
+.stageHead { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+.legend { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--ink-2); }
+.legendCross, .legendExt { width: 22px; height: 0; border-top: 2.5px solid var(--cross); margin-left: 8px; }
+.legendExt { border-top: 1.5px dashed var(--residual); }
+.modeNote { color: var(--ink-2); font-size: 0.9375rem; padding: 4px 4px 0; }
+.panel { display: grid; gap: 16px; align-content: start; }
+.panel > dl { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 8px 20px; }
+.compare { background: var(--surface); border-radius: var(--r-lg); padding: 18px 20px; display: grid; gap: 10px; }
+.compareTitle { font-weight: 500; }
+.compareRow { display: flex; justify-content: space-between; font-size: 0.9375rem; color: var(--ink-2); }
+.uplift { display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; border-top: 1px solid var(--line); font-weight: 500; }
+.uplift .num { font-size: 1.375rem; color: var(--cross-ink); }
+.compareNote { font-size: 0.875rem; color: var(--ink-2); }
+.method { font-size: 0.8125rem; color: var(--ink-3); }
+@media (max-width: 1100px) { .layout { grid-template-columns: 1fr; } }

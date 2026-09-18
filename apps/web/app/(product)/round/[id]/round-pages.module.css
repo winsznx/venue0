@@ -1,0 +1,32 @@
+.switcher { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+.chipActive { background: var(--ink); color: #fff; border-color: var(--ink); }
+.twoCol { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+.sheet { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; }
+.flowGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.flowGrid > div { background: var(--surface); border-radius: var(--r-md); padding: 16px; display: grid; gap: 8px; align-content: start; }
+.flowLabel { font-size: 0.8125rem; color: var(--ink-3); }
+.flowLine { display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; font-size: 1rem; }
+.flowLine .num:last-child { margin-left: auto; }
+.approve { display: grid; gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+.approve :global(.btn) { justify-self: start; }
+
+.rail { display: grid; gap: 0; position: relative; }
+.railStep { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 16px; padding: 16px 0; position: relative; }
+.railStep::before { content: ""; position: absolute; left: 19px; top: 44px; bottom: -16px; width: 2px; background: var(--line); }
+.railStep:last-child::before { display: none; }
+.railDot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 0.875rem; z-index: 1; }
+.dotDone { background: var(--verified-soft); color: var(--verified); }
+.dotPending { background: var(--warn-soft); color: var(--warn); }
+.dotSkip { background: var(--surface-2); color: var(--ink-3); }
+.dotFail { background: var(--fail-soft); color: var(--fail); }
+.railTitle { font-weight: 500; font-size: 1.0625rem; }
+.railDetail { color: var(--ink-2); font-size: 0.9375rem; margin-top: 2px; overflow-wrap: anywhere; }
+.railState { font-family: var(--mono); font-size: 0.8125rem; color: var(--ink-2); white-space: nowrap; }
+
+.routes { display: grid; gap: 10px; margin-top: 12px; }
+.route { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; padding: 16px; border: 1px solid var(--line); border-radius: var(--r-md); }
+.routeChosen { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.routeName { font-weight: 500; }
+.routeMeta { grid-column: 1 / -1; color: var(--ink-2); font-size: 0.875rem; }
+
+@media (max-width: 1000px) { .twoCol, .flowGrid { grid-template-columns: 1fr; } }

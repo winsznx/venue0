@@ -11,3 +11,4 @@ contracts/broadcast/*/*/run-latest.json
 keys/
 *.key
 campaign/smoke/
+apps/web/.next/

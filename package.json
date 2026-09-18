@@ -25,12 +25,17 @@
     "campaign": "tsx campaign/runner/run.ts --frozen",
     "campaign:smoke": "tsx campaign/runner/run.ts --smoke",
     "campaign:analyze": "tsx campaign/runner/analyze.ts",
-    "agent:examples": "tsx --env-file-if-exists=.env scripts/agent/interpret-examples.ts"
+    "agent:examples": "tsx --env-file-if-exists=.env scripts/agent/interpret-examples.ts",
+    "web:data": "tsx scripts/web/build-view-data.ts",
+    "web:dev": "pnpm --filter @venue0/web dev",
+    "web:build": "pnpm web:data && pnpm --filter @venue0/web build",
+    "web:start": "pnpm --filter @venue0/web start"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@types/node": "^24.13.5",
     "eslint": "10.10.0",
+    "eslint-plugin-react-hooks": "7.1.1",
     "fast-check": "4.10.1",
     "tsx": "4.23.13",
     "typescript": "6.0.3",

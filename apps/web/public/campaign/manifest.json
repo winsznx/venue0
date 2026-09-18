@@ -1,0 +1,48 @@
+{
+  "seed": "venue0-campaign-2026-09-18-frozen",
+  "scenariosPerCohort": 40,
+  "totalScenarios": 400,
+  "cohorts": [
+    "RANDOM_INDEPENDENT",
+    "THEME_CIRCLE",
+    "INDEX_REBALANCE",
+    "CONCENTRATED_TECH",
+    "HIGH_COMPLEMENTARITY",
+    "LOW_COMPLEMENTARITY",
+    "ZERO_OVERLAP",
+    "SIZE_SKEW",
+    "PARTIAL_MATCH",
+    "EXTERNAL_ROUTE_STRESS"
+  ],
+  "cohortNature": {
+    "RANDOM_INDEPENDENT": "natural/randomized",
+    "THEME_CIRCLE": "natural/randomized",
+    "INDEX_REBALANCE": "natural/randomized",
+    "CONCENTRATED_TECH": "natural/randomized",
+    "HIGH_COMPLEMENTARITY": "constructed-positive",
+    "LOW_COMPLEMENTARITY": "stress/control",
+    "ZERO_OVERLAP": "stress/control",
+    "SIZE_SKEW": "natural/randomized",
+    "PARTIAL_MATCH": "constructed-positive",
+    "EXTERNAL_ROUTE_STRESS": "stress/control"
+  },
+  "arms": [
+    "MARKET_ONLY",
+    "BILATERAL_ONLY",
+    "VENUE0_CROSSING",
+    "VENUE0_FULL"
+  ],
+  "versions": {
+    "generator": "venue0-campaign-gen-1",
+    "matcher": "venue0-mmcc-1",
+    "referenceMatcher": "exact-rational-simplex-bland-1 (<=6 participants) + highs-1.15.3 portfolio LP (>6)",
+    "bilateralBaseline": "highs-1.15.3 pairwise-balanced LP",
+    "residualEngine": "venue0-residual-2-economic",
+    "costModel": "venue0-cost-model-1"
+  },
+  "inputs": {
+    "campaign/data/price-snapshot.json": "8e492588d82e98dd7bc849ee38c448654a874e99cf8f6619e6d26f9215384b4a",
+    "campaign/data/cost-curves.json": "3e8f3fee714a47cc76a4eb92562a7f2d246ce8df5dd7c04a178f826c14b800f8"
+  },
+  "frozenAt": "2026-09-18T13:34:40.866Z"
+}

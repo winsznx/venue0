@@ -1,0 +1,32 @@
+.frame { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; background: var(--canvas); }
+.frame > * { min-width: 0; }
+.rail { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 24px; padding: 28px 18px 18px; }
+.brand { padding: 0 10px 22px; border-bottom: 1px solid var(--line-strong); }
+.nav { display: grid; gap: 4px; }
+.navItem { display: flex; align-items: center; gap: 14px; height: 48px; padding: 0 14px; border-radius: 14px; color: var(--ink-2); font-size: 1rem; }
+.navItem:hover { color: var(--ink); background: rgba(255, 255, 255, 0.6); }
+.navActive { background: var(--paper); color: var(--ink); box-shadow: var(--shadow); font-weight: 500; }
+.network { margin-top: auto; background: #2f3033; color: #fff; border-radius: 22px; padding: 18px; display: grid; gap: 8px; }
+.network :global(.status-live) { color: #5fd3a3; }
+.networkTitle { font-size: 0.9375rem; font-weight: 500; }
+.networkLink { font-size: 0.8125rem; color: #c9ccd2; }
+.networkLink:hover { color: #fff; }
+.main { margin: 12px 12px 12px 0; overflow: hidden; background: var(--paper); border-radius: 28px; box-shadow: var(--shadow); min-width: 0; display: flex; flex-direction: column; }
+.topbar { display: flex; align-items: center; gap: 6px; margin: 16px 16px 0; padding: 12px 16px; border: 1px solid var(--line); border-radius: 16px; }
+.navBtn { width: 28px; height: 28px; border: 0; background: transparent; font-size: 1.25rem; color: var(--ink-3); border-radius: 8px; }
+.navBtn:hover { background: var(--surface); color: var(--ink); }
+.divider { width: 1px; height: 20px; background: var(--line); margin: 0 10px; }
+.crumbs { display: flex; gap: 6px; font-size: 0.9375rem; color: var(--ink-3); text-transform: capitalize; overflow: hidden; white-space: nowrap; }
+.crumbCurrent { color: var(--ink); }
+.crumbSep { margin-right: 6px; color: var(--line-strong); }
+.content { padding: 32px 32px 48px; min-width: 0; }
+@media (max-width: 960px) {
+  .frame { grid-template-columns: minmax(0, 1fr); }
+  .rail { position: static; height: auto; flex-direction: row; align-items: center; flex-wrap: wrap; gap: 8px; padding: 12px; }
+  .brand { border: 0; padding: 0 8px 0 4px; }
+  .nav { display: flex; overflow-x: auto; gap: 2px; flex: 1 1 100%; min-width: 0; order: 3; }
+  .navItem { height: 40px; padding: 0 12px; font-size: 0.875rem; white-space: nowrap; }
+  .network { display: none; }
+  .main { margin: 0 8px 8px; border-radius: 22px; }
+  .content { padding: 20px 16px 32px; }
+}

@@ -1,0 +1,1985 @@
+[
+ {
+  "key": "g2-cycle",
+  "gate": "G2",
+  "description": "A: NVDA->AAPL, B: AAPL->SPY, C: SPY->NVDA. No bilateral pair exists; only a 3-wallet cycle crosses.",
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "evidencePath": "evidence/live/L2-cycle/2026-09-18T12-03-06-266Z",
+  "roundId": "0xd75c972ff371556a2a63cfcd6dc89737864e7a23230a9130f923c7f12764980f",
+  "status": "CROSSED",
+  "result": "PASS",
+  "capturedAt": "2026-09-18T12:03:21.000Z",
+  "snapshot": {
+   "hash": "0x275b1d98ad471bd3fd8515b579389d6bd1d356b54e0fe53dfff9d3a130c8118a",
+   "source": "CHAINLINK_STOCK_TOKEN_FEED"
+  },
+  "assets": [
+   {
+    "symbol": "NVDA",
+    "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+    "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+    "priceUsd": 220.59086
+   },
+   {
+    "symbol": "AAPL",
+    "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+    "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+    "priceUsd": 337.025275
+   },
+   {
+    "symbol": "SPY",
+    "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+    "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+    "priceUsd": 762.85845
+   }
+  ],
+  "participants": [
+   {
+    "address": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "label": "Portfolio A",
+    "kind": "operator proof wallet",
+    "valueUsd": 3.982439,
+    "allocationErrorBeforeBps": 4999,
+    "intent": [
+     {
+      "symbol": "NVDA",
+      "side": "SELL",
+      "amountTokens": 0.009026755,
+      "valueUsd": 1.9912196484592997
+     },
+     {
+      "symbol": "AAPL",
+      "side": "BUY",
+      "amountTokens": 0.00590822,
+      "valueUsd": 1.9912194702605
+     }
+    ],
+    "signature": "0x39bc7998d7a09d501198e245ef3733592be4fe7fd871d570bd75679cec11011c72154ab4b79da4a59d4abb6e7e11ffecf5035b8283cf4757ddb74e2b7a3b5a071c",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789733901
+    },
+    "allocationErrorAfterBps": 28
+   },
+   {
+    "address": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "label": "Portfolio B",
+    "kind": "operator proof wallet",
+    "valueUsd": 3.973393,
+    "allocationErrorBeforeBps": 4999,
+    "intent": [
+     {
+      "symbol": "SPY",
+      "side": "BUY",
+      "amountTokens": 0.002604279,
+      "valueUsd": 1.98669624130755
+     },
+     {
+      "symbol": "AAPL",
+      "side": "SELL",
+      "amountTokens": 0.0058948,
+      "valueUsd": 1.9866965910700003
+     }
+    ],
+    "signature": "0x471229d38ef6cfc73a759bd1c0f19ae9ce57e14489ec370ae2155107f713158345912d9c46823ed6908fe6e10127fa62a17af6ab6634d191a39fb74ef08948bc1c",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789733901
+    },
+    "allocationErrorAfterBps": 17
+   },
+   {
+    "address": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "label": "Portfolio C",
+    "kind": "operator proof wallet",
+    "valueUsd": 3.972608,
+    "allocationErrorBeforeBps": 5000,
+    "intent": [
+     {
+      "symbol": "SPY",
+      "side": "SELL",
+      "amountTokens": 0.002603765,
+      "valueUsd": 1.9863041320642498
+     },
+     {
+      "symbol": "NVDA",
+      "side": "BUY",
+      "amountTokens": 0.009004472,
+      "valueUsd": 1.9863042223259197
+     }
+    ],
+    "signature": "0xc02f4421ee9f59167a224f28a695f4c157661fca4cbfc3d21c930a0eaf3d35a92e1aee5c4f7b0d8d73c94d9a0c0df4c762fa9f8e070f575fc6f6e583fe192ac51c",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789733901
+    },
+    "allocationErrorAfterBps": 16
+   }
+  ],
+  "legs": [
+   {
+    "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "SPY",
+    "amountTokens": 0.002595501,
+    "valueUsd": 1.979999
+   },
+   {
+    "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "symbol": "NVDA",
+    "amountTokens": 0.008975893,
+    "valueUsd": 1.979999
+   },
+   {
+    "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "AAPL",
+    "amountTokens": 0.00587493,
+    "valueUsd": 1.979999
+   }
+  ],
+  "fills": [
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "SPY",
+    "side": "BUY",
+    "requestedUsd": 1.986696,
+    "crossedUsd": 1.979999,
+    "residualUsd": 0.006696,
+    "residualTokens": 0.000008778,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "AAPL",
+    "side": "SELL",
+    "requestedUsd": 1.986696,
+    "crossedUsd": 1.979999,
+    "residualUsd": 0.006696,
+    "residualTokens": 0.000019869,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "symbol": "SPY",
+    "side": "SELL",
+    "requestedUsd": 1.986304,
+    "crossedUsd": 1.979999,
+    "residualUsd": 0.006304,
+    "residualTokens": 0.000008264,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "symbol": "NVDA",
+    "side": "BUY",
+    "requestedUsd": 1.986304,
+    "crossedUsd": 1.979999,
+    "residualUsd": 0.006304,
+    "residualTokens": 0.000028579,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "NVDA",
+    "side": "SELL",
+    "requestedUsd": 1.991219,
+    "crossedUsd": 1.979999,
+    "residualUsd": 0.011219,
+    "residualTokens": 0.000050861,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "AAPL",
+    "side": "BUY",
+    "requestedUsd": 1.991219,
+    "crossedUsd": 1.979999,
+    "residualUsd": 0.011219,
+    "residualTokens": 0.00003329,
+    "residualClass": "DUST"
+   }
+  ],
+  "cycles": [
+   [
+    {
+     "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "SPY"
+    },
+    {
+     "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "AAPL"
+    },
+    {
+     "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "symbol": "NVDA"
+    }
+   ]
+  ],
+  "totals": {
+   "requestedUsd": 11.928441,
+   "crossedUsd": 11.879999,
+   "residualUsd": 0.048441,
+   "dustUsd": 0.048441,
+   "transferUsd": 5.939999,
+   "crossRateBps": 9959,
+   "externalResidualCount": 0
+  },
+  "comparison": {
+   "marketOnly": {
+    "externalOrders": 6,
+    "crossedUsd": 0
+   },
+   "pairwise": {
+    "crossedUsd": 0,
+    "transfers": [],
+    "method": "exact LP optimum over pairwise value-balanced swaps (HiGHS), same intents"
+   },
+   "venue0": {
+    "crossedUsd": 11.879999,
+    "externalOrders": 0
+   }
+  },
+  "plan": {
+   "planHash": "0x4cee7c163d1c6cbf8ecda87b84d57a2b28d6dd4557b1639d76326bd6d4940dd4",
+   "validAfter": 1789732948,
+   "validUntil": 1789733908,
+   "settlementContract": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+   "approvals": [
+    {
+     "participant": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "nonce": "96977346580853583812909903660128289662914784302024760500536641307436027190524"
+    },
+    {
+     "participant": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "nonce": "75645384426904101097031069057156520952473929936289774826569847639256156234626"
+    },
+    {
+     "participant": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "nonce": "80763555994336802566226872013602063100355521855169402316010528441144022377175"
+    }
+   ],
+   "allowanceTxs": [
+    "0xf2b00dd2df83e97a161bb5c71ea5aa1339693b37ae154660e8f55f07185d9708",
+    "0xd45aad30c198454adb5859effab40b0faf6c04e6b8e75b3e93ded5d9d9920987",
+    "0x33645728f9aee80f7032ecc09276918d63812ccc723c532ba64be69d982d06c7"
+   ],
+   "preflightOk": true,
+   "residuals": [
+    {
+     "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "SPY",
+     "side": "BUY",
+     "amountTokens": 0.000008778,
+     "notionalUsd": 0.006696,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "AAPL",
+     "side": "SELL",
+     "amountTokens": 0.000019869,
+     "notionalUsd": 0.006696,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "symbol": "SPY",
+     "side": "SELL",
+     "amountTokens": 0.000008264,
+     "notionalUsd": 0.006304,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "symbol": "NVDA",
+     "side": "BUY",
+     "amountTokens": 0.000028579,
+     "notionalUsd": 0.006304,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "NVDA",
+     "side": "SELL",
+     "amountTokens": 0.000050861,
+     "notionalUsd": 0.011219,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "AAPL",
+     "side": "BUY",
+     "amountTokens": 0.00003329,
+     "notionalUsd": 0.011219,
+     "residualClass": "DUST"
+    }
+   ]
+  },
+  "settlement": {
+   "txHash": "0xfdd14b8e7c4c4a2aedd567a51a15492159c0d0e67ae7ef94028f7c7aff863035",
+   "block": 66210265,
+   "gasUsed": 343258,
+   "status": "success",
+   "explorer": "https://robinhoodchain.blockscout.com/tx/0xfdd14b8e7c4c4a2aedd567a51a15492159c0d0e67ae7ef94028f7c7aff863035"
+  },
+  "verifier": {
+   "status": "PASS",
+   "checks": [
+    {
+     "name": "tx.status",
+     "status": "PASS",
+     "detail": "receipt status success"
+    },
+    {
+     "name": "tx.to",
+     "status": "PASS",
+     "detail": "tx to 0x9cf871315674830046ab0541ee018f6978e86a3d"
+    },
+    {
+     "name": "calldata.plan",
+     "status": "PASS",
+     "detail": "executed plan hash 0x4cee7c163d1c6cbf8ecda87b84d57a2b28d6dd4557b1639d76326bd6d4940dd4 vs approved 0x4cee7c163d1c6cbf8ecda87b84d57a2b28d6dd4557b1639d76326bd6d4940dd4"
+    },
+    {
+     "name": "event.PlanSettled",
+     "status": "PASS",
+     "detail": "1 PlanSettled event(s)"
+    },
+    {
+     "name": "event.CrossingLeg",
+     "status": "PASS",
+     "detail": "3 CrossingLeg event(s) for 3 plan legs"
+    },
+    {
+     "name": "event.Transfer",
+     "status": "PASS",
+     "detail": "3 ERC-20 Transfer log(s); 0 not in plan"
+    },
+    {
+     "name": "event.NonceConsumed.0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "status": "PASS",
+     "detail": "expected nonce 96977346580853583812909903660128289662914784302024760500536641307436027190524, saw 96977346580853583812909903660128289662914784302024760500536641307436027190524"
+    },
+    {
+     "name": "event.NonceConsumed.0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "status": "PASS",
+     "detail": "expected nonce 75645384426904101097031069057156520952473929936289774826569847639256156234626, saw 75645384426904101097031069057156520952473929936289774826569847639256156234626"
+    },
+    {
+     "name": "event.NonceConsumed.0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "status": "PASS",
+     "detail": "expected nonce 80763555994336802566226872013602063100355521855169402316010528441144022377175, saw 80763555994336802566226872013602063100355521855169402316010528441144022377175"
+    },
+    {
+     "name": "state.planSettled",
+     "status": "PASS",
+     "detail": "planSettled(0x4cee7c163d1c6cbf8ecda87b84d57a2b28d6dd4557b1639d76326bd6d4940dd4) = true"
+    },
+    {
+     "name": "state.nonceUsed",
+     "status": "PASS",
+     "detail": "nonceUsed flags true,true,true"
+    },
+    {
+     "name": "balances.netDelta",
+     "status": "PASS",
+     "detail": "12 balance pairs match"
+    },
+    {
+     "name": "balances.noCustody",
+     "status": "PASS",
+     "detail": "settlement contract holds no watched tokens"
+    }
+   ]
+  },
+  "independentVerification": [
+   {
+    "provider": "robinhood-mainnet.g.alchemy.com",
+    "status": "PASS",
+    "passed": 13,
+    "total": 13
+   }
+  ]
+ },
+ {
+  "key": "g1-bilateral",
+  "gate": "G1",
+  "description": "A moves half its NVDA into AAPL; B moves half its AAPL into NVDA. Bilateral atomic exchange.",
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "evidencePath": "evidence/live/L1-bilateral/2026-09-18T12-05-03-882Z",
+  "roundId": "0x9fea70fce0326a89ba60f7fff54f595e7b1926b56f7a18ca2d37e82ef65653ff",
+  "status": "PARTIAL_CROSS",
+  "result": "PASS",
+  "capturedAt": "2026-09-18T12:05:08.000Z",
+  "snapshot": {
+   "hash": "0x3139585884d11b9b2e127f267e96bce9dde6f5f1ac9b03e8de08561ab90e8eee",
+   "source": "CHAINLINK_STOCK_TOKEN_FEED"
+  },
+  "assets": [
+   {
+    "symbol": "NVDA",
+    "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+    "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+    "priceUsd": 220.59086
+   },
+   {
+    "symbol": "AAPL",
+    "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+    "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+    "priceUsd": 337.025275
+   }
+  ],
+  "participants": [
+   {
+    "address": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "label": "Portfolio A",
+    "kind": "operator proof wallet",
+    "valueUsd": 3.761848,
+    "allocationErrorBeforeBps": 2368,
+    "intent": [
+     {
+      "symbol": "NVDA",
+      "side": "SELL",
+      "amountTokens": 0.004038808,
+      "valueUsd": 0.8909241300948799
+     },
+     {
+      "symbol": "AAPL",
+      "side": "BUY",
+      "amountTokens": 0.002643493,
+      "valueUsd": 0.890923955285575
+     }
+    ],
+    "signature": "0xf513b6c3abaa9721633beab158e748eb0ffe5da0e22f08a61add5e0b2b65b31957d24b2fee2af7732e895fb05c341347d8514277b4ed011325c852d286477e8c1b",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789734008
+    },
+    "allocationErrorAfterBps": 2
+   },
+   {
+    "address": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "label": "Portfolio B",
+    "kind": "operator proof wallet",
+    "valueUsd": 2.213984,
+    "allocationErrorBeforeBps": 4501,
+    "intent": [
+     {
+      "symbol": "NVDA",
+      "side": "BUY",
+      "amountTokens": 0.004518304,
+      "valueUsd": 0.9966965651014399
+     },
+     {
+      "symbol": "AAPL",
+      "side": "SELL",
+      "amountTokens": 0.002957334,
+      "valueUsd": 0.99669630461685
+     }
+    ],
+    "signature": "0xe61686182f9cff4cd229ace7857532b93a9501661682b5341467291b6354c2ac4effee0600c25a22538826456a77ad34f10f479df5d347b85430ce011372762d1b",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789734008
+    },
+    "allocationErrorAfterBps": 482
+   }
+  ],
+  "legs": [
+   {
+    "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "NVDA",
+    "amountTokens": 0.004034618,
+    "valueUsd": 0.889999
+   },
+   {
+    "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "AAPL",
+    "amountTokens": 0.002640751,
+    "valueUsd": 0.889999
+   }
+  ],
+  "fills": [
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "NVDA",
+    "side": "BUY",
+    "requestedUsd": 0.996696,
+    "crossedUsd": 0.889999,
+    "residualUsd": 0.106696,
+    "residualTokens": 0.000483685,
+    "residualClass": "EXTERNAL"
+   },
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "AAPL",
+    "side": "SELL",
+    "requestedUsd": 0.996696,
+    "crossedUsd": 0.889999,
+    "residualUsd": 0.106696,
+    "residualTokens": 0.000316583,
+    "residualClass": "EXTERNAL"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "NVDA",
+    "side": "SELL",
+    "requestedUsd": 0.890924,
+    "crossedUsd": 0.889999,
+    "residualUsd": 0.000924,
+    "residualTokens": 0.000004189,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "AAPL",
+    "side": "BUY",
+    "requestedUsd": 0.890924,
+    "crossedUsd": 0.889999,
+    "residualUsd": 0.000924,
+    "residualTokens": 0.000002742,
+    "residualClass": "DUST"
+   }
+  ],
+  "cycles": [
+   [
+    {
+     "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "NVDA"
+    },
+    {
+     "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "AAPL"
+    }
+   ]
+  ],
+  "totals": {
+   "requestedUsd": 3.775241,
+   "crossedUsd": 3.559999,
+   "residualUsd": 0.215241,
+   "dustUsd": 0.001848,
+   "transferUsd": 1.779999,
+   "crossRateBps": 9429,
+   "externalResidualCount": 2
+  },
+  "comparison": {
+   "marketOnly": {
+    "externalOrders": 4,
+    "crossedUsd": 0
+   },
+   "pairwise": {
+    "crossedUsd": 3.56,
+    "transfers": [
+     {
+      "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "symbol": "NVDA",
+      "valueUsd": 0.89
+     },
+     {
+      "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "symbol": "AAPL",
+      "valueUsd": 0.89
+     }
+    ],
+    "method": "exact LP optimum over pairwise value-balanced swaps (HiGHS), same intents"
+   },
+   "venue0": {
+    "crossedUsd": 3.559999,
+    "externalOrders": 2
+   }
+  },
+  "plan": {
+   "planHash": "0xdcd7a3a604c7892e72d439b7c0eebef73ab49ea5f0fedaecb2efcf304ecabba0",
+   "validAfter": 1789733054,
+   "validUntil": 1789734014,
+   "settlementContract": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+   "approvals": [
+    {
+     "participant": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "nonce": "49676917344289928376486920697613212947777886507544297486085144488167166600604"
+    },
+    {
+     "participant": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "nonce": "64975947187745064221212631484228698583367501348952724313190263203029407863223"
+    }
+   ],
+   "allowanceTxs": [
+    "0xdfef671dd1fc298064d5aebe4076ef780dac01cc07da6ae682f0bf5d7d8a1d02",
+    "0x7d787798297dd0c96d00b790752ee0c0d8e648f2b500347ea749b42f53a4544f"
+   ],
+   "preflightOk": true,
+   "residuals": [
+    {
+     "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "NVDA",
+     "side": "BUY",
+     "amountTokens": 0.000483685,
+     "notionalUsd": 0.106696,
+     "residualClass": "EXTERNAL"
+    },
+    {
+     "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "AAPL",
+     "side": "SELL",
+     "amountTokens": 0.000316583,
+     "notionalUsd": 0.106696,
+     "residualClass": "EXTERNAL"
+    },
+    {
+     "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "NVDA",
+     "side": "SELL",
+     "amountTokens": 0.000004189,
+     "notionalUsd": 0.000924,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "AAPL",
+     "side": "BUY",
+     "amountTokens": 0.000002742,
+     "notionalUsd": 0.000924,
+     "residualClass": "DUST"
+    }
+   ]
+  },
+  "settlement": {
+   "txHash": "0xd125f8668883ae888a6f0507a09d665e49f77a202b1dc2dbf7e9936fc2764a94",
+   "block": 66211224,
+   "gasUsed": 214943,
+   "status": "success",
+   "explorer": "https://robinhoodchain.blockscout.com/tx/0xd125f8668883ae888a6f0507a09d665e49f77a202b1dc2dbf7e9936fc2764a94"
+  },
+  "verifier": {
+   "status": "PASS",
+   "checks": [
+    {
+     "name": "tx.status",
+     "status": "PASS",
+     "detail": "receipt status success"
+    },
+    {
+     "name": "tx.to",
+     "status": "PASS",
+     "detail": "tx to 0x9cf871315674830046ab0541ee018f6978e86a3d"
+    },
+    {
+     "name": "calldata.plan",
+     "status": "PASS",
+     "detail": "executed plan hash 0xdcd7a3a604c7892e72d439b7c0eebef73ab49ea5f0fedaecb2efcf304ecabba0 vs approved 0xdcd7a3a604c7892e72d439b7c0eebef73ab49ea5f0fedaecb2efcf304ecabba0"
+    },
+    {
+     "name": "event.PlanSettled",
+     "status": "PASS",
+     "detail": "1 PlanSettled event(s)"
+    },
+    {
+     "name": "event.CrossingLeg",
+     "status": "PASS",
+     "detail": "2 CrossingLeg event(s) for 2 plan legs"
+    },
+    {
+     "name": "event.Transfer",
+     "status": "PASS",
+     "detail": "2 ERC-20 Transfer log(s); 0 not in plan"
+    },
+    {
+     "name": "event.NonceConsumed.0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "status": "PASS",
+     "detail": "expected nonce 49676917344289928376486920697613212947777886507544297486085144488167166600604, saw 49676917344289928376486920697613212947777886507544297486085144488167166600604"
+    },
+    {
+     "name": "event.NonceConsumed.0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "status": "PASS",
+     "detail": "expected nonce 64975947187745064221212631484228698583367501348952724313190263203029407863223, saw 64975947187745064221212631484228698583367501348952724313190263203029407863223"
+    },
+    {
+     "name": "state.planSettled",
+     "status": "PASS",
+     "detail": "planSettled(0xdcd7a3a604c7892e72d439b7c0eebef73ab49ea5f0fedaecb2efcf304ecabba0) = true"
+    },
+    {
+     "name": "state.nonceUsed",
+     "status": "PASS",
+     "detail": "nonceUsed flags true,true"
+    },
+    {
+     "name": "balances.netDelta",
+     "status": "PASS",
+     "detail": "6 balance pairs match"
+    },
+    {
+     "name": "balances.noCustody",
+     "status": "PASS",
+     "detail": "settlement contract holds no watched tokens"
+    }
+   ]
+  },
+  "independentVerification": [
+   {
+    "provider": "robinhood-mainnet.g.alchemy.com",
+    "status": "PASS",
+    "passed": 12,
+    "total": 12
+   }
+  ]
+ },
+ {
+  "key": "g3-partial",
+  "gate": "G3",
+  "description": "A moves all NVDA into AAPL; B moves only 30% of its AAPL into NVDA. Partial cross with exact residual.",
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "evidencePath": "evidence/live/L3-partial/2026-09-18T12-05-47-026Z",
+  "roundId": "0xe2444aa4bc9c0c7022c588c51b2699d30fc9e9ba32dbce5ee8837247b2e210f9",
+  "status": "PARTIAL_CROSS",
+  "result": "PASS",
+  "capturedAt": "2026-09-18T12:05:53.000Z",
+  "snapshot": {
+   "hash": "0x37e2ecab74ded84a4c84dd2d684148c6c7822db5ada45ee2992d0d55b0921e2d",
+   "source": "CHAINLINK_STOCK_TOKEN_FEED"
+  },
+  "assets": [
+   {
+    "symbol": "NVDA",
+    "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+    "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+    "priceUsd": 220.59086
+   },
+   {
+    "symbol": "AAPL",
+    "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+    "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+    "priceUsd": 337.025275
+   }
+  ],
+  "participants": [
+   {
+    "address": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "label": "Portfolio A",
+    "kind": "operator proof wallet",
+    "valueUsd": 3.761848,
+    "allocationErrorBeforeBps": 2370,
+    "intent": [
+     {
+      "symbol": "NVDA",
+      "side": "SELL",
+      "amountTokens": 0.004042998,
+      "valueUsd": 0.89184840579828
+     },
+     {
+      "symbol": "AAPL",
+      "side": "BUY",
+      "amountTokens": 0.002646236,
+      "valueUsd": 0.8918484156149001
+     }
+    ],
+    "signature": "0x6cec2995600220abf90e18ce237cbccff5441b3ebb132fb6111a8c725511a8e1264f9847fd5f5eddb3be6de05e78aa0e50e57235b24a87c9d0681e03c74c90621b",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789734053
+    },
+    "allocationErrorAfterBps": 1494
+   },
+   {
+    "address": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "label": "Portfolio B",
+    "kind": "operator proof wallet",
+    "valueUsd": 2.213984,
+    "allocationErrorBeforeBps": 1495,
+    "intent": [
+     {
+      "symbol": "NVDA",
+      "side": "BUY",
+      "amountTokens": 0.001500596,
+      "valueUsd": 0.33101776215256
+     },
+     {
+      "symbol": "AAPL",
+      "side": "SELL",
+      "amountTokens": 0.000982175,
+      "valueUsd": 0.33101779947312504
+     }
+    ],
+    "signature": "0x50a9f48456314ee4beb23d108a6857105fb55516fb8b8ee661f404e8816aad116f95e0624f4c2bc23baa365d6324c141bd6d44cf61235377f69768b7b583c2eb1b",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789734053
+    },
+    "allocationErrorAfterBps": 5
+   }
+  ],
+  "legs": [
+   {
+    "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "NVDA",
+    "amountTokens": 0.001495982,
+    "valueUsd": 0.329999
+   },
+   {
+    "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "AAPL",
+    "amountTokens": 0.000979155,
+    "valueUsd": 0.329999
+   }
+  ],
+  "fills": [
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "NVDA",
+    "side": "BUY",
+    "requestedUsd": 0.331017,
+    "crossedUsd": 0.329999,
+    "residualUsd": 0.001017,
+    "residualTokens": 0.000004614,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "AAPL",
+    "side": "SELL",
+    "requestedUsd": 0.331017,
+    "crossedUsd": 0.329999,
+    "residualUsd": 0.001017,
+    "residualTokens": 0.00000302,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "NVDA",
+    "side": "SELL",
+    "requestedUsd": 0.891848,
+    "crossedUsd": 0.329999,
+    "residualUsd": 0.561848,
+    "residualTokens": 0.002547016,
+    "residualClass": "EXTERNAL"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "AAPL",
+    "side": "BUY",
+    "requestedUsd": 0.891848,
+    "crossedUsd": 0.329999,
+    "residualUsd": 0.561848,
+    "residualTokens": 0.001667081,
+    "residualClass": "EXTERNAL"
+   }
+  ],
+  "cycles": [
+   [
+    {
+     "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "NVDA"
+    },
+    {
+     "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "AAPL"
+    }
+   ]
+  ],
+  "totals": {
+   "requestedUsd": 2.445732,
+   "crossedUsd": 1.319999,
+   "residualUsd": 1.125732,
+   "dustUsd": 0.002035,
+   "transferUsd": 0.659999,
+   "crossRateBps": 5397,
+   "externalResidualCount": 2
+  },
+  "comparison": {
+   "marketOnly": {
+    "externalOrders": 4,
+    "crossedUsd": 0
+   },
+   "pairwise": {
+    "crossedUsd": 1.32,
+    "transfers": [
+     {
+      "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "symbol": "NVDA",
+      "valueUsd": 0.33
+     },
+     {
+      "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "symbol": "AAPL",
+      "valueUsd": 0.33
+     }
+    ],
+    "method": "exact LP optimum over pairwise value-balanced swaps (HiGHS), same intents"
+   },
+   "venue0": {
+    "crossedUsd": 1.319999,
+    "externalOrders": 2
+   }
+  },
+  "plan": {
+   "planHash": "0x06ed635afeb6df725ee09bf4cd6222a2bb6db4c310a9f13a91587f7a5504b6b6",
+   "validAfter": 1789733099,
+   "validUntil": 1789734059,
+   "settlementContract": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+   "approvals": [
+    {
+     "participant": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "nonce": "109733655282999020720232442521626607017564673792199486992750361152637132717443"
+    },
+    {
+     "participant": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "nonce": "72434917423987902089391290054793447050493723578757734796061859387201401538161"
+    }
+   ],
+   "allowanceTxs": [
+    "0xd4c38b1717f13c335e0446f9c8383edbaace55cf2049ceb3c9f0cfaa86f893da",
+    "0x69928d85d9990e0ce83df87363438fddc4dc9bc6de35c8f9cc27da2f5db5f750"
+   ],
+   "preflightOk": true,
+   "residuals": [
+    {
+     "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "NVDA",
+     "side": "BUY",
+     "amountTokens": 0.000004614,
+     "notionalUsd": 0.001017,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "AAPL",
+     "side": "SELL",
+     "amountTokens": 0.00000302,
+     "notionalUsd": 0.001017,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "NVDA",
+     "side": "SELL",
+     "amountTokens": 0.002547016,
+     "notionalUsd": 0.561848,
+     "residualClass": "EXTERNAL"
+    },
+    {
+     "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "AAPL",
+     "side": "BUY",
+     "amountTokens": 0.001667081,
+     "notionalUsd": 0.561848,
+     "residualClass": "EXTERNAL"
+    }
+   ]
+  },
+  "settlement": {
+   "txHash": "0x9d4d14d2eee13e542cbbf58e8feab98755035f9280585878f2213984e23faced",
+   "block": 66211665,
+   "gasUsed": 214967,
+   "status": "success",
+   "explorer": "https://robinhoodchain.blockscout.com/tx/0x9d4d14d2eee13e542cbbf58e8feab98755035f9280585878f2213984e23faced"
+  },
+  "verifier": {
+   "status": "PASS",
+   "checks": [
+    {
+     "name": "tx.status",
+     "status": "PASS",
+     "detail": "receipt status success"
+    },
+    {
+     "name": "tx.to",
+     "status": "PASS",
+     "detail": "tx to 0x9cf871315674830046ab0541ee018f6978e86a3d"
+    },
+    {
+     "name": "calldata.plan",
+     "status": "PASS",
+     "detail": "executed plan hash 0x06ed635afeb6df725ee09bf4cd6222a2bb6db4c310a9f13a91587f7a5504b6b6 vs approved 0x06ed635afeb6df725ee09bf4cd6222a2bb6db4c310a9f13a91587f7a5504b6b6"
+    },
+    {
+     "name": "event.PlanSettled",
+     "status": "PASS",
+     "detail": "1 PlanSettled event(s)"
+    },
+    {
+     "name": "event.CrossingLeg",
+     "status": "PASS",
+     "detail": "2 CrossingLeg event(s) for 2 plan legs"
+    },
+    {
+     "name": "event.Transfer",
+     "status": "PASS",
+     "detail": "2 ERC-20 Transfer log(s); 0 not in plan"
+    },
+    {
+     "name": "event.NonceConsumed.0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "status": "PASS",
+     "detail": "expected nonce 109733655282999020720232442521626607017564673792199486992750361152637132717443, saw 109733655282999020720232442521626607017564673792199486992750361152637132717443"
+    },
+    {
+     "name": "event.NonceConsumed.0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "status": "PASS",
+     "detail": "expected nonce 72434917423987902089391290054793447050493723578757734796061859387201401538161, saw 72434917423987902089391290054793447050493723578757734796061859387201401538161"
+    },
+    {
+     "name": "state.planSettled",
+     "status": "PASS",
+     "detail": "planSettled(0x06ed635afeb6df725ee09bf4cd6222a2bb6db4c310a9f13a91587f7a5504b6b6) = true"
+    },
+    {
+     "name": "state.nonceUsed",
+     "status": "PASS",
+     "detail": "nonceUsed flags true,true"
+    },
+    {
+     "name": "balances.netDelta",
+     "status": "PASS",
+     "detail": "6 balance pairs match"
+    },
+    {
+     "name": "balances.noCustody",
+     "status": "PASS",
+     "detail": "settlement contract holds no watched tokens"
+    }
+   ]
+  },
+  "independentVerification": [
+   {
+    "provider": "robinhood-mainnet.g.alchemy.com",
+    "status": "PASS",
+    "passed": 12,
+    "total": 12
+   }
+  ]
+ },
+ {
+  "key": "g4-no-cross",
+  "gate": "G4",
+  "description": "A moves half its NVDA into AAPL; B moves half its SPY into AAPL. Both want AAPL, nobody offers it.",
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "evidencePath": "evidence/live/L4-no-cross/2026-09-18T12-06-33-366Z",
+  "roundId": "0x5fc888eb2edd18ec6f616d3dd3ddb1b3a6120399f931892e22bd695e1c944452",
+  "status": "NO_CROSS",
+  "result": "PASS",
+  "capturedAt": "2026-09-18T12:06:41.000Z",
+  "snapshot": {
+   "hash": "0xbf6f6638f7acb35cd488f566a530b392662d793fe49cc3cefac842f118e63bb6",
+   "source": "CHAINLINK_STOCK_TOKEN_FEED"
+  },
+  "assets": [
+   {
+    "symbol": "NVDA",
+    "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+    "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+    "priceUsd": 220.59086
+   },
+   {
+    "symbol": "AAPL",
+    "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+    "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+    "priceUsd": 337.025275
+   },
+   {
+    "symbol": "SPY",
+    "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+    "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+    "priceUsd": 762.85845
+   }
+  ],
+  "participants": [
+   {
+    "address": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "label": "Portfolio A",
+    "kind": "operator proof wallet",
+    "valueUsd": 3.761848,
+    "allocationErrorBeforeBps": 746,
+    "intent": [
+     {
+      "symbol": "NVDA",
+      "side": "SELL",
+      "amountTokens": 0.001273508,
+      "valueUsd": 0.28092422493688
+     },
+     {
+      "symbol": "AAPL",
+      "side": "BUY",
+      "amountTokens": 0.00083354,
+      "valueUsd": 0.28092404772350005
+     }
+    ],
+    "signature": "0x57c135026521ad4f57a7ad55985ed42437d036d1061fd10cd39f1afa338a72a907e183c56c71479068a186264b7ea8fb5414f4f9fd02130766eaa170f5ffcac41b",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789734101
+    },
+    "allocationErrorAfterBps": 747
+   },
+   {
+    "address": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "label": "Portfolio B",
+    "kind": "operator proof wallet",
+    "valueUsd": 4.193984,
+    "allocationErrorBeforeBps": 2360,
+    "intent": [
+     {
+      "symbol": "SPY",
+      "side": "SELL",
+      "amountTokens": 0.00129775,
+      "valueUsd": 0.9899995534875
+     },
+     {
+      "symbol": "AAPL",
+      "side": "BUY",
+      "amountTokens": 0.002937465,
+      "valueUsd": 0.9899999494278752
+     }
+    ],
+    "signature": "0xf2cf8734103687f23e020eaf3a34c447b86ead52821153809a31007d9f1669ca70cd20ecd33bcf0537b3e9fb8d28980921f4e607b3d9f2629404336d6eaafb241c",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789734101
+    },
+    "allocationErrorAfterBps": 2361
+   }
+  ],
+  "legs": [],
+  "fills": [
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "SPY",
+    "side": "SELL",
+    "requestedUsd": 0.989999,
+    "crossedUsd": 0,
+    "residualUsd": 0.989999,
+    "residualTokens": 0.00129775,
+    "residualClass": "EXTERNAL"
+   },
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "AAPL",
+    "side": "BUY",
+    "requestedUsd": 0.989999,
+    "crossedUsd": 0,
+    "residualUsd": 0.989999,
+    "residualTokens": 0.002937465,
+    "residualClass": "EXTERNAL"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "NVDA",
+    "side": "SELL",
+    "requestedUsd": 0.280924,
+    "crossedUsd": 0,
+    "residualUsd": 0.280924,
+    "residualTokens": 0.001273508,
+    "residualClass": "EXTERNAL"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "AAPL",
+    "side": "BUY",
+    "requestedUsd": 0.280924,
+    "crossedUsd": 0,
+    "residualUsd": 0.280924,
+    "residualTokens": 0.00083354,
+    "residualClass": "EXTERNAL"
+   }
+  ],
+  "cycles": [],
+  "totals": {
+   "requestedUsd": 2.541848,
+   "crossedUsd": 0,
+   "residualUsd": 2.541848,
+   "dustUsd": 0,
+   "transferUsd": 0,
+   "crossRateBps": 0,
+   "externalResidualCount": 4
+  },
+  "comparison": {
+   "marketOnly": {
+    "externalOrders": 4,
+    "crossedUsd": 0
+   },
+   "pairwise": {
+    "crossedUsd": 0,
+    "transfers": [],
+    "method": "exact LP optimum over pairwise value-balanced swaps (HiGHS), same intents"
+   },
+   "venue0": {
+    "crossedUsd": 0,
+    "externalOrders": 4
+   }
+  },
+  "plan": null,
+  "settlement": null,
+  "verifier": null,
+  "independentVerification": []
+ },
+ {
+  "key": "l7-dynamic",
+  "gate": "DYNAMIC",
+  "description": "Wallet A (EOA) moves half its AAPL into SPY; portfolio agent D (Dynamic MPC server wallet) moves half its SPY into AAPL. D signs its intent, plan approval and allowance tx through Dynamic.",
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "evidencePath": "evidence/live/L7-dynamic-agent/2026-09-18T12-39-18-272Z",
+  "roundId": "0xb8a177ca5860cc3130ba5b679c12a5df03ce236ee24f3664b866398f50293737",
+  "status": "PARTIAL_CROSS",
+  "result": "PASS",
+  "capturedAt": "2026-09-18T12:39:21.000Z",
+  "snapshot": {
+   "hash": "0xfc31babb72fae19c8a80ecc25ddcb6d197b262fab234ecdce04d13904ccc511d",
+   "source": "CHAINLINK_STOCK_TOKEN_FEED"
+  },
+  "assets": [
+   {
+    "symbol": "AAPL",
+    "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+    "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+    "priceUsd": 337.025275
+   },
+   {
+    "symbol": "SPY",
+    "uid": "0x000000000000000000000000000000001c6f27a62789417d8ed359ed3c2d3da1",
+    "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+    "priceUsd": 761.550793
+   }
+  ],
+  "participants": [
+   {
+    "address": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "label": "Portfolio A",
+    "kind": "operator proof wallet",
+    "valueUsd": 3.758917,
+    "allocationErrorBeforeBps": 5000,
+    "intent": [
+     {
+      "symbol": "SPY",
+      "side": "BUY",
+      "amountTokens": 0.002467935,
+      "valueUsd": 1.879457856322455
+     },
+     {
+      "symbol": "AAPL",
+      "side": "SELL",
+      "amountTokens": 0.00557661,
+      "valueUsd": 1.8794585188177502
+     }
+    ],
+    "signature": "0x528f26c9f3f5215c41b6711cdacdb4ea06d9783bdf0bcceef4c519e5270f6dd1604f5a3ee860e07c2e79a26cec38f41a6d0eefd1446c2e922ddb6e05e213271f1c",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789736061
+    },
+    "allocationErrorAfterBps": 2366
+   },
+   {
+    "address": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+    "label": "Agent D",
+    "kind": "Dynamic server wallet (agent)",
+    "valueUsd": 1.989192,
+    "allocationErrorBeforeBps": 4999,
+    "intent": [
+     {
+      "symbol": "SPY",
+      "side": "SELL",
+      "amountTokens": 0.001306014,
+      "valueUsd": 0.9945959973691021
+     },
+     {
+      "symbol": "AAPL",
+      "side": "BUY",
+      "amountTokens": 0.002951103,
+      "valueUsd": 0.9945963001283251
+     }
+    ],
+    "signature": "0xc11222bb2c0336fd48c58b16b8ed1bdbdcd8b9656aa2a94c74d9bea553268ec108a16e5b3ec31e53cd6fac032f105869a60b0a5558663956da51002b8b968d4a1b",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789736061
+    },
+    "allocationErrorAfterBps": 23
+   }
+  ],
+  "legs": [
+   {
+    "from": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+    "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "SPY",
+    "amountTokens": 0.001299978,
+    "valueUsd": 0.989999
+   },
+   {
+    "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "to": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+    "symbol": "AAPL",
+    "amountTokens": 0.002937465,
+    "valueUsd": 0.989999
+   }
+  ],
+  "fills": [
+   {
+    "owner": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+    "symbol": "SPY",
+    "side": "SELL",
+    "requestedUsd": 0.994596,
+    "crossedUsd": 0.989999,
+    "residualUsd": 0.004596,
+    "residualTokens": 0.000006035,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+    "symbol": "AAPL",
+    "side": "BUY",
+    "requestedUsd": 0.994596,
+    "crossedUsd": 0.989999,
+    "residualUsd": 0.004596,
+    "residualTokens": 0.000013638,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "SPY",
+    "side": "BUY",
+    "requestedUsd": 1.879458,
+    "crossedUsd": 0.989999,
+    "residualUsd": 0.889458,
+    "residualTokens": 0.001167956,
+    "residualClass": "EXTERNAL"
+   },
+   {
+    "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "symbol": "AAPL",
+    "side": "SELL",
+    "requestedUsd": 1.879458,
+    "crossedUsd": 0.989999,
+    "residualUsd": 0.889458,
+    "residualTokens": 0.002639145,
+    "residualClass": "EXTERNAL"
+   }
+  ],
+  "cycles": [
+   [
+    {
+     "from": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+     "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "SPY"
+    },
+    {
+     "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "to": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+     "symbol": "AAPL"
+    }
+   ]
+  ],
+  "totals": {
+   "requestedUsd": 5.74811,
+   "crossedUsd": 3.959999,
+   "residualUsd": 1.78811,
+   "dustUsd": 0.009192,
+   "transferUsd": 1.979999,
+   "crossRateBps": 6889,
+   "externalResidualCount": 2
+  },
+  "comparison": {
+   "marketOnly": {
+    "externalOrders": 4,
+    "crossedUsd": 0
+   },
+   "pairwise": {
+    "crossedUsd": 3.96,
+    "transfers": [
+     {
+      "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "to": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+      "symbol": "AAPL",
+      "valueUsd": 0.99
+     },
+     {
+      "from": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+      "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "symbol": "SPY",
+      "valueUsd": 0.99
+     }
+    ],
+    "method": "exact LP optimum over pairwise value-balanced swaps (HiGHS), same intents"
+   },
+   "venue0": {
+    "crossedUsd": 3.959999,
+    "externalOrders": 2
+   }
+  },
+  "plan": {
+   "planHash": "0x7a56a22b3dda7e8f753619bfb78faa6c3e45f0e2eb7211883cc4417ee3f471cb",
+   "validAfter": 1789735110,
+   "validUntil": 1789736070,
+   "settlementContract": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+   "approvals": [
+    {
+     "participant": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+     "nonce": "106312201082265140159048217057825238387242643776524897132870217000986284091996"
+    },
+    {
+     "participant": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "nonce": "68955488478716768815102768414390299723782328831586336009027067962265037847235"
+    }
+   ],
+   "allowanceTxs": [
+    "0x7f7ae39d5b45b58ae6a2225e09daaf8ce7c4f7bff8ce85e43897c0e0aca0a2fb",
+    "0x2c75c06dcc0000febff9085769b2099e4673f3776fb127d213490e9b20114cf6"
+   ],
+   "preflightOk": true,
+   "residuals": [
+    {
+     "owner": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+     "symbol": "SPY",
+     "side": "SELL",
+     "amountTokens": 0.000006035,
+     "notionalUsd": 0.004596,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+     "symbol": "AAPL",
+     "side": "BUY",
+     "amountTokens": 0.000013638,
+     "notionalUsd": 0.004596,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "SPY",
+     "side": "BUY",
+     "amountTokens": 0.001167956,
+     "notionalUsd": 0.889458,
+     "residualClass": "EXTERNAL"
+    },
+    {
+     "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "symbol": "AAPL",
+     "side": "SELL",
+     "amountTokens": 0.002639145,
+     "notionalUsd": 0.889458,
+     "residualClass": "EXTERNAL"
+    }
+   ]
+  },
+  "settlement": {
+   "txHash": "0x0f851b81082f93f863ddceeae3f4aff47ad6eac52f04482985eb75e187a91873",
+   "block": 66231666,
+   "gasUsed": 249131,
+   "status": "success",
+   "explorer": "https://robinhoodchain.blockscout.com/tx/0x0f851b81082f93f863ddceeae3f4aff47ad6eac52f04482985eb75e187a91873"
+  },
+  "verifier": {
+   "status": "PASS",
+   "checks": [
+    {
+     "name": "tx.status",
+     "status": "PASS",
+     "detail": "receipt status success"
+    },
+    {
+     "name": "tx.to",
+     "status": "PASS",
+     "detail": "tx to 0x9cf871315674830046ab0541ee018f6978e86a3d"
+    },
+    {
+     "name": "calldata.plan",
+     "status": "PASS",
+     "detail": "executed plan hash 0x7a56a22b3dda7e8f753619bfb78faa6c3e45f0e2eb7211883cc4417ee3f471cb vs approved 0x7a56a22b3dda7e8f753619bfb78faa6c3e45f0e2eb7211883cc4417ee3f471cb"
+    },
+    {
+     "name": "event.PlanSettled",
+     "status": "PASS",
+     "detail": "1 PlanSettled event(s)"
+    },
+    {
+     "name": "event.CrossingLeg",
+     "status": "PASS",
+     "detail": "2 CrossingLeg event(s) for 2 plan legs"
+    },
+    {
+     "name": "event.Transfer",
+     "status": "PASS",
+     "detail": "2 ERC-20 Transfer log(s); 0 not in plan"
+    },
+    {
+     "name": "event.NonceConsumed.0x00dB4B5f745da1351eaf687c39107c54E344E87C",
+     "status": "PASS",
+     "detail": "expected nonce 106312201082265140159048217057825238387242643776524897132870217000986284091996, saw 106312201082265140159048217057825238387242643776524897132870217000986284091996"
+    },
+    {
+     "name": "event.NonceConsumed.0x71509D21A26F47F83B36A835bB4619Df8F512718",
+     "status": "PASS",
+     "detail": "expected nonce 68955488478716768815102768414390299723782328831586336009027067962265037847235, saw 68955488478716768815102768414390299723782328831586336009027067962265037847235"
+    },
+    {
+     "name": "state.planSettled",
+     "status": "PASS",
+     "detail": "planSettled(0x7a56a22b3dda7e8f753619bfb78faa6c3e45f0e2eb7211883cc4417ee3f471cb) = true"
+    },
+    {
+     "name": "state.nonceUsed",
+     "status": "PASS",
+     "detail": "nonceUsed flags true,true"
+    },
+    {
+     "name": "balances.netDelta",
+     "status": "PASS",
+     "detail": "6 balance pairs match"
+    },
+    {
+     "name": "balances.noCustody",
+     "status": "PASS",
+     "detail": "settlement contract holds no watched tokens"
+    }
+   ]
+  },
+  "independentVerification": [
+   {
+    "provider": "rpc.mainnet.chain.robinhood.com",
+    "status": "PASS",
+    "passed": 12,
+    "total": 12
+   }
+  ]
+ },
+ {
+  "key": "l6-flash-round",
+  "gate": "L6",
+  "description": "C moves all NVDA into AAPL under a price-protection policy (no market residuals, LOW urgency); B moves all its AAPL into NVDA. The partial cross leaves C an NVDA residual for the residual engine.",
+  "environment": "ROBINHOOD_CHAIN_MAINNET",
+  "evidencePath": "evidence/live/L6-flash-round/2026-09-18T12-56-00-989Z",
+  "roundId": "0x9c4142700263d59c07e724335ee2d24db44b61b57588b3e7a112f2efa65c4df8",
+  "status": "PARTIAL_CROSS",
+  "result": "PASS",
+  "capturedAt": "2026-09-18T12:56:11.000Z",
+  "snapshot": {
+   "hash": "0xca39081e1b5ac774ece15e7927721e647aee01b2cdd3eba9d8aecb54945f6e74",
+   "source": "CHAINLINK_STOCK_TOKEN_FEED"
+  },
+  "assets": [
+   {
+    "symbol": "NVDA",
+    "uid": "0x00000000000000000000000000000000915f477416294f5099a5e0e09f327ce5",
+    "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+    "priceUsd": 219.485004
+   },
+   {
+    "symbol": "AAPL",
+    "uid": "0x00000000000000000000000000000000c2425be3658540dd8e2424cbf3c5c649",
+    "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+    "priceUsd": 337.025275
+   }
+  ],
+  "participants": [
+   {
+    "address": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "label": "Portfolio B",
+    "kind": "operator proof wallet",
+    "valueUsd": 2.206762,
+    "allocationErrorBeforeBps": 3504,
+    "intent": [
+     {
+      "symbol": "NVDA",
+      "side": "BUY",
+      "amountTokens": 0.003523672,
+      "valueUsd": 0.773393163014688
+     },
+     {
+      "symbol": "AAPL",
+      "side": "SELL",
+      "amountTokens": 0.002294763,
+      "valueUsd": 0.7733931311348251
+     }
+    ],
+    "signature": "0x4cf96726e0ac62e0e995664a1748c52985d35693eaad9b0a974741e4ed0089a72541355bac236d3d7756452e08324217f94973033c94ce3e4167f3ffa96536351c",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": true,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "NORMAL",
+     "validUntil": 1789737071
+    },
+    "allocationErrorAfterBps": 15
+   },
+   {
+    "address": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "label": "Portfolio C",
+    "kind": "operator proof wallet",
+    "valueUsd": 1.970073,
+    "allocationErrorBeforeBps": 10000,
+    "intent": [
+     {
+      "symbol": "NVDA",
+      "side": "SELL",
+      "amountTokens": 0.008975893,
+      "valueUsd": 1.970073911008572
+     },
+     {
+      "symbol": "AAPL",
+      "side": "BUY",
+      "amountTokens": 0.005845478,
+      "valueUsd": 1.9700738304564502
+     }
+    ],
+    "signature": "0x19a164b1d1fdafc5b3eca66ef5aa7a47865272ef1ac07f6defa3e0b478e4071e4a3b16bf37719bcaa6fdb6f246d32ea8fc119fac4f7c029847ca2596c407b5281b",
+    "policy": {
+     "allowLimitResidual": true,
+     "allowMarketResidual": false,
+     "allowPartialCross": true,
+     "allowTwapResidual": true,
+     "allowWaitResidual": true,
+     "maxExternalSlippageBps": 50,
+     "maxReferencePriceDriftBps": 100,
+     "maxRoundDurationSec": 900,
+     "urgency": "LOW",
+     "validUntil": 1789737071
+    },
+    "allocationErrorAfterBps": 6092
+   }
+  ],
+  "legs": [
+   {
+    "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "NVDA",
+    "amountTokens": 0.003508212,
+    "valueUsd": 0.769999
+   },
+   {
+    "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "symbol": "AAPL",
+    "amountTokens": 0.002284695,
+    "valueUsd": 0.769999
+   }
+  ],
+  "fills": [
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "NVDA",
+    "side": "BUY",
+    "requestedUsd": 0.773393,
+    "crossedUsd": 0.769999,
+    "residualUsd": 0.003393,
+    "residualTokens": 0.000015459,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "symbol": "AAPL",
+    "side": "SELL",
+    "requestedUsd": 0.773393,
+    "crossedUsd": 0.769999,
+    "residualUsd": 0.003393,
+    "residualTokens": 0.000010068,
+    "residualClass": "DUST"
+   },
+   {
+    "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "symbol": "NVDA",
+    "side": "SELL",
+    "requestedUsd": 1.970073,
+    "crossedUsd": 0.769999,
+    "residualUsd": 1.200073,
+    "residualTokens": 0.00546768,
+    "residualClass": "EXTERNAL"
+   },
+   {
+    "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "symbol": "AAPL",
+    "side": "BUY",
+    "requestedUsd": 1.970073,
+    "crossedUsd": 0.769999,
+    "residualUsd": 1.200073,
+    "residualTokens": 0.003560783,
+    "residualClass": "EXTERNAL"
+   }
+  ],
+  "cycles": [
+   [
+    {
+     "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "NVDA"
+    },
+    {
+     "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "symbol": "AAPL"
+    }
+   ]
+  ],
+  "totals": {
+   "requestedUsd": 5.486934,
+   "crossedUsd": 3.079999,
+   "residualUsd": 2.406934,
+   "dustUsd": 0.006786,
+   "transferUsd": 1.539999,
+   "crossRateBps": 5613,
+   "externalResidualCount": 2
+  },
+  "comparison": {
+   "marketOnly": {
+    "externalOrders": 4,
+    "crossedUsd": 0
+   },
+   "pairwise": {
+    "crossedUsd": 3.08,
+    "transfers": [
+     {
+      "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "symbol": "AAPL",
+      "valueUsd": 0.77
+     },
+     {
+      "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "symbol": "NVDA",
+      "valueUsd": 0.77
+     }
+    ],
+    "method": "exact LP optimum over pairwise value-balanced swaps (HiGHS), same intents"
+   },
+   "venue0": {
+    "crossedUsd": 3.079999,
+    "externalOrders": 2
+   }
+  },
+  "plan": {
+   "planHash": "0x00d6098789a447f8df9bb180474cefad06c2140971b5ce5ad12c74eca8ba0751",
+   "validAfter": 1789736121,
+   "validUntil": 1789737081,
+   "settlementContract": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+   "approvals": [
+    {
+     "participant": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "nonce": "105942100678160669120239959132971555657234303837764100953748595299828619560580"
+    },
+    {
+     "participant": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "nonce": "44753022703684487303259878727861007555621589960445322031402332477395402488543"
+    }
+   ],
+   "allowanceTxs": [
+    "0x26a41e514b5dd271dcf611c2693c95e9ab541a573ef0af741f0c76893268c9bf",
+    "0x13bec2cd3d5c1a2c71e9e506ae14d9161dc6a51eedec7f35547c052f3c95c280"
+   ],
+   "preflightOk": true,
+   "residuals": [
+    {
+     "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "NVDA",
+     "side": "BUY",
+     "amountTokens": 0.000015459,
+     "notionalUsd": 0.003393,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "symbol": "AAPL",
+     "side": "SELL",
+     "amountTokens": 0.000010068,
+     "notionalUsd": 0.003393,
+     "residualClass": "DUST"
+    },
+    {
+     "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "symbol": "NVDA",
+     "side": "SELL",
+     "amountTokens": 0.00546768,
+     "notionalUsd": 1.200073,
+     "residualClass": "EXTERNAL"
+    },
+    {
+     "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "symbol": "AAPL",
+     "side": "BUY",
+     "amountTokens": 0.003560783,
+     "notionalUsd": 1.200073,
+     "residualClass": "EXTERNAL"
+    }
+   ]
+  },
+  "settlement": {
+   "txHash": "0xeea682902f0fe4c6d217b10cc2f625985c5d6e9ea147d4a6df982cd71e656b87",
+   "block": 66241695,
+   "gasUsed": 232067,
+   "status": "success",
+   "explorer": "https://robinhoodchain.blockscout.com/tx/0xeea682902f0fe4c6d217b10cc2f625985c5d6e9ea147d4a6df982cd71e656b87"
+  },
+  "verifier": {
+   "status": "PASS",
+   "checks": [
+    {
+     "name": "tx.status",
+     "status": "PASS",
+     "detail": "receipt status success"
+    },
+    {
+     "name": "tx.to",
+     "status": "PASS",
+     "detail": "tx to 0x9cf871315674830046ab0541ee018f6978e86a3d"
+    },
+    {
+     "name": "calldata.plan",
+     "status": "PASS",
+     "detail": "executed plan hash 0x00d6098789a447f8df9bb180474cefad06c2140971b5ce5ad12c74eca8ba0751 vs approved 0x00d6098789a447f8df9bb180474cefad06c2140971b5ce5ad12c74eca8ba0751"
+    },
+    {
+     "name": "event.PlanSettled",
+     "status": "PASS",
+     "detail": "1 PlanSettled event(s)"
+    },
+    {
+     "name": "event.CrossingLeg",
+     "status": "PASS",
+     "detail": "2 CrossingLeg event(s) for 2 plan legs"
+    },
+    {
+     "name": "event.Transfer",
+     "status": "PASS",
+     "detail": "2 ERC-20 Transfer log(s); 0 not in plan"
+    },
+    {
+     "name": "event.NonceConsumed.0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+     "status": "PASS",
+     "detail": "expected nonce 105942100678160669120239959132971555657234303837764100953748595299828619560580, saw 105942100678160669120239959132971555657234303837764100953748595299828619560580"
+    },
+    {
+     "name": "event.NonceConsumed.0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+     "status": "PASS",
+     "detail": "expected nonce 44753022703684487303259878727861007555621589960445322031402332477395402488543, saw 44753022703684487303259878727861007555621589960445322031402332477395402488543"
+    },
+    {
+     "name": "state.planSettled",
+     "status": "PASS",
+     "detail": "planSettled(0x00d6098789a447f8df9bb180474cefad06c2140971b5ce5ad12c74eca8ba0751) = true"
+    },
+    {
+     "name": "state.nonceUsed",
+     "status": "PASS",
+     "detail": "nonceUsed flags true,true"
+    },
+    {
+     "name": "balances.netDelta",
+     "status": "PASS",
+     "detail": "6 balance pairs match"
+    },
+    {
+     "name": "balances.noCustody",
+     "status": "PASS",
+     "detail": "settlement contract holds no watched tokens"
+    }
+   ]
+  },
+  "independentVerification": []
+ }
+]

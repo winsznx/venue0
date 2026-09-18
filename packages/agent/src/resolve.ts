@@ -182,7 +182,9 @@ export function resolveGoal(spec: GoalSpec, ctx: ResolveContext, basePolicy: Exe
   // Absorb the difference created by SET_WEIGHT: into remainderTo if named, else pro-rata across untouched holdings.
   const setSum = [...target.values()].reduce((a, b) => a + b, 0n);
   const gap = total - setSum;
-  if (explicit.size > 0 && gap !== 0n) {
+  // Explicit weights covering every held asset at exactly 100% leave only a flooring gap (a few wei-USD per asset); that is not unassigned weight.
+  const fullyAllocated = setWeightBps === 10_000 && [...current.keys()].every((uid) => explicit.has(uid) || current.get(uid) === 0n);
+  if (explicit.size > 0 && gap !== 0n && !fullyAllocated) {
     if (spec.remainderTo) {
       const sink = resolve(spec.remainderTo, "remainder");
       if (sink) {

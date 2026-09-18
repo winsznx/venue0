@@ -1,0 +1,29 @@
+.panel { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 32px; background: var(--surface); border-radius: var(--r-xl); padding: 28px; }
+.steps { display: grid; gap: 10px; align-content: start; }
+.step { display: grid; grid-template-columns: 64px 1fr; gap: 18px; align-items: center; width: 100%; text-align: left; padding: 18px; border: 0; border-radius: 20px; background: transparent; transition: background 160ms ease, color 160ms ease; }
+.step:hover { background: var(--paper); }
+.n { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 16px; background: var(--paper); font-size: 1rem; color: var(--ink-2); }
+.title { display: block; font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; }
+.body { display: block; margin-top: 4px; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.5; }
+.active { background: var(--ink); color: #fff; }
+.active:hover { background: var(--ink); }
+.active .body { color: #c7cad1; }
+.active .n { color: var(--ink); }
+.visual { background: var(--paper); border-radius: var(--r-lg); padding: 24px; min-height: 380px; display: grid; align-content: center; }
+.visualCaption { font-size: 0.875rem; color: var(--ink-3); margin-bottom: 16px; }
+.intents { display: grid; gap: 12px; }
+.intentRow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-md); }
+.who { font-weight: 500; min-width: 110px; }
+.compare { display: grid; gap: 10px; }
+.compareRow { display: flex; justify-content: space-between; font-size: 1.0625rem; }
+.compareRow .num { font-size: 1.5rem; }
+.bar { height: 10px; border-radius: 999px; background: var(--surface); overflow: hidden; margin-bottom: 14px; }
+.bar span { display: block; height: 100%; border-radius: 999px; min-width: 2px; }
+.barMarket { background: var(--residual); }
+.barVenue { background: var(--cross); }
+.footnote { color: var(--ink-3); font-size: 0.875rem; }
+@media (max-width: 900px) {
+  .panel { grid-template-columns: 1fr; padding: 16px; }
+  .step { grid-template-columns: 48px 1fr; }
+  .n { width: 48px; height: 48px; }
+}

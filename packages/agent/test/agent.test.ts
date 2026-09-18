@@ -77,6 +77,17 @@ describe("PRD example goals", () => {
   });
 });
 
+describe("explicit full allocation", () => {
+  it("accepts weights that cover every holding at exactly 100% despite flooring", () => {
+    // #given a portfolio whose raw balances floor to fractions of a cent
+    const ctx = context({ AAPL: 276, SPY: 99 });
+    // #when both holdings are set explicitly to 50%
+    const result = resolveGoal(spec({ operations: [setWeight("AAPL", 50), setWeight("SPY", 50)] }), ctx, POLICY);
+    // #then the target is valid and no remainder question is asked
+    expect(result.ok).toBe(true);
+  });
+});
+
 describe("adversarial goals are refused, not guessed", () => {
   it("ambiguous ticker", () => {
     const reg = registry((assets) => {
