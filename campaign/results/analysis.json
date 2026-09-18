@@ -1,0 +1,366 @@
+{
+  "flash_break_even_from_measured_curves": [
+    {
+      "flashBpsAt": {
+        "1": 1641,
+        "10": 172,
+        "100": 23,
+        "1000": 8
+      },
+      "flashCheaperThanUniswapFromUsd": null,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "SELL",
+      "symbol": "NVDA",
+      "uniswapBpsAt": {
+        "1": 132,
+        "10": 14,
+        "100": 0,
+        "1000": 0
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1599,
+        "10": 169,
+        "100": 23,
+        "1000": 11
+      },
+      "flashCheaperThanUniswapFromUsd": null,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "BUY",
+      "symbol": "NVDA",
+      "uniswapBpsAt": {
+        "1": 135,
+        "10": 16,
+        "100": 4,
+        "1000": 3
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1637,
+        "10": 174,
+        "100": 26,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": 500,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "SELL",
+      "symbol": "AAPL",
+      "uniswapBpsAt": {
+        "1": 292,
+        "10": 31,
+        "100": 13,
+        "1000": 14
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1627,
+        "10": 152,
+        "100": 5,
+        "1000": -9
+      },
+      "flashCheaperThanUniswapFromUsd": 1000,
+      "flashWithin50BpsFromUsd": 30,
+      "side": "BUY",
+      "symbol": "AAPL",
+      "uniswapBpsAt": {
+        "1": 120,
+        "10": 2,
+        "100": -9,
+        "1000": -8
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1590,
+        "10": -261,
+        "100": -10,
+        "1000": 0
+      },
+      "flashCheaperThanUniswapFromUsd": 5,
+      "flashWithin50BpsFromUsd": 5,
+      "side": "SELL",
+      "symbol": "SPY",
+      "uniswapBpsAt": {
+        "1": 215,
+        "10": 19,
+        "100": -2,
+        "1000": -4
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1650,
+        "10": 172,
+        "100": 26,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": null,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "BUY",
+      "symbol": "SPY",
+      "uniswapBpsAt": {
+        "1": 140,
+        "10": 21,
+        "100": 9,
+        "1000": 9
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1640,
+        "10": 171,
+        "100": 20,
+        "1000": 7
+      },
+      "flashCheaperThanUniswapFromUsd": null,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "SELL",
+      "symbol": "QQQ",
+      "uniswapBpsAt": {
+        "1": 351,
+        "10": 29,
+        "100": 1,
+        "1000": -3
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1650,
+        "10": 175,
+        "100": 26,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": 2000,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "BUY",
+      "symbol": "QQQ",
+      "uniswapBpsAt": {
+        "1": 143,
+        "10": 24,
+        "100": 12,
+        "1000": 11
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1646,
+        "10": 174,
+        "100": 26,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": 1000,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "SELL",
+      "symbol": "TSLA",
+      "uniswapBpsAt": {
+        "1": 133,
+        "10": 16,
+        "100": 12,
+        "1000": 13
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1633,
+        "10": 163,
+        "100": 25,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": 1000,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "BUY",
+      "symbol": "TSLA",
+      "uniswapBpsAt": {
+        "1": 120,
+        "10": 4,
+        "100": 2,
+        "1000": 13
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1649,
+        "10": 170,
+        "100": 26,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": 2000,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "SELL",
+      "symbol": "MSFT",
+      "uniswapBpsAt": {
+        "1": 222,
+        "10": 32,
+        "100": 10,
+        "1000": 12
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1638,
+        "10": 172,
+        "100": 26,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": 500,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "BUY",
+      "symbol": "MSFT",
+      "uniswapBpsAt": {
+        "1": 237,
+        "10": 29,
+        "100": 14,
+        "1000": 13
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1636,
+        "10": 168,
+        "100": 22,
+        "1000": 10
+      },
+      "flashCheaperThanUniswapFromUsd": null,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "SELL",
+      "symbol": "AMZN",
+      "uniswapBpsAt": {
+        "1": 223,
+        "10": 24,
+        "100": 6,
+        "1000": 3
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1636,
+        "10": 180,
+        "100": 26,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": 150,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "BUY",
+      "symbol": "AMZN",
+      "uniswapBpsAt": {
+        "1": 242,
+        "10": 42,
+        "100": 24,
+        "1000": 23
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1647,
+        "10": 172,
+        "100": 13,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": null,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "SELL",
+      "symbol": "GOOGL",
+      "uniswapBpsAt": {
+        "1": 135,
+        "10": 17,
+        "100": -10,
+        "1000": 1
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1618,
+        "10": 164,
+        "100": 18,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": null,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "BUY",
+      "symbol": "GOOGL",
+      "uniswapBpsAt": {
+        "1": 137,
+        "10": 19,
+        "100": 7,
+        "1000": 6
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1597,
+        "10": 154,
+        "100": 19,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": null,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "SELL",
+      "symbol": "META",
+      "uniswapBpsAt": {
+        "1": 124,
+        "10": 11,
+        "100": -1,
+        "1000": 4
+      }
+    },
+    {
+      "flashBpsAt": {
+        "1": 1640,
+        "10": 168,
+        "100": 26,
+        "1000": 12
+      },
+      "flashCheaperThanUniswapFromUsd": 150,
+      "flashWithin50BpsFromUsd": 50,
+      "side": "BUY",
+      "symbol": "META",
+      "uniswapBpsAt": {
+        "1": 139,
+        "10": 17,
+        "100": 10,
+        "1000": 65
+      }
+    }
+  ],
+  "natural_excluding_size_skew": {
+    "bilateral_cross_rate_pooled_pct": 23.12,
+    "scenarios": 160,
+    "venue0_cross_rate_per_scenario_pct": {
+      "p10": 2.38,
+      "p25": 11.89,
+      "p50": 26.68,
+      "p75": 46.65,
+      "p90": 61
+    },
+    "venue0_cross_rate_pooled_pct": 28.15
+  },
+  "note": "Derived from campaign/results/results.json after the frozen run. Breakdowns only; no frozen metric changed.",
+  "scenarios_where_multiparty_adds_over_1pct_of_requested": {
+    "all": 191,
+    "natural": 121,
+    "of": {
+      "all": 400,
+      "natural": 200
+    }
+  },
+  "scenarios_with_crossing_but_no_multiparty_gain": 75,
+  "uplift_share_of_requested_per_scenario_pct": {
+    "all": {
+      "p10": 0,
+      "p25": 0,
+      "p50": 0.87,
+      "p75": 5.05,
+      "p90": 12.88
+    },
+    "natural": {
+      "p10": 0,
+      "p25": 0.36,
+      "p50": 1.78,
+      "p75": 4.64,
+      "p90": 7.65
+    }
+  }
+}
