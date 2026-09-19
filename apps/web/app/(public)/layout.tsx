@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PUBLIC_NAV, Shell } from "@/components/shell";
 import { proof } from "@/lib/data";
 import styles from "@/components/shell.module.css";
@@ -16,7 +15,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             {contract.address.slice(0, 8)}…{contract.address.slice(-6)} <span aria-hidden="true">↗</span>
             <span className="sr-only"> (opens on Blockscout)</span>
           </a>
-          <Link href="/app" className={`btn btn-sm ${styles.railCta}`}>Enter Venue0</Link>
+          <a href="/enter" className={`btn btn-sm ${styles.railCta}`}>Enter Venue0</a>
         </>
       }
     >

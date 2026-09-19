@@ -24,7 +24,7 @@ export default function Landing() {
           </nav>
           <div className={styles.navActions}>
             <Link href="/proof" className={styles.quietLink}>View live proof</Link>
-            <Link href="/app" className="btn btn-primary btn-sm">Enter Venue0</Link>
+            <a href="/enter" className="btn btn-primary btn-sm">Enter Venue0</a>
           </div>
         </header>
 
@@ -39,7 +39,7 @@ export default function Landing() {
             Portfolio agents cross complementary Stock Token rebalances with each other before sending only the residual to public liquidity.
           </p>
           <div className={styles.ctas}>
-            <Link href="/app" className="btn btn-primary">Enter Venue0</Link>
+            <a href="/enter" className="btn btn-primary">Enter Venue0</a>
             <Link href="/demo" className="btn btn-secondary">Watch a live round</Link>
           </div>
         </section>
@@ -189,7 +189,7 @@ export default function Landing() {
         <section className={styles.final} aria-labelledby="cta-title">
           <h2 id="cta-title" className="display h2">Put your portfolio into Venue0.</h2>
           <p className="lede">Connect a wallet, set a target, join a Circle. Your first round takes a few minutes.</p>
-          <div className={styles.ctas}><Link href="/app" className="btn btn-primary">Enter Venue0</Link></div>
+          <div className={styles.ctas}><a href="/enter" className="btn btn-primary">Enter Venue0</a></div>
         </section>
 
         <footer className={styles.footer}>
