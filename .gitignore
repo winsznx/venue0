@@ -16,3 +16,9 @@ apps/web/.venue0-db/
 apps/web/.open-next/
 apps/web/.wrangler/
 apps/web/.dev.vars
+
+# Recordings
+*.mp4
+*.mov
+*.m4a
+*.wav

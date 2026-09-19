@@ -39,7 +39,7 @@ export function CircleActions({ circleId, role, visibility, invite }: { circleId
 
   return (
     <section className={p.youCard} aria-labelledby="enter-title">
-      <h2 id="enter-title" className="h3">You're a {role === "ORGANIZER" ? "organizer" : "member"}</h2>
+      <h2 id="enter-title" className="h3">You're {role === "ORGANIZER" ? "an organizer" : "a member"}</h2>
       <p>Enter the round lobby to sign your rebalance into the current round. If no round is running, one opens now with a fresh price snapshot.</p>
       {error && <p className={p.error} role="alert">{error}</p>}
       <div className={p.actions}>
