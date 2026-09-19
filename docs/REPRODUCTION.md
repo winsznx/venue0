@@ -16,7 +16,7 @@ Everything in the first part runs on a laptop with no funds, keys or accounts. T
 ## Part 1: local, no secrets
 
 ```bash
-git clone <this repository> venue0 && cd venue0
+git clone https://github.com/winsznx/venue0.git && cd venue0
 git submodule update --init --recursive   # OpenZeppelin and forge-std
 corepack enable
 pnpm install
