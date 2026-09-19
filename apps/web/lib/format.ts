@@ -21,3 +21,6 @@ export function short(hash: string, head = 6, tail = 4): string {
 export const EXPLORER = "https://robinhoodchain.blockscout.com";
 export const txUrl = (hash: string) => `${EXPLORER}/tx/${hash}`;
 export const addressUrl = (address: string) => `${EXPLORER}/address/${address}`;
+export const blockUrl = (block: string | number | bigint) => `${EXPLORER}/block/${block}`;
+/** The transaction's decoded event logs, where PlanSettled, CrossingLeg and NonceConsumed show plan hashes and nonces. */
+export const txLogsUrl = (hash: string) => `${EXPLORER}/tx/${hash}?tab=logs`;

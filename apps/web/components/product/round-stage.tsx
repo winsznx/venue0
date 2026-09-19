@@ -8,7 +8,7 @@ import { CrossingGraph } from "@/components/crossing-graph";
 import { useSigner, walletErrorMessage } from "@/components/wallet/use-signer";
 import { RESIDUAL_WORDS, STATE_WORDS } from "@/lib/activity-words";
 import { api } from "@/lib/json";
-import { short, tokens, txUrl, usd } from "@/lib/format";
+import { addressUrl, blockUrl, short, tokens, txLogsUrl, txUrl, usd } from "@/lib/format";
 import type { RoundViewData } from "@/lib/server/round-view";
 import rp from "@/app/(public)/demo/round/[id]/round-pages.module.css";
 import p from "./product.module.css";
@@ -318,9 +318,9 @@ function Proposal({ d, refresh }: Props) {
           <h2 id="auth-title" className="h3">What you're authorizing</h2>
           <p className="muted">You approve this exact plan and nothing else. The settlement contract can only move the amounts above, only to the wallets in the plan, and only until {d.round.planValidUntil ? new Date(d.round.planValidUntil * 1000).toISOString().slice(11, 16) : "?"} UTC. If anyone's balance changes or any participant doesn't approve, nothing moves.</p>
           <dl className="kv">
-            <div><dt>Plan</dt><dd>{short(d.round.planHash, 10, 8)}</dd></div>
+            <div><dt>Plan</dt><dd>{d.round.settlementTx ? <ExplorerLink href={txLogsUrl(d.round.settlementTx)} value={d.round.planHash} /> : short(d.round.planHash, 10, 8)}</dd></div>
             <div><dt>Approvals</dt><dd>{d.aggregate.approvals} of {d.aggregate.participants}</dd></div>
-            <div><dt>Contract</dt><dd>{short(d.round.settlementContract)}</dd></div>
+            <div><dt>Contract</dt><dd><ExplorerLink href={addressUrl(d.round.settlementContract)} value={d.round.settlementContract} head={8} tail={6} /></dd></div>
           </dl>
           {unfunded.length > 0 && <p className={p.error}>Your wallet no longer holds enough {unfunded.map((a) => a.symbol).join(", ")} for this plan. Settlement would fail preflight.</p>}
           {open ? (
@@ -385,6 +385,36 @@ function Execute({ d, refresh }: Props) {
         {(s === "COMPLETE" || s === "VERIFICATION_FAILED") && <Link href={`/round/${d.round.id}/receipt`} className="btn btn-primary" style={{ justifySelf: "start" }}>Open receipt</Link>}
       </div>
     </div>
+  );
+}
+
+/** A shortened value that opens where the explorer shows it in full. */
+function ExplorerLink({ href, value, head = 10, tail = 8 }: { href: string; value: string; head?: number; tail?: number }) {
+  return (
+    <a className="link num" href={href} target="_blank" rel="noreferrer" title={value}>
+      {short(value, head, tail)} ↗
+    </a>
+  );
+}
+
+/**
+ * Verifier details carry addresses, plan hashes and 70-digit nonces. Each is shortened and linked: addresses to their
+ * page, hashes and nonces to the settlement's event logs (PlanSettled, NonceConsumed), where they appear in full.
+ */
+function DetailWithLinks({ text, txHash }: { text: string; txHash: string | null }) {
+  const parts = text.split(/(0x[0-9a-fA-F]{40,64}|\b\d{20,}\b)/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (/^0x[0-9a-fA-F]{40}$/.test(part)) return <ExplorerLink key={i} href={addressUrl(part)} value={part} head={8} tail={6} />;
+        if (/^0x[0-9a-fA-F]{64}$/.test(part)) return txHash ? <ExplorerLink key={i} href={txLogsUrl(txHash)} value={part} /> : <span key={i} title={part}>{short(part, 10, 8)}</span>;
+        if (/^\d{20,}$/.test(part)) {
+          const label = `${part.slice(0, 6)}…${part.slice(-4)}`;
+          return txHash ? <a key={i} className="link num" href={txLogsUrl(txHash)} target="_blank" rel="noreferrer" title={part}>{label} ↗</a> : <span key={i} title={part}>{label}</span>;
+        }
+        return <span key={i}>{part}</span>;
+      })}
+    </>
   );
 }
 
@@ -478,9 +508,10 @@ function Receipt({ d }: { d: RoundViewData }) {
           )}
           <dl className="kv">
             {d.round.settlementTx && <div><dt>Settlement</dt><dd><a className="link" href={txUrl(d.round.settlementTx)} target="_blank" rel="noreferrer">{short(d.round.settlementTx, 10, 8)} ↗</a></dd></div>}
-            {v?.blockNumber !== null && v?.blockNumber !== undefined && <div><dt>Block</dt><dd>{String(v.blockNumber)}</dd></div>}
-            {d.round.planHash && <div><dt>Plan</dt><dd>{short(d.round.planHash, 10, 8)}</dd></div>}
-            <div><dt>Snapshot</dt><dd>{short(d.round.snapshotHash, 10, 8)}</dd></div>
+            {v?.blockNumber !== null && v?.blockNumber !== undefined && <div><dt>Block</dt><dd><a className="link" href={blockUrl(String(v.blockNumber))} target="_blank" rel="noreferrer">{String(v.blockNumber)} ↗</a></dd></div>}
+            {d.round.planHash && <div><dt>Plan</dt><dd>{d.round.settlementTx ? <ExplorerLink href={txLogsUrl(d.round.settlementTx)} value={d.round.planHash} /> : short(d.round.planHash, 10, 8)}</dd></div>}
+            <div><dt>Snapshot</dt><dd>{d.round.settlementTx ? <ExplorerLink href={txUrl(d.round.settlementTx)} value={d.round.snapshotHash} /> : short(d.round.snapshotHash, 10, 8)}</dd></div>
+            <div><dt>Contract</dt><dd><ExplorerLink href={addressUrl(d.round.settlementContract)} value={d.round.settlementContract} head={8} tail={6} /></dd></div>
             <div><dt>Leftovers</dt><dd>{d.you.decisions[0] ? RESIDUAL_WORDS[d.you.decisions[0].userChoice === "CARRY_FORWARD" ? "AGGREGATE" : d.you.decisions[0].userChoice] ?? d.you.decisions[0].userChoice : d.you.residual.some((r) => !r.dust) ? "Not decided yet" : "None"}</dd></div>
           </dl>
           <div className={p.actions}>
@@ -494,9 +525,9 @@ function Receipt({ d }: { d: RoundViewData }) {
       <section className={p.soft} aria-labelledby="ver-title">
         <div className={p.panelHead}><h2 id="ver-title">Verification</h2></div>
         {v ? (
-          <ul className={p.list}>{v.checks.map((c) => <li key={c.name} style={{ fontSize: 14 }}><span className={`badge ${c.status === "PASS" ? "badge-verified" : c.status === "FAIL" ? "badge-fail" : "badge-warn"}`}>{c.status}</span> {c.name}<br /><span className="faint">{c.detail}</span></li>)}</ul>
+          <ul className={p.list}>{v.checks.map((c) => <li key={c.name} className={p.check}><span className={`badge ${c.status === "PASS" ? "badge-verified" : c.status === "FAIL" ? "badge-fail" : "badge-warn"}`}>{c.status}</span> {c.name}<br /><span className="faint"><DetailWithLinks text={c.detail} txHash={d.round.settlementTx} /></span></li>)}</ul>
         ) : <p className="muted">{d.round.state === "NO_CROSS" ? "No settlement happened, so there is nothing to verify." : "Not verified yet."}</p>}
-        {v?.providers && <p className="faint" style={{ fontSize: 13 }}>Read through {v.providers.verifier}; the settlement was sent through {v.providers.executor}. {v.providers.independent ? "Independent providers." : `Same provider, so this is not an independent check.${v.providers.fallbackReason ? ` Reason: ${v.providers.fallbackReason}.` : ""}`}</p>}
+        {v?.providers && <p className={`faint ${p.wrap}`} style={{ fontSize: 13 }}>Read through {v.providers.verifier}; the settlement was sent through {v.providers.executor}. {v.providers.independent ? "Independent providers." : `Same provider, so this is not an independent check.${v.providers.fallbackReason ? ` Reason: ${v.providers.fallbackReason}.` : ""}`}</p>}
       </section>
     </div>
   );

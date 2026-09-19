@@ -34,3 +34,5 @@
 .walletAddr { font-size: 0.8125rem; color: #c9ccd2; overflow: hidden; text-overflow: ellipsis; }
 .railQuiet { background: transparent; color: #c9ccd2; border: 1px solid #55575c; }
 .railQuiet:hover { color: #fff; border-color: #8a8c91; }
+.crumbs { min-width: 0; }
+.crumbs > span { min-width: 0; flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; }

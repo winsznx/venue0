@@ -156,3 +156,5 @@ img, svg { display: block; }
 .guide { display: flex; align-items: center; gap: 16px; justify-content: space-between; flex-wrap: wrap; padding: 14px 16px 14px 20px; border-radius: 18px; background: var(--ink); color: #fff; margin-bottom: 20px; }
 .guide p { color: #d8dae0; }
 .guide .btn { background: #fff; color: #000; }
+.kv dt { white-space: nowrap; overflow-wrap: normal; flex: none; }
+.kv dd { min-width: 0; }

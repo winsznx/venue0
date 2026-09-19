@@ -1,6 +1,6 @@
 .stack { display: grid; gap: 20px; align-content: start; }
-.panel { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; display: grid; gap: 14px; align-content: start; min-width: 0; }
-.soft { background: var(--surface); border-radius: var(--r-lg); padding: 24px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.panel { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; display: grid; gap: 14px; align-content: start; min-width: 0; overflow-wrap: anywhere; }
+.soft { background: var(--surface); border-radius: var(--r-lg); padding: 24px; display: grid; gap: 14px; align-content: start; min-width: 0; overflow-wrap: anywhere; }
 .panelHead { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .panelHead h2 { font-size: 1.125rem; font-weight: 500; letter-spacing: -0.015em; }
 .split { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px; align-items: start; }
@@ -38,3 +38,6 @@
 .youLine:first-of-type { border-top: 0; padding-top: 0; }
 .tag { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em; }
 @media (max-width: 1000px) { .split, .fields { grid-template-columns: 1fr; } .driftRow { grid-template-columns: 64px minmax(0, 1fr); } .driftRow > :last-child { grid-column: 1 / -1; } }
+.wrap { overflow-wrap: anywhere; }
+.check { font-size: 14px; min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 640px) { .panel, .soft { padding: 18px; } .listRow { padding: 12px; } }
