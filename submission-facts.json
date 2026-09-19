@@ -14,6 +14,9 @@
     "name": "Venue0Settlement",
     "address": "0x9cf871315674830046ab0541ee018f6978e86a3d",
     "deployTx": "0x071ee0c035695bcfdfad52ce9e7f11fec5b19a97e6ca80d06e74323ce8d71947",
+    "sourceVerification": "https://repo.sourcify.dev/4663/0x9cf871315674830046ab0541ee018f6978e86a3d",
+    "sourceVerificationMatch": "exact_match",
+    "deployedSourceCommit": "5e39740",
     "externallyAudited": false
   },
   "liveProof": {

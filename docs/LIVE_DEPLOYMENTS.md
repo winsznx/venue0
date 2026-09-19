@@ -24,6 +24,7 @@ The single source of deployment facts. Other documents link here.
 | Explorer | https://robinhoodchain.blockscout.com |
 | Venue0Settlement | [`0x9cf871315674830046ab0541ee018f6978e86a3d`](https://robinhoodchain.blockscout.com/address/0x9cf871315674830046ab0541ee018f6978e86a3d) |
 | Deployment transaction | [`0x071ee0c035695bcfdfad52ce9e7f11fec5b19a97e6ca80d06e74323ce8d71947`](https://robinhoodchain.blockscout.com/tx/0x071ee0c035695bcfdfad52ce9e7f11fec5b19a97e6ca80d06e74323ce8d71947) |
+| Source verification | Sourcify exact match, creation and runtime bytecode: [repo.sourcify.dev/4663/0x9cf8…6a3d](https://repo.sourcify.dev/4663/0x9cf871315674830046ab0541ee018f6978e86a3d). Deployed source is `contracts/src/Venue0Settlement.sol` at commit `5e39740`; later commits added NatSpec comments only, which changes the metadata hash but not the logic. solc 0.8.33, optimizer 10000 runs, EVM cancun |
 | Stock Tokens used | NVDA `0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC`, AAPL `0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9`, SPY `0x117cc2133c37B721F49dE2A7a74833232B3B4C0C` (resolved from the live Robinhood registry) |
 
 ## Production settlements through the deployed app

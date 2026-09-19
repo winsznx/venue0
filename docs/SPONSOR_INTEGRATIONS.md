@@ -36,7 +36,7 @@ Each section states the role, what is proven, where the code is, and what is not
 
 **Not claimed.** UniswapX (`/order`) was not exercised; only CLASSIC routes were executed. The in-app Uniswap residual path was not exercised in the end-to-end runs: the engine judged those leftovers too small to trade, and they were carried forward.
 
-**Feedback.** [UNISWAP_FEEDBACK.md](UNISWAP_FEEDBACK.md).
+**Feedback.** [FEEDBACK.md](../FEEDBACK.md).
 
 ## Definitive Flash
 

@@ -22,3 +22,4 @@ apps/web/.dev.vars
 *.mov
 *.m4a
 *.wav
+*.srt

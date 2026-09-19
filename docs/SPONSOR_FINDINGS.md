@@ -1,6 +1,6 @@
 # Sponsor and infrastructure findings
 
-[README](../README.md) · [Sponsor integrations](SPONSOR_INTEGRATIONS.md) · [Uniswap feedback](UNISWAP_FEEDBACK.md)
+[README](../README.md) · [Sponsor integrations](SPONSOR_INTEGRATIONS.md) · [Uniswap feedback](../FEEDBACK.md)
 
 Findings from building and running Venue0 against live services in September 2026. Only issues that changed a design, cost real time or would affect another integrator are listed. Each has the same fields.
 
@@ -51,7 +51,7 @@ Findings from building and running Venue0 against live services in September 202
 
 ## Uniswap Trading API
 
-Detailed in [UNISWAP_FEEDBACK.md](UNISWAP_FEEDBACK.md): the permissioned-token router version conflict (2.2.0 in prose, absent from the OpenAPI enum), stale `permitData` after a Permit2 approval (requote needed), and a dynamic-fee sentinel shown as `838.8608%` in `routeString`. Status: worked around; the live swap delivered exactly the quoted output.
+Detailed in [FEEDBACK.md](../FEEDBACK.md): the permissioned-token router version conflict (2.2.0 in prose, absent from the OpenAPI enum), stale `permitData` after a Permit2 approval (requote needed), and a dynamic-fee sentinel shown as `838.8608%` in `routeString`. Status: worked around; the live swap delivered exactly the quoted output.
 
 ## OpenZeppelin SignatureChecker and EIP-7702 accounts
 

@@ -9,6 +9,8 @@ Portfolio agents cross complementary Stock Token rebalances with each other befo
 | Public app | https://venue0.timjosh507.workers.dev |
 | Live proof | https://venue0.timjosh507.workers.dev/proof |
 | Demo replay | https://venue0.timjosh507.workers.dev/demo |
+| Demo video (3 min) | https://youtu.be/JnzVPvM54-s |
+| Launch post | https://x.com/winsznlabs/status/2101326076332974326 |
 
 Venue0 runs on Robinhood Chain mainnet (chain 4663). Settlement contract: [`0x9cf871315674830046ab0541ee018f6978e86a3d`](https://robinhoodchain.blockscout.com/address/0x9cf871315674830046ab0541ee018f6978e86a3d). Every deployment fact is in [LIVE_DEPLOYMENTS.md](docs/LIVE_DEPLOYMENTS.md).
 
@@ -96,7 +98,19 @@ Offchain: target resolution, matching, residual decisions, verification and prod
 | Uniswap Trading API | public residual liquidity | live swap |
 | Definitive Flash | limit and TWAP residual routes | live limit fill |
 
-Details, code paths and evidence: [SPONSOR_INTEGRATIONS.md](docs/SPONSOR_INTEGRATIONS.md). Friction found while building: [SPONSOR_FINDINGS.md](docs/SPONSOR_FINDINGS.md) and [UNISWAP_FEEDBACK.md](docs/UNISWAP_FEEDBACK.md).
+Where each integration lives in the code:
+
+| Provider | What it does | Code |
+|---|---|---|
+| Uniswap | Trading API client: `/permissions`, `/check_approval`, `/quote`, `/swap` with simulation | [`packages/uniswap/src/trading-api.ts#L59-L96`](packages/uniswap/src/trading-api.ts#L59-L96) |
+| Uniswap | approve, requote, sign Permit2, swap, then check the balance moved by the quoted amount | [`packages/uniswap/src/execute.ts#L35-L122`](packages/uniswap/src/execute.ts#L35-L122) |
+| Uniswap | in-app residual: live quote priced into the residual engine, then a swap from the user's own wallet. Wired, not yet exercised end to end | [`apps/web/lib/server/residuals.ts#L39-L77`](apps/web/lib/server/residuals.ts#L39-L77), [`#L121-L166`](apps/web/lib/server/residuals.ts#L121-L166) |
+| Dynamic | sign-in and wallets in the app | [`apps/web/components/wallet/provider.tsx#L65-L82`](apps/web/components/wallet/provider.tsx#L65-L82) |
+| Dynamic | server checks the Dynamic JWT against the environment's JWKS and binds the session to the wallet it proves | [`apps/web/lib/server/session.ts#L40-L52`](apps/web/lib/server/session.ts#L40-L52) |
+| Dynamic | 2-of-2 MPC server wallet the agent signs with | [`packages/dynamic/src/agent-wallet.ts#L27-L68`](packages/dynamic/src/agent-wallet.ts#L27-L68) |
+| Definitive Flash | EIP-712 FlashOrder, submit and poll to a terminal status | [`packages/flash/src/flash-api.ts#L112-L152`](packages/flash/src/flash-api.ts#L112-L152) |
+
+What's proven for each one, and what isn't: [SPONSOR_INTEGRATIONS.md](docs/SPONSOR_INTEGRATIONS.md). Friction we hit: [SPONSOR_FINDINGS.md](docs/SPONSOR_FINDINGS.md). Uniswap developer feedback: [FEEDBACK.md](FEEDBACK.md).
 
 ## 9. Security
 
