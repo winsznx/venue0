@@ -141,4 +141,6 @@ Machine-readable summary of the facts on this page: [`submission-facts.json`](su
 
 Built for the Runtime hackathon (September 2026). The original product specification is kept as [docs/PRD_2026-09-17.md](docs/PRD_2026-09-17.md); where this repository and the PRD differ, the repository reflects what was built and verified.
 
+Licensed under the [MIT License](LICENSE).
+
 Stock Tokens are tokenised debt securities issued by Robinhood Assets (Jersey) Limited. They give economic exposure to the underlying securities and no legal or beneficial rights in them, are not offered to U.S. persons and are restricted in other jurisdictions. Venue0 is software, not investment advice.
