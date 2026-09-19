@@ -1,6 +1,8 @@
 # Uniswap Trading API feedback
 
-From building VENUE0's residual execution on Robinhood Chain (4663), September 2026. VENUE0 crosses complementary portfolio rebalances between wallets first, then sends only the unmatched residual to Uniswap. Integration code: [`packages/uniswap/src/`](packages/uniswap/src/), live run: [`scripts/live/l5-residual.ts`](scripts/live/l5-residual.ts), evidence: [`evidence/live/L5-residual/`](evidence/live/L5-residual/).
+[README](../README.md) · [Sponsor integrations](SPONSOR_INTEGRATIONS.md) · [Sponsor findings](SPONSOR_FINDINGS.md)
+
+From building VENUE0's residual execution on Robinhood Chain (4663), September 2026. VENUE0 crosses complementary portfolio rebalances between wallets first, then sends only the unmatched residual to Uniswap. Integration code: [`packages/uniswap/src/`](../packages/uniswap/src/), live run: [`scripts/live/l5-residual.ts`](../scripts/live/l5-residual.ts), evidence: [`evidence/live/L5-residual/`](../evidence/live/L5-residual/).
 
 ## What worked
 

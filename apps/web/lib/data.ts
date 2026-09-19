@@ -62,6 +62,7 @@ export const proof = proofJson as unknown as {
   flash: { orderId: string; status: string; fillTx: string; limitCrossPrice: string; residualTokens: number; economics: Record<string, number | string>; at: string };
   residualDecisionReplay: { at: string; decision: { decision: string; reasons: string[]; evaluated: Array<{ venue: string; style: string; allInCostBps: number; allInCostUsd: number; providerFeeUsd: number | null; networkCostUsd: number | null; fixedCostUsd: number; allowed: boolean; viable: boolean; note: string; source: string }> }; context: Record<string, unknown> };
   campaign: { summary: Record<string, any>; analysis: Record<string, any>; manifest: Record<string, any> }; // eslint-disable-line @typescript-eslint/no-explicit-any -- frozen JSON read verbatim
+  production: Array<{ id: string; roundId: string; txHash: string; explorer: string; verifier: string; independent: boolean; executionProvider: string; verificationProvider: string; checksPassed: number; checksTotal: number }>;
 };
 
 export function getRound(key: string): Round | undefined {

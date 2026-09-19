@@ -56,6 +56,13 @@ export default function Proof() {
         <ProofRow icon={<IconShield />} title="Settlement contract" sub={<span className="num">{proof.settlementContract.address}</span>} status="PASS" href={proof.settlementContract.explorer} hrefLabel="Blockscout" />
       </div>
 
+      <div id="production" className="section-title"><h2>Deployed app</h2><span className="faint">Operator-controlled test accounts through the public app</span></div>
+      <div className="row-list">
+        {proof.production.map((r) => (
+          <ProofRow key={r.id} icon={<IconCircles />} title={`${r.id}: three-way cycle through the public app`} sub={<>Verifier {r.checksPassed}/{r.checksTotal}. Executed via {r.executionProvider}, verified via {r.verificationProvider}. {r.independent ? "Independent providers." : "Same provider, so not an independent check."}</>} status={r.verifier} href={r.explorer} hrefLabel={short(r.txHash)} />
+        ))}
+      </div>
+
       <div id="campaign" className="section-title"><h2>Campaign</h2><span className="faint">Synthetic portfolios, not users</span></div>
       <div className="grid-2">
         <div className="tile" style={{ padding: 24, display: "grid", gap: 10, alignContent: "start" }}>

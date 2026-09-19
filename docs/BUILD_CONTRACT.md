@@ -1,8 +1,10 @@
 # VENUE0 Build Contract
 
-Source: `VENUE0_FULL_PRD_Runtime_Bankr_2026-09-17.md` (PRD v1.0). This file extracts the rules every commit must respect. When this file and the PRD disagree, the PRD wins, and current official docs or observed chain/API behavior win over both (record the conflict in `DECISIONS.md`).
+[README](../README.md) · [Architecture](ARCHITECTURE.md) · [Decisions](DECISIONS.md)
 
-Deadline: Saturday 2026-09-19, 4:00 PM EDT. Submit V0 early; never target the external deadline.
+The engineering rules the build followed, extracted from the PRD. Where the final implementation differs (for example, residual decisions also include AGGREGATE, and the campaign ran four arms), the implementation is described in [ARCHITECTURE.md](ARCHITECTURE.md) and [EVAL_CAMPAIGN.md](EVAL_CAMPAIGN.md).
+
+Source: [PRD_2026-09-17.md](PRD_2026-09-17.md) (PRD v1.0). This file extracts the rules every commit must respect. When this file and the PRD disagree, the PRD wins, and current official docs or observed chain/API behavior win over both (record the conflict in `DECISIONS.md`).
 
 ## 1. Product scope is not negotiable
 
@@ -112,9 +114,3 @@ No protocol custody. No private keys, API keys, delegated shares, or webhook sec
 ## 11. Agent rules
 
 The model proposes structured intent. Code validates and calculates. The agent never invents addresses, prices, or fills, never performs settlement arithmetic, never substitutes assets or issuers, never treats a perp as spot, never exceeds delegated limits, never signs a plan other than the one shown, and checks delegation status before every action.
-
-## 12. Working rules for this build
-
-- Frontend: minimum internal/debug surfaces only until the owner says `START FRONTEND`.
-- Credentials: build everything possible without keys, then produce `KEYS_NEEDED.md` and stop.
-- Commit at meaningful gates; never commit secrets.

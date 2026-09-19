@@ -1,0 +1,241 @@
+{
+  "EXECUTION_PROVIDER": "robinhood-mainnet.g.alchemy.com",
+  "VERIFICATION_PROVIDER": "robinhood-mainnet.g.alchemy.com",
+  "independent": false,
+  "fallbackReason": "independent RPC rpc.mainnet.chain.robinhood.com failed: RPC Request failed.",
+  "roundId": "0x6833eb14f22fa9423b069f0aa938bbea61f656cf0f191c176ff939658b3b2ce7",
+  "roundState": "COMPLETE",
+  "planHash": "0x15b47d6c64a9a6b77784dbb820a73f92d51c22815bcded2b6388a0d4c2cd4015",
+  "settlementContract": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+  "txHash": "0x17b084d5239e6277e9bde84b89ab9f7aea3e1bb2fa40bf7c91bf285fb8d56b1e",
+  "receipt": {
+    "status": "success",
+    "blockNumber": "66796426",
+    "to": "0x9cf871315674830046ab0541ee018f6978e86a3d",
+    "gasUsed": "291934",
+    "logCount": 13
+  },
+  "settlementEvents": [
+    {
+      "event": "NonceConsumed",
+      "args": {
+        "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+        "nonce": "10673642353428839889440985378318985232659627470644399370443780620859606663122",
+        "planHash": "0x15b47d6c64a9a6b77784dbb820a73f92d51c22815bcded2b6388a0d4c2cd4015"
+      }
+    },
+    {
+      "event": "NonceConsumed",
+      "args": {
+        "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+        "nonce": "27775166201396843412696308209167171693283296200739622914155269255399217321536",
+        "planHash": "0x15b47d6c64a9a6b77784dbb820a73f92d51c22815bcded2b6388a0d4c2cd4015"
+      }
+    },
+    {
+      "event": "NonceConsumed",
+      "args": {
+        "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+        "nonce": "82924714649538579958088301320500899610090459282233847816736478025381699726140",
+        "planHash": "0x15b47d6c64a9a6b77784dbb820a73f92d51c22815bcded2b6388a0d4c2cd4015"
+      }
+    },
+    {
+      "event": "CrossingLeg",
+      "args": {
+        "planHash": "0x15b47d6c64a9a6b77784dbb820a73f92d51c22815bcded2b6388a0d4c2cd4015",
+        "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+        "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+        "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+        "amount": "945439235262731"
+      }
+    },
+    {
+      "event": "CrossingLeg",
+      "args": {
+        "planHash": "0x15b47d6c64a9a6b77784dbb820a73f92d51c22815bcded2b6388a0d4c2cd4015",
+        "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+        "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+        "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+        "amount": "2146788147078860"
+      }
+    },
+    {
+      "event": "CrossingLeg",
+      "args": {
+        "planHash": "0x15b47d6c64a9a6b77784dbb820a73f92d51c22815bcded2b6388a0d4c2cd4015",
+        "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+        "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+        "amount": "3236721708411159"
+      }
+    },
+    {
+      "event": "PlanSettled",
+      "args": {
+        "roundId": "0x6833eb14f22fa9423b069f0aa938bbea61f656cf0f191c176ff939658b3b2ce7",
+        "planId": "0x6260f109736103775ae9e5c9ae477e0a480bb588bc6a68f7542ca2a78e5f5596",
+        "planHash": "0x15b47d6c64a9a6b77784dbb820a73f92d51c22815bcded2b6388a0d4c2cd4015",
+        "participantCount": "3",
+        "legCount": "3"
+      }
+    }
+  ],
+  "participantSet": [
+    "0x0f199cc71f82f1baa7d731cbd03c6f8895a9d70d",
+    "0x69a0ba2cb75ce834ffbaa258ea2342f862903cae",
+    "0x71509d21a26f47f83b36a835bb4619df8f512718"
+  ],
+  "approvalParticipantSet": [
+    "0x0f199cc71f82f1baa7d731cbd03c6f8895a9d70d",
+    "0x69a0ba2cb75ce834ffbaa258ea2342f862903cae",
+    "0x71509d21a26f47f83b36a835bb4619df8f512718"
+  ],
+  "nonceConsumedSet": [
+    "0x0f199cc71f82f1baa7d731cbd03c6f8895a9d70d",
+    "0x69a0ba2cb75ce834ffbaa258ea2342f862903cae",
+    "0x71509d21a26f47f83b36a835bb4619df8f512718"
+  ],
+  "expectedTokenDeltas": [
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "0"
+    },
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "2146788147078860"
+    },
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "-3236721708411159"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "945439235262731"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "-2146788147078860"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "0"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "-945439235262731"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "0"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "3236721708411159"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "0"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "0"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "0"
+    }
+  ],
+  "observedTokenDeltas": [
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "0"
+    },
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "2146788147078860"
+    },
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "-3236721708411159"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "945439235262731"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "-2146788147078860"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "0"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "-945439235262731"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "0"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "3236721708411159"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "0"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "0"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "0"
+    }
+  ],
+  "verificationBlock": "66796426",
+  "verifierStatus": "PASS",
+  "checks": [
+    "PASS tx.status",
+    "PASS tx.to",
+    "PASS calldata.plan",
+    "PASS event.PlanSettled",
+    "PASS event.CrossingLeg",
+    "PASS event.Transfer",
+    "PASS event.NonceConsumed.0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "PASS event.NonceConsumed.0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "PASS event.NonceConsumed.0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "PASS state.planSettled",
+    "PASS state.nonceUsed",
+    "PASS balances.netDelta",
+    "PASS balances.noCustody",
+    "PASS participants.set"
+  ]
+}

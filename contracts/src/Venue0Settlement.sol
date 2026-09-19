@@ -12,6 +12,15 @@ import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol
 /// @notice Atomically executes a multi-party settlement plan that every participant signed.
 /// Tokens move wallet to wallet through `transferFrom`; this contract never holds user tokens.
 /// It does not match, price, or custody. Matching happens offchain before a plan exists.
+/// @dev Authorization: every address in `plan.participants` must sign an EIP-712 `PlanApproval` over the exact plan
+/// (every leg, amount, round, snapshot hash and validity window) with a nonce of its choice. Any change to the plan
+/// changes its hash and invalidates every signature. Anyone may submit a fully approved plan.
+/// Replay: each plan hash settles at most once (`planSettled`), and each (owner, nonce) is consumed once
+/// (`nonceUsed`); a participant can withdraw an unused approval with `cancelNonce`.
+/// Atomicity: all legs move in one call or the call reverts; a paused or blocklisted Stock Token, a missing
+/// allowance or an insufficient balance on any leg reverts the whole plan.
+/// Not in scope: price checks (plans carry the valuation snapshot hash but the contract does not read oracles),
+/// residual execution, and any retention of tokens or fees.
 contract Venue0Settlement is EIP712, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
@@ -53,6 +62,7 @@ contract Venue0Settlement is EIP712, ReentrancyGuard {
     /// @notice owner => nonce => consumed or cancelled. Unordered so one wallet can join concurrent rounds.
     mapping(address => mapping(uint256 => bool)) public nonceUsed;
 
+    /// @notice Emitted once per settled plan.
     event PlanSettled(
         bytes32 indexed roundId,
         bytes32 indexed planId,
@@ -61,10 +71,13 @@ contract Venue0Settlement is EIP712, ReentrancyGuard {
         uint256 legCount
     );
 
+    /// @notice Emitted for every leg, in the plan's canonical (token, from, to) order.
     event CrossingLeg(bytes32 indexed planHash, address indexed token, address indexed from, address to, uint256 amount);
 
+    /// @notice Emitted for every participant whose approval was used by a settlement.
     event NonceConsumed(address indexed owner, uint256 indexed nonce, bytes32 indexed planHash);
 
+    /// @notice Emitted when a participant withdraws an unused approval.
     event NonceCancelled(address indexed owner, uint256 indexed nonce);
 
     error PlanNotYetValid(uint64 validAfter);
@@ -160,6 +173,7 @@ contract Venue0Settlement is EIP712, ReentrancyGuard {
         return _hashTypedDataV4(keccak256(abi.encode(PLAN_APPROVAL_TYPEHASH, participant, nonce, hashPlan(plan))));
     }
 
+    /// @notice EIP-712 domain separator (name "VENUE0", version "1", this chain, this contract).
     function domainSeparator() external view returns (bytes32) {
         return _domainSeparatorV4();
     }

@@ -1,5 +1,99 @@
 # Decisions
 
+[README](../README.md) · [Architecture](ARCHITECTURE.md) · [Security](SECURITY.md)
+
+Part 1 records the product and architecture decisions in ADR form. Part 2 keeps the dated implementation records written during the build (D-001 to D-020), unchanged in substance, including observations that later decisions superseded.
+
+## Part 1: Architecture decision records
+
+### ADR-01 Name and scope: VENUE0, a portfolio-intent matching network
+
+- **Context.** Rebalances usually become orders against public liquidity one wallet at a time.
+- **Decision.** Venue0 is the step before execution: it matches portfolio intents across wallets and forms the residual. It is not an AMM, broker, settlement protocol, copy-trading app or trading bot.
+- **Reason.** The originality is deciding which transfers should exist; settlement and routing already exist elsewhere.
+- **Alternatives rejected.** An order-book venue (sees orders, not goals); a pairwise crossing network (cannot close rings).
+- **Consequences.** The product must be honest where matching adds little (small rounds, one-directional flow), which the campaign measures.
+
+### ADR-02 No project token, no governance
+
+- **Context.** Many onchain products add a token.
+- **Decision.** None.
+- **Reason.** Nothing in the mechanism needs one; a token would add trust and regulatory surface with no function.
+- **Consequences.** No fees are taken onchain; the contract holds nothing.
+
+### ADR-03 Robinhood Chain and canonical Stock Tokens only
+
+- **Context.** Stock Tokens with the same ticker exist at other addresses and on other chains.
+- **Decision.** Robinhood Chain mainnet (4663); assets only from the live Robinhood registry, checked onchain (D-002, D-003, D-005).
+- **Reason.** Identity by ticker is unsafe; the registry plus onchain `uid()` is authoritative.
+- **Alternatives rejected.** Hard-coded addresses; multi-chain support.
+- **Consequences.** Assets without a Chainlink feed (159 of 194) cannot be valued in rounds.
+
+### ADR-04 No protocol custody; solver offchain, settlement onchain
+
+- **Context.** Matching is computation-heavy; settlement must be trust-minimized.
+- **Decision.** The matcher runs offchain and deterministically; `Venue0Settlement` only executes a plan every participant signed, moving tokens wallet to wallet in one transaction (D-006, D-007).
+- **Reason.** Keeps the contract small and auditable and avoids holding user assets.
+- **Alternatives rejected.** An onchain solver (gas, limits); an escrow contract (custody); an admin allowlist (trust).
+- **Consequences.** Participants must approve the exact plan and grant exact allowances; any issuer pause or blocklist reverts the whole plan.
+
+### ADR-05 Independent reference solver
+
+- **Context.** A matcher bug would silently misallocate value.
+- **Decision.** An independent reference (exact rational simplex, HiGHS LP) must agree on the optimum for every campaign scenario and property test (D-007).
+- **Reason.** "Is the matcher correct?" is a separate question from "does crossing help?".
+- **Consequences.** 400/400 parity in the campaign; ties in the optimum can yield different legs with the same value.
+
+### ADR-06 Residual execution is an economic decision
+
+- **Context.** A live $1.20 Flash order filled but paid a 13.6% fee (D-012).
+- **Decision.** The residual engine compares measured all-in costs across Uniswap and Flash against the user's cap, and chooses EXECUTE_NOW, LIMIT, TWAP, WAIT, AGGREGATE or CANCEL.
+- **Reason.** Route availability does not mean a route is worth paying for.
+- **Consequences.** Small residuals are carried into the next round rather than traded.
+
+### ADR-07 Circles as the distribution unit
+
+- **Context.** The campaign shows multi-party matching matters in larger, concentrated rounds and little in 2-3 participant ones.
+- **Decision.** Rounds happen inside Circles: groups that rebalance the same assets on a schedule, with invites and minimum participant counts (D-013).
+- **Consequences.** Circle design (asset universe, cadence) directly affects how much crosses.
+
+### ADR-08 Wallets: Dynamic for users; server wallet for the agent proof; no delegated access yet
+
+- **Decision.** Users sign in with Dynamic; the server verifies Dynamic's JWT and binds the session to a verified wallet (D-018). The agent proof uses a Dynamic server wallet (D-011). Delegated access is not implemented.
+- **Reason.** Every user action is a user signature; delegation needs Enterprise features, a webhook and an agent that signs for users.
+- **Consequences.** No automation on the user's behalf; every step is signed in the wallet.
+
+### ADR-09 Manual target mode is first-class; the language model is optional and untrusted
+
+- **Decision.** Weights mode is the full product. A language model, when configured, only reads words into operations; code resolves and computes everything (D-014).
+- **Reason.** The product must work without a model and must never let a model supply an address or amount.
+- **Consequences.** Production runs without a model key.
+
+### ADR-10 Postgres for product state; chain authoritative
+
+- **Decision.** Users, targets, Circles, rounds, intents, approvals, residual decisions and activity live in Postgres; balances, prices and settlements are always read from the chain (D-017).
+- **Alternatives rejected.** Treating database status as truth.
+- **Consequences.** Round state changes are compare-and-set; mutations are idempotent.
+
+### ADR-11 Cloudflare Workers via OpenNext, Supabase through Hyperdrive
+
+- **Decision.** The owner's Workers plan hosts the app; Supabase Postgres is reached through Hyperdrive using the direct connection, with one client per request (D-020).
+- **Alternatives rejected.** Railway (trial expired), a VPS (no long-running work needed), Hyperdrive over Supabase's session pooler (stalled under concurrency).
+- **Consequences.** No in-process state across requests; settlement completion is poll-driven and resumable; builds run from a clean copy because OpenNext inlines `.env` files.
+
+### ADR-12 Independent verification with separated providers
+
+- **Decision.** The verifier reads through a different RPC provider than the one that executes (Alchemy executes, Chainstack verifies). A fallback to the execution provider is recorded as `independent: false` and never counted as independent.
+- **Reason.** A provider cannot vouch for its own results.
+- **Consequences.** P1 and P2 are recorded as not independent; P3 is independent. The Chainstack free plan's ~13 s history window makes prompt verification necessary.
+
+### ADR-13 Proof separated from the product
+
+- **Decision.** Proof material lives at `/proof`, the replay at `/demo` (bannered as test wallets), and the product at `/app` shows only the signed-in user's data (D-016).
+- **Reason.** Judges need evidence; users need a product; mixing them made the product look like a demo.
+
+## Part 2: Implementation records
+
 Format per entry: PRD assumption, observed reality, source, impact, decision. Newest last.
 
 ## D-001 Toolchain and pinned versions (2026-09-17)

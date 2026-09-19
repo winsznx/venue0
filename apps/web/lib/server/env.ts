@@ -12,7 +12,7 @@ export const env = {
     return this.agentProvider !== null;
   },
   databaseUrl: process.env.DATABASE_URL || undefined,
-  settlementContract: process.env.CROSSING_SETTLEMENT_ADDRESS || undefined,
+  settlementContract: process.env.VENUE0_SETTLEMENT_ADDRESS || undefined,
   dynamicEnvironmentId: process.env.DYNAMIC_ENVIRONMENT_ID || process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID || undefined,
   sessionSecret: process.env.SESSION_SECRET || undefined,
 };

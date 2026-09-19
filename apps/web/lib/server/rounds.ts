@@ -49,7 +49,7 @@ type RoundRow = { id: string; circle_id: string; sequence: number; state: string
 const now = () => Math.floor(Date.now() / 1000);
 
 export function settlementContract(): Address {
-  if (!env.settlementContract) throw new RoundError("CROSSING_SETTLEMENT_ADDRESS is not configured; rounds cannot settle.");
+  if (!env.settlementContract) throw new RoundError("VENUE0_SETTLEMENT_ADDRESS is not configured; rounds cannot settle.");
   return getAddress(env.settlementContract);
 }
 

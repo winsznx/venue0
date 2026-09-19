@@ -1,5 +1,7 @@
 # Evaluation Campaign: Methodology (frozen)
 
+[README](../README.md) · [Campaign results](CAMPAIGN_RESULTS.md)
+
 Frozen before the campaign ran. The frozen run (`pnpm campaign`) refuses to start if the seed, versions or input hashes in `campaign/manifest.json` differ from the code and data. Before freezing, the code was only exercised with a different seed (`smoke`, 2 scenarios per cohort, output gitignored), to check correctness invariants.
 
 ## Question

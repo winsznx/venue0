@@ -1,5 +1,7 @@
 # Production configuration
 
+[README](../README.md) · [Live deployments](LIVE_DEPLOYMENTS.md) · [Security](SECURITY.md)
+
 Deployment: Cloudflare Workers (OpenNext adapter) at `https://venue0.timjosh507.workers.dev`, Worker `venue0`. Database: Supabase Postgres (project `zyydvdrgqppblhpoazwv`, eu-west-1) reached through Cloudflare Hyperdrive config `venue0-db` (`82f7952458f148da9dcd984bb9e45a1e`). No values of secrets appear in this file.
 
 ## Worker runtime
@@ -10,7 +12,7 @@ Deployment: Cloudflare Workers (OpenNext adapter) at `https://venue0.timjosh507.
 | `SESSION_SECRET` | Worker secret | server | yes | HS256 key for the Venue0 session cookie; the app refuses to run in production without it | generated (`openssl rand -hex 32`) | yes | configured |
 | `ROBINHOOD_RPC_URL` | Worker secret | server | recommended | executor/read RPC for balances, prices, receipts | Alchemy (URL embeds the API key) | yes | configured |
 | `VERIFIER_RPC_URL` | Worker secret | server | yes for independence | settlement verifier RPC; its host is recorded with each verification and compared with the executor host | Chainstack (free plan; ~126 blocks of state, about 13 s). The Robinhood public RPC returns HTTP 429 to Cloudflare Worker egress and is not used | yes (URL embeds a key) | configured |
-| `CROSSING_SETTLEMENT_ADDRESS` | `wrangler.jsonc` vars | server | yes | Venue0Settlement contract every round settles through | onchain `0x9cf871315674830046ab0541ee018f6978e86a3d` | no | configured |
+| `VENUE0_SETTLEMENT_ADDRESS` | `wrangler.jsonc` vars | server | yes | Venue0Settlement contract every round settles through | onchain `0x9cf871315674830046ab0541ee018f6978e86a3d` | no | configured |
 | `DYNAMIC_ENVIRONMENT_ID` | `wrangler.jsonc` vars | server; passed to the browser as a prop | yes | Dynamic SDK environment and JWT issuer/JWKS | Dynamic (Sandbox environment) | no (public by design) | configured |
 | `UNISWAP_API_KEY` | Worker secret | server | optional | leftover quotes and swaps from the user's wallet | Uniswap Trading API | yes | configured |
 | `GROQ_API_KEY` | Worker secret | server | optional | "Describe it" target mode (preferred provider) | Groq, model `openai/gpt-oss-120b` | yes | not configured |

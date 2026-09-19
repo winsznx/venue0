@@ -1,0 +1,71 @@
+{
+  "project": "VENUE0",
+  "tagline": "The market before the market.",
+  "summary": "Portfolio agents cross complementary Stock Token rebalances with each other before sending only the residual to public liquidity.",
+  "category": "portfolio-intent matching network",
+  "asOf": "2026-09-19",
+  "urls": {
+    "app": "https://venue0.timjosh507.workers.dev",
+    "proof": "https://venue0.timjosh507.workers.dev/proof",
+    "demo": "https://venue0.timjosh507.workers.dev/demo"
+  },
+  "chain": { "name": "Robinhood Chain", "chainId": 4663, "explorer": "https://robinhoodchain.blockscout.com" },
+  "contract": {
+    "name": "Venue0Settlement",
+    "address": "0x9cf871315674830046ab0541ee018f6978e86a3d",
+    "deployTx": "0x071ee0c035695bcfdfad52ce9e7f11fec5b19a97e6ca80d06e74323ce8d71947",
+    "externallyAudited": false
+  },
+  "liveProof": {
+    "G0_transfer": "0xb3eaab11773e0341ceea4a10854740d9a1cfc5e575f3e72140968232fa2074f8",
+    "G1_bilateral": "0xd125f8668883ae888a6f0507a09d665e49f77a202b1dc2dbf7e9936fc2764a94",
+    "G2_threeWalletCycle": "0xfdd14b8e7c4c4a2aedd567a51a15492159c0d0e67ae7ef94028f7c7aff863035",
+    "G3_partial": "0x9d4d14d2eee13e542cbbf58e8feab98755035f9280585878f2213984e23faced",
+    "G4_noCross": null,
+    "uniswapResidual": "0xaec4488e2ba8d2dcd14fdbaec15d6fde31398a980175fd1fe5bcf8f56d8a84db",
+    "flashLimitFill": "0xa30e95a18cc90b99f141f611118dce5bcd7251111038d5bab9d79947f9e55fc6",
+    "dynamicAgentRound": "0x0f851b81082f93f863ddceeae3f4aff47ad6eac52f04482985eb75e187a91873"
+  },
+  "productionSettlements": [
+    { "round": "P1", "tx": "0x45c0a4ad35c98e180365bd88bf912ef978f8c1a5a66f8474527cf47d9ec1ec35", "verifier": "PASS", "independent": false },
+    { "round": "P2", "tx": "0x17b084d5239e6277e9bde84b89ab9f7aea3e1bb2fa40bf7c91bf285fb8d56b1e", "verifier": "PASS", "independent": false },
+    { "round": "P3", "tx": "0xd8d95dd809ece9ca6dc4b2fcf343332f62f50005677ef9def433d06edca7edd3", "verifier": "PASS", "checks": "14/14", "independent": true, "executionProvider": "Alchemy", "verificationProvider": "Chainstack" }
+  ],
+  "participants": "operator-controlled test accounts; no users",
+  "campaign": {
+    "scenarios": 400,
+    "synthetic": true,
+    "arms": ["MARKET_ONLY", "BILATERAL_ONLY", "VENUE0_CROSSING", "VENUE0_FULL"],
+    "crossRatePooled": 0.102,
+    "crossRateMedian": 0.135,
+    "fewerExternalOrdersVsMarketOnly": 0.32,
+    "upliftRelativeToBilateral": 0.263,
+    "upliftAbsolutePointsOfRequested": 2.1,
+    "referenceParity": "400/400",
+    "naturalCohorts": { "scenarios": 200, "crossRatePooled": 0.105, "upliftRelativeToBilateral": 0.236 }
+  },
+  "tests": { "typescript": 95, "foundry": 32 },
+  "integrations": {
+    "robinhoodChain": "live: settlement chain and canonical Stock Tokens",
+    "dynamic": "live in Sandbox: user sign-in and wallets in the app; server-wallet agent in a live round; delegated access not implemented",
+    "uniswap": "live residual swap (CLASSIC route)",
+    "definitiveFlash": "live LIMIT fill; fee made a $1.20 order uneconomic, engine now aggregates such residuals",
+    "bankr": "no integration"
+  },
+  "limitations": [
+    "operator-controlled test accounts, not users",
+    "synthetic campaign",
+    "no external audit",
+    "Dynamic Sandbox",
+    "Chainstack free plan keeps about 13 seconds of state for independent verification",
+    "live rounds moved $1-$12",
+    "no realized cost savings claimed"
+  ],
+  "docs": {
+    "readme": "README.md",
+    "liveDeployments": "docs/LIVE_DEPLOYMENTS.md",
+    "evidence": "docs/EVIDENCE.md",
+    "claims": "docs/CLAIM_LEDGER.md",
+    "limitations": "docs/PRODUCT_LIMITATIONS.md"
+  }
+}

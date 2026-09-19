@@ -1,4 +1,31 @@
-# Campaign Results
+# Campaign results
+
+[README](../README.md) · [Methodology](EVAL_CAMPAIGN.md) · [Thesis](THESIS.md) · [Claim ledger](CLAIM_LEDGER.md)
+
+**400 frozen synthetic scenarios. Not users. Not live market adoption.**
+
+## Arms
+
+Every arm saw identical intents and prices.
+
+| Arm | Matching | Residual |
+|---|---|---|
+| A MARKET_ONLY | none | every requested asset order goes to the Uniswap market |
+| B BILATERAL_ONLY | exact pairwise optimum (HiGHS LP): only two-wallet swaps, each value-balanced | Uniswap market |
+| C VENUE0_CROSSING | production matcher: each participant balances across all counterparties, so cycles of any length | Uniswap market |
+| D VENUE0_FULL | same as C | economic residual engine choosing among measured Uniswap and Flash costs, or AGGREGATE / WAIT / CANCEL |
+
+## Headline
+
+- Venue0 crossed **10.2%** of requested notional overall (median scenario 13.5%).
+- **32% fewer** external orders than market-only (39% in natural cohorts).
+- **26.3%** more crossed notional than the optimal bilateral-only matcher, which is about **+2.1 points** of requested notional in absolute terms.
+- **400/400** reference-solver parity.
+- Natural and randomized cohorts only: 10.5% crossed pooled, +23.6% relative uplift (+2.0 points).
+
+The failure envelope is below: crossing is about 2% below 10% complementarity, 2-3 participant rounds gain little, template-style flows are mostly captured bilaterally, one-directional flows often cross nothing, and a whale in a small crowd crosses 2.7%. Multi-party uplift is strongest in larger, circle-style rounds.
+
+## Detail
 
 Frozen methodology: `docs/EVAL_CAMPAIGN.md`, committed in `a853b32` before this run. Seed `venue0-campaign-2026-09-18-frozen`, 400 scenarios (10 cohorts x 40), 4 arms. Raw data: `campaign/results/results.csv` and `results.json` (1,600 rows), `summary.json`. Post-hoc breakdowns: `analysis.json`. Reproduce with `pnpm campaign && pnpm campaign:analyze`.
 

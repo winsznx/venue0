@@ -1,81 +1,97 @@
-# Sponsor and Integration Findings
+# Sponsor and infrastructure findings
 
-Observed facts and friction from current official docs and live calls. Doc facts cite the page; live facts cite the artifact. Checked 2026-09-17 unless dated otherwise.
+[README](../README.md) · [Sponsor integrations](SPONSOR_INTEGRATIONS.md) · [Uniswap feedback](UNISWAP_FEEDBACK.md)
 
-## Robinhood Chain / Stock Tokens
+Findings from building and running Venue0 against live services in September 2026. Only issues that changed a design, cost real time or would affect another integrator are listed. Each has the same fields.
 
-Live observations:
+## Definitive Flash: fixed fee dominates small residuals
 
-- `GET https://api.robinhood.com/rhj/assets` works without auth. Envelope `{ "assets": [...] }`. Live records include `tokenDecimals`, `isin`, and `deployments[].networkName`, which the API reference page does not list.
-- `tradingCapabilities` conflict: the Stock Token APIs page documents `{ fractionalTradability, allDayTradability, extendedHoursFractionalTradability }`, the Stock Tokens page documents `{ market|extended|overnight: { whole, fractional } }`. The live API returns the second shape for all 194 assets. Venue0 parses both and treats anything unrecognized as not tradable (`packages/assets/src/trading-capabilities.ts`).
-- `GET /rhj/prices/{symbol}` returns `{ quotes: [...] }` with raw underlying bid/ask (not multiplier-adjusted), `isTradingHalt`, `generatedAt`, plus undocumented `dailyHigh`, `dailyLow`, `mintBurnTokenVolume`, `mintBurnUsdVolume`. A `?symbols=` batch query is rejected (`Could not find field "symbols"`).
-- The public RPC is load-balanced; reads pinned to the just-returned head block can fail with `unsupported block number` (D-004).
-- Stock Token contracts are beacon proxies with pause, oracle pause, `adminBurn`, registry blocklist and undocumented ERC-2612 permit (D-005).
-- Chainlink covers 35 of 194 Stock Tokens. Feed `description()` naming is inconsistent (`RHNVDA / USD` vs `Robinhood AAPL / USD`) and feeds carry no token address, so feed-to-token binding relies on the directory name plus a price cross-check (D-003).
-- Robinhood's contracts page renders its table client-side, so the canonical list is only machine-readable through `/rhj/assets`. USDG `0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168` appears statically on the contracts page but not in `/rhj/assets`.
-- Testnet (46630) Stock Tokens and a testnet faucet are not documented.
-- The public RPC serves historical state only for recent blocks: `eth_call` 100 blocks back worked, 10,000 blocks back returned `historical state ... is not available`. Independent before/after verification needs prompt execution or an archive provider.
-- Anvil's well-known dev addresses (`0xf39F...2266`, `0x7099...79C8`, `0x3C44...93BC`) carry EIP-7702 delegation code `0xef01008a5b10eb2faf57665f63709ec4b3943a3b005df6` on mainnet. Any integration test that reuses those keys against forked state hits smart-account signature paths.
-- Live execution gas price observed 0.054 gwei (base fee 53,988,000 wei). `arbOSVersion()` = 116.
+- **Environment.** Flash API v1, Robinhood Chain mainnet, 2026-09-18.
+- **Observed.** Fees are close to flat per order: about $0.16 for market or limit and $0.33 for a two-bucket TWAP, whether the order is $0.44 or $11. A $1.20 limit order filled, but the $0.163 fee was 13.6% of it; the limit was enforced on the post-fee amount, so the all-in rate was 13% below reference.
+- **Expected.** Integrators need a minimum economic order size per asset before sending residuals.
+- **Impact.** A residual engine that checks only route availability will pay fees larger than the residual.
+- **Fix.** Venue0's residual engine compares all-in route costs against the user's cap and aggregates a residual into the next round when the fixed fee dominates. The same $1.20 residual now returns AGGREGATE.
+- **Status.** Resolved in Venue0. Suggest Flash publish fee floors or a minimum-size hint in quotes.
 
-Docs facts (https://docs.robinhood.com/chain/):
+## Definitive Flash: defaults that integrators must override
 
-- Chainlink feed price is multiplier-adjusted; underlying = feed x 1e18 / `uiMultiplier()` (oracles-and-price-feeds).
-- `balanceOf` does not rebase; ERC-8056 `uiMultiplier`, `newUIMultiplier`, `effectiveAt`, `balanceOfUI` (building-with-stock-tokens).
-- Sequencer excludes transactions involving sanctioned addresses; a blocked tx looks like it never happened (differences-from-ethereum).
-- Brand: "Robinhood Chain" in full, "Stock Tokens" (not "tokenized stocks/equities"), no HOOD/$HOOD, metrics need source, period and method (brand-guidelines).
-- Eligibility: not offered to U.S. persons; also restricted in Canada, UK, Switzerland; no VPN circumvention (stock-tokens, terms-of-service).
-- Blockscout verification: `forge verify-contract ... --verifier blockscout --verifier-url https://robinhoodchain.blockscout.com/api/` (deploy-smart-contracts). Blockscout's v2 JSON API currently sits behind a Cloudflare challenge for scripted requests.
+- **Environment.** Flash API v1, 2026-09-18.
+- **Observed.** Default quotes return an unlimited `approveTx`. `/search?chain=robinhood` returns lookalike tokens (for example a 3x leveraged NVDA) next to the canonical Stock Token.
+- **Expected.** Exact approvals by default; canonical Stock Tokens distinguishable in search.
+- **Impact.** Unlimited allowances to a settlement contract; risk of routing a lookalike.
+- **Fix.** Venue0 always sends `forceMinimalAllowance: true` and filters tokens by canonical address from the Robinhood registry.
+- **Status.** Worked around.
+
+## Robinhood Stock Tokens: two price conventions and two capability schemas
+
+- **Environment.** `api.robinhood.com/rhj`, Chainlink Stock Token feeds, 2026-09-17.
+- **Observed.** `/rhj/prices/{symbol}` returns the raw underlying price; Chainlink feeds are multiplier-adjusted. The Stock Token APIs page and the Stock Tokens page document different `tradingCapabilities` shapes; the live API returns the second. Chainlink covers 35 of 194 Stock Tokens, and feed descriptions are named inconsistently (`RHNVDA / USD` and `Robinhood AAPL / USD`) with no token address.
+- **Expected.** One documented price convention and one capability schema; feeds bound to token addresses.
+- **Impact.** Applying the multiplier twice, or not at all, misvalues holdings; a strict schema parser rejects every asset.
+- **Fix.** Separate types for raw and multiplier-adjusted prices; feeds found by exact directory name and cross-checked against REST × multiplier within 100 bps; a tolerant capability parser where unknown means not tradable.
+- **Status.** Worked around.
+
+## Robinhood Chain public RPC: short history, and rate limits for Cloudflare egress
+
+- **Environment.** `rpc.mainnet.chain.robinhood.com`, 2026-09-18/19.
+- **Observed.** State older than roughly 10,000 blocks (about 17 minutes at 0.1 s blocks) is unavailable (`historical state … is not available`). From a Cloudflare Worker, the second request returns HTTP 429.
+- **Expected.** Documented history depth and rate limits.
+- **Impact.** An independent verifier on the public RPC must run within minutes, and cannot run inside a Worker at all.
+- **Fix.** Production verification uses a separate keyed provider (Chainstack). A verification that falls back to the execution provider is recorded as `independent: false`.
+- **Status.** Worked around.
+
+## Dynamic Sandbox: per-IP rate limit and session length
+
+- **Environment.** `@dynamic-labs/sdk-react-core` 5.9.0, Sandbox environment, 2026-09-18/19.
+- **Observed.** After a handful of wallet sign-ins from one IP, `/verify` and `/nonce` return HTTP 429 (Cloudflare error 1015) with `retry-after` of about 45 minutes, on localhost and on the production origin alike. Sessions ended in the browser after about three hours.
+- **Expected.** Documented Sandbox limits, or a higher limit for Test Accounts.
+- **Impact.** Automated end-to-end testing from one machine must space out sign-ins. Distinct real users are unaffected.
+- **Fix.** The test harness signs in only when a session has actually ended and retries once. The app ends its own session when Dynamic ends the browser session.
+- **Status.** Open (provider limit).
 
 ## Uniswap Trading API
 
-Live (2026-09-18):
+Detailed in [UNISWAP_FEEDBACK.md](UNISWAP_FEEDBACK.md): the permissioned-token router version conflict (2.2.0 in prose, absent from the OpenAPI enum), stale `permitData` after a Permit2 approval (requote needed), and a dynamic-fee sentinel shown as `838.8608%` in `routeString`. Status: worked around; the live swap delivered exactly the quoted output.
 
-- `POST /permissions` for NVDA and AAPL on 4663: `isPermissioned: false`. So the router 2.2.0 / permissioned-pool conflict does not apply to these Stock Tokens.
-- `/quote` returned CLASSIC routes for NVDA, AAPL, SPY into both ETH and USDG (v3 and v4 pools), and for NVDA -> AAPL directly (v4, 0.3% fee). Some Stock Token / USDG v4 routes list a fee string of `838.8608%` in `routeString`, which looks like a dynamic-fee hook sentinel rendered as a percentage; quoted outputs were still sane.
-- Full residual swap succeeded: `/check_approval` -> Permit2 approve -> requote -> sign `permitData` -> `/swap` (with `simulateTransaction: true`) -> send. Received exactly the quoted amount.
+## OpenZeppelin SignatureChecker and EIP-7702 accounts
 
-Docs:
+- **Environment.** OpenZeppelin Contracts 5.6.1, Robinhood Chain mainnet fork, 2026-09-18.
+- **Observed.** EOAs with EIP-7702 delegation code (including anvil's well-known dev addresses on mainnet state) are routed by `SignatureChecker` to ERC-1271 only, so their ordinary ECDSA approvals were rejected.
+- **Expected.** ECDSA from the account's own key accepted.
+- **Impact.** Participants with delegated EOAs could not settle.
+- **Fix.** `Venue0Settlement._isValidApproval` accepts ECDSA recovery first and falls back to ERC-1271.
+- **Status.** Fixed in Venue0; caught by the fork rehearsal before mainnet.
 
-- Base `https://trade-api.gateway.uniswap.org/v1`, header `x-api-key`, free, 6 rps default. Keys via https://developers.uniswap.org/dashboard/welcome (error docs say self-serve; FAQ still says request access).
-- Chain 4663 supported. Universal Router 2.1.1 at `0x8876789976decbfcbbbe364623c63652db8c0904`; header `x-universal-router-version: 2.1.1`; `2.0` errors on this chain. UniswapX V3 live (DutchV3OrderReactor `0x000000007A1C8e570011EeDF86A2A35593013cBA`).
-- Conflict: the permissioned-pools page says permissioned tokens need router `2.2.0`, which is not in the OpenAPI enum and has no listed deployment. `POST /v1/permissions` reports `isPermissioned` / `isAllowlisted` per wallet and token. Whether Stock Tokens are permissioned is undocumented; this is the first live call to make once a key exists.
-- No-route outcome is `404 NoRouteFoundError`; branch on `errorCode`, not `detail`.
-- v3 factory on 4663 `0x1f7d7550b1b028f7571e69a784071f0205fd2efa`, v4 PoolManager `0x8366a39cc670b4001a1121b8f6a443a643e40951` (usable for independent pool existence checks without a key).
+## Cloudflare Workers with OpenNext: `.env` inlined into the bundle
 
-## Dynamic
+- **Environment.** `@opennextjs/cloudflare` 1.20.6, wrangler 4.135.0, 2026-09-19.
+- **Observed.** The build inlines every `.env` file it finds, including one at the monorepo root, into `.open-next/cloudflare/next-env.mjs`.
+- **Expected.** Build-time env inlining limited to explicitly public variables.
+- **Impact.** Any secret in a local `.env` ships inside the Worker.
+- **Fix.** Production builds run from a clean copy without `.env`, gated by a scan for every local secret value. Nothing was deployed before the fix.
+- **Status.** Worked around.
 
-Live (2026-09-18, Sandbox):
+## Cloudflare Hyperdrive with Supabase's session pooler
 
-- `DynamicEvmWalletClient.authenticateApiToken` + `createWalletAccount({ TWO_OF_TWO, password, backUpToDynamic: true })` created a server wallet in about 3s.
-- `getWalletClient({ walletMetadata, password, externalServerKeyShares, chain, rpcUrl })` with a viem `defineChain` for 4663 signed EIP-712 typed data and sent transactions on Robinhood Chain. Robinhood Chain did not need to be enabled in the dashboard.
-- Installing `@dynamic-labs-wallet/node-evm@1.1.12` under pnpm 11 needs `protobufjs` allowed to run its build script.
+- **Environment.** Hyperdrive, Supabase Postgres (Supavisor session mode), postgres.js 3.4.9, 2026-09-19.
+- **Observed.** With Hyperdrive pointed at the session pooler, about 1 in 40 concurrent requests failed with `write CONNECTION_CLOSED` or stalled for 30 s.
+- **Expected.** Stable pooling under bursts of 10 concurrent requests.
+- **Impact.** Intermittent 500s on concurrent joins.
+- **Fix.** Hyperdrive points at Supabase's direct connection, as Cloudflare's Supabase guide specifies; one connection per request; a statement that could not be written is retried once. 80 concurrent redemptions then ran with no errors.
+- **Status.** Resolved.
 
-Docs:
+## postgres.js: JSON parameters double-encoded as `::jsonb`
 
-- Packages: `@dynamic-labs-wallet/node-evm` 1.1.12 and `@dynamic-labs-wallet/node` 1.1.12 (native addons; Node 18+ on Linux x64/arm64 or macOS arm64; not edge runtimes).
-- Server wallets and agent wallets are fully backend. Delegated access requires the end user to approve in a client SDK, so it cannot be exercised before a frontend exists.
-- Delegated access is Enterprise-only in production but testable in Sandbox (1,000-user cap).
-- Docs vs types drift: `getWalletClient` docs show `accountAddress`; 1.1.12 types require `walletMetadata`. `delegatedSignTypedData` exists in types but not docs. Webhook signature header is `x-dynamic-signature-256` on one page and `x-dynamic-signature` on another.
-- Robinhood Chain 4663 is on Dynamic's EVM gas sponsorship relayer list (enterprise only).
+- **Environment.** postgres.js 3.4.9 with `sql.unsafe`, Postgres 17 and Supabase, 2026-09-19.
+- **Observed.** A JSON string bound as `$1::jsonb` is JSON-encoded again and stored as a JSON string, not an object. PGlite stored it as an object, so local tests did not show it.
+- **Impact.** The app worked (its reader parses strings) but SQL could not query into JSON columns.
+- **Fix.** Bind as `$1::text::jsonb`; migration 004 converted existing rows in place.
+- **Status.** Resolved.
 
-## Definitive Flash
+## Chainstack free plan: about 126 blocks of state
 
-Live (2026-09-18):
-
-- `GET /search?query=NVDA&chain=robinhood` returns the canonical NVDA Stock Token (`0xd0601C...9EEC`) with liquidity and holder counts, plus lookalikes such as `NVDAx3L` (NVDA 3x Long) at other addresses. Integrators must filter by canonical address.
-- Quotes for market, limit and TWAP worked for NVDA -> USDG and NVDA -> AAPL. Fees are close to flat per order: about $0.16 for market/limit and $0.33 for a 2-bucket TWAP regardless of $0.44 or $11 size.
-- Default quotes return an unlimited `approveTx` (`0xff...ff`). `forceMinimalAllowance: true` gives an exact approval; Venue0 always sets it.
-- The signed `FlashOrder` (domain `DefinitiveFlashAllowance` v1, verifyingContract `0x5d00000873b6BF41539e6f5365B0Ff7d3c368f78`) binds swapper, vault `0x8Ed0652B815643d096BC18032567F8FfcC72Ea67`, recipient, tokens, amount, salt and deadline. `chainId` arrives as a string and uint fields as strings; viem signing needs them converted.
-- A limit sell of 0.00547 NVDA for AAPL filled in about 1 second via Uniswap V4. The limit was enforced on the post-fee traded amount; the fee ($0.162 network + $0.0012 trade) came out of the input, so the all-in rate was 13% under the limit on a $1.20 order. Integration: PASS. Economic suitability at that size: NO. The run is kept as a boundary case; the fee must be re-queried before the demo order, and observed fee levels are not treated as universal provider facts.
-
-Docs:
-
-- Docs live at `https://flash.definitive.fi/docs` (the PRD's `ddp.definitive.fi` redirects to marketing). OpenAPI at `https://flash.definitive.fi/v1/openapi.json`.
-- Base `https://flash.definitive.fi/v1`, single header `x-definitive-api-key`, no secret. Self-serve key at app.definitive.fi -> More -> Flash. No sandbox; test on production with small size.
-- Non-custodial: funder wallet approves the Flash settlement (or Permit2) and signs `evm.orderTypedData`. The signature binds token, amount, recipient, deadline, not a minimum output; limit/TWAP protection is enforced offchain by Flash.
-- Order types in the API enum: `market, limit, twap, stop, stop-loss, take-profit, bracket`. No `dca` in the enum despite marketing copy.
-- TWAP: `durationSeconds` >= 300 on quote, `twapBucketCount` 2..2560 and `startTime` identical on quote and order.
-- Chain enum includes `robinhood`. No per-token Stock Token coverage list; must be confirmed with `GET /search?chain=robinhood` and a live quote.
-- Orders can be cancelled by Flash when gas plus fees exceed 30% of order value (`REASON_EXECUTION_COST_EXCEEDS_LIMIT`), which sets a practical minimum residual size.
-- Fee: 10 bps base plus optional integrator fee.
+- **Environment.** Chainstack Developer (free) plan, Robinhood Chain mainnet, 2026-09-19.
+- **Observed.** Historical reads beyond about 126 blocks, about 13 seconds, return "Archive, Debug and Trace requests are not available on your current plan".
+- **Impact.** Independent verification must complete within about 13 seconds of settlement.
+- **Fix.** Verification runs as soon as a settlement is reported; P3 verified inside the window. A plan with archive state removes the constraint.
+- **Status.** Open (plan limit).

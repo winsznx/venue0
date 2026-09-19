@@ -11,7 +11,7 @@ const values = readFileSync(envFile, "utf8")
   .map((l) => l.match(/^([A-Z0-9_]+)=(.*)$/))
   .filter((m): m is RegExpMatchArray => m !== null)
   .map((m) => [m[1] as string, (m[2] as string).replace(/^["']|["']$/g, "").trim()] as const)
-  .filter(([name, v]) => v.length >= 16 && !["CROSSING_SETTLEMENT_ADDRESS", "DYNAMIC_ENVIRONMENT_ID"].includes(name));
+  .filter(([name, v]) => v.length >= 16 && !["VENUE0_SETTLEMENT_ADDRESS", "DYNAMIC_ENVIRONMENT_ID"].includes(name));
 const files: string[] = [];
 const walk = (d: string) => {
   for (const e of readdirSync(d)) {

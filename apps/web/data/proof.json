@@ -1823,5 +1823,43 @@
    },
    "frozenAt": "2026-09-18T13:34:40.866Z"
   }
- }
+ },
+ "production": [
+  {
+   "id": "P1",
+   "roundId": "0x033bffb3571809957ac3899a5c625ce7025255807c20dafddcc4703b1335438b",
+   "txHash": "0x45c0a4ad35c98e180365bd88bf912ef978f8c1a5a66f8474527cf47d9ec1ec35",
+   "explorer": "https://robinhoodchain.blockscout.com/tx/0x45c0a4ad35c98e180365bd88bf912ef978f8c1a5a66f8474527cf47d9ec1ec35",
+   "verifier": "PASS",
+   "independent": false,
+   "executionProvider": "robinhood-mainnet.g.alchemy.com",
+   "verificationProvider": "robinhood-mainnet.g.alchemy.com",
+   "checksPassed": 14,
+   "checksTotal": 14
+  },
+  {
+   "id": "P2",
+   "roundId": "0x6833eb14f22fa9423b069f0aa938bbea61f656cf0f191c176ff939658b3b2ce7",
+   "txHash": "0x17b084d5239e6277e9bde84b89ab9f7aea3e1bb2fa40bf7c91bf285fb8d56b1e",
+   "explorer": "https://robinhoodchain.blockscout.com/tx/0x17b084d5239e6277e9bde84b89ab9f7aea3e1bb2fa40bf7c91bf285fb8d56b1e",
+   "verifier": "PASS",
+   "independent": false,
+   "executionProvider": "robinhood-mainnet.g.alchemy.com",
+   "verificationProvider": "robinhood-mainnet.g.alchemy.com",
+   "checksPassed": 14,
+   "checksTotal": 14
+  },
+  {
+   "id": "P3",
+   "roundId": "0xeac408f808ecf1d35d2b8af6ccf7b5035e9f97f80a054af5dd267a70ff4a7448",
+   "txHash": "0xd8d95dd809ece9ca6dc4b2fcf343332f62f50005677ef9def433d06edca7edd3",
+   "explorer": "https://robinhoodchain.blockscout.com/tx/0xd8d95dd809ece9ca6dc4b2fcf343332f62f50005677ef9def433d06edca7edd3",
+   "verifier": "PASS",
+   "independent": true,
+   "executionProvider": "robinhood-mainnet.g.alchemy.com",
+   "verificationProvider": "robinhood-mainnet.core.chainstack.com",
+   "checksPassed": 14,
+   "checksTotal": 14
+  }
+ ]
 }

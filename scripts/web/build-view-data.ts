@@ -167,6 +167,12 @@ async function main() {
   const campaign = await read("campaign/results/summary.json");
   const analysis = await read("campaign/results/analysis.json");
   const manifest = await read("campaign/manifest.json");
+  const production = await Promise.all(
+    ["p1", "p2", "p3"].map(async (id) => {
+      const r = await read<{ roundId: string; txHash: string; verifierStatus: string; independent: boolean; EXECUTION_PROVIDER: string; VERIFICATION_PROVIDER: string; checks: string[] }>(`evidence/production/2026-09-19/${id}-verification.json`);
+      return { id: id.toUpperCase(), roundId: r.roundId, txHash: r.txHash, explorer: `${EXPLORER}/tx/${r.txHash}`, verifier: r.verifierStatus, independent: r.independent, executionProvider: r.EXECUTION_PROVIDER, verificationProvider: r.VERIFICATION_PROVIDER, checksPassed: r.checks.filter((c) => c.startsWith("PASS")).length, checksTotal: r.checks.length };
+    }),
+  );
 
   await writeFile(`${OUT}/proof.json`, `${JSON.stringify({
     settlementContract: { address: "0x9cf871315674830046ab0541ee018f6978e86a3d", explorer: `${EXPLORER}/address/0x9cf871315674830046ab0541ee018f6978e86a3d`, deployTx: "0x071ee0c035695bcfdfad52ce9e7f11fec5b19a97e6ca80d06e74323ce8d71947" },
@@ -183,6 +189,7 @@ async function main() {
     },
     residualDecisionReplay: { at: decision.timestamp, decision: decision.decision, context: decision.decisionContext },
     campaign: { summary: campaign, analysis, manifest },
+    production,
   }, null, 1)}\n`);
   await mkdir("apps/web/public/campaign", { recursive: true });
   for (const [from, to] of [
@@ -191,9 +198,12 @@ async function main() {
     ["campaign/results/summary.json", "summary.json"],
     ["campaign/results/analysis.json", "analysis.json"],
     ["campaign/manifest.json", "manifest.json"],
-    ["docs/EVAL_CAMPAIGN.md", "methodology.md"],
-    ["docs/CAMPAIGN_RESULTS.md", "results.md"],
   ] as const) await copyFile(from, `apps/web/public/campaign/${to}`);
+  // The write-ups are served on their own, so repository-relative links become plain text.
+  for (const [from, to] of [["docs/CAMPAIGN_RESULTS.md", "results.md"], ["docs/EVAL_CAMPAIGN.md", "methodology.md"]] as const) {
+    const text = (await readFile(from, "utf8")).replace(/\[([^\]]+)\]\((?!https?:)[^)]+\)/g, "$1");
+    await writeFile(`apps/web/public/campaign/${to}`, text);
+  }
   console.log("proof data written");
 }
 
