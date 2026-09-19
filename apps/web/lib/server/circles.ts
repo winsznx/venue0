@@ -90,7 +90,7 @@ export async function createCircle(organizer: Address, input: CircleInput): Prom
   await d.tx(async (t) => {
     await t.query(
       `insert into circles (id, name, description, visibility, organizer, asset_uids, min_participants, cadence_sec, duration_sec, residual_behavior, privacy_mode)
-       values ($1, $2, $3, $4, $5, $6::jsonb, $7, $8, $9, $10, $11)`,
+       values ($1, $2, $3, $4, $5, $6::text::jsonb, $7, $8, $9, $10, $11)`,
       [id, name, input.description.trim(), input.visibility, key(organizer), JSON.stringify(assets), input.minParticipants, input.cadenceSec, input.durationSec, input.residualBehavior, input.privacyMode],
     );
     await t.query("insert into memberships (circle_id, address, role) values ($1, $2, 'ORGANIZER')", [id, key(organizer)]);

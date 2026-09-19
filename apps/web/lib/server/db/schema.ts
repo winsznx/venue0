@@ -165,5 +165,23 @@ alter table residual_quotes enable row level security;
 alter table schema_migrations enable row level security;
 `,
   },
+  {
+    // postgres.js JSON-encoded string parameters bound as ::jsonb, so JSON columns held JSON strings instead of
+    // objects. Values are unchanged; only their storage type is corrected. Writes now bind as ::text::jsonb.
+    id: "004_json_columns_as_objects",
+    sql: `
+update targets set weights = (weights #>> '{}')::jsonb where jsonb_typeof(weights) = 'string';
+update circles set asset_uids = (asset_uids #>> '{}')::jsonb where jsonb_typeof(asset_uids) = 'string';
+update rounds set snapshot = (snapshot #>> '{}')::jsonb where jsonb_typeof(snapshot) = 'string';
+update rounds set match = (match #>> '{}')::jsonb where jsonb_typeof(match) = 'string';
+update rounds set plan = (plan #>> '{}')::jsonb where jsonb_typeof(plan) = 'string';
+update rounds set verification = (verification #>> '{}')::jsonb where jsonb_typeof(verification) = 'string';
+update intents set intent = (intent #>> '{}')::jsonb where jsonb_typeof(intent) = 'string';
+update residual_decisions set detail = (detail #>> '{}')::jsonb where jsonb_typeof(detail) = 'string';
+update activity set detail = (detail #>> '{}')::jsonb where jsonb_typeof(detail) = 'string';
+update residual_quotes set quote = (quote #>> '{}')::jsonb where jsonb_typeof(quote) = 'string';
+`,
+  },
 ];
+
 

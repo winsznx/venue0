@@ -73,7 +73,7 @@ export async function getTarget(address: string): Promise<SavedTarget | undefine
 export async function saveTarget(address: Address, target: Omit<SavedTarget, "updatedAt">) {
   const body = { weights: target.weights, cashBps: target.cashBps, maxExternalCostBps: target.maxExternalCostBps, residualStyle: target.residualStyle };
   await (await db()).query(
-    `insert into targets (address, weights, source, instruction) values ($1, $2::jsonb, $3, $4)
+    `insert into targets (address, weights, source, instruction) values ($1, $2::text::jsonb, $3, $4)
      on conflict (address) do update set weights = excluded.weights, source = excluded.source, instruction = excluded.instruction, updated_at = now()`,
     [key(address), toJson(body), target.source, target.instruction],
   );
@@ -97,7 +97,7 @@ export type ActivityKind =
 export type Activity = { id: string; kind: ActivityKind; roundId: string | null; circleId: string | null; detail: Record<string, unknown>; createdAt: string };
 
 export async function logActivity(address: string, kind: ActivityKind, detail: Record<string, unknown>, refs: { roundId?: string; circleId?: string } = {}) {
-  await (await db()).query("insert into activity (address, kind, round_id, circle_id, detail) values ($1, $2, $3, $4, $5::jsonb)", [key(address), kind, refs.roundId ?? null, refs.circleId ?? null, toJson(detail)]);
+  await (await db()).query("insert into activity (address, kind, round_id, circle_id, detail) values ($1, $2, $3, $4, $5::text::jsonb)", [key(address), kind, refs.roundId ?? null, refs.circleId ?? null, toJson(detail)]);
 }
 
 export async function listActivity(address: string, limit = 100): Promise<Activity[]> {

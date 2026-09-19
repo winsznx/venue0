@@ -3,7 +3,7 @@
 What the Venue0 app does not do yet, or has only shown in a weaker setting than production.
 
 - **Users.** Every end-to-end run used operator-controlled Dynamic Sandbox test accounts signing with funded proof wallets through an automated browser. No independent human user has used the product.
-- **Independent verification in production.** Deployed rounds verify PASS but on the same RPC provider that sent the transaction, recorded `independent: false`. The Robinhood public RPC rate-limits Cloudflare Worker egress; a second keyed provider with archive state is needed.
+- **Independent verification window.** Production verifies through Chainstack's free plan, which keeps about 126 blocks of state (about 13 s). Verification runs as soon as the settlement is reported; if it misses the window, the check falls back to the execution provider and the record says `independent: false`. A plan with archive state removes the window.
 - **Auth environment.** Dynamic Sandbox only. The sandbox rate-limits an origin (Cloudflare 429, error 1015, ~43 min block) after repeated sign-in or page loads; production needs a live Dynamic environment on the product's own domain with CORS set.
 - **Database.** Production runs on Supabase Postgres through Cloudflare Hyperdrive (direct connection). Supabase free tier: no point-in-time recovery, and the project pauses after a week without activity. Local runs without `DATABASE_URL` use embedded Postgres.
 - **Round scheduling.** Rounds advance when someone loads them (no background worker). A circle's cadence is displayed but rounds are opened on demand from the lobby.

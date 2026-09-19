@@ -101,7 +101,7 @@ export async function roundsForCircle(circleId: string): Promise<RoundRecord[]> 
 async function transition(round: RoundRecord, to: RoundState, reason?: string, patch: Record<string, unknown> = {}): Promise<RoundRecord> {
   if (!TRANSITIONS[round.state].includes(to)) throw new RoundError(`Round is ${round.state} and cannot move to ${to}.`);
   const columns = Object.keys(patch);
-  const sets = columns.map((c, i) => `${c} = $${i + 4}${c === "match" || c === "plan" || c === "verification" ? "::jsonb" : ""}`);
+  const sets = columns.map((c, i) => `${c} = $${i + 4}${c === "match" || c === "plan" || c === "verification" ? "::text::jsonb" : ""}`);
   const d = await db();
   const moved = await d.tx(async (t) => {
     const rows = await t.query(`update rounds set state = $2${sets.length ? `, ${sets.join(", ")}` : ""} where id = $1 and state = $3 returning id`, [round.id, to, round.state, ...columns.map((c) => patch[c])]);
@@ -144,7 +144,7 @@ export async function currentOrOpenRound(circleId: string, viewer: Address): Pro
   const opensAt = now();
   await (await db()).query(
     `insert into rounds (id, circle_id, sequence, state, opens_at, freezes_at, settlement_contract, snapshot, snapshot_hash)
-     values ($1, $2, $3, 'OPEN', $4, $5, $6, $7::jsonb, $8) on conflict (circle_id, sequence) do nothing`,
+     values ($1, $2, $3, 'OPEN', $4, $5, $6, $7::text::jsonb, $8) on conflict (circle_id, sequence) do nothing`,
     [id, circleId, sequence, opensAt, opensAt + circle.durationSec, settlementContract(), toJson(snapshot), hashValuationSnapshot(snapshot)],
   );
   const [created] = await roundsForCircle(circleId);
@@ -296,7 +296,7 @@ export async function submitIntent(roundId: string, owner: Address, intent: Port
   const existing = await d.query<{ intent_hash: string }>("select intent_hash from intents where round_id = $1 and owner = $2", [round.id, key(owner)]);
   if (existing[0]?.intent_hash === intentHash) return "UNCHANGED";
   await d.query(
-    `insert into intents (round_id, owner, intent, signature, intent_hash) values ($1, $2, $3::jsonb, $4, $5)
+    `insert into intents (round_id, owner, intent, signature, intent_hash) values ($1, $2, $3::text::jsonb, $4, $5)
      on conflict (round_id, owner) do update set intent = excluded.intent, signature = excluded.signature, intent_hash = excluded.intent_hash, submitted_at = now()`,
     [round.id, key(owner), toJson(intent), signature, intentHash],
   );

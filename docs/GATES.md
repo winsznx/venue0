@@ -140,3 +140,43 @@ Checks: 95 TypeScript tests, 32 Foundry tests, typecheck, lint, `next build`, Op
 | PRODUCTION_E2E | PARTIAL |
 
 Historical record, fixed: deployed-app settlements `0x45c0a4ad35c98e180365bd88bf912ef978f8c1a5a66f8474527cf47d9ec1ec35` (round `0x033bffb3571809957ac3899a5c625ce7025255807c20dafddcc4703b1335438b`) and `0x17b084d5239e6277e9bde84b89ab9f7aea3e1bb2fa40bf7c91bf285fb8d56b1e` (round `0x6833eb14f22fa9423b069f0aa938bbea61f656cf0f191c176ff939658b3b2ce7`) are verifier PASS with independent = false (executor and verifier both `robinhood-mainnet.g.alchemy.com` after the public RPC failed). These entries are not to be revised; independent verification must come from a new round.
+
+### 2026-09-19 INDEPENDENT_VERIFICATION PASS: deployed-app round verified through a second provider
+
+Round P3 through the public product (not `/demo`): operator-controlled accounts A, B, C; A sells NVDA for SPY, B sells AAPL for NVDA, C sells SPY for AAPL. Evidence: `evidence/production/2026-09-19/independent-verification.json`, `prod-round3.log`.
+
+| Field | Value |
+|---|---|
+| EXECUTION_PROVIDER | robinhood-mainnet.g.alchemy.com (Worker `ROBINHOOD_RPC_URL`; the settlement itself was sent from B's wallet) |
+| VERIFICATION_PROVIDER | robinhood-mainnet.core.chainstack.com (Worker secret `VERIFIER_RPC_URL`; no fallback used) |
+| independent | true |
+| round id | `0xeac408f808ecf1d35d2b8af6ccf7b5035e9f97f80a054af5dd267a70ff4a7448` (circle `0x3e8f30412613fd69d0e92155316dc2ddc8a70f291dddbf1d23fc89ef6fcf8bd0`) |
+| plan hash | `0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea` |
+| tx hash | [0xd8d95dd809ece9ca6dc4b2fcf343332f62f50005677ef9def433d06edca7edd3](https://robinhoodchain.blockscout.com/tx/0xd8d95dd809ece9ca6dc4b2fcf343332f62f50005677ef9def433d06edca7edd3) |
+| receipt | success, block 67023440, to Venue0Settlement `0x9cf8…6a3d`, gas 291946, 13 logs |
+| settlement events | 3 NonceConsumed, 3 CrossingLeg, 1 PlanSettled |
+| participant set = approval participant set = NonceConsumed set | A, B, C (equal) |
+| expected vs observed token deltas | 12 owner/token pairs, all equal |
+| verification block | 67023440 (balances also read at 67023439) |
+| verifier | PASS 14/14: tx.status, tx.to, calldata.plan, event.PlanSettled, event.CrossingLeg, event.Transfer, 3× event.NonceConsumed, state.planSettled, state.nonceUsed, balances.netDelta, balances.noCustody, participants.set |
+
+Chainstack's free plan keeps about 126 blocks of state (about 13 s at 0.1 s blocks); verification ran inside that window because the settle report verifies immediately.
+
+Also fixed during this gate: JSON columns were stored as JSON strings under postgres.js (`$n::jsonb` with a string parameter); writes now bind `$n::text::jsonb` and migration `004` converted existing rows in place. Stored values, including the P1/P2 verification records (PASS, independent=false), are unchanged.
+
+### 2026-09-19 Production final status
+
+| Gate | Status |
+|---|---|
+| LOCAL_PRODUCT_E2E | PASS |
+| PUBLIC_DEPLOYMENT | PASS |
+| PRODUCTION_MULTI_USER | PASS |
+| PRODUCTION_SETTLEMENT | PASS |
+| PRODUCTION_PERSISTENCE | PASS |
+| PRODUCTION_AUTH | PASS |
+| INDEPENDENT_VERIFICATION | PASS (round P3) |
+| PRODUCTION_E2E | PASS |
+
+P1 (`0x45c0…ec35`) and P2 (`0x17b0…6b1e`) remain verifier PASS with independent = false, as recorded.
+
+Checks: 95 TypeScript tests, 32 Foundry tests, typecheck, lint, `next build`, OpenNext build with secret scan 0 hits, production smoke (public pages 200, product routes gated, API 401 without session, health reaches Postgres).

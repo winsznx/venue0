@@ -1,0 +1,32 @@
+[C] session ended; signing in again
+[A] portfolio $3.77 NVDA $1.93, AAPL $1.66, SPY $0.19; target NVDA 25.5%, AAPL 43.9%, SPY 30.6%
+[A] target saved
+[B] portfolio $4.19 SPY $1.98, AAPL $1.90, NVDA $0.31; target SPY 47.2%, AAPL 18.2%, NVDA 34.6%
+[B] target saved
+[C] portfolio $1.80 AAPL $1.00, SPY $0.80; target AAPL 95.5%, SPY 4.5%
+[C] target saved
+[A] created circle 0x3e8f30412613fd69d0e92155316dc2ddc8a70f291dddbf1d23fc89ef6fcf8bd0
+[B] joined circle via Discover
+[C] joined circle via Discover
+[A] signed intent into round 0xeac408f808ecf1d35d2b8af6ccf7b5035e9f97f80a054af5dd267a70ff4a7448
+[B] signed intent into round 0xeac408f808ecf1d35d2b8af6ccf7b5035e9f97f80a054af5dd267a70ff4a7448
+[C] signed intent into round 0xeac408f808ecf1d35d2b8af6ccf7b5035e9f97f80a054af5dd267a70ff4a7448
+state PROPOSED
+aggregate {"signed":3,"participants":3,"approvals":0,"requestedUsd":5.663531,"crossedUsd":4.259999,"residualUsd":1.403531,"crossRateBps":7521,"legCount":3,"cycleCount":1,"status":"PARTIAL_CROSS"} planHash 0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea
+[tx:Venue0 Test Wallet A] wallet=0x71509D21A26F47F83B36A835bB4619Df8F512718 ERC20 approve token=0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC spender=0x9cf871315674830046AB0541eE018f6978e86A3D exactRaw=3191767240238782 gasEstimate=64460 maxCostEth=0.00000414722748
+[A] approved plan and set exact allowance
+[tx:Venue0 Test Wallet B] wallet=0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D ERC20 approve token=0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9 spender=0x9cf871315674830046AB0541eE018f6978e86A3D exactRaw=2116971645036098 gasEstimate=64460 maxCostEth=0.0000041525132
+[B] approved plan and set exact allowance
+[tx:Venue0 Test Wallet C] wallet=0x69a0ba2cB75cE834fFbaa258eA2342f862903cae ERC20 approve token=0x117cc2133c37B721F49dE2A7a74833232B3B4C0C spender=0x9cf871315674830046AB0541eE018f6978e86A3D exactRaw=932308134772971 gasEstimate=64460 maxCostEth=0.00000415728324
+[C] approved plan and set exact allowance
+[tx:Venue0 Test Wallet B] wallet=0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D call to=0x9cf871315674830046AB0541eE018f6978e86A3D selector=0x314a3d79 gasEstimate=313333 maxCostEth=0.000020206218504
+[B] sent settlement
+[A] residual present; Venue0 suggests: Carry into the next round; choosing carry forward
+[A] receipt verified and activity shows settlement
+[B] residual present; Venue0 suggests: Carry into the next round; choosing carry forward
+[B] receipt verified and activity shows settlement
+[C] residual: Only rounding dust is left, below what any venue would trade.
+[C dynamic 429] https://mpc-client.dynamicauth.com/ws?envId=f157cd2e-83b1-41d7-bc6b-92334b807baa <!doctype html>
+[C] receipt verified and activity shows settlement
+[C dynamic 429] https://mpc-client.dynamicauth.com/ws?envId=f157cd2e-83b1-41d7-bc6b-92334b807baa <!doctype html>
+{"circleId":"0x3e8f30412613fd69d0e92155316dc2ddc8a70f291dddbf1d23fc89ef6fcf8bd0","roundId":"0xeac408f808ecf1d35d2b8af6ccf7b5035e9f97f80a054af5dd267a70ff4a7448","state":"COMPLETE","tx":"0xd8d95dd809ece9ca6dc4b2fcf343332f62f50005677ef9def433d06edca7edd3","verifier":"PASS","passed":14,"total":14,"providers":{"executor":"robinhood-mainnet.g.alchemy.com","verifier":"robinhood-mainnet.core.chainstack.com","independent":true}}

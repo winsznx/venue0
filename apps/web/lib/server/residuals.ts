@@ -95,7 +95,7 @@ async function store(round: RoundRecord, owner: Address, items: ResidualItem[], 
   const d = await db();
   for (const i of items) {
     await d.query(
-      `insert into residual_decisions (round_id, owner, asset_uid, side, amount_raw, engine_decision, user_choice, detail) values ($1, $2, $3, $4, $5, $6, $7, $8::jsonb)
+      `insert into residual_decisions (round_id, owner, asset_uid, side, amount_raw, engine_decision, user_choice, detail) values ($1, $2, $3, $4, $5, $6, $7, $8::text::jsonb)
        on conflict (round_id, owner, asset_uid) do update set user_choice = excluded.user_choice, engine_decision = excluded.engine_decision, detail = excluded.detail, decided_at = now()`,
       [round.id, key(owner), i.assetUid, i.side, i.amountRaw.toString(), engineDecision, choice, toJson(detail)],
     );
@@ -128,7 +128,7 @@ export async function swapPrepare(round: RoundRecord, owner: Address): Promise<{
   const quote = await uniswap.quote({ tokenIn: rec.pair.sell.token, tokenOut: rec.pair.buy.token, amount: rec.pair.sell.amountRaw, swapper: owner, slippageTolerance: SLIPPAGE_PCT });
   if (quote.routing !== "CLASSIC") throw new RoundError(`Uniswap returned ${quote.routing} routing, which Venue0 does not execute.`);
   await (await db()).query(
-    "insert into residual_quotes (round_id, owner, quote) values ($1, $2, $3::jsonb) on conflict (round_id, owner) do update set quote = excluded.quote, created_at = now()",
+    "insert into residual_quotes (round_id, owner, quote) values ($1, $2, $3::text::jsonb) on conflict (round_id, owner) do update set quote = excluded.quote, created_at = now()",
     [round.id, key(owner), toJson(quote)],
   );
   const out = BigInt(quote.quote.output?.amount ?? "0");

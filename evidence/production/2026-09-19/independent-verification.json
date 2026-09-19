@@ -1,0 +1,241 @@
+{
+  "EXECUTION_PROVIDER": "robinhood-mainnet.g.alchemy.com",
+  "VERIFICATION_PROVIDER": "robinhood-mainnet.core.chainstack.com",
+  "independent": true,
+  "fallbackReason": null,
+  "roundId": "0xeac408f808ecf1d35d2b8af6ccf7b5035e9f97f80a054af5dd267a70ff4a7448",
+  "roundState": "COMPLETE",
+  "planHash": "0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea",
+  "settlementContract": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+  "txHash": "0xd8d95dd809ece9ca6dc4b2fcf343332f62f50005677ef9def433d06edca7edd3",
+  "receipt": {
+    "status": "success",
+    "blockNumber": "67023440",
+    "to": "0x9cf871315674830046ab0541ee018f6978e86a3d",
+    "gasUsed": "291946",
+    "logCount": 13
+  },
+  "settlementEvents": [
+    {
+      "event": "NonceConsumed",
+      "args": {
+        "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+        "nonce": "109336895977257331054101660865897872031804171883954805206211549210224736526331",
+        "planHash": "0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea"
+      }
+    },
+    {
+      "event": "NonceConsumed",
+      "args": {
+        "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+        "nonce": "66342164181305301767111680781150409200389754382453113283292423557186121294583",
+        "planHash": "0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea"
+      }
+    },
+    {
+      "event": "NonceConsumed",
+      "args": {
+        "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+        "nonce": "73485889623636171241992298658545197452558417440418853298334776201336899390617",
+        "planHash": "0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea"
+      }
+    },
+    {
+      "event": "CrossingLeg",
+      "args": {
+        "planHash": "0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea",
+        "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+        "from": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+        "to": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+        "amount": "932308134772971"
+      }
+    },
+    {
+      "event": "CrossingLeg",
+      "args": {
+        "planHash": "0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea",
+        "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+        "from": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+        "to": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+        "amount": "2116971645036098"
+      }
+    },
+    {
+      "event": "CrossingLeg",
+      "args": {
+        "planHash": "0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea",
+        "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "from": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+        "to": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+        "amount": "3191767240238782"
+      }
+    },
+    {
+      "event": "PlanSettled",
+      "args": {
+        "roundId": "0xeac408f808ecf1d35d2b8af6ccf7b5035e9f97f80a054af5dd267a70ff4a7448",
+        "planId": "0xb3141862967aebf81bdf85b48b24967aab91a5b129806e97eaabef238fe32dcb",
+        "planHash": "0xc011f708c625b4ced9e88c734fdb5a431ffc197d4bf10724247165a2e153c6ea",
+        "participantCount": "3",
+        "legCount": "3"
+      }
+    }
+  ],
+  "participantSet": [
+    "0x0f199cc71f82f1baa7d731cbd03c6f8895a9d70d",
+    "0x69a0ba2cb75ce834ffbaa258ea2342f862903cae",
+    "0x71509d21a26f47f83b36a835bb4619df8f512718"
+  ],
+  "approvalParticipantSet": [
+    "0x0f199cc71f82f1baa7d731cbd03c6f8895a9d70d",
+    "0x69a0ba2cb75ce834ffbaa258ea2342f862903cae",
+    "0x71509d21a26f47f83b36a835bb4619df8f512718"
+  ],
+  "nonceConsumedSet": [
+    "0x0f199cc71f82f1baa7d731cbd03c6f8895a9d70d",
+    "0x69a0ba2cb75ce834ffbaa258ea2342f862903cae",
+    "0x71509d21a26f47f83b36a835bb4619df8f512718"
+  ],
+  "expectedTokenDeltas": [
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "0"
+    },
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "-2116971645036098"
+    },
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "3191767240238782"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "-932308134772971"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "2116971645036098"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "0"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "932308134772971"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "0"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "-3191767240238782"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "0"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "0"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "0"
+    }
+  ],
+  "observedTokenDeltas": [
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "0"
+    },
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "-2116971645036098"
+    },
+    {
+      "owner": "0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "3191767240238782"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "-932308134772971"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "2116971645036098"
+    },
+    {
+      "owner": "0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "0"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "932308134772971"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "0"
+    },
+    {
+      "owner": "0x71509D21A26F47F83B36A835bB4619Df8F512718",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "-3191767240238782"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "delta": "0"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "delta": "0"
+    },
+    {
+      "owner": "0x9cf871315674830046AB0541eE018f6978e86A3D",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "delta": "0"
+    }
+  ],
+  "verificationBlock": "67023440",
+  "verifierStatus": "PASS",
+  "checks": [
+    "PASS tx.status",
+    "PASS tx.to",
+    "PASS calldata.plan",
+    "PASS event.PlanSettled",
+    "PASS event.CrossingLeg",
+    "PASS event.Transfer",
+    "PASS event.NonceConsumed.0x0f199Cc71F82f1baA7D731cbD03C6F8895a9D70D",
+    "PASS event.NonceConsumed.0x69a0ba2cB75cE834fFbaa258eA2342f862903cae",
+    "PASS event.NonceConsumed.0x71509D21A26F47F83B36A835bB4619Df8F512718",
+    "PASS state.planSettled",
+    "PASS state.nonceUsed",
+    "PASS balances.netDelta",
+    "PASS balances.noCustody",
+    "PASS participants.set"
+  ]
+}

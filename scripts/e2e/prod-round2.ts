@@ -1,17 +1,30 @@
-import { apiGet, BASE, openUser } from "./session.ts";
+import { apiGet, BASE, dynamicLogin, openUser } from "./session.ts";
 import { approve, createCircle, enterLobbyAndSign, joinFromDiscover, residualAndReceipt, setTarget, settle, waitState } from "./steps.ts";
 
 /** Second production ring on the deployed app with already-onboarded accounts: new targets, new Circle, one settlement. */
-const dir = process.argv[2] as string;
+const [dir, variant = "reverse"] = process.argv.slice(2) as [string, string];
 const users = await Promise.all((["A", "B", "C"] as const).map((l) => openUser(l, dir, { profile: `prod-${l}` })));
 const [A, B, C] = users as [(typeof users)[number], (typeof users)[number], (typeof users)[number]];
 try {
-  const shifts = [[A, { from: "SPY", to: "NVDA", fraction: 0.8 }], [B, { from: "NVDA", to: "AAPL", fraction: 0.8 }], [C, { from: "AAPL", to: "SPY", fraction: 0.6 }]] as const;
+  // Sign in again only where Dynamic ended the session; each sign-in counts against the sandbox's per-IP limit.
+  for (const u of users) {
+    await u.page.goto(`${BASE}/app`);
+    await u.page.waitForTimeout(8_000);
+    if ((await apiGet<{ user: unknown }>(u.page, "/api/session")).user) continue;
+    console.log(`[${u.label}] session ended; signing in again`);
+    await u.page.goto(`${BASE}/onboarding`);
+    await u.page.getByRole("button", { name: "Get started" }).click();
+    await dynamicLogin(u);
+  }
+  const shifts =
+    variant === "forward"
+      ? ([[A, { from: "NVDA", to: "SPY", fraction: 0.5 }], [B, { from: "AAPL", to: "NVDA", fraction: 0.6 }], [C, { from: "SPY", to: "AAPL", fraction: 0.9 }]] as const)
+      : ([[A, { from: "SPY", to: "NVDA", fraction: 0.8 }], [B, { from: "NVDA", to: "AAPL", fraction: 0.8 }], [C, { from: "AAPL", to: "SPY", fraction: 0.6 }]] as const);
   for (const [u, shift] of shifts) {
     await u.page.goto(`${BASE}/portfolio`);
     await setTarget(u, shift);
   }
-  const name = `Prod Ring 2 ${new Date().toISOString().slice(11, 19)}`;
+  const name = `Prod Ring ${variant} ${new Date().toISOString().slice(11, 19)}`;
   const circleId = await createCircle(A, name, ["NVDA", "AAPL", "SPY"], dir);
   await joinFromDiscover(B, name, dir);
   await joinFromDiscover(C, name, dir);

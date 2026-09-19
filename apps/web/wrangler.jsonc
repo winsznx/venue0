@@ -9,8 +9,7 @@
   "hyperdrive": [{ "binding": "HYPERDRIVE", "id": "82f7952458f148da9dcd984bb9e45a1e" }],
   "vars": {
     "CROSSING_SETTLEMENT_ADDRESS": "0x9cf871315674830046ab0541ee018f6978e86a3d",
-    "DYNAMIC_ENVIRONMENT_ID": "f157cd2e-83b1-41d7-bc6b-92334b807baa",
-    "VERIFIER_RPC_URL": "https://rpc.mainnet.chain.robinhood.com"
+    "DYNAMIC_ENVIRONMENT_ID": "f157cd2e-83b1-41d7-bc6b-92334b807baa"
   },
   "observability": { "enabled": true },
   "limits": { "cpu_ms": 60000 }
