@@ -4,14 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --port 3100",
+    "dev": "node --env-file-if-exists=../../.env node_modules/next/dist/bin/next dev --port 3100",
     "build": "next build",
-    "start": "next start --port 3100"
+    "start": "node --env-file-if-exists=../../.env node_modules/next/dist/bin/next start --port 3100",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@dynamic-labs/ethereum": "5.9.0",
     "@dynamic-labs/sdk-react-core": "5.9.0",
     "@electric-sql/pglite": "0.5.8",
+    "@opennextjs/cloudflare": "1.20.6",
     "@venue0/agent": "workspace:*",
     "@venue0/assets": "workspace:*",
     "@venue0/circles": "workspace:*",
@@ -32,6 +36,7 @@
   },
   "devDependencies": {
     "@types/react": "19.3.0",
-    "@types/react-dom": "19.3.0"
+    "@types/react-dom": "19.3.0",
+    "wrangler": "4.135.0"
   }
 }

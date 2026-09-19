@@ -109,3 +109,34 @@ Checks at this gate: 88 TypeScript tests, 32 Foundry tests, typecheck, lint, `ne
 - Concurrent mutations, real sessions, no tokens moved (both test wallets declined every transaction), 13/13 PASS (`evidence/product/2026-09-18/concurrency.log`): 10 simultaneous joins leave one membership and one Activity row; 10 simultaneous lobby entries open one round; 10 simultaneous replays of a signed intent return UNCHANGED and log once; the solve raced by 20 concurrent reads transitions FROZEN > SOLVING > PROPOSED exactly once; 10 simultaneous duplicate approvals store one approval and log once; a declined wallet transaction shows a plain error and sends nothing; 10 concurrent reports of another plan's real `settle()` tx are refused (409) and a nonexistent hash is refused, with the round left READY_TO_SETTLE (it then expires; nothing moved). Direct database check after the run: no duplicate Activity, memberships or round transitions.
 - Persistence: server restarted, then each of A, B, C refreshed: session, target, circles and settled Activity present (`persist.log`).
 - 88 TypeScript tests, 32 Foundry tests, typecheck, lint, `next build` PASS.
+
+### 2026-09-19 PRODUCTION DEPLOYMENT: workflow PASS, independent verification BLOCKED
+
+Public app `https://venue0.timjosh507.workers.dev` (Cloudflare Workers via OpenNext; Supabase Postgres through Hyperdrive; Dynamic Sandbox). Operator-controlled test accounts A, B, C in fresh browser profiles. Evidence: `evidence/production/2026-09-19/`.
+
+- Clean database: `pnpm db:migrate` from zero on Supabase (`001`-`003`, 13 tables, nothing seeded); RLS on every table.
+- Round P1, deployed app, three-way cycle (A sells NVDA for SPY, B sells AAPL for NVDA, C sells SPY for AAPL): circle `0xb095…b2c6`, round `0x033b…438b`, plan `0xb717…9989`, 3 exact-amount approvals, settlement [0x45c0…ec35](https://robinhoodchain.blockscout.com/tx/0x45c0a4ad35c98e180365bd88bf912ef978f8c1a5a66f8474527cf47d9ec1ec35). The settle request was cancelled at the edge mid-verification (inline receipt wait plus verification exceeded the ~100 s idle limit); the round stayed in VERIFYING. Fixed (short poll-driven steps, resume on read); on resume the public RPC had pruned the block, so verification ran on the executor RPC: PASS 14/14, recorded `independent: false`.
+- Round P2, deployed app, reverse cycle: circle `0xd4f4…70ca`, round `0x6833…2ce7`, settlement [0x17b0…6b1e](https://robinhoodchain.blockscout.com/tx/0x17b084d5239e6277e9bde84b89ab9f7aea3e1bb2fa40bf7c91bf285fb8d56b1e), verifier PASS 14/14 within seconds of settlement, again recorded `independent: false`: a probe Worker showed the Robinhood public RPC answers Cloudflare egress with HTTP 429 on the second call.
+- Receipts and Activity for all three accounts in both rounds; leftovers carried forward through the UI (engine suggestions AGGREGATE/carry).
+- Persistence: 7 redeploys during the run; rounds, sessions, targets and Activity survived each.
+- Concurrency on production Postgres 13/13 (joins, lobby entry, duplicate intents, solve race, duplicate approvals, declined wallet tx, forged settlement reports); single-use invite raced 80 times with no 5xx after moving Hyperdrive to the direct connection.
+- Auth and authorization 15/15 on HTTPS: session cookie HttpOnly+Secure+SameSite=Lax; three profiles hold three wallets; forged association (A's Dynamic JWT + B's address) 401; invalid token 401; anonymous 401; non-member refused; B's view of the shared round contains neither A's nor C's address; single-use invite admits one; sign out, sign back in, refresh; fresh profile lands on onboarding.
+- Bugs found in production and fixed: `.env` inlined into the Worker by OpenNext (blocked by clean-copy builds and a scan gate); settle request cancelled mid-verification; verifier RPC errors 500'd round reads; Hyperdrive over the session pooler stalled under concurrency; Uniswap quote stash in process memory; target check 3.5 s → 1.5 s (batched feed reads).
+- Open: production verification is not independent until a second keyed RPC provider is configured as `VERIFIER_RPC_URL`. Dynamic Sandbox rate-limits a single client IP after a handful of sign-ins (HTTP 429, ~45 min), which throttled testing but does not affect distinct users.
+
+Checks: 95 TypeScript tests, 32 Foundry tests, typecheck, lint, `next build`, OpenNext build with secret scan 0 hits.
+
+### 2026-09-19 Production checkpoint status
+
+| Gate | Status |
+|---|---|
+| LOCAL_PRODUCT_E2E | PASS |
+| PUBLIC_DEPLOYMENT | PASS |
+| PRODUCTION_MULTI_USER | PASS |
+| PRODUCTION_SETTLEMENT | PASS |
+| PRODUCTION_PERSISTENCE | PASS |
+| PRODUCTION_AUTH | PASS |
+| INDEPENDENT_VERIFICATION | BLOCKED_ON_SECOND_RPC |
+| PRODUCTION_E2E | PARTIAL |
+
+Historical record, fixed: deployed-app settlements `0x45c0a4ad35c98e180365bd88bf912ef978f8c1a5a66f8474527cf47d9ec1ec35` (round `0x033bffb3571809957ac3899a5c625ce7025255807c20dafddcc4703b1335438b`) and `0x17b084d5239e6277e9bde84b89ab9f7aea3e1bb2fa40bf7c91bf285fb8d56b1e` (round `0x6833eb14f22fa9423b069f0aa938bbea61f656cf0f191c176ff939658b3b2ce7`) are verifier PASS with independent = false (executor and verifier both `robinhood-mainnet.g.alchemy.com` after the public RPC failed). These entries are not to be revised; independent verification must come from a new round.

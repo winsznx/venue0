@@ -1,9 +1,10 @@
 import "server-only";
 import type { Address } from "viem";
-import { claudeInterpreter, planGoal, resolveGoal, type GoalPreview, type GoalSpec, type Problem, type ResolveContext } from "@venue0/agent";
+import { claudeInterpreter, groqInterpreter, planGoal, resolveGoal, type GoalPreview, type GoalSpec, type Problem, type ResolveContext } from "@venue0/agent";
 import type { ExecutionPolicy, Holding } from "@venue0/portfolio";
 import type { AssetUid } from "@venue0/shared";
 import { env } from "./env";
+import { timed } from "./log";
 import { livePricesBySymbol, loadPortfolio, universe } from "./portfolio";
 import type { SavedTarget, TargetWeight } from "./users";
 
@@ -83,7 +84,7 @@ export function specFromTarget(target: Omit<SavedTarget, "updatedAt">): GoalSpec
 
 /** Structured mode: the same deterministic resolver the agent uses, fed explicit weights. */
 export async function validateTarget(address: Address, target: Omit<SavedTarget, "updatedAt">): Promise<TargetCheck> {
-  const c = await context(address, target.weights.map((w) => w.symbol));
+  const c = await timed("target.context", () => context(address, target.weights.map((w) => w.symbol)));
   if ("problem" in c) return { ok: false, problems: [c.problem], source: "NONE" };
   const result = resolveGoal(specFromTarget(target), c.ctx, policy(target));
   return result.ok ? shape(result.preview, target.source) : { ok: false, problems: result.problems, source: target.source };
@@ -91,14 +92,14 @@ export async function validateTarget(address: Address, target: Omit<SavedTarget,
 
 /** Natural-language mode. Without an Anthropic credential nothing is sent anywhere and the user is pointed to structured mode. */
 export async function interpretToTarget(address: Address, instruction: string): Promise<TargetCheck> {
-  if (!env.anthropicAvailable) return { ok: false, source: "NONE", problems: [{ code: "CLARIFICATION_NEEDED", detail: "The language agent is not configured on this server. Set weights directly instead; the same checks apply." }] };
+  if (!env.agentAvailable) return { ok: false, source: "NONE", problems: [{ code: "CLARIFICATION_NEEDED", detail: "The language agent is not configured on this server. Set weights directly instead; the same checks apply." }] };
   if (instruction.trim().length < 4) return { ok: false, source: "NONE", problems: [{ code: "NO_CHANGE", detail: "Describe the change you want." }] };
   const { registry } = await universe();
   const mentioned = registry.all().map((t) => t.symbol).filter((sym) => new RegExp(`\\b${sym.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(instruction));
   const c = await context(address, mentioned);
   if ("problem" in c) return { ok: false, problems: [c.problem], source: "NONE" };
   try {
-    const { spec, result } = await planGoal(instruction.slice(0, 1_000), claudeInterpreter(), c.ctx, policy({ maxExternalCostBps: 50 }));
+    const { spec, result } = await planGoal(instruction.slice(0, 1_000), env.agentProvider === "GROQ" ? groqInterpreter(process.env.GROQ_API_KEY as string) : claudeInterpreter(), c.ctx, policy({ maxExternalCostBps: 50 }));
     return result.ok ? shape(result.preview, "NATURAL_LANGUAGE") : { ok: false, problems: result.problems, spec, source: "NATURAL_LANGUAGE" };
   } catch (error) {
     return { ok: false, source: "NATURAL_LANGUAGE", problems: [{ code: "CLARIFICATION_NEEDED", detail: `The agent could not interpret this: ${(error as Error).message}` }] };

@@ -15,6 +15,7 @@ export type Session = { address: Address; dynamicUserId: string; walletKind: str
 /** HS256 key for our own session cookie. SESSION_SECRET in production; otherwise generated once and kept beside the local database. */
 function sessionKey(): Uint8Array {
   if (env.sessionSecret) return new TextEncoder().encode(env.sessionSecret);
+  if (process.env.NODE_ENV === "production" && !existsSync(resolve(process.cwd(), ".venue0-db"))) throw new Error("SESSION_SECRET is required in production.");
   const dir = resolve(process.cwd(), ".venue0-db");
   const file = resolve(dir, "session.secret");
   if (!existsSync(file)) {

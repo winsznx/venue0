@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "venue0",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "venue0" }],
+  "hyperdrive": [{ "binding": "HYPERDRIVE", "id": "82f7952458f148da9dcd984bb9e45a1e" }],
+  "vars": {
+    "CROSSING_SETTLEMENT_ADDRESS": "0x9cf871315674830046ab0541ee018f6978e86a3d",
+    "DYNAMIC_ENVIRONMENT_ID": "f157cd2e-83b1-41d7-bc6b-92334b807baa",
+    "VERIFIER_RPC_URL": "https://rpc.mainnet.chain.robinhood.com"
+  },
+  "observability": { "enabled": true },
+  "limits": { "cpu_ms": 60000 }
+}

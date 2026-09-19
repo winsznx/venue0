@@ -6,7 +6,7 @@ export type GoalInterpreter = (instruction: string, context: { heldSymbols: stri
 
 export const INTERPRETER_MODEL = "claude-opus-5";
 
-const SYSTEM = `You translate a user's portfolio instruction for Robinhood Chain Stock Tokens into the given JSON schema.
+export const INTERPRETER_SYSTEM = `You translate a user's portfolio instruction for Robinhood Chain Stock Tokens into the given JSON schema.
 Rules:
 - Record only what the user said. Never invent tickers, prices, amounts, addresses or issuers.
 - Copy tickers exactly as written. Do not map company names to other tickers unless the user wrote the ticker.
@@ -19,17 +19,21 @@ Rules:
 - If the instruction gives no concrete portfolio change but asks to join a round, use USE_SAVED_TARGET.
 - Put every ambiguity in clarificationsNeeded instead of guessing. Do not do arithmetic beyond converting words like "half" to 0.5.`;
 
+export function interpreterUserMessage(instruction: string, context: { heldSymbols: string[]; circles: string[] }): string {
+  return `Tickers the user currently holds: ${context.heldSymbols.join(", ") || "none"}.\nCircles the user belongs to: ${context.circles.join(", ") || "none"}.\n\nInstruction: ${instruction}`;
+}
+
 /** Interprets a goal with Claude structured outputs. The output is untrusted and always goes through resolveGoal. */
 export function claudeInterpreter(client = new Anthropic()): GoalInterpreter {
   return async (instruction, context) => {
     const response = await client.messages.parse({
       model: INTERPRETER_MODEL,
       max_tokens: 16000,
-      system: SYSTEM,
+      system: INTERPRETER_SYSTEM,
       messages: [
         {
           role: "user",
-          content: `Tickers the user currently holds: ${context.heldSymbols.join(", ") || "none"}.\nCircles the user belongs to: ${context.circles.join(", ") || "none"}.\n\nInstruction: ${instruction}`,
+          content: interpreterUserMessage(instruction, context),
         },
       ],
       output_config: { format: zodOutputFormat(GoalSpecSchema) },

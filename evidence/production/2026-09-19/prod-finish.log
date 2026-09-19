@@ -1,0 +1,7 @@
+[A] residual present; Venue0 suggests: Carry into the next round; choosing carry forward
+[A] receipt verified and activity shows settlement
+{"state":"COMPLETE","tx":"0x45c0a4ad35c98e180365bd88bf912ef978f8c1a5a66f8474527cf47d9ec1ec35","planHash":"0xb717126e639bda8f51e15fac01ec09c17a05fa64883ee1fd11031eb331519989","verifier":"PASS","passed":14,"total":14,"notPass":[],"providers":{"executor":"robinhood-mainnet.g.alchemy.com","verifier":"robinhood-mainnet.g.alchemy.com","independent":false,"fallbackReason":"independent RPC rpc.mainnet.chain.robinhood.com failed: RPC Request failed."}}
+[B] residual present; Venue0 suggests: Carry into the next round; choosing carry forward
+[B] receipt verified and activity shows settlement
+[C] residual: Only rounding dust is left, below what any venue would trade.
+[C] receipt verified and activity shows settlement

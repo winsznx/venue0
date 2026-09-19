@@ -16,6 +16,7 @@
     "@venue0/shared": "workspace:*",
     "@venue0/uniswap": "workspace:*",
     "@venue0/verifier": "workspace:*",
+    "postgres": "3.4.9",
     "viem": "2.56.7"
   },
   "devDependencies": {

@@ -111,8 +111,8 @@ export async function decide(round: RoundRecord, owner: Address, choice: Exclude
   await logActivity(owner, "RESIDUAL_DECIDED", { choice, assets: items.map((i) => `${i.side} ${i.symbol}`) }, { roundId: round.id, circleId: round.circleId });
 }
 
-type PendingSwap = { quote: QuoteResponse; at: number };
-const pending = new Map<string, PendingSwap>();
+/** Quotes live in the database, not process memory: consecutive steps of one swap may run on different server instances. */
+const QUOTE_TTL_SEC = 60;
 
 /**
  * Step one of a residual swap from the user's own wallet: returns the token approval to send first, if Uniswap needs
@@ -127,14 +127,18 @@ export async function swapPrepare(round: RoundRecord, owner: Address): Promise<{
   if (approval.approval) return { approval: approval.approval, permitData: null, amountOut: null, minimumOut: null };
   const quote = await uniswap.quote({ tokenIn: rec.pair.sell.token, tokenOut: rec.pair.buy.token, amount: rec.pair.sell.amountRaw, swapper: owner, slippageTolerance: SLIPPAGE_PCT });
   if (quote.routing !== "CLASSIC") throw new RoundError(`Uniswap returned ${quote.routing} routing, which Venue0 does not execute.`);
-  pending.set(`${round.id}|${key(owner)}`, { quote, at: Date.now() });
+  await (await db()).query(
+    "insert into residual_quotes (round_id, owner, quote) values ($1, $2, $3::jsonb) on conflict (round_id, owner) do update set quote = excluded.quote, created_at = now()",
+    [round.id, key(owner), toJson(quote)],
+  );
   const out = BigInt(quote.quote.output?.amount ?? "0");
   return { approval: null, permitData: quote.permitData, amountOut: out.toString(), minimumOut: ((out * BigInt(Math.floor((100 - SLIPPAGE_PCT) * 100))) / 10_000n).toString() };
 }
 
 export async function swapBuild(round: RoundRecord, owner: Address, permitSignature: Hex | null): Promise<TransactionRequest> {
-  const stash = pending.get(`${round.id}|${key(owner)}`);
-  if (!stash || Date.now() - stash.at > 60_000) throw new RoundError("The quote expired. Get a fresh quote.");
+  const [row] = await (await db()).query<{ quote: unknown; age: string | number }>("select quote, extract(epoch from now() - created_at) as age from residual_quotes where round_id = $1 and owner = $2", [round.id, key(owner)]);
+  if (!row || Number(row.age) > QUOTE_TTL_SEC) throw new RoundError("The quote expired. Get a fresh quote.");
+  const stash = { quote: fromJson<QuoteResponse>(row.quote) };
   const permit = stash.quote.permitData && permitSignature ? { signature: permitSignature, permitData: stash.quote.permitData } : undefined;
   if (stash.quote.permitData && !permit) throw new RoundError("This quote needs a Permit2 signature.");
   const swap = await (api() as UniswapTradingApi).swap(stash.quote.quote, permit);
@@ -156,7 +160,7 @@ export async function swapRecord(round: RoundRecord, owner: Address, txHash: Hex
   ]);
   const detail = { venue: "UNISWAP_TRADING_API", txHash, receiptStatus: receipt.status, block: receipt.blockNumber, spentRaw: inBefore - inAfter, receivedRaw: outAfter - outBefore, engine: rec.plan?.decision ?? null, reasons: rec.plan?.reasons ?? [] };
   await store(round, owner, [rec.pair.sell, rec.pair.buy], rec.plan?.decision ?? "NONE", "EXECUTE_NOW", detail);
-  pending.delete(`${round.id}|${key(owner)}`);
+  await (await db()).query("delete from residual_quotes where round_id = $1 and owner = $2", [round.id, key(owner)]);
   await logActivity(owner, "RESIDUAL_DECIDED", { choice: "EXECUTE_NOW", txHash, receiptStatus: receipt.status }, { roundId: round.id, circleId: round.circleId });
   return detail;
 }

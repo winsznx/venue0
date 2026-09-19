@@ -13,3 +13,6 @@ keys/
 campaign/smoke/
 apps/web/.next/
 apps/web/.venue0-db/
+apps/web/.open-next/
+apps/web/.wrangler/
+apps/web/.dev.vars

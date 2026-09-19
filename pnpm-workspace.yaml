@@ -10,6 +10,7 @@ allowBuilds:
   esbuild: true
   protobufjs: true
   utf-8-validate: false
+  workerd: true
 minimumReleaseAgeExclude:
   - ox@0.14.45
   - viem@2.56.7
@@ -17,3 +18,11 @@ minimumReleaseAgeExclude:
   - '@dynamic-labs-wallet/node-evm@1.1.12'
   - '@dynamic-labs-wallet/node@1.1.12'
   - '@dynamic-labs-wallet/primitives@1.1.12'
+  - '@cloudflare/workerd-darwin-64@1.20260918.1'
+  - '@cloudflare/workerd-darwin-arm64@1.20260918.1'
+  - '@cloudflare/workerd-linux-64@1.20260918.1'
+  - '@cloudflare/workerd-linux-arm64@1.20260918.1'
+  - '@cloudflare/workerd-windows-64@1.20260918.1'
+  - miniflare@5.20260918.0-alpha
+  - workerd@1.20260918.1
+  - wrangler@4.135.0

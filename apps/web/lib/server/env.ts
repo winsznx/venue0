@@ -1,20 +1,16 @@
 import "server-only";
-import { existsSync } from "node:fs";
-import { resolve } from "node:path";
 
-/** The repo keeps one .env at its root. Load it for the web server without copying secrets into apps/web. */
-const root = resolve(process.cwd(), "../../.env");
-if (existsSync(root)) {
-  try {
-    process.loadEnvFile(root);
-  } catch (error) {
-    console.error(JSON.stringify({ event: "env.load_failed", error: (error as Error).message }));
-  }
-}
-
+/**
+ * Configuration comes only from the process environment. Local scripts pass the repo-root .env with Node's --env-file;
+ * deployments set variables and secrets on the host. Nothing here reads files, so no .env can be traced into a build.
+ */
 export const env = {
   rpcUrl: process.env.ROBINHOOD_RPC_URL || "https://rpc.mainnet.chain.robinhood.com",
-  anthropicAvailable: Boolean(process.env.ANTHROPIC_API_KEY),
+  /** Language agent provider: Groq when GROQ_API_KEY is set, else Anthropic, else none (weights mode only). */
+  agentProvider: process.env.GROQ_API_KEY ? ("GROQ" as const) : process.env.ANTHROPIC_API_KEY ? ("ANTHROPIC" as const) : null,
+  get agentAvailable() {
+    return this.agentProvider !== null;
+  },
   databaseUrl: process.env.DATABASE_URL || undefined,
   settlementContract: process.env.CROSSING_SETTLEMENT_ADDRESS || undefined,
   dynamicEnvironmentId: process.env.DYNAMIC_ENVIRONMENT_ID || process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID || undefined,

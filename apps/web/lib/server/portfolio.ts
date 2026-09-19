@@ -3,18 +3,20 @@ import { createPublicClient, erc20Abi, getAddress, http, isAddress, type Address
 import {
   fetchChainlinkFeeds,
   fetchRobinhoodAssets,
-  readChainlinkSnapshot,
+  readChainlinkSnapshots,
   StockTokenRegistry,
   type CanonicalStockToken,
   type ChainlinkFeedEntry,
 } from "@venue0/assets";
 import { robinhoodChain } from "@venue0/shared";
 import { env } from "./env";
+import { timed } from "./log";
 
 const MULTICALL3: Address = "0xcA11bde05977b3631167028862bE2a173976CA11";
 const TTL_MS = 60_000;
 
 let cache: { at: number; registry: StockTokenRegistry; feeds: ChainlinkFeedEntry[] } | undefined;
+let inflight: Promise<NonNullable<typeof cache>> | undefined;
 
 export function client(): PublicClient {
   return createPublicClient({ chain: robinhoodChain(env.rpcUrl), transport: http(env.rpcUrl) }) as PublicClient;
@@ -23,9 +25,11 @@ export function client(): PublicClient {
 /** Live Robinhood registry and Chainlink feed directory, cached for a minute. */
 export async function universe() {
   if (cache && Date.now() - cache.at < TTL_MS) return cache;
-  const [assets, feeds] = await Promise.all([fetchRobinhoodAssets(), fetchChainlinkFeeds()]);
-  cache = { at: Date.now(), registry: new StockTokenRegistry(assets.valid, assets.fetchedAt), feeds };
-  return cache;
+  // Concurrent callers share one refresh instead of each fetching the registry and feed directory.
+  inflight ??= Promise.all([fetchRobinhoodAssets(), fetchChainlinkFeeds()])
+    .then(([assets, feeds]) => (cache = { at: Date.now(), registry: new StockTokenRegistry(assets.valid, assets.fetchedAt), feeds }))
+    .finally(() => (inflight = undefined));
+  return inflight;
 }
 
 /** Stock Tokens Venue0 can value: canonical, and with exactly one Chainlink feed named for them. */
@@ -56,24 +60,25 @@ export async function loadPortfolio(input: string): Promise<PortfolioResult> {
 
   let u: Awaited<ReturnType<typeof universe>>;
   try {
-    u = await universe();
+    u = await timed("portfolio.universe", () => universe());
   } catch (error) {
     return { ok: false, reason: "REGISTRY_UNAVAILABLE", detail: (error as Error).message };
   }
   const list = priceable(u.registry, u.feeds);
-  const balances = await rpc.multicall({
+  const balances = await timed("portfolio.balances", () => rpc.multicall({
     multicallAddress: MULTICALL3,
     contracts: list.map(({ token }) => ({ address: token.contractAddress, abi: erc20Abi, functionName: "balanceOf" as const, args: [address] as const })),
-  });
+  }), { tokens: list.length });
   const held = list.filter((_, i) => balances[i]?.status === "success" && (balances[i]?.result as bigint) > 10n ** 12n);
-  const positions: Position[] = [];
-  for (const { token, feed } of held) {
+  // Every held token's feed is read at one pinned block in a single multicall.
+  const readings = await timed("portfolio.prices", () => readChainlinkSnapshots(rpc, held.map(({ token, feed }) => ({ token: token as CanonicalStockToken, feed })), undefined, MULTICALL3), { held: held.length });
+  const positions: Position[] = held.map(({ token }, i) => {
+    const reading = readings[i] as (typeof readings)[number];
     const raw = balances[list.findIndex((x) => x.token.uid === token.uid)]?.result as bigint;
-    const reading = await readChainlinkSnapshot(rpc, token as CanonicalStockToken, feed);
     const priceUsd = Number(reading.snapshot.priceUsdE18 / 10n ** 12n) / 1e6;
     const units = Number(raw / 10n ** 9n) / 1e9;
-    positions.push({ uid: token.uid, symbol: token.symbol, name: token.name, token: token.contractAddress, rawBalance: raw.toString(), priceUsd, priceE18: reading.snapshot.priceUsdE18.toString(), valueUsd: units * priceUsd, feedAgeSec: reading.ageSec, stale: reading.snapshot.stale });
-  }
+    return { uid: token.uid, symbol: token.symbol, name: token.name, token: token.contractAddress, rawBalance: raw.toString(), priceUsd, priceE18: reading.snapshot.priceUsdE18.toString(), valueUsd: units * priceUsd, feedAgeSec: reading.ageSec, stale: reading.snapshot.stale };
+  });
   positions.sort((a, b) => b.valueUsd - a.valueUsd);
   return { ok: true, address, positions, totalUsd: positions.reduce((s, p) => s + p.valueUsd, 0), registryResolvedAt: u.registry.resolvedAt, priceableCount: list.length, readAt: new Date().toISOString(), chainId };
 }
@@ -84,6 +89,6 @@ export async function livePricesBySymbol(symbols: readonly string[]): Promise<Ma
   const wanted = new Set(symbols.map((s) => s.trim().toUpperCase()));
   const list = priceable(u.registry, u.feeds).filter(({ token }) => wanted.has(token.symbol));
   const rpc = client();
-  const readings = await Promise.all(list.map(async ({ token, feed }) => [token.uid, (await readChainlinkSnapshot(rpc, token as CanonicalStockToken, feed)).snapshot.priceUsdE18] as const));
-  return new Map(readings);
+  const readings = await readChainlinkSnapshots(rpc, list.map(({ token, feed }) => ({ token: token as CanonicalStockToken, feed })), undefined, MULTICALL3);
+  return new Map(readings.map((r) => [r.snapshot.assetUid, r.snapshot.priceUsdE18] as const));
 }

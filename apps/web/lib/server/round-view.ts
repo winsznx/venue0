@@ -71,7 +71,7 @@ export async function roundView(roundId: string, viewer: Address) {
       planHash: round.plan?.planHash ?? null,
       planValidUntil: round.plan ? Number(round.plan.contractPlan.validUntil) : null,
       history: round.history.map((h) => ({ ...h, reason: h.reason?.replace(/0x[0-9a-fA-F]{40}/g, "a participant") ?? null })),
-      verification: round.verification ? { status: round.verification.status, blockNumber: round.verification.blockNumber ?? null, checks: round.verification.checks.map((c) => ({ ...c, name: pseudonymize(c.name), detail: pseudonymize(c.detail) })), verifiedAt: round.verification.verifiedAt } : null,
+      verification: round.verification ? { status: round.verification.status, blockNumber: round.verification.blockNumber ?? null, checks: round.verification.checks.map((c) => ({ ...c, name: pseudonymize(c.name), detail: pseudonymize(c.detail) })), verifiedAt: round.verification.verifiedAt, providers: round.verification.providers ?? null } : null,
     },
     circle: { id: circle.id, name: circle.name, assetSymbols: circle.assetSymbols, minParticipants: circle.minParticipants, memberCount: circle.memberCount, durationSec: circle.durationSec, residualBehavior: circle.residualBehavior, privacyMode: circle.privacyMode, isOrganizer: role === "ORGANIZER" },
     you: {

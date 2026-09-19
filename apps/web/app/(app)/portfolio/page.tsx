@@ -35,7 +35,7 @@ export default async function PortfolioPage() {
         <div className={p.split}>
           <section className={p.panel} aria-labelledby="target-title">
             <div className={p.panelHead}><h2 id="target-title">Target</h2>{target && <span className="badge badge-verified">Saved {target.updatedAt.slice(0, 16).replace("T", " ")} UTC</span>}</div>
-            <TargetEditor positions={portfolio.positions} totalUsd={portfolio.totalUsd} saved={target ?? null} agentAvailable={env.anthropicAvailable} defaultMode={user.agentMode} />
+            <TargetEditor positions={portfolio.positions} totalUsd={portfolio.totalUsd} saved={target ?? null} agentAvailable={env.agentAvailable} defaultMode={user.agentMode} />
           </section>
           <section className={p.soft} aria-labelledby="hold-title">
             <div className={p.panelHead}><h2 id="hold-title">Holdings</h2><span className="num muted">{usd(portfolio.totalUsd)}</span></div>

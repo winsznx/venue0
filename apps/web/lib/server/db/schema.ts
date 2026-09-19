@@ -133,4 +133,37 @@ create index activity_by_address on activity(address, created_at desc);
 create index rounds_by_circle on rounds(circle_id, sequence desc);
 `,
   },
+  {
+    id: "002_residual_quotes",
+    sql: `
+create table residual_quotes (
+  round_id text not null references rounds(id),
+  owner text not null,
+  quote jsonb not null,
+  created_at timestamptz not null default now(),
+  primary key (round_id, owner)
+);
+`,
+  },
+  {
+    // Hosted Postgres (Supabase) exposes the public schema through a REST API. Row-level security with no policies
+    // denies those API roles every row; the app connects as the owning role, which RLS does not restrict.
+    id: "003_lock_public_api",
+    sql: `
+alter table users enable row level security;
+alter table targets enable row level security;
+alter table circles enable row level security;
+alter table memberships enable row level security;
+alter table invites enable row level security;
+alter table rounds enable row level security;
+alter table round_history enable row level security;
+alter table intents enable row level security;
+alter table approvals enable row level security;
+alter table residual_decisions enable row level security;
+alter table activity enable row level security;
+alter table residual_quotes enable row level security;
+alter table schema_migrations enable row level security;
+`,
+  },
 ];
+

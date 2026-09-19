@@ -65,6 +65,12 @@ function Wallet({ configured, onNext }: { configured: boolean; onNext: () => voi
   const { setShowAuthFlow, primaryWallet, sdkHasLoaded, user } = useDynamicContext();
   const session = useVenueSession();
   const ready = Boolean(session.address && primaryWallet && session.address.toLowerCase() === primaryWallet.address.toLowerCase());
+  const [slow, setSlow] = useState(false);
+  useEffect(() => {
+    if (sdkHasLoaded) return;
+    const id = window.setTimeout(() => setSlow(true), 15_000);
+    return () => window.clearTimeout(id);
+  }, [sdkHasLoaded]);
   return (
     <>
       <h1>Connect a wallet.</h1>
@@ -78,6 +84,7 @@ function Wallet({ configured, onNext }: { configured: boolean; onNext: () => voi
         <p className="muted">Verifying your wallet…</p>
       ) : null}
       {session.error && <p className={p.error} role="alert">{session.error}</p>}
+      {slow && !sdkHasLoaded && <p className={p.error} role="alert">The wallet sign-in service (Dynamic) isn't responding. Check your connection or try again in a few minutes; nothing has been created yet.</p>}
       <div className={p.actions}>
         {!ready && <button type="button" className="btn btn-primary" disabled={!configured || !sdkHasLoaded} onClick={() => setShowAuthFlow(true)}>{sdkHasLoaded ? "Sign in or create a wallet" : "Loading wallet…"}</button>}
         {ready && <button type="button" className="btn btn-primary" onClick={onNext}>Continue</button>}

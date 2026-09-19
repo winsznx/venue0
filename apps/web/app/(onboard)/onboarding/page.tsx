@@ -11,5 +11,5 @@ export default async function OnboardingPage() {
   const session = await getSession();
   const user = session ? await getUser(session.address) : undefined;
   if (user?.onboardedAt) redirect("/app");
-  return <Onboarding agentAvailable={env.anthropicAvailable} walletConfigured={Boolean(env.dynamicEnvironmentId)} />;
+  return <Onboarding agentAvailable={env.agentAvailable} walletConfigured={Boolean(env.dynamicEnvironmentId)} />;
 }

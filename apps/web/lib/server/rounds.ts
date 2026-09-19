@@ -1,6 +1,6 @@
 import "server-only";
 import { createPublicClient, decodeFunctionData, encodeFunctionData, erc20Abi, getAddress, http, keccak256, stringToHex, type Address, type Hex, type PublicClient } from "viem";
-import { fetchRobinhoodQuote, readChainlinkSnapshot, restSnapshot, snapshotDivergenceBps, type PriceSnapshot } from "@venue0/assets";
+import { fetchRobinhoodQuote, readChainlinkSnapshots, restSnapshot, snapshotDivergenceBps, type PriceSnapshot } from "@venue0/assets";
 import { resolveGoal, intentFromPreview } from "@venue0/agent";
 import { TRANSITIONS, type RoundState } from "@venue0/circles";
 import { matchRound, type MatchResult } from "@venue0/matcher";
@@ -13,6 +13,7 @@ import { db, fromJson, toJson } from "./db/client";
 import { env } from "./env";
 import { client, livePricesBySymbol, loadPortfolio, priceable, universe } from "./portfolio";
 import { specFromTarget } from "./targets";
+import { log, providerHost } from "./log";
 import { getTarget, key, logActivity } from "./users";
 
 export class RoundError extends Error {}
@@ -21,6 +22,8 @@ export class RoundError extends Error {}
 const TERMINAL: ReadonlySet<RoundState> = new Set(["COMPLETE", "EXPIRED", "INSUFFICIENT_PARTICIPANTS", "NO_CROSS", "PLAN_REJECTED", "PLAN_STALE", "SETTLEMENT_REVERTED", "VERIFICATION_FAILED", "CANCELLED"]);
 /** Participants have this long after the solve to approve and settle before the plan expires. */
 const APPROVAL_WINDOW_SEC = 1_800;
+/** A settlement step idle this long is assumed to belong to a request that died; the next reader resumes it. */
+const RESUME_AFTER_SEC = 20;
 /** D-003: a feed may not disagree with the normalized Robinhood REST price by more than this. */
 const MAX_FEED_REST_DIVERGENCE_BPS = 100n;
 
@@ -37,7 +40,7 @@ export type RoundRecord = {
   match: MatchResult | null;
   plan: SettlementPlan | null;
   settlementTx: Hex | null;
-  verification: SettlementVerification | null;
+  verification: (SettlementVerification & { providers?: { executor: string; verifier: string; independent: boolean; fallbackReason?: string } }) | null;
   history: Array<{ at: number; from: RoundState; to: RoundState; reason: string | null }>;
 };
 
@@ -50,9 +53,17 @@ export function settlementContract(): Address {
   return getAddress(env.settlementContract);
 }
 
-function verifierClient(): PublicClient {
+/**
+ * The verifier reads through its own RPC. Its provider host is recorded with every verification; when it is the same
+ * host as the executor RPC the run is marked not independent rather than silently claimed as independent.
+ */
+type Providers = { executor: string; verifier: string; independent: boolean; fallbackReason?: string };
+
+function verifierClient(): { client: PublicClient; providers: Providers } {
   const url = process.env.VERIFIER_RPC_URL || ROBINHOOD_PUBLIC_RPC;
-  return createPublicClient({ chain: robinhoodChain(url), transport: http(url) }) as PublicClient;
+  const executor = providerHost(env.rpcUrl);
+  const verifier = providerHost(url);
+  return { client: createPublicClient({ chain: robinhoodChain(url), transport: http(url) }) as PublicClient, providers: { executor, verifier, independent: executor !== verifier } };
 }
 
 async function hydrate(row: RoundRow): Promise<RoundRecord> {
@@ -98,7 +109,7 @@ async function transition(round: RoundRecord, to: RoundState, reason?: string, p
     await t.query("insert into round_history (round_id, at, from_state, to_state, reason) values ($1, $2, $3, $4, $5)", [round.id, now(), round.state, to, reason ?? null]);
     return true;
   });
-  if (!moved) console.warn(JSON.stringify({ event: "round.transition_lost_race", round: round.id, from: round.state, to }));
+  log(moved ? "round.transition" : "round.transition_lost_race", { round: round.id, from: round.state, to, reason: reason ?? null }, moved ? "info" : "warn");
   return getRound(round.id);
 }
 
@@ -111,14 +122,13 @@ async function captureSnapshot(circle: Circle): Promise<ValuationSnapshot> {
   const list = priceable(u.registry, u.feeds).filter(({ token }) => circle.assetUids.includes(token.uid));
   const rpc = client();
   const at = now();
-  const prices: PriceSnapshot[] = [];
-  for (const { token, feed } of list) {
-    const reading = await readChainlinkSnapshot(rpc, token, feed, at);
-    const rest = restSnapshot(token, await fetchRobinhoodQuote(token.symbol), 300, at);
-    const divergence = snapshotDivergenceBps(reading.snapshot, rest);
+  const [readings, quotes] = await Promise.all([readChainlinkSnapshots(rpc, list, at), Promise.all(list.map(({ token }) => fetchRobinhoodQuote(token.symbol)))]);
+  const prices: PriceSnapshot[] = list.map(({ token }, i) => {
+    const reading = readings[i] as (typeof readings)[number];
+    const divergence = snapshotDivergenceBps(reading.snapshot, restSnapshot(token, quotes[i] as (typeof quotes)[number], 300, at));
     if (divergence > MAX_FEED_REST_DIVERGENCE_BPS) throw new RoundError(`${token.symbol}: Chainlink and Robinhood prices disagree by ${divergence} bps, so the round cannot open safely right now.`);
-    prices.push(reading.snapshot);
-  }
+    return reading.snapshot;
+  });
   return buildValuationSnapshot(prices, at, circle.durationSec + APPROVAL_WINDOW_SEC);
 }
 
@@ -160,6 +170,18 @@ export async function advance(round: RoundRecord): Promise<RoundRecord> {
   }
   if ((round.state === "PROPOSED" || round.state === "APPROVING" || round.state === "READY_TO_SETTLE") && round.plan && BigInt(t) > round.plan.contractPlan.validUntil) {
     return transition(round, "PLAN_STALE", "approval window closed before settlement");
+  }
+  const lastStep = round.history.at(-1)?.at ?? 0;
+  const pending = round.state === "SETTLING" || ((round.state === "SETTLED" || round.state === "VERIFYING") && t - lastStep > RESUME_AFTER_SEC);
+  if (pending) {
+    log("settlement.resume", { round: round.id, state: round.state, idleSec: t - lastStep });
+    try {
+      return await completeSettlement(round);
+    } catch (error) {
+      // Readers still get the round; the next read retries. The failure is logged with the round id.
+      log("settlement.resume_failed", { round: round.id, state: round.state, error: (error as Error).message.split("\n")[0] }, "error");
+      return getRound(round.id);
+    }
   }
   return round;
 }
@@ -348,24 +370,51 @@ export async function recordSettlement(roundId: string, reporter: Address, txHas
   if (round.state === "READY_TO_SETTLE") {
     await assertSettlesPlan(round, txHash);
     round = await transition(round, "SETTLING", "settlement tx sent by a participant", { settlement_tx: txHash });
+    log("settlement.reported", { round: round.id, tx: txHash, reporter });
   }
-  if (round.state !== "SETTLING" || !round.settlementTx) return round;
+  return completeSettlement(round);
+}
+
+/**
+ * Carries a reported settlement to its final state: receipt, then independent verification. Safe to call repeatedly
+ * and from any request: each step is a compare-and-set, so a request that dies mid-way is resumed by the next one.
+ */
+async function completeSettlement(start: RoundRecord): Promise<RoundRecord> {
+  let round = start;
+  if (!round.settlementTx || !round.plan) return round;
   const tx = round.settlementTx;
-  const receipt = await client().waitForTransactionReceipt({ hash: tx, timeout: 90_000 });
-  if (receipt.status !== "success") return transition(round, "SETTLEMENT_REVERTED", `tx ${tx} reverted`);
-  const settled = await transition(round, "SETTLED", `block ${receipt.blockNumber}`);
-  if (settled.state !== "SETTLED") return settled;
-  round = await transition(settled, "VERIFYING");
+  if (round.state === "SETTLING") {
+    // One non-blocking receipt read per request. Waiting inline could outlive the edge's idle-connection limit and
+    // cancel the request; the execute page polls, so an unmined tx is simply picked up by the next poll.
+    const receipt = await client().getTransactionReceipt({ hash: tx }).catch(() => null);
+    if (!receipt) return round;
+    if (receipt.status !== "success") return transition(round, "SETTLEMENT_REVERTED", `tx ${tx} reverted`);
+    round = await transition(round, "SETTLED", `block ${receipt.blockNumber}`);
+    if (round.state !== "SETTLED") return round;
+  }
+  if (round.state === "SETTLED") round = await transition(round, "VERIFYING");
   if (round.state !== "VERIFYING") return round;
   const approvals = await approvalsFor(round.id);
   const plan = round.plan as SettlementPlan;
-  const verification = await verifySettlement(verifierClient(), {
+  const input = {
     txHash: tx,
     settlementContract: round.settlementContract,
     plan: plan.contractPlan,
     nonces: new Map([...approvals].map(([a, v]) => [a, v.nonce])),
     watchTokens: [...new Set(plan.contractPlan.legs.map((l) => l.token))],
-  });
+  };
+  // The independent verifier RPC may lack historical state (the public RPC prunes after roughly 40 minutes). Then the
+  // check reruns on the executor RPC and the record says so; independence is never claimed for that run.
+  let verifierRpc: { client: PublicClient; providers: Providers } = verifierClient();
+  let verification: SettlementVerification;
+  try {
+    verification = await verifySettlement(verifierRpc.client, input);
+  } catch (error) {
+    const reason = (error as Error).message.split("\n")[0] ?? "verifier RPC error";
+    log("settlement.verifier_fallback", { round: round.id, tx, verifier: verifierRpc.providers.verifier, reason }, "warn");
+    verifierRpc = { client: client(), providers: { executor: verifierRpc.providers.executor, verifier: verifierRpc.providers.executor, independent: false, fallbackReason: `independent RPC ${verifierRpc.providers.verifier} failed: ${reason}` } };
+    verification = await verifySettlement(verifierRpc.client, input);
+  }
   // The set of wallets whose approval nonce the contract consumed must be exactly the plan's participants.
   const consumed = new Set(verification.checks.filter((c) => c.name.startsWith("event.NonceConsumed.") && c.status === "PASS").map((c) => c.name.slice("event.NonceConsumed.".length).toLowerCase()));
   const expected = plan.contractPlan.participants.map((p) => p.toLowerCase());
@@ -373,7 +422,8 @@ export async function recordSettlement(roundId: string, reporter: Address, txHas
   verification.checks.push({ name: "participants.set", status: participantsMatch ? "PASS" : "FAIL", detail: `${consumed.size} approvals consumed onchain for ${expected.length} plan participants` });
   if (!participantsMatch) verification.status = "FAIL";
   const final = verification.status === "PASS" ? "COMPLETE" : "VERIFICATION_FAILED";
-  const done = await transition(round, final, `verifier ${verification.status}`, { verification: toJson(verification) });
+  log("settlement.verified", { round: round.id, tx, status: verification.status, failed: verification.checks.filter((c) => c.status !== "PASS").map((c) => c.name), ...verifierRpc.providers });
+  const done = await transition(round, final, `verifier ${verification.status}`, { verification: toJson({ ...verification, providers: verifierRpc.providers }) });
   if (done.state === final && done.verification) {
     for (const p of plan.contractPlan.participants) await logActivity(p, "SETTLED", { txHash: tx, verifier: verification.status }, { roundId: round.id, circleId: round.circleId });
   }

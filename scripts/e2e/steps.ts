@@ -43,15 +43,20 @@ export async function setTarget(u: User, shift: Shift) {
   log(u, `portfolio $${total.toFixed(2)} ${portfolio.positions.map((p) => `${p.symbol} $${p.valueUsd.toFixed(2)}`).join(", ")}; target ${[...weights].map(([s, w]) => `${s} ${w.toFixed(1)}%`).join(", ")}`);
   await page.getByRole("button", { name: "Set weights" }).click();
   while (await page.getByRole("button", { name: /^Remove/ }).count()) await page.getByRole("button", { name: /^Remove/ }).first().click();
-  let i = 0;
-  for (const [symbol, w] of weights) {
+  // Entered at 0.1% precision; the last row takes the remainder so the total is exactly 100%.
+  const entries = [...weights].map(([symbol, w]) => [symbol, Math.floor(w * 10) / 10] as const);
+  const rest = Math.round((100 - entries.slice(0, -1).reduce((sum, [, w]) => sum + w, 0)) * 10) / 10;
+  for (const [i, [symbol, w]] of entries.entries()) {
     await page.getByRole("button", { name: "Add a Stock Token" }).click();
     await page.locator(`#sym-${i}`).fill(symbol);
-    await page.locator(`#pct-${i}`).fill(w.toFixed(1));
-    i++;
+    await page.locator(`#pct-${i}`).fill((i === entries.length - 1 ? rest : w).toFixed(1));
   }
   await page.getByRole("button", { name: "Check this target" }).click();
-  await page.getByRole("button", { name: "Save target" }).click({ timeout: 60_000 });
+  const save = page.getByRole("button", { name: "Save target" });
+  const problem = page.locator("main p[role=alert], main [aria-live=polite] li");
+  await save.or(problem).first().waitFor({ timeout: 60_000 });
+  if (!(await save.count())) throw new Error(`${u.label}: target check refused: ${(await problem.allInnerTexts()).join(" | ")}`);
+  await save.click();
   await page.getByText(/^Saved /).waitFor({ timeout: 30_000 });
   log(u, "target saved");
 }

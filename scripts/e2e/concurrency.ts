@@ -1,4 +1,4 @@
-import { apiGet, BASE, openUser, type User } from "./session.ts";
+import { apiGet, BASE, dynamicLogin, openUser, type User } from "./session.ts";
 import { createCircle, setTarget, waitState } from "./steps.ts";
 
 /**
@@ -30,7 +30,15 @@ const capture = (u: User, suffix: string) => {
 const A = await openUser("A", dir, { declineTransactions: true });
 const C = await openUser("C", dir, { declineTransactions: true });
 try {
-  for (const u of [A, C]) await u.page.goto(`${BASE}/portfolio`);
+  for (const u of [A, C]) {
+    await u.page.goto(`${BASE}/app`);
+    if (u.page.url().includes("/onboarding")) {
+      console.log(`[${u.label}] session ended; signing in again`);
+      await u.page.getByRole("button", { name: "Get started" }).click();
+      await dynamicLogin(u);
+    }
+    await u.page.goto(`${BASE}/portfolio`);
+  }
   await setTarget(A, { from: "NVDA", to: "SPY", fraction: 0.5 });
   await setTarget(C, { from: "SPY", to: "NVDA", fraction: 0.9 });
   const name = `E2E Concurrency ${new Date().toISOString().slice(11, 19)}`;

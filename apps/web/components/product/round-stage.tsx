@@ -496,6 +496,7 @@ function Receipt({ d }: { d: RoundViewData }) {
         {v ? (
           <ul className={p.list}>{v.checks.map((c) => <li key={c.name} style={{ fontSize: 14 }}><span className={`badge ${c.status === "PASS" ? "badge-verified" : c.status === "FAIL" ? "badge-fail" : "badge-warn"}`}>{c.status}</span> {c.name}<br /><span className="faint">{c.detail}</span></li>)}</ul>
         ) : <p className="muted">{d.round.state === "NO_CROSS" ? "No settlement happened, so there is nothing to verify." : "Not verified yet."}</p>}
+        {v?.providers && <p className="faint" style={{ fontSize: 13 }}>Read through {v.providers.verifier}; the settlement was sent through {v.providers.executor}. {v.providers.independent ? "Independent providers." : `Same provider, so this is not an independent check.${v.providers.fallbackReason ? ` Reason: ${v.providers.fallbackReason}.` : ""}`}</p>}
       </section>
     </div>
   );

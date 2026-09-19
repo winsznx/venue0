@@ -77,6 +77,14 @@ export async function readChainlinkSnapshot(
     client.readContract({ ...base, functionName: "description" }),
     client.readContract({ ...base, functionName: "latestRoundData" }),
   ]);
+  return feedReading(token, feed, { decimals, description, round }, blockNumber, nowSec);
+}
+
+type RoundData = readonly [bigint, bigint, bigint, bigint, bigint];
+
+/** Validates one feed's raw reads and turns them into a snapshot. Shared by the single and batched readers. */
+function feedReading(token: CanonicalStockToken, feed: ChainlinkFeedEntry, raw: { decimals: number; description: string; round: RoundData }, blockNumber: bigint, nowSec: number): FeedReading {
+  const { decimals, description, round } = raw;
   if (decimals !== feed.decimals) throw new Error(`feed ${feed.name} decimals ${decimals} != directory ${feed.decimals}`);
   const [roundId, answer, , updatedAt, answeredInRound] = round;
   if (answeredInRound < roundId) throw new Error(`feed ${feed.name} answeredInRound < roundId`);
@@ -99,6 +107,27 @@ export async function readChainlinkSnapshot(
       stale: ageSec > feed.heartbeatSec,
     },
   };
+}
+
+/**
+ * Reads many feeds at one pinned block in a single multicall (two RPC round trips in total instead of two per feed),
+ * with the same per-feed validation as readChainlinkSnapshot. Any feed that fails to read fails the whole call.
+ */
+export async function readChainlinkSnapshots(
+  client: PublicClient,
+  items: ReadonlyArray<{ token: CanonicalStockToken; feed: ChainlinkFeedEntry }>,
+  nowSec = Math.floor(Date.now() / 1000),
+  multicallAddress: Address = "0xcA11bde05977b3631167028862bE2a173976CA11",
+): Promise<FeedReading[]> {
+  if (items.length === 0) return [];
+  const blockNumber = await pinnedReadBlock(client);
+  const calls = items.flatMap(({ feed }) => (["decimals", "description", "latestRoundData"] as const).map((functionName) => ({ address: feed.proxyAddress, abi: chainlinkAggregatorAbi, functionName })));
+  const results = await client.multicall({ multicallAddress, contracts: calls, blockNumber, allowFailure: true });
+  return items.map(({ token, feed }, i) => {
+    const [d, desc, r] = results.slice(i * 3, i * 3 + 3);
+    if (d?.status !== "success" || desc?.status !== "success" || r?.status !== "success") throw new Error(`feed ${feed.name} could not be read at block ${blockNumber}`);
+    return feedReading(token, feed, { decimals: d.result as number, description: desc.result as string, round: r.result as RoundData }, blockNumber, nowSec);
+  });
 }
 
 export function restSnapshot(token: CanonicalStockToken, quote: ApiQuote, maxAgeSec: number, nowSec = Math.floor(Date.now() / 1000)): PriceSnapshot {
