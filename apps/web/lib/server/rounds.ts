@@ -98,7 +98,10 @@ export async function roundsForCircle(circleId: string): Promise<RoundRecord[]> 
 }
 
 /** Guarded state change: the same PRD 12 table CircleService enforces, applied with a compare-and-set on the stored state. */
-async function transition(round: RoundRecord, to: RoundState, reason?: string, patch: Record<string, unknown> = {}): Promise<RoundRecord> {
+/** A round after a transition attempt; `moved` is true only for the request whose compare-and-set changed the state. */
+type Transitioned = RoundRecord & { moved: boolean };
+
+async function transition(round: RoundRecord, to: RoundState, reason?: string, patch: Record<string, unknown> = {}): Promise<Transitioned> {
   if (!TRANSITIONS[round.state].includes(to)) throw new RoundError(`Round is ${round.state} and cannot move to ${to}.`);
   const columns = Object.keys(patch);
   const sets = columns.map((c, i) => `${c} = $${i + 4}${c === "match" || c === "plan" || c === "verification" ? "::text::jsonb" : ""}`);
@@ -110,7 +113,7 @@ async function transition(round: RoundRecord, to: RoundState, reason?: string, p
     return true;
   });
   log(moved ? "round.transition" : "round.transition_lost_race", { round: round.id, from: round.state, to, reason: reason ?? null }, moved ? "info" : "warn");
-  return getRound(round.id);
+  return { ...(await getRound(round.id)), moved };
 }
 
 /**
@@ -190,9 +193,11 @@ async function solve(round: RoundRecord, reason: string): Promise<RoundRecord> {
   const circle = await getCircle(round.circleId);
   const entries = await intentsFor(round.id);
   if (entries.length === 0) return transition(round, "EXPIRED", "no member signed an intent");
-  let r = await transition(round, "FROZEN", reason);
-  if (r.state !== "FROZEN") return r;
-  r = await transition(r, "SOLVING");
+  // Only the request that froze the round solves it; concurrent readers return the current state.
+  const frozen = await transition(round, "FROZEN", reason);
+  if (!frozen.moved) return frozen;
+  const r = await transition(frozen, "SOLVING");
+  if (!r.moved) return r;
   if (entries.length < circle.minParticipants) {
     return transition(r, "INSUFFICIENT_PARTICIPANTS", `${entries.length} signed, circle needs ${circle.minParticipants}`);
   }
@@ -203,10 +208,12 @@ async function solve(round: RoundRecord, reason: string): Promise<RoundRecord> {
   const matchJson = toJson(match);
   if (match.status === "PLAN_STALE") return transition(r, "PLAN_STALE", match.statusReasons.join("; "), { match: matchJson });
   if (match.status === "INSUFFICIENT_PARTICIPANTS") return transition(r, "INSUFFICIENT_PARTICIPANTS", match.statusReasons.join("; "), { match: matchJson });
-  for (const e of entries) await logActivity(e.owner, "ROUND_MATCHED", { status: match.status, circle: circle.name }, { roundId: r.id, circleId: r.circleId });
-  if (match.status === "NO_CROSS") return transition(r, "NO_CROSS", "no crossing flow exists among the signed intents", { match: matchJson });
-  const plan = buildSettlementPlan(match, { settlementContract: r.settlementContract, validAfter: t - 60, validUntil: t + APPROVAL_WINDOW_SEC, generatedAt: t });
-  return transition(r, "PROPOSED", `${match.status}: ${match.legs.length} legs`, { match: matchJson, plan: toJson(plan) });
+  const solved =
+    match.status === "NO_CROSS"
+      ? await transition(r, "NO_CROSS", "no crossing flow exists among the signed intents", { match: matchJson })
+      : await transition(r, "PROPOSED", `${match.status}: ${match.legs.length} legs`, { match: matchJson, plan: toJson(buildSettlementPlan(match, { settlementContract: r.settlementContract, validAfter: t - 60, validUntil: t + APPROVAL_WINDOW_SEC, generatedAt: t })) });
+  if (solved.moved) for (const e of entries) await logActivity(e.owner, "ROUND_MATCHED", { status: match.status, circle: circle.name }, { roundId: r.id, circleId: r.circleId });
+  return solved;
 }
 
 /** Organizer closes collection early (for example once the expected members have signed). */
@@ -424,7 +431,7 @@ async function completeSettlement(start: RoundRecord): Promise<RoundRecord> {
   const final = verification.status === "PASS" ? "COMPLETE" : "VERIFICATION_FAILED";
   log("settlement.verified", { round: round.id, tx, status: verification.status, failed: verification.checks.filter((c) => c.status !== "PASS").map((c) => c.name), ...verifierRpc.providers });
   const done = await transition(round, final, `verifier ${verification.status}`, { verification: toJson({ ...verification, providers: verifierRpc.providers }) });
-  if (done.state === final && done.verification) {
+  if (done.moved) {
     for (const p of plan.contractPlan.participants) await logActivity(p, "SETTLED", { txHash: tx, verifier: verification.status }, { roundId: round.id, circleId: round.circleId });
   }
   return done;
